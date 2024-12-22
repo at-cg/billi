@@ -20,11 +20,21 @@ fstream f;
 string inputpath, outputdir;
 // vector<int> deg;
 vector<vector<int>> g;
+vector<bool> visit; // for marking back edges
+
 int Ss = -1, Se = -1; // for connecting the tips
 
 // Not required since the node labels are int's only in the gfa file 
 // map<string, int> lmap; // for storing the label for a particular gene
 // vector<int> ilmap; // for storing the gene for a particular label
+
+struct node{
+    int low, high; // a bracket can uniquely be identified by the lower and higher vertices it connects to : low -> lower height
+    node* front;
+    node* back; // for doubly linked list implementation -> helps in O(1) deletion
+
+    node(int l, int h):low(l), high(h), front(nullptr), back(nullptr){}
+};
 
 inline int last_bit(string s){
     return s == "+" ? 0 : 1;
@@ -86,6 +96,16 @@ void make_graph(){
     }
 }
 
+vector<> sese(int u, int parent){
+    visit[u] = true;
+    for(int v : g[u]){
+        if(v == parent)continue;
+        if(visit[v]){
+
+        }
+    }
+}
+
 int main(int argc, char* argv[])
 {   
     ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0); // Fast IO
@@ -135,5 +155,10 @@ int main(int argc, char* argv[])
     }
 
     // SESE
+    // An important observation is that bibubble ends won't turn as backedges
+    visit.resize(2 * n);
 
+    // Taking care of multiple components
+    // for()
+    sese(Ss, -1); 
 } 

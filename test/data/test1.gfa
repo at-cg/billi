@@ -1,0 +1,7 @@
+H	VN:Z:1.0
+S	1	AGCTAGCTAGCT
+S	2	TCGATCGA
+S	3	GCTAGCTA
+L	1	+	2	-	4M
+L	2	+	3	+	3M
+P	contig1 1+	2-	3+ *
