@@ -15,4 +15,24 @@ fi
 set -e
 
 cd ../src
-./main ../test/data/test1.gfa ../test/results
+make clean
+make
+
+DIR=../test/data/
+DDIR=$DIR/gfa_files
+RDIR=$DIR/results
+
+if [ ! -d "$RDIR" ]; then
+    mkdir -p $RDIR
+fi
+
+for FILE in "$DDIR"/*; do
+    if [ -f "$FILE" ]; then
+        FILENAME=$(basename "$FILE")
+        # echo "$FILENAME"
+        IFS='.' read -ra PARTS <<< "$FILENAME"
+        TAG="${PARTS[0]}"
+        # echo "$TAG"
+        ./main $DDIR/$FILENAME $RDIR/$TAG.txt  
+    fi
+done
