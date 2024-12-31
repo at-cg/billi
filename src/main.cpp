@@ -28,10 +28,10 @@ int n, maxd; // max depth possible = total number of nodes
 // vector<int> deg;
 
 struct edge{
-    int low, high; // a bracket can uniquely be identified by the lower and higher vertices it connects to : low -> lower height
+    int id; // a bracket can uniquely be identified by the lower and higher vertices it connects to : low -> lower height
     edge* front;
     edge* back; // for doubly linked list implementation -> helps in O(1) deletion
-    edge(int l, int h):low(l), high(h), front(nullptr), back(nullptr){}
+    edge(int eid):id(eid), front(nullptr), back(nullptr){}
 };
 
 struct bracketlist{
@@ -42,25 +42,42 @@ struct bracketlist{
     bracketlist(int lsz, int depth1, int depth2, edge* pstart, edge* pend): sz(lsz), d1(depth1), d2(depth2), start(pstart), end(pend){}
 };
 
-vector<vector<int>> g;
+template <typename... Args>
+void printArgs(Args... args){
+    ((cout << args << " "), ...) << endl; // Fold expression
+}
+
+void printBracketList(edge *it){
+    cout << "Bracket List: ";
+    while(it){
+        cout << it->id << " ";
+        it = it->front;
+    }cout << endl;
+}
+
+// Not required : eid
+
+vector<vector<pii>> g;
 vector<vector<edge*>> remove_brackets;
 vector<bool> mark; // for marking back edges
 vector<pii> canonical_sese; // for storing the canonical sese pairs
 vector<int> stack_trace; // for storing the vertices in the stack during dfs traversal
 vector<int> depth; // for storing the depth of the vertices in the spanning tree
-stack<piiii> st; // for storing the <top_bracket, list_size> for the black edges
-
+vector<pii> eid; 
+vector<pii> st; // (node, size) will store the size of the bracket list when that bracket is the topmost bracket and for which node that was topmost previously
 map<string, int> lmap; // for storing the label for a particular gene
 vector<string> ilmap; // for storing the gene for a particular label
 
 int Ss = -1, Se = -1; // for connecting the tips
+int tot_grey = 0; // for storing total number of grey edges, will help in accessing the brackets
 
 inline int last_bit(string s){
     return s == "+" ? 0 : 1;
 }
 
 inline string get_label(int x){
-    return ilmap[x >> 1] + " " + (x & 1 ? "-" : "+");
+    printArgs("x:", x);
+    return (ilmap[x >> 1] + " " + (x & 1 ? "-" : "+"));
 }
 
 void get_n(){
@@ -113,7 +130,11 @@ void make_graph(){
                 // n1 and n2 are 0-indexed
                 int id1 = (n1 << 1) + last_bit(s1), id2 = (n2 << 1) + last_bit(s2);
                 // deg[(n1 << 1) + last_bit(s1)]++; deg[(n2 << 1) + last_bit(s2)]++;
-                g[id1].pb(id2); g[id2].pb(id1);
+                if(n1 == n2)continue; // there will be a black edge b/w them <- safe operation
+                tot_grey++;
+                // printArgs(id1, id2, tot_grey);
+                g[id1].pb({id2, tot_grey}); g[id2].pb({id1, tot_grey});
+                eid.pb({min(id1, id2), max(id1, id2)});
             }
         }
         f.close();
@@ -121,7 +142,6 @@ void make_graph(){
 }
 
 void merge(bracketlist* bl1, bracketlist* bl2){
-    if(!bl2->start)return; // no benefit of merging
     bl1->end = bl2->end;
     if(!bl1->start){
         bl1->start = bl2->start;
@@ -146,65 +166,95 @@ bracketlist* sese(int u, int parent){
     mark[u] = true;
     if(parent != -1)depth[u] = depth[parent] + 1;
 
+    printArgs(u, parent); 
     bracketlist* bl = new bracketlist(); 
-    for(int v : g[u]){
+    int cnt_back = 0;
+    for(pii child : g[u]){
+        int v = child.F;
+        // printArgs("child", v);
         if(v == parent)continue;
         bracketlist* bl1;
         if(mark[v]){// back-edge -> will come first in the dfs traversal for the node at greater depth
             if(depth[v] > depth[u])continue; // front-edge
-            edge* ed = new edge(v, u);
+            assert(child.S != -1);
+            edge* ed = new edge(child.S);
             bl1 = new bracketlist(1, depth[v], maxd, ed, ed);
             remove_brackets[v].pb(ed);
         }else bl1 = sese(v, u);
+        // printArgs(u, "child1", v);
         if((u ^ v) == 1){// check for canonical sese if it is a black edge, won't be true for back edge
-            piiii val = st.top();
+            printArgs("IN", bl1->sz);
             if(bl1->sz > 0){
-                piii cval = {bl1->sz, {bl1->end->low, bl1->end->high}};
-                if(cval != get<1>(val)){
-                    st.push({u, cval}); // u because it is the close end of the bibubble end
+                int br = bl1->end->id;
+                printArgs("HI1");
+                assert(br != -1);
+                printArgs("HI2");
+                if(st[br] != mp(0, 0)){
+                    printArgs("HI3");
+                    assert(st[br].S == bl1->sz);
+                    if(g[v].size() > 2 && g[st[br].F].size() > 2){ // to avoid linear chains
+                        canonical_sese.pb({v, st[br].F});
+                    }
+                    st[br] = {0, 0};
                 }else{
-                    canonical_sese.pb({v, get<0>(val)});// v because it is the close end of the bibubble start
-                    st.pop();
+                    st[br] = {u, bl1->sz};
                 }
             }
         }
-        merge(bl, bl1); // merging brackets from the child nodes
+        if(bl1->start){
+            printBracketList(bl->start); printBracketList(bl1->start);
+            merge(bl, bl1); // merging brackets from the child nodes
+            if(bl1->d1 < depth[u])cnt_back++;
+        }
     }
+
     // removing brackets from respective lists after computing the value for the outgoing edges from that node
     for(edge* ed : remove_brackets[u]){
+        printArgs("remove", eid[ed->id - 1].F, eid[ed->id - 1].S);
+        printBracketList(bl->start);
         if(ed->front){
             if(ed->back){
                 ed->back->front = ed->front;
                 ed->front->back = ed->back;
             }else{// is the first bracket
+                bl->start = ed->front;
                 ed->front->back = nullptr;
             }
         }else{// is the last bracket
             bl->end = ed->back;
             if(ed->back)ed->back->front = nullptr;
+            else{
+                bl->start = bl->end = nullptr;
+            }
         }
         delete(ed);
         bl->sz--; // The current bracket list will only contain the edges that are being removed
     }
+   
     // only left with the brackets that go up the node u
     // adding capping backedge
     // edge to be added u -> stack_trace[bl->d2]
-    int w = stack_trace[bl->d2]; // stack_trace is 0-indexed and so are bl->d1 and bl->d2
-    // edge need not be added to graph g
-    // check if the edge already exists
-    bool exists = false;
-    for(int v : g[u]){
-        if(v == w){
-            exists = true; break;
+    if(cnt_back >= 2){// at least two childs should have backedges with depth lower than node u in order to add a capping backedge
+        int w = stack_trace[bl->d2]; // stack_trace is 0-indexed and so are bl->d1 and bl->d2
+        // edge need not be added to graph g
+        // check if the edge already exists
+        bool exists = false;
+        for(pii child : g[u]){
+            if(child.F == w){
+                exists = true; break;
+            }
+        }
+        if(!exists){
+            tot_grey++;
+            edge* ed = new edge(tot_grey);
+            eid.pb({min(w, u), max(w, u)});
+            bracketlist* bl1 = new bracketlist(1, depth[w], maxd, ed, ed);
+            remove_brackets[w].pb(ed);
+            merge(bl, bl1);
         }
     }
-    if(!exists){
-        edge* ed = new edge(w, u);
-        bracketlist* bl1 = new bracketlist(1, depth[w], maxd, ed, ed);
-        remove_brackets[w].pb(ed);
-        merge(bl, bl1);
-    }
 
+    printArgs(u, parent, stack_trace.size(), bl->sz);
     stack_trace.rb();
     return bl;
 }
@@ -227,13 +277,13 @@ int main(int argc, char* argv[])
     // for a node x (0-indexed) in pangene graph - two nodes 2 * x (+), 2 * x + 1 (-) are created in the bi-edged graph 
     // using vectors will be good coz we will have to add capping backedges as well
     g.resize(2 * n); // // +2 is for S if required -> not needed
-    make_graph(); // adding grey edges
-    // adding black edges
+    // adding black edges first <- important since don't want black edge to appear as a back or front edge
     for(int i = 0; i < n; i++){
         int n1 = 2 * i, n2 = 2 * i + 1;
-        g[n1].pb(n2); g[n2].pb(n1);
+        g[n1].pb({n2, -1}); g[n2].pb({n1, -1});
     }
-
+    make_graph(); // adding grey edges
+    
     // Graph compression - removing unitigs --- Not implementing currently -> does not seem that useful
 
     // Identifying tips
@@ -242,9 +292,13 @@ int main(int argc, char* argv[])
     for(int i = 0; i < 2 * n; i++){
         if(g[i].size() == 1){
             tips.pb(i);
-            assert((g[i][0] ^ i) == 1); // checking whether the node is connected via a black edge
+            assert((g[i][0].F ^ i) == 1); // checking whether the node is connected via a black edge
         }
     }
+
+    // cout << "TIPS\n";
+    // for(int x : tips)cout << x << " ";
+    // cout << endl;
 
     if(tips.size() == 0){ // there can be multiple components here, need to take care of in the dfs 
         Ss = 0; Se = 1; // no extra edges required
@@ -252,21 +306,27 @@ int main(int argc, char* argv[])
         Ss = tips[0]; Se = Ss ^ 1; 
         // if(tips.size() > 1){// else no need to add an extra edge
             for(int i = 1; i < tips.size(); i++){
-                g[Ss].pb(tips[i]); g[tips[i]].pb(Ss);
+                tot_grey++;
+                g[Ss].pb({tips[i], tot_grey}); g[tips[i]].pb({Ss, tot_grey}); // edge id's are required here as well
+                eid.pb({min(Ss, tips[i]), max(Ss, tips[i])});
             }
         // }
     }
 
+    for(int i = 0; i < eid.size(); i++){
+        printArgs(i, eid[i].F, eid[i].S);
+    }
+    
     // SESE
     // An important observation is that bibubble ends won't turn as backedges
     mark.resize(2 * n);
     remove_brackets.resize(2 * n);
     depth.resize(2 * n);
-    
-    maxd = 2 * n + 100;
-    sese(Ss, -1); 
-    assert(st.size() == 0);
+    st.resize(tot_grey + n + 1); // grey_edges count start from 1 and every vertex will have at most one back edge
 
+    maxd = 2 * n + 100;
+    sese(Ss, -1);     
+    assert(st.size() + stack_trace.size() == 0);
     // Taking care of multiple components
     for(int i = 0; i < 2 * n; i += 2){
         if(mark[i]){
@@ -277,6 +337,8 @@ int main(int argc, char* argv[])
         sese(Ss, -1);
         assert(st.size() == 0);
     }
-
+    cout << "Total canonical cycle equivalent pairs found: " << canonical_sese.size() << endl;
     for(pii rs : canonical_sese)cout << get_label(rs.F) << " " << get_label(rs.S) << endl;
+    f.flush();
+    f.close();
 } 

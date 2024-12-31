@@ -32,7 +32,10 @@ for FILE in "$DDIR"/*; do
         # echo "$FILENAME"
         IFS='.' read -ra PARTS <<< "$FILENAME"
         TAG="${PARTS[0]}"
-        # echo "$TAG"
-        ./main $DDIR/$FILENAME $RDIR/$TAG.txt  
+        if [ "$TAG" = "EC5" ]; then
+            continue
+        fi
+        echo "$TAG"
+        ./main $DDIR/$FILENAME $RDIR/$TAG
     fi
 done
