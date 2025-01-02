@@ -28,7 +28,7 @@ int n, maxd; // max depth possible = total number of nodes
 // vector<int> deg;
 
 struct edge{
-    int id; // a bracket can uniquely be identified by the lower and higher vertices it connects to : low -> lower height
+    int id; // a bracket can uniquely be identified by the lower and higher vertices it connects to : low -> lower height, assigning a unique to each
     edge* front;
     edge* back; // for doubly linked list implementation -> helps in O(1) deletion
     edge(int eid):id(eid), front(nullptr), back(nullptr){}
@@ -76,7 +76,7 @@ inline int last_bit(string s){
 }
 
 inline string get_label(int x){
-    printArgs("x:", x);
+    // printArgs("x:", x);
     return (ilmap[x >> 1] + " " + (x & 1 ? "-" : "+"));
 }
 
@@ -141,22 +141,26 @@ void make_graph(){
     }
 }
 
-void merge(bracketlist* bl1, bracketlist* bl2){
-    bl1->end = bl2->end;
+void merge(bracketlist* bl1, bracketlist* bl2, bool upd){
     if(!bl1->start){
         bl1->start = bl2->start;
-        bl1->d1 = bl2->d1;
-        bl1->d2 = bl2->d2;
+        if(upd){
+            bl1->d1 = bl2->d1;
+            bl1->d2 = bl2->d2;
+        }
     }else{
         bl1->end->front = bl2->start;
         bl2->start->back = bl1->end;
-        if(bl1->d1 < bl2->d1){
-            bl1->d2 = min(bl1->d2, bl2->d1);
-        }else{
-            bl1->d2 = min(bl1->d1, bl2->d2);
-            bl1->d1 = bl2->d1;
+        if(upd){
+            if(bl1->d1 < bl2->d1){
+                bl1->d2 = min(bl1->d2, bl2->d1);
+            }else{
+                bl1->d2 = min(bl1->d1, bl2->d2);
+                bl1->d1 = bl2->d1;
+            }
         }
     }
+    bl1->end = bl2->end;
     bl1->sz += bl2->sz;
     delete(bl2);
 }
@@ -166,7 +170,7 @@ bracketlist* sese(int u, int parent){
     mark[u] = true;
     if(parent != -1)depth[u] = depth[parent] + 1;
 
-    printArgs(u, parent); 
+    // printArgs(u, parent); 
     bracketlist* bl = new bracketlist(); 
     int cnt_back = 0;
     for(pii child : g[u]){
@@ -177,20 +181,19 @@ bracketlist* sese(int u, int parent){
         if(mark[v]){// back-edge -> will come first in the dfs traversal for the node at greater depth
             if(depth[v] > depth[u])continue; // front-edge
             assert(child.S != -1);
-            edge* ed = new edge(child.S);
+            edge* ed = new edge(child.S - 1); // tot_grey count starts from 1
             bl1 = new bracketlist(1, depth[v], maxd, ed, ed);
             remove_brackets[v].pb(ed);
         }else bl1 = sese(v, u);
-        // printArgs(u, "child1", v);
         if((u ^ v) == 1){// check for canonical sese if it is a black edge, won't be true for back edge
-            printArgs("IN", bl1->sz);
+            // printArgs("IN", bl1->sz);
             if(bl1->sz > 0){
                 int br = bl1->end->id;
-                printArgs("HI1");
+                // printArgs("HI1");
                 assert(br != -1);
-                printArgs("HI2");
+                // printArgs("HI2");
                 if(st[br] != mp(0, 0)){
-                    printArgs("HI3");
+                    // printArgs("HI3");
                     assert(st[br].S == bl1->sz);
                     if(g[v].size() > 2 && g[st[br].F].size() > 2){ // to avoid linear chains
                         canonical_sese.pb({v, st[br].F});
@@ -202,16 +205,17 @@ bracketlist* sese(int u, int parent){
             }
         }
         if(bl1->start){
-            printBracketList(bl->start); printBracketList(bl1->start);
-            merge(bl, bl1); // merging brackets from the child nodes
-            if(bl1->d1 < depth[u])cnt_back++;
+            // printArgs(u, "child", v);
+            // printBracketList(bl->start); printBracketList(bl1->start);
+            merge(bl, bl1, depth[v] > depth[u]); // merging brackets from the child nodes
+            // printBracketList(bl->start);
+            if(bl1->d1 < depth[u] && depth[v] > depth[u])cnt_back++; // an edge from u to its ancestor won't contribute to capping backedge
         }
     }
 
     // removing brackets from respective lists after computing the value for the outgoing edges from that node
     for(edge* ed : remove_brackets[u]){
-        printArgs("remove", eid[ed->id - 1].F, eid[ed->id - 1].S);
-        printBracketList(bl->start);
+        // printArgs("remove", eid[ed->id].F, eid[ed->id].S);
         if(ed->front){
             if(ed->back){
                 ed->back->front = ed->front;
@@ -229,6 +233,7 @@ bracketlist* sese(int u, int parent){
         }
         delete(ed);
         bl->sz--; // The current bracket list will only contain the edges that are being removed
+        // printBracketList(bl->start);
     }
    
     // only left with the brackets that go up the node u
@@ -250,11 +255,11 @@ bracketlist* sese(int u, int parent){
             eid.pb({min(w, u), max(w, u)});
             bracketlist* bl1 = new bracketlist(1, depth[w], maxd, ed, ed);
             remove_brackets[w].pb(ed);
-            merge(bl, bl1);
+            merge(bl, bl1, false);
         }
     }
 
-    printArgs(u, parent, stack_trace.size(), bl->sz);
+    // printArgs(u, parent, stack_trace.size(), bl->sz);
     stack_trace.rb();
     return bl;
 }
@@ -313,9 +318,9 @@ int main(int argc, char* argv[])
         // }
     }
 
-    for(int i = 0; i < eid.size(); i++){
-        printArgs(i, eid[i].F, eid[i].S);
-    }
+    // for(int i = 0; i < eid.size(); i++){
+    //     printArgs(i, eid[i].F, eid[i].S);
+    // }
     
     // SESE
     // An important observation is that bibubble ends won't turn as backedges
@@ -326,7 +331,7 @@ int main(int argc, char* argv[])
 
     maxd = 2 * n + 100;
     sese(Ss, -1);     
-    assert(st.size() + stack_trace.size() == 0);
+    assert(stack_trace.size() == 0);
     // Taking care of multiple components
     for(int i = 0; i < 2 * n; i += 2){
         if(mark[i]){
