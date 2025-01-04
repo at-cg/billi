@@ -3,6 +3,7 @@
 #include<filesystem>
 #include<vector>
 #include<map>
+#include<unordered_map>
 #include<algorithm>
 #include<stack>
 #include<regex>
@@ -24,8 +25,13 @@ namespace fs = std::filesystem;
 
 fstream f;
 string inputpath, outputdir;
-int n, maxd; // max depth possible = total number of nodes
-// vector<int> deg;
+
+int n; // no of nodes (genes)
+int backedge_cnt; // upper bound on number of back edges
+ll multiplier = 1; // for computing the hash
+int maxd; // max depth possible = total number of nodes
+int Ss = -1, Se = -1; // for connecting the tips
+int tot_grey = 0; // for storing total number of grey edges, will help in accessing the brackets
 
 struct edge{
     int id; // a bracket can uniquely be identified by the lower and higher vertices it connects to : low -> lower height, assigning a unique to each
@@ -41,6 +47,17 @@ struct bracketlist{
     bracketlist():sz(0), d1(maxd), d2(maxd), start(nullptr), end(nullptr){}
     bracketlist(int lsz, int depth1, int depth2, edge* pstart, edge* pend): sz(lsz), d1(depth1), d2(depth2), start(pstart), end(pend){}
 };
+
+vector<bool> mark; // for marking back edges
+vector<int> stack_trace; // for storing the vertices in the stack during dfs traversal
+vector<int> depth; // for storing the depth of the vertices in the spanning tree
+vector<string> ilmap; // for storing the gene for a particular label
+vector<pii> eid; 
+vector<pii> canonical_sese; // for storing the canonical sese pairs
+vector<vector<pii>> g;
+vector<vector<edge*>> remove_brackets;
+unordered_map<ll, int> st; // (node, size) will store the size of the bracket list when that bracket is the topmost bracket and for which node that was topmost previously
+map<string, int> lmap; // for storing the label for a particular gene
 
 template <typename... Args>
 void printArgs(Args... args){
@@ -59,25 +76,9 @@ void printBracketList(bracketlist* bl){
     }cout << endl;
 }
 
-// Not required : last_bit, upd variable in merge function
-
-vector<vector<pii>> g;
-vector<vector<edge*>> remove_brackets;
-vector<bool> mark; // for marking back edges
-vector<pii> canonical_sese; // for storing the canonical sese pairs
-vector<int> stack_trace; // for storing the vertices in the stack during dfs traversal
-vector<int> depth; // for storing the depth of the vertices in the spanning tree
-vector<pii> eid; 
-vector<pii> st; // (node, size) will store the size of the bracket list when that bracket is the topmost bracket and for which node that was topmost previously
-map<string, int> lmap; // for storing the label for a particular gene
-vector<string> ilmap; // for storing the gene for a particular label
-
-int Ss = -1, Se = -1; // for connecting the tips
-int tot_grey = 0; // for storing total number of grey edges, will help in accessing the brackets
-
-// inline int last_bit(string s){
-//     return s == "+" ? 0 : 1;
-// }
+ll get_key(int id, int size){
+    return id * multiplier + size;
+}
 
 inline string get_label(int x, int y){
     return (ilmap[x >> 1] + " " + (x & 1 ? "+" : "-") + " " + ilmap[y >> 1] + " " + (y & 1 ? "-" : "+"));
@@ -146,23 +147,19 @@ void make_graph(){
     }
 }
 
-void merge(bracketlist* bl1, bracketlist* bl2, bool upd){
+void merge(bracketlist* bl1, bracketlist* bl2){
     if(!bl1->start){
         bl1->start = bl2->start;
-        if(upd){
-            bl1->d1 = bl2->d1;
-            bl1->d2 = bl2->d2;
-        }
+        bl1->d1 = bl2->d1;
+        bl1->d2 = bl2->d2;
     }else{
         bl1->end->front = bl2->start;
         bl2->start->back = bl1->end;
-        if(upd){
-            if(bl1->d1 < bl2->d1){
-                bl1->d2 = min(bl1->d2, bl2->d1);
-            }else{
-                bl1->d2 = min(bl1->d1, bl2->d2);
-                bl1->d1 = bl2->d1;
-            }
+        if(bl1->d1 < bl2->d1){
+            bl1->d2 = min(bl1->d2, bl2->d1);
+        }else{
+            bl1->d2 = min(bl1->d1, bl2->d2);
+            bl1->d1 = bl2->d1;
         }
     }
     bl1->end = bl2->end;
@@ -170,10 +167,21 @@ void merge(bracketlist* bl1, bracketlist* bl2, bool upd){
     delete(bl2);
 }
 
+void dfs(int u, int parent){
+    mark[u] = true;
+    if(parent != -1)depth[u] = depth[parent] + 1;
+    for(pii child : g[u]){
+        int v = child.F;
+        if(mark[v]){
+            if(depth[v] < depth[u] && v != parent)backedge_cnt++;
+            continue;
+        }else dfs(v, u);
+    }
+}
+
 bracketlist* sese(int u, int parent){
     stack_trace.pb(u);
     mark[u] = true;
-    if(parent != -1)depth[u] = depth[parent] + 1;
 
     printArgs(u, parent); 
     bracketlist* bl = new bracketlist(); 
@@ -193,22 +201,22 @@ bracketlist* sese(int u, int parent){
             printArgs("Bracket list size on reaching the solid edge:", bl1->sz);
             if(bl1->sz > 0){
                 int br = bl1->end->id;
-                assert(br != -1);
-                if(st[br] != mp(0, 0)){
+                assert(br != -1); // not a black edge
+                ll key = get_key(br, bl1->sz);
+                if(st.find(key) != st.end()){
                     printArgs("Found the canonical pair");
-                    assert(st[br].S == bl1->sz);
-                    if(g[v].size() > 2 || g[st[br].F].size() > 2){ // to avoid linear chains
-                        printArgs("Found the contributing canonical pair:", v, st[br].F);
-                        canonical_sese.pb({v, st[br].F});
+                    if(g[v].size() > 2 || g[st[key]].size() > 2){ // to avoid linear chains
+                        printArgs("Found the contributing canonical pair:", v, st[key]);
+                        canonical_sese.pb({v, st[key]});
                     }
                 }
-                st[br] = {u, bl1->sz}; // will happen regardless you found something or not
+                st[key] = u; // will happen regardless you found something or not
             }
         }
         if(bl1->start){
             printArgs(u, "child", v);
             printBracketList(bl); printBracketList(bl1);
-            merge(bl, bl1, true); // merging brackets from the child nodes
+            merge(bl, bl1); // merging brackets from the child nodes
             printBracketList(bl);
             if(bl1->d1 < depth[u] && depth[v] > depth[u])cnt_back++; // an edge from u to its ancestor won't contribute to capping backedge
         }
@@ -261,7 +269,7 @@ bracketlist* sese(int u, int parent){
             eid.pb({min(w, u), max(w, u)});
             bracketlist* bl1 = new bracketlist(1, depth[w], maxd, ed, ed);
             remove_brackets[w].pb(ed);
-            merge(bl, bl1, true);
+            merge(bl, bl1);
         }
     }
 
@@ -331,10 +339,28 @@ int main(int argc, char* argv[])
     // SESE
     // An important observation is that bibubble ends won't turn as backedges
     mark.resize(2 * n);
-    remove_brackets.resize(2 * n);
     depth.resize(2 * n);
-    st.resize(tot_grey + n + 1); // grey_edges count start from 1 and every vertex will have at most one back edge
+    
+    // Finding an upperbound on the number of backedges
+    dfs(Ss, -1);
+    // Taking care of multiple components
+    for(int i = 0; i < 2 * n; i += 2){
+        if(mark[i]){
+            assert(mark[i + 1]);
+            continue;
+        }
+        Ss = i; Se = i + 1;
+        dfs(Ss, -1);
+    }
 
+    backedge_cnt += n; // atmax n capping backedges
+    while(multiplier <= backedge_cnt){
+        multiplier *= 10;
+    }
+
+    fill(mark.begin(), mark.end(), false);
+    remove_brackets.resize(2 * n);
+    
     maxd = 2 * n + 100;
     sese(Ss, -1);     
     assert(stack_trace.size() == 0);
@@ -346,7 +372,7 @@ int main(int argc, char* argv[])
         }
         Ss = i; Se = i + 1;
         sese(Ss, -1);
-        assert(st.size() == 0);
+        assert(stack_trace.size() == 0);
     }
     cout << "Total canonical cycle equivalent pairs found: " << canonical_sese.size() << endl;
     for(pii rs : canonical_sese)cout << get_label(rs.F, rs.S) << endl;
