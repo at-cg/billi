@@ -1,0 +1,98 @@
+S	A	*
+S	B	*
+S	C	*
+S	D	*
+S	E	*
+S	F	*
+S	G	*
+S	H	*
+S	I	*
+S	J	*
+S	K	*
+S	L	*
+S	M	*
+S	N	*
+S	O	*
+S	P	*
+S	Q	*
+S	R	*
+S	S	*
+S	T	*
+S	U	*
+S	V	*
+S	W	*
+S	X	*
+S	Y	*
+S	Z	*
+S	AB	*
+S	BB	*
+S	CB	*
+S	DB	*
+S	EB	*
+S	FB	*
+S	GB	*
+S	HB	*
+S	IB	*
+S	JB	*
+S	KB	*
+S	LB	*
+S	MB	*
+S	NB	*
+L	A	+	C	+
+L	A	+	D	+
+L	C	+	B	+
+L	D	+	B	+
+L	E	+	G	+
+L	E	+	H	+
+L	G	+	F	+
+L	H	+	F	+
+L	A	+	E	+
+L	F	+	B	+
+L	I	+	K	+
+L	I	+	L	+
+L	K	+	J	+
+L	L	+	J	+
+L	E	+	I	+
+L	J	+	F	+
+L	M	+	O	+
+L	M	+	P	+
+L	O	+	N	+
+L	P	+	N	+
+L	I	+	M	+
+L	N	+	J	+
+L	Q	+	S	+
+L	Q	+	T	+
+L	S	+	R	+
+L	T	+	R	+
+L	M	+	Q	+
+L	R	+	N	+
+L	U	+	W	+
+L	U	+	X	+
+L	W	+	V	+
+L	X	+	V	+
+L	Q	+	U	+
+L	V	+	R	+
+L	Y	+	AB	+
+L	Y	+	BB	+
+L	AB	+	Z	+
+L	BB	+	Z	+
+L	U	+	Y	+
+L	Z	+	V	+
+L	CB	+	EB	+
+L	CB	+	FB	+
+L	EB	+	DB	+
+L	FB	+	DB	+
+L	Y	+	CB	+
+L	DB	+	Z	+
+L	GB	+	IB	+
+L	GB	+	JB	+
+L	IB	+	HB	+
+L	JB	+	HB	+
+L	CB	+	GB	+
+L	HB	+	DB	+
+L	KB	+	MB	+
+L	KB	+	NB	+
+L	MB	+	LB	+
+L	NB	+	LB	+
+L	GB	+	KB	+
+L	LB	+	HB	+

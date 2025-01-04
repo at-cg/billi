@@ -1,0 +1,9998 @@
+S	A	*
+S	B	*
+S	C	*
+S	D	*
+S	E	*
+S	F	*
+S	G	*
+S	H	*
+S	I	*
+S	J	*
+S	K	*
+S	L	*
+S	M	*
+S	N	*
+S	O	*
+S	P	*
+S	Q	*
+S	R	*
+S	S	*
+S	T	*
+S	U	*
+S	V	*
+S	W	*
+S	X	*
+S	Y	*
+S	Z	*
+S	AB	*
+S	BB	*
+S	CB	*
+S	DB	*
+S	EB	*
+S	FB	*
+S	GB	*
+S	HB	*
+S	IB	*
+S	JB	*
+S	KB	*
+S	LB	*
+S	MB	*
+S	NB	*
+S	OB	*
+S	PB	*
+S	QB	*
+S	RB	*
+S	SB	*
+S	TB	*
+S	UB	*
+S	VB	*
+S	WB	*
+S	XB	*
+S	YB	*
+S	ZB	*
+S	AC	*
+S	BC	*
+S	CC	*
+S	DC	*
+S	EC	*
+S	FC	*
+S	GC	*
+S	HC	*
+S	IC	*
+S	JC	*
+S	KC	*
+S	LC	*
+S	MC	*
+S	NC	*
+S	OC	*
+S	PC	*
+S	QC	*
+S	RC	*
+S	SC	*
+S	TC	*
+S	UC	*
+S	VC	*
+S	WC	*
+S	XC	*
+S	YC	*
+S	ZC	*
+S	AD	*
+S	BD	*
+S	CD	*
+S	DD	*
+S	ED	*
+S	FD	*
+S	GD	*
+S	HD	*
+S	ID	*
+S	JD	*
+S	KD	*
+S	LD	*
+S	MD	*
+S	ND	*
+S	OD	*
+S	PD	*
+S	QD	*
+S	RD	*
+S	SD	*
+S	TD	*
+S	UD	*
+S	VD	*
+S	WD	*
+S	XD	*
+S	YD	*
+S	ZD	*
+S	AE	*
+S	BE	*
+S	CE	*
+S	DE	*
+S	EE	*
+S	FE	*
+S	GE	*
+S	HE	*
+S	IE	*
+S	JE	*
+S	KE	*
+S	LE	*
+S	ME	*
+S	NE	*
+S	OE	*
+S	PE	*
+S	QE	*
+S	RE	*
+S	SE	*
+S	TE	*
+S	UE	*
+S	VE	*
+S	WE	*
+S	XE	*
+S	YE	*
+S	ZE	*
+S	AF	*
+S	BF	*
+S	CF	*
+S	DF	*
+S	EF	*
+S	FF	*
+S	GF	*
+S	HF	*
+S	IF	*
+S	JF	*
+S	KF	*
+S	LF	*
+S	MF	*
+S	NF	*
+S	OF	*
+S	PF	*
+S	QF	*
+S	RF	*
+S	SF	*
+S	TF	*
+S	UF	*
+S	VF	*
+S	WF	*
+S	XF	*
+S	YF	*
+S	ZF	*
+S	AG	*
+S	BG	*
+S	CG	*
+S	DG	*
+S	EG	*
+S	FG	*
+S	GG	*
+S	HG	*
+S	IG	*
+S	JG	*
+S	KG	*
+S	LG	*
+S	MG	*
+S	NG	*
+S	OG	*
+S	PG	*
+S	QG	*
+S	RG	*
+S	SG	*
+S	TG	*
+S	UG	*
+S	VG	*
+S	WG	*
+S	XG	*
+S	YG	*
+S	ZG	*
+S	AH	*
+S	BH	*
+S	CH	*
+S	DH	*
+S	EH	*
+S	FH	*
+S	GH	*
+S	HH	*
+S	IH	*
+S	JH	*
+S	KH	*
+S	LH	*
+S	MH	*
+S	NH	*
+S	OH	*
+S	PH	*
+S	QH	*
+S	RH	*
+S	SH	*
+S	TH	*
+S	UH	*
+S	VH	*
+S	WH	*
+S	XH	*
+S	YH	*
+S	ZH	*
+S	AI	*
+S	BI	*
+S	CI	*
+S	DI	*
+S	EI	*
+S	FI	*
+S	GI	*
+S	HI	*
+S	II	*
+S	JI	*
+S	KI	*
+S	LI	*
+S	MI	*
+S	NI	*
+S	OI	*
+S	PI	*
+S	QI	*
+S	RI	*
+S	SI	*
+S	TI	*
+S	UI	*
+S	VI	*
+S	WI	*
+S	XI	*
+S	YI	*
+S	ZI	*
+S	AJ	*
+S	BJ	*
+S	CJ	*
+S	DJ	*
+S	EJ	*
+S	FJ	*
+S	GJ	*
+S	HJ	*
+S	IJ	*
+S	JJ	*
+S	KJ	*
+S	LJ	*
+S	MJ	*
+S	NJ	*
+S	OJ	*
+S	PJ	*
+S	QJ	*
+S	RJ	*
+S	SJ	*
+S	TJ	*
+S	UJ	*
+S	VJ	*
+S	WJ	*
+S	XJ	*
+S	YJ	*
+S	ZJ	*
+S	AK	*
+S	BK	*
+S	CK	*
+S	DK	*
+S	EK	*
+S	FK	*
+S	GK	*
+S	HK	*
+S	IK	*
+S	JK	*
+S	KK	*
+S	LK	*
+S	MK	*
+S	NK	*
+S	OK	*
+S	PK	*
+S	QK	*
+S	RK	*
+S	SK	*
+S	TK	*
+S	UK	*
+S	VK	*
+S	WK	*
+S	XK	*
+S	YK	*
+S	ZK	*
+S	AL	*
+S	BL	*
+S	CL	*
+S	DL	*
+S	EL	*
+S	FL	*
+S	GL	*
+S	HL	*
+S	IL	*
+S	JL	*
+S	KL	*
+S	LL	*
+S	ML	*
+S	NL	*
+S	OL	*
+S	PL	*
+S	QL	*
+S	RL	*
+S	SL	*
+S	TL	*
+S	UL	*
+S	VL	*
+S	WL	*
+S	XL	*
+S	YL	*
+S	ZL	*
+S	AM	*
+S	BM	*
+S	CM	*
+S	DM	*
+S	EM	*
+S	FM	*
+S	GM	*
+S	HM	*
+S	IM	*
+S	JM	*
+S	KM	*
+S	LM	*
+S	MM	*
+S	NM	*
+S	OM	*
+S	PM	*
+S	QM	*
+S	RM	*
+S	SM	*
+S	TM	*
+S	UM	*
+S	VM	*
+S	WM	*
+S	XM	*
+S	YM	*
+S	ZM	*
+S	AN	*
+S	BN	*
+S	CN	*
+S	DN	*
+S	EN	*
+S	FN	*
+S	GN	*
+S	HN	*
+S	IN	*
+S	JN	*
+S	KN	*
+S	LN	*
+S	MN	*
+S	NN	*
+S	ON	*
+S	PN	*
+S	QN	*
+S	RN	*
+S	SN	*
+S	TN	*
+S	UN	*
+S	VN	*
+S	WN	*
+S	XN	*
+S	YN	*
+S	ZN	*
+S	AO	*
+S	BO	*
+S	CO	*
+S	DO	*
+S	EO	*
+S	FO	*
+S	GO	*
+S	HO	*
+S	IO	*
+S	JO	*
+S	KO	*
+S	LO	*
+S	MO	*
+S	NO	*
+S	OO	*
+S	PO	*
+S	QO	*
+S	RO	*
+S	SO	*
+S	TO	*
+S	UO	*
+S	VO	*
+S	WO	*
+S	XO	*
+S	YO	*
+S	ZO	*
+S	AP	*
+S	BP	*
+S	CP	*
+S	DP	*
+S	EP	*
+S	FP	*
+S	GP	*
+S	HP	*
+S	IP	*
+S	JP	*
+S	KP	*
+S	LP	*
+S	MP	*
+S	NP	*
+S	OP	*
+S	PP	*
+S	QP	*
+S	RP	*
+S	SP	*
+S	TP	*
+S	UP	*
+S	VP	*
+S	WP	*
+S	XP	*
+S	YP	*
+S	ZP	*
+S	AQ	*
+S	BQ	*
+S	CQ	*
+S	DQ	*
+S	EQ	*
+S	FQ	*
+S	GQ	*
+S	HQ	*
+S	IQ	*
+S	JQ	*
+S	KQ	*
+S	LQ	*
+S	MQ	*
+S	NQ	*
+S	OQ	*
+S	PQ	*
+S	QQ	*
+S	RQ	*
+S	SQ	*
+S	TQ	*
+S	UQ	*
+S	VQ	*
+S	WQ	*
+S	XQ	*
+S	YQ	*
+S	ZQ	*
+S	AR	*
+S	BR	*
+S	CR	*
+S	DR	*
+S	ER	*
+S	FR	*
+S	GR	*
+S	HR	*
+S	IR	*
+S	JR	*
+S	KR	*
+S	LR	*
+S	MR	*
+S	NR	*
+S	OR	*
+S	PR	*
+S	QR	*
+S	RR	*
+S	SR	*
+S	TR	*
+S	UR	*
+S	VR	*
+S	WR	*
+S	XR	*
+S	YR	*
+S	ZR	*
+S	AS	*
+S	BS	*
+S	CS	*
+S	DS	*
+S	ES	*
+S	FS	*
+S	GS	*
+S	HS	*
+S	IS	*
+S	JS	*
+S	KS	*
+S	LS	*
+S	MS	*
+S	NS	*
+S	OS	*
+S	PS	*
+S	QS	*
+S	RS	*
+S	SS	*
+S	TS	*
+S	US	*
+S	VS	*
+S	WS	*
+S	XS	*
+S	YS	*
+S	ZS	*
+S	AT	*
+S	BT	*
+S	CT	*
+S	DT	*
+S	ET	*
+S	FT	*
+S	GT	*
+S	HT	*
+S	IT	*
+S	JT	*
+S	KT	*
+S	LT	*
+S	MT	*
+S	NT	*
+S	OT	*
+S	PT	*
+S	QT	*
+S	RT	*
+S	ST	*
+S	TT	*
+S	UT	*
+S	VT	*
+S	WT	*
+S	XT	*
+S	YT	*
+S	ZT	*
+S	AU	*
+S	BU	*
+S	CU	*
+S	DU	*
+S	EU	*
+S	FU	*
+S	GU	*
+S	HU	*
+S	IU	*
+S	JU	*
+S	KU	*
+S	LU	*
+S	MU	*
+S	NU	*
+S	OU	*
+S	PU	*
+S	QU	*
+S	RU	*
+S	SU	*
+S	TU	*
+S	UU	*
+S	VU	*
+S	WU	*
+S	XU	*
+S	YU	*
+S	ZU	*
+S	AV	*
+S	BV	*
+S	CV	*
+S	DV	*
+S	EV	*
+S	FV	*
+S	GV	*
+S	HV	*
+S	IV	*
+S	JV	*
+S	KV	*
+S	LV	*
+S	MV	*
+S	NV	*
+S	OV	*
+S	PV	*
+S	QV	*
+S	RV	*
+S	SV	*
+S	TV	*
+S	UV	*
+S	VV	*
+S	WV	*
+S	XV	*
+S	YV	*
+S	ZV	*
+S	AW	*
+S	BW	*
+S	CW	*
+S	DW	*
+S	EW	*
+S	FW	*
+S	GW	*
+S	HW	*
+S	IW	*
+S	JW	*
+S	KW	*
+S	LW	*
+S	MW	*
+S	NW	*
+S	OW	*
+S	PW	*
+S	QW	*
+S	RW	*
+S	SW	*
+S	TW	*
+S	UW	*
+S	VW	*
+S	WW	*
+S	XW	*
+S	YW	*
+S	ZW	*
+S	AX	*
+S	BX	*
+S	CX	*
+S	DX	*
+S	EX	*
+S	FX	*
+S	GX	*
+S	HX	*
+S	IX	*
+S	JX	*
+S	KX	*
+S	LX	*
+S	MX	*
+S	NX	*
+S	OX	*
+S	PX	*
+S	QX	*
+S	RX	*
+S	SX	*
+S	TX	*
+S	UX	*
+S	VX	*
+S	WX	*
+S	XX	*
+S	YX	*
+S	ZX	*
+S	AY	*
+S	BY	*
+S	CY	*
+S	DY	*
+S	EY	*
+S	FY	*
+S	GY	*
+S	HY	*
+S	IY	*
+S	JY	*
+S	KY	*
+S	LY	*
+S	MY	*
+S	NY	*
+S	OY	*
+S	PY	*
+S	QY	*
+S	RY	*
+S	SY	*
+S	TY	*
+S	UY	*
+S	VY	*
+S	WY	*
+S	XY	*
+S	YY	*
+S	ZY	*
+S	AZ	*
+S	BZ	*
+S	CZ	*
+S	DZ	*
+S	EZ	*
+S	FZ	*
+S	GZ	*
+S	HZ	*
+S	IZ	*
+S	JZ	*
+S	KZ	*
+S	LZ	*
+S	MZ	*
+S	NZ	*
+S	OZ	*
+S	PZ	*
+S	QZ	*
+S	RZ	*
+S	SZ	*
+S	TZ	*
+S	UZ	*
+S	VZ	*
+S	WZ	*
+S	XZ	*
+S	YZ	*
+S	ZZ	*
+S	AAB	*
+S	BAB	*
+S	CAB	*
+S	DAB	*
+S	EAB	*
+S	FAB	*
+S	GAB	*
+S	HAB	*
+S	IAB	*
+S	JAB	*
+S	KAB	*
+S	LAB	*
+S	MAB	*
+S	NAB	*
+S	OAB	*
+S	PAB	*
+S	QAB	*
+S	RAB	*
+S	SAB	*
+S	TAB	*
+S	UAB	*
+S	VAB	*
+S	WAB	*
+S	XAB	*
+S	YAB	*
+S	ZAB	*
+S	ABB	*
+S	BBB	*
+S	CBB	*
+S	DBB	*
+S	EBB	*
+S	FBB	*
+S	GBB	*
+S	HBB	*
+S	IBB	*
+S	JBB	*
+S	KBB	*
+S	LBB	*
+S	MBB	*
+S	NBB	*
+S	OBB	*
+S	PBB	*
+S	QBB	*
+S	RBB	*
+S	SBB	*
+S	TBB	*
+S	UBB	*
+S	VBB	*
+S	WBB	*
+S	XBB	*
+S	YBB	*
+S	ZBB	*
+S	ACB	*
+S	BCB	*
+S	CCB	*
+S	DCB	*
+S	ECB	*
+S	FCB	*
+S	GCB	*
+S	HCB	*
+S	ICB	*
+S	JCB	*
+S	KCB	*
+S	LCB	*
+S	MCB	*
+S	NCB	*
+S	OCB	*
+S	PCB	*
+S	QCB	*
+S	RCB	*
+S	SCB	*
+S	TCB	*
+S	UCB	*
+S	VCB	*
+S	WCB	*
+S	XCB	*
+S	YCB	*
+S	ZCB	*
+S	ADB	*
+S	BDB	*
+S	CDB	*
+S	DDB	*
+S	EDB	*
+S	FDB	*
+S	GDB	*
+S	HDB	*
+S	IDB	*
+S	JDB	*
+S	KDB	*
+S	LDB	*
+S	MDB	*
+S	NDB	*
+S	ODB	*
+S	PDB	*
+S	QDB	*
+S	RDB	*
+S	SDB	*
+S	TDB	*
+S	UDB	*
+S	VDB	*
+S	WDB	*
+S	XDB	*
+S	YDB	*
+S	ZDB	*
+S	AEB	*
+S	BEB	*
+S	CEB	*
+S	DEB	*
+S	EEB	*
+S	FEB	*
+S	GEB	*
+S	HEB	*
+S	IEB	*
+S	JEB	*
+S	KEB	*
+S	LEB	*
+S	MEB	*
+S	NEB	*
+S	OEB	*
+S	PEB	*
+S	QEB	*
+S	REB	*
+S	SEB	*
+S	TEB	*
+S	UEB	*
+S	VEB	*
+S	WEB	*
+S	XEB	*
+S	YEB	*
+S	ZEB	*
+S	AFB	*
+S	BFB	*
+S	CFB	*
+S	DFB	*
+S	EFB	*
+S	FFB	*
+S	GFB	*
+S	HFB	*
+S	IFB	*
+S	JFB	*
+S	KFB	*
+S	LFB	*
+S	MFB	*
+S	NFB	*
+S	OFB	*
+S	PFB	*
+S	QFB	*
+S	RFB	*
+S	SFB	*
+S	TFB	*
+S	UFB	*
+S	VFB	*
+S	WFB	*
+S	XFB	*
+S	YFB	*
+S	ZFB	*
+S	AGB	*
+S	BGB	*
+S	CGB	*
+S	DGB	*
+S	EGB	*
+S	FGB	*
+S	GGB	*
+S	HGB	*
+S	IGB	*
+S	JGB	*
+S	KGB	*
+S	LGB	*
+S	MGB	*
+S	NGB	*
+S	OGB	*
+S	PGB	*
+S	QGB	*
+S	RGB	*
+S	SGB	*
+S	TGB	*
+S	UGB	*
+S	VGB	*
+S	WGB	*
+S	XGB	*
+S	YGB	*
+S	ZGB	*
+S	AHB	*
+S	BHB	*
+S	CHB	*
+S	DHB	*
+S	EHB	*
+S	FHB	*
+S	GHB	*
+S	HHB	*
+S	IHB	*
+S	JHB	*
+S	KHB	*
+S	LHB	*
+S	MHB	*
+S	NHB	*
+S	OHB	*
+S	PHB	*
+S	QHB	*
+S	RHB	*
+S	SHB	*
+S	THB	*
+S	UHB	*
+S	VHB	*
+S	WHB	*
+S	XHB	*
+S	YHB	*
+S	ZHB	*
+S	AIB	*
+S	BIB	*
+S	CIB	*
+S	DIB	*
+S	EIB	*
+S	FIB	*
+S	GIB	*
+S	HIB	*
+S	IIB	*
+S	JIB	*
+S	KIB	*
+S	LIB	*
+S	MIB	*
+S	NIB	*
+S	OIB	*
+S	PIB	*
+S	QIB	*
+S	RIB	*
+S	SIB	*
+S	TIB	*
+S	UIB	*
+S	VIB	*
+S	WIB	*
+S	XIB	*
+S	YIB	*
+S	ZIB	*
+S	AJB	*
+S	BJB	*
+S	CJB	*
+S	DJB	*
+S	EJB	*
+S	FJB	*
+S	GJB	*
+S	HJB	*
+S	IJB	*
+S	JJB	*
+S	KJB	*
+S	LJB	*
+S	MJB	*
+S	NJB	*
+S	OJB	*
+S	PJB	*
+S	QJB	*
+S	RJB	*
+S	SJB	*
+S	TJB	*
+S	UJB	*
+S	VJB	*
+S	WJB	*
+S	XJB	*
+S	YJB	*
+S	ZJB	*
+S	AKB	*
+S	BKB	*
+S	CKB	*
+S	DKB	*
+S	EKB	*
+S	FKB	*
+S	GKB	*
+S	HKB	*
+S	IKB	*
+S	JKB	*
+S	KKB	*
+S	LKB	*
+S	MKB	*
+S	NKB	*
+S	OKB	*
+S	PKB	*
+S	QKB	*
+S	RKB	*
+S	SKB	*
+S	TKB	*
+S	UKB	*
+S	VKB	*
+S	WKB	*
+S	XKB	*
+S	YKB	*
+S	ZKB	*
+S	ALB	*
+S	BLB	*
+S	CLB	*
+S	DLB	*
+S	ELB	*
+S	FLB	*
+S	GLB	*
+S	HLB	*
+S	ILB	*
+S	JLB	*
+S	KLB	*
+S	LLB	*
+S	MLB	*
+S	NLB	*
+S	OLB	*
+S	PLB	*
+S	QLB	*
+S	RLB	*
+S	SLB	*
+S	TLB	*
+S	ULB	*
+S	VLB	*
+S	WLB	*
+S	XLB	*
+S	YLB	*
+S	ZLB	*
+S	AMB	*
+S	BMB	*
+S	CMB	*
+S	DMB	*
+S	EMB	*
+S	FMB	*
+S	GMB	*
+S	HMB	*
+S	IMB	*
+S	JMB	*
+S	KMB	*
+S	LMB	*
+S	MMB	*
+S	NMB	*
+S	OMB	*
+S	PMB	*
+S	QMB	*
+S	RMB	*
+S	SMB	*
+S	TMB	*
+S	UMB	*
+S	VMB	*
+S	WMB	*
+S	XMB	*
+S	YMB	*
+S	ZMB	*
+S	ANB	*
+S	BNB	*
+S	CNB	*
+S	DNB	*
+S	ENB	*
+S	FNB	*
+S	GNB	*
+S	HNB	*
+S	INB	*
+S	JNB	*
+S	KNB	*
+S	LNB	*
+S	MNB	*
+S	NNB	*
+S	ONB	*
+S	PNB	*
+S	QNB	*
+S	RNB	*
+S	SNB	*
+S	TNB	*
+S	UNB	*
+S	VNB	*
+S	WNB	*
+S	XNB	*
+S	YNB	*
+S	ZNB	*
+S	AOB	*
+S	BOB	*
+S	COB	*
+S	DOB	*
+S	EOB	*
+S	FOB	*
+S	GOB	*
+S	HOB	*
+S	IOB	*
+S	JOB	*
+S	KOB	*
+S	LOB	*
+S	MOB	*
+S	NOB	*
+S	OOB	*
+S	POB	*
+S	QOB	*
+S	ROB	*
+S	SOB	*
+S	TOB	*
+S	UOB	*
+S	VOB	*
+S	WOB	*
+S	XOB	*
+S	YOB	*
+S	ZOB	*
+S	APB	*
+S	BPB	*
+S	CPB	*
+S	DPB	*
+S	EPB	*
+S	FPB	*
+S	GPB	*
+S	HPB	*
+S	IPB	*
+S	JPB	*
+S	KPB	*
+S	LPB	*
+S	MPB	*
+S	NPB	*
+S	OPB	*
+S	PPB	*
+S	QPB	*
+S	RPB	*
+S	SPB	*
+S	TPB	*
+S	UPB	*
+S	VPB	*
+S	WPB	*
+S	XPB	*
+S	YPB	*
+S	ZPB	*
+S	AQB	*
+S	BQB	*
+S	CQB	*
+S	DQB	*
+S	EQB	*
+S	FQB	*
+S	GQB	*
+S	HQB	*
+S	IQB	*
+S	JQB	*
+S	KQB	*
+S	LQB	*
+S	MQB	*
+S	NQB	*
+S	OQB	*
+S	PQB	*
+S	QQB	*
+S	RQB	*
+S	SQB	*
+S	TQB	*
+S	UQB	*
+S	VQB	*
+S	WQB	*
+S	XQB	*
+S	YQB	*
+S	ZQB	*
+S	ARB	*
+S	BRB	*
+S	CRB	*
+S	DRB	*
+S	ERB	*
+S	FRB	*
+S	GRB	*
+S	HRB	*
+S	IRB	*
+S	JRB	*
+S	KRB	*
+S	LRB	*
+S	MRB	*
+S	NRB	*
+S	ORB	*
+S	PRB	*
+S	QRB	*
+S	RRB	*
+S	SRB	*
+S	TRB	*
+S	URB	*
+S	VRB	*
+S	WRB	*
+S	XRB	*
+S	YRB	*
+S	ZRB	*
+S	ASB	*
+S	BSB	*
+S	CSB	*
+S	DSB	*
+S	ESB	*
+S	FSB	*
+S	GSB	*
+S	HSB	*
+S	ISB	*
+S	JSB	*
+S	KSB	*
+S	LSB	*
+S	MSB	*
+S	NSB	*
+S	OSB	*
+S	PSB	*
+S	QSB	*
+S	RSB	*
+S	SSB	*
+S	TSB	*
+S	USB	*
+S	VSB	*
+S	WSB	*
+S	XSB	*
+S	YSB	*
+S	ZSB	*
+S	ATB	*
+S	BTB	*
+S	CTB	*
+S	DTB	*
+S	ETB	*
+S	FTB	*
+S	GTB	*
+S	HTB	*
+S	ITB	*
+S	JTB	*
+S	KTB	*
+S	LTB	*
+S	MTB	*
+S	NTB	*
+S	OTB	*
+S	PTB	*
+S	QTB	*
+S	RTB	*
+S	STB	*
+S	TTB	*
+S	UTB	*
+S	VTB	*
+S	WTB	*
+S	XTB	*
+S	YTB	*
+S	ZTB	*
+S	AUB	*
+S	BUB	*
+S	CUB	*
+S	DUB	*
+S	EUB	*
+S	FUB	*
+S	GUB	*
+S	HUB	*
+S	IUB	*
+S	JUB	*
+S	KUB	*
+S	LUB	*
+S	MUB	*
+S	NUB	*
+S	OUB	*
+S	PUB	*
+S	QUB	*
+S	RUB	*
+S	SUB	*
+S	TUB	*
+S	UUB	*
+S	VUB	*
+S	WUB	*
+S	XUB	*
+S	YUB	*
+S	ZUB	*
+S	AVB	*
+S	BVB	*
+S	CVB	*
+S	DVB	*
+S	EVB	*
+S	FVB	*
+S	GVB	*
+S	HVB	*
+S	IVB	*
+S	JVB	*
+S	KVB	*
+S	LVB	*
+S	MVB	*
+S	NVB	*
+S	OVB	*
+S	PVB	*
+S	QVB	*
+S	RVB	*
+S	SVB	*
+S	TVB	*
+S	UVB	*
+S	VVB	*
+S	WVB	*
+S	XVB	*
+S	YVB	*
+S	ZVB	*
+S	AWB	*
+S	BWB	*
+S	CWB	*
+S	DWB	*
+S	EWB	*
+S	FWB	*
+S	GWB	*
+S	HWB	*
+S	IWB	*
+S	JWB	*
+S	KWB	*
+S	LWB	*
+S	MWB	*
+S	NWB	*
+S	OWB	*
+S	PWB	*
+S	QWB	*
+S	RWB	*
+S	SWB	*
+S	TWB	*
+S	UWB	*
+S	VWB	*
+S	WWB	*
+S	XWB	*
+S	YWB	*
+S	ZWB	*
+S	AXB	*
+S	BXB	*
+S	CXB	*
+S	DXB	*
+S	EXB	*
+S	FXB	*
+S	GXB	*
+S	HXB	*
+S	IXB	*
+S	JXB	*
+S	KXB	*
+S	LXB	*
+S	MXB	*
+S	NXB	*
+S	OXB	*
+S	PXB	*
+S	QXB	*
+S	RXB	*
+S	SXB	*
+S	TXB	*
+S	UXB	*
+S	VXB	*
+S	WXB	*
+S	XXB	*
+S	YXB	*
+S	ZXB	*
+S	AYB	*
+S	BYB	*
+S	CYB	*
+S	DYB	*
+S	EYB	*
+S	FYB	*
+S	GYB	*
+S	HYB	*
+S	IYB	*
+S	JYB	*
+S	KYB	*
+S	LYB	*
+S	MYB	*
+S	NYB	*
+S	OYB	*
+S	PYB	*
+S	QYB	*
+S	RYB	*
+S	SYB	*
+S	TYB	*
+S	UYB	*
+S	VYB	*
+S	WYB	*
+S	XYB	*
+S	YYB	*
+S	ZYB	*
+S	AZB	*
+S	BZB	*
+S	CZB	*
+S	DZB	*
+S	EZB	*
+S	FZB	*
+S	GZB	*
+S	HZB	*
+S	IZB	*
+S	JZB	*
+S	KZB	*
+S	LZB	*
+S	MZB	*
+S	NZB	*
+S	OZB	*
+S	PZB	*
+S	QZB	*
+S	RZB	*
+S	SZB	*
+S	TZB	*
+S	UZB	*
+S	VZB	*
+S	WZB	*
+S	XZB	*
+S	YZB	*
+S	ZZB	*
+S	AAC	*
+S	BAC	*
+S	CAC	*
+S	DAC	*
+S	EAC	*
+S	FAC	*
+S	GAC	*
+S	HAC	*
+S	IAC	*
+S	JAC	*
+S	KAC	*
+S	LAC	*
+S	MAC	*
+S	NAC	*
+S	OAC	*
+S	PAC	*
+S	QAC	*
+S	RAC	*
+S	SAC	*
+S	TAC	*
+S	UAC	*
+S	VAC	*
+S	WAC	*
+S	XAC	*
+S	YAC	*
+S	ZAC	*
+S	ABC	*
+S	BBC	*
+S	CBC	*
+S	DBC	*
+S	EBC	*
+S	FBC	*
+S	GBC	*
+S	HBC	*
+S	IBC	*
+S	JBC	*
+S	KBC	*
+S	LBC	*
+S	MBC	*
+S	NBC	*
+S	OBC	*
+S	PBC	*
+S	QBC	*
+S	RBC	*
+S	SBC	*
+S	TBC	*
+S	UBC	*
+S	VBC	*
+S	WBC	*
+S	XBC	*
+S	YBC	*
+S	ZBC	*
+S	ACC	*
+S	BCC	*
+S	CCC	*
+S	DCC	*
+S	ECC	*
+S	FCC	*
+S	GCC	*
+S	HCC	*
+S	ICC	*
+S	JCC	*
+S	KCC	*
+S	LCC	*
+S	MCC	*
+S	NCC	*
+S	OCC	*
+S	PCC	*
+S	QCC	*
+S	RCC	*
+S	SCC	*
+S	TCC	*
+S	UCC	*
+S	VCC	*
+S	WCC	*
+S	XCC	*
+S	YCC	*
+S	ZCC	*
+S	ADC	*
+S	BDC	*
+S	CDC	*
+S	DDC	*
+S	EDC	*
+S	FDC	*
+S	GDC	*
+S	HDC	*
+S	IDC	*
+S	JDC	*
+S	KDC	*
+S	LDC	*
+S	MDC	*
+S	NDC	*
+S	ODC	*
+S	PDC	*
+S	QDC	*
+S	RDC	*
+S	SDC	*
+S	TDC	*
+S	UDC	*
+S	VDC	*
+S	WDC	*
+S	XDC	*
+S	YDC	*
+S	ZDC	*
+S	AEC	*
+S	BEC	*
+S	CEC	*
+S	DEC	*
+S	EEC	*
+S	FEC	*
+S	GEC	*
+S	HEC	*
+S	IEC	*
+S	JEC	*
+S	KEC	*
+S	LEC	*
+S	MEC	*
+S	NEC	*
+S	OEC	*
+S	PEC	*
+S	QEC	*
+S	REC	*
+S	SEC	*
+S	TEC	*
+S	UEC	*
+S	VEC	*
+S	WEC	*
+S	XEC	*
+S	YEC	*
+S	ZEC	*
+S	AFC	*
+S	BFC	*
+S	CFC	*
+S	DFC	*
+S	EFC	*
+S	FFC	*
+S	GFC	*
+S	HFC	*
+S	IFC	*
+S	JFC	*
+S	KFC	*
+S	LFC	*
+S	MFC	*
+S	NFC	*
+S	OFC	*
+S	PFC	*
+S	QFC	*
+S	RFC	*
+S	SFC	*
+S	TFC	*
+S	UFC	*
+S	VFC	*
+S	WFC	*
+S	XFC	*
+S	YFC	*
+S	ZFC	*
+S	AGC	*
+S	BGC	*
+S	CGC	*
+S	DGC	*
+S	EGC	*
+S	FGC	*
+S	GGC	*
+S	HGC	*
+S	IGC	*
+S	JGC	*
+S	KGC	*
+S	LGC	*
+S	MGC	*
+S	NGC	*
+S	OGC	*
+S	PGC	*
+S	QGC	*
+S	RGC	*
+S	SGC	*
+S	TGC	*
+S	UGC	*
+S	VGC	*
+S	WGC	*
+S	XGC	*
+S	YGC	*
+S	ZGC	*
+S	AHC	*
+S	BHC	*
+S	CHC	*
+S	DHC	*
+S	EHC	*
+S	FHC	*
+S	GHC	*
+S	HHC	*
+S	IHC	*
+S	JHC	*
+S	KHC	*
+S	LHC	*
+S	MHC	*
+S	NHC	*
+S	OHC	*
+S	PHC	*
+S	QHC	*
+S	RHC	*
+S	SHC	*
+S	THC	*
+S	UHC	*
+S	VHC	*
+S	WHC	*
+S	XHC	*
+S	YHC	*
+S	ZHC	*
+S	AIC	*
+S	BIC	*
+S	CIC	*
+S	DIC	*
+S	EIC	*
+S	FIC	*
+S	GIC	*
+S	HIC	*
+S	IIC	*
+S	JIC	*
+S	KIC	*
+S	LIC	*
+S	MIC	*
+S	NIC	*
+S	OIC	*
+S	PIC	*
+S	QIC	*
+S	RIC	*
+S	SIC	*
+S	TIC	*
+S	UIC	*
+S	VIC	*
+S	WIC	*
+S	XIC	*
+S	YIC	*
+S	ZIC	*
+S	AJC	*
+S	BJC	*
+S	CJC	*
+S	DJC	*
+S	EJC	*
+S	FJC	*
+S	GJC	*
+S	HJC	*
+S	IJC	*
+S	JJC	*
+S	KJC	*
+S	LJC	*
+S	MJC	*
+S	NJC	*
+S	OJC	*
+S	PJC	*
+S	QJC	*
+S	RJC	*
+S	SJC	*
+S	TJC	*
+S	UJC	*
+S	VJC	*
+S	WJC	*
+S	XJC	*
+S	YJC	*
+S	ZJC	*
+S	AKC	*
+S	BKC	*
+S	CKC	*
+S	DKC	*
+S	EKC	*
+S	FKC	*
+S	GKC	*
+S	HKC	*
+S	IKC	*
+S	JKC	*
+S	KKC	*
+S	LKC	*
+S	MKC	*
+S	NKC	*
+S	OKC	*
+S	PKC	*
+S	QKC	*
+S	RKC	*
+S	SKC	*
+S	TKC	*
+S	UKC	*
+S	VKC	*
+S	WKC	*
+S	XKC	*
+S	YKC	*
+S	ZKC	*
+S	ALC	*
+S	BLC	*
+S	CLC	*
+S	DLC	*
+S	ELC	*
+S	FLC	*
+S	GLC	*
+S	HLC	*
+S	ILC	*
+S	JLC	*
+S	KLC	*
+S	LLC	*
+S	MLC	*
+S	NLC	*
+S	OLC	*
+S	PLC	*
+S	QLC	*
+S	RLC	*
+S	SLC	*
+S	TLC	*
+S	ULC	*
+S	VLC	*
+S	WLC	*
+S	XLC	*
+S	YLC	*
+S	ZLC	*
+S	AMC	*
+S	BMC	*
+S	CMC	*
+S	DMC	*
+S	EMC	*
+S	FMC	*
+S	GMC	*
+S	HMC	*
+S	IMC	*
+S	JMC	*
+S	KMC	*
+S	LMC	*
+S	MMC	*
+S	NMC	*
+S	OMC	*
+S	PMC	*
+S	QMC	*
+S	RMC	*
+S	SMC	*
+S	TMC	*
+S	UMC	*
+S	VMC	*
+S	WMC	*
+S	XMC	*
+S	YMC	*
+S	ZMC	*
+S	ANC	*
+S	BNC	*
+S	CNC	*
+S	DNC	*
+S	ENC	*
+S	FNC	*
+S	GNC	*
+S	HNC	*
+S	INC	*
+S	JNC	*
+S	KNC	*
+S	LNC	*
+S	MNC	*
+S	NNC	*
+S	ONC	*
+S	PNC	*
+S	QNC	*
+S	RNC	*
+S	SNC	*
+S	TNC	*
+S	UNC	*
+S	VNC	*
+S	WNC	*
+S	XNC	*
+S	YNC	*
+S	ZNC	*
+S	AOC	*
+S	BOC	*
+S	COC	*
+S	DOC	*
+S	EOC	*
+S	FOC	*
+S	GOC	*
+S	HOC	*
+S	IOC	*
+S	JOC	*
+S	KOC	*
+S	LOC	*
+S	MOC	*
+S	NOC	*
+S	OOC	*
+S	POC	*
+S	QOC	*
+S	ROC	*
+S	SOC	*
+S	TOC	*
+S	UOC	*
+S	VOC	*
+S	WOC	*
+S	XOC	*
+S	YOC	*
+S	ZOC	*
+S	APC	*
+S	BPC	*
+S	CPC	*
+S	DPC	*
+S	EPC	*
+S	FPC	*
+S	GPC	*
+S	HPC	*
+S	IPC	*
+S	JPC	*
+S	KPC	*
+S	LPC	*
+S	MPC	*
+S	NPC	*
+S	OPC	*
+S	PPC	*
+S	QPC	*
+S	RPC	*
+S	SPC	*
+S	TPC	*
+S	UPC	*
+S	VPC	*
+S	WPC	*
+S	XPC	*
+S	YPC	*
+S	ZPC	*
+S	AQC	*
+S	BQC	*
+S	CQC	*
+S	DQC	*
+S	EQC	*
+S	FQC	*
+S	GQC	*
+S	HQC	*
+S	IQC	*
+S	JQC	*
+S	KQC	*
+S	LQC	*
+S	MQC	*
+S	NQC	*
+S	OQC	*
+S	PQC	*
+S	QQC	*
+S	RQC	*
+S	SQC	*
+S	TQC	*
+S	UQC	*
+S	VQC	*
+S	WQC	*
+S	XQC	*
+S	YQC	*
+S	ZQC	*
+S	ARC	*
+S	BRC	*
+S	CRC	*
+S	DRC	*
+S	ERC	*
+S	FRC	*
+S	GRC	*
+S	HRC	*
+S	IRC	*
+S	JRC	*
+S	KRC	*
+S	LRC	*
+S	MRC	*
+S	NRC	*
+S	ORC	*
+S	PRC	*
+S	QRC	*
+S	RRC	*
+S	SRC	*
+S	TRC	*
+S	URC	*
+S	VRC	*
+S	WRC	*
+S	XRC	*
+S	YRC	*
+S	ZRC	*
+S	ASC	*
+S	BSC	*
+S	CSC	*
+S	DSC	*
+S	ESC	*
+S	FSC	*
+S	GSC	*
+S	HSC	*
+S	ISC	*
+S	JSC	*
+S	KSC	*
+S	LSC	*
+S	MSC	*
+S	NSC	*
+S	OSC	*
+S	PSC	*
+S	QSC	*
+S	RSC	*
+S	SSC	*
+S	TSC	*
+S	USC	*
+S	VSC	*
+S	WSC	*
+S	XSC	*
+S	YSC	*
+S	ZSC	*
+S	ATC	*
+S	BTC	*
+S	CTC	*
+S	DTC	*
+S	ETC	*
+S	FTC	*
+S	GTC	*
+S	HTC	*
+S	ITC	*
+S	JTC	*
+S	KTC	*
+S	LTC	*
+S	MTC	*
+S	NTC	*
+S	OTC	*
+S	PTC	*
+S	QTC	*
+S	RTC	*
+S	STC	*
+S	TTC	*
+S	UTC	*
+S	VTC	*
+S	WTC	*
+S	XTC	*
+S	YTC	*
+S	ZTC	*
+S	AUC	*
+S	BUC	*
+S	CUC	*
+S	DUC	*
+S	EUC	*
+S	FUC	*
+S	GUC	*
+S	HUC	*
+S	IUC	*
+S	JUC	*
+S	KUC	*
+S	LUC	*
+S	MUC	*
+S	NUC	*
+S	OUC	*
+S	PUC	*
+S	QUC	*
+S	RUC	*
+S	SUC	*
+S	TUC	*
+S	UUC	*
+S	VUC	*
+S	WUC	*
+S	XUC	*
+S	YUC	*
+S	ZUC	*
+S	AVC	*
+S	BVC	*
+S	CVC	*
+S	DVC	*
+S	EVC	*
+S	FVC	*
+S	GVC	*
+S	HVC	*
+S	IVC	*
+S	JVC	*
+S	KVC	*
+S	LVC	*
+S	MVC	*
+S	NVC	*
+S	OVC	*
+S	PVC	*
+S	QVC	*
+S	RVC	*
+S	SVC	*
+S	TVC	*
+S	UVC	*
+S	VVC	*
+S	WVC	*
+S	XVC	*
+S	YVC	*
+S	ZVC	*
+S	AWC	*
+S	BWC	*
+S	CWC	*
+S	DWC	*
+S	EWC	*
+S	FWC	*
+S	GWC	*
+S	HWC	*
+S	IWC	*
+S	JWC	*
+S	KWC	*
+S	LWC	*
+S	MWC	*
+S	NWC	*
+S	OWC	*
+S	PWC	*
+S	QWC	*
+S	RWC	*
+S	SWC	*
+S	TWC	*
+S	UWC	*
+S	VWC	*
+S	WWC	*
+S	XWC	*
+S	YWC	*
+S	ZWC	*
+S	AXC	*
+S	BXC	*
+S	CXC	*
+S	DXC	*
+S	EXC	*
+S	FXC	*
+S	GXC	*
+S	HXC	*
+S	IXC	*
+S	JXC	*
+S	KXC	*
+S	LXC	*
+S	MXC	*
+S	NXC	*
+S	OXC	*
+S	PXC	*
+S	QXC	*
+S	RXC	*
+S	SXC	*
+S	TXC	*
+S	UXC	*
+S	VXC	*
+S	WXC	*
+S	XXC	*
+S	YXC	*
+S	ZXC	*
+S	AYC	*
+S	BYC	*
+S	CYC	*
+S	DYC	*
+S	EYC	*
+S	FYC	*
+S	GYC	*
+S	HYC	*
+S	IYC	*
+S	JYC	*
+S	KYC	*
+S	LYC	*
+S	MYC	*
+S	NYC	*
+S	OYC	*
+S	PYC	*
+S	QYC	*
+S	RYC	*
+S	SYC	*
+S	TYC	*
+S	UYC	*
+S	VYC	*
+S	WYC	*
+S	XYC	*
+S	YYC	*
+S	ZYC	*
+S	AZC	*
+S	BZC	*
+S	CZC	*
+S	DZC	*
+S	EZC	*
+S	FZC	*
+S	GZC	*
+S	HZC	*
+S	IZC	*
+S	JZC	*
+S	KZC	*
+S	LZC	*
+S	MZC	*
+S	NZC	*
+S	OZC	*
+S	PZC	*
+S	QZC	*
+S	RZC	*
+S	SZC	*
+S	TZC	*
+S	UZC	*
+S	VZC	*
+S	WZC	*
+S	XZC	*
+S	YZC	*
+S	ZZC	*
+S	AAD	*
+S	BAD	*
+S	CAD	*
+S	DAD	*
+S	EAD	*
+S	FAD	*
+S	GAD	*
+S	HAD	*
+S	IAD	*
+S	JAD	*
+S	KAD	*
+S	LAD	*
+S	MAD	*
+S	NAD	*
+S	OAD	*
+S	PAD	*
+S	QAD	*
+S	RAD	*
+S	SAD	*
+S	TAD	*
+S	UAD	*
+S	VAD	*
+S	WAD	*
+S	XAD	*
+S	YAD	*
+S	ZAD	*
+S	ABD	*
+S	BBD	*
+S	CBD	*
+S	DBD	*
+S	EBD	*
+S	FBD	*
+S	GBD	*
+S	HBD	*
+S	IBD	*
+S	JBD	*
+S	KBD	*
+S	LBD	*
+S	MBD	*
+S	NBD	*
+S	OBD	*
+S	PBD	*
+S	QBD	*
+S	RBD	*
+S	SBD	*
+S	TBD	*
+S	UBD	*
+S	VBD	*
+S	WBD	*
+S	XBD	*
+S	YBD	*
+S	ZBD	*
+S	ACD	*
+S	BCD	*
+S	CCD	*
+S	DCD	*
+S	ECD	*
+S	FCD	*
+S	GCD	*
+S	HCD	*
+S	ICD	*
+S	JCD	*
+S	KCD	*
+S	LCD	*
+S	MCD	*
+S	NCD	*
+S	OCD	*
+S	PCD	*
+S	QCD	*
+S	RCD	*
+S	SCD	*
+S	TCD	*
+S	UCD	*
+S	VCD	*
+S	WCD	*
+S	XCD	*
+S	YCD	*
+S	ZCD	*
+S	ADD	*
+S	BDD	*
+S	CDD	*
+S	DDD	*
+S	EDD	*
+S	FDD	*
+S	GDD	*
+S	HDD	*
+S	IDD	*
+S	JDD	*
+S	KDD	*
+S	LDD	*
+S	MDD	*
+S	NDD	*
+S	ODD	*
+S	PDD	*
+S	QDD	*
+S	RDD	*
+S	SDD	*
+S	TDD	*
+S	UDD	*
+S	VDD	*
+S	WDD	*
+S	XDD	*
+S	YDD	*
+S	ZDD	*
+S	AED	*
+S	BED	*
+S	CED	*
+S	DED	*
+S	EED	*
+S	FED	*
+S	GED	*
+S	HED	*
+S	IED	*
+S	JED	*
+S	KED	*
+S	LED	*
+S	MED	*
+S	NED	*
+S	OED	*
+S	PED	*
+S	QED	*
+S	RED	*
+S	SED	*
+S	TED	*
+S	UED	*
+S	VED	*
+S	WED	*
+S	XED	*
+S	YED	*
+S	ZED	*
+S	AFD	*
+S	BFD	*
+S	CFD	*
+S	DFD	*
+S	EFD	*
+S	FFD	*
+S	GFD	*
+S	HFD	*
+S	IFD	*
+S	JFD	*
+S	KFD	*
+S	LFD	*
+S	MFD	*
+S	NFD	*
+S	OFD	*
+S	PFD	*
+S	QFD	*
+S	RFD	*
+S	SFD	*
+S	TFD	*
+S	UFD	*
+S	VFD	*
+S	WFD	*
+S	XFD	*
+S	YFD	*
+S	ZFD	*
+S	AGD	*
+S	BGD	*
+S	CGD	*
+S	DGD	*
+S	EGD	*
+S	FGD	*
+S	GGD	*
+S	HGD	*
+S	IGD	*
+S	JGD	*
+S	KGD	*
+S	LGD	*
+S	MGD	*
+S	NGD	*
+S	OGD	*
+S	PGD	*
+S	QGD	*
+S	RGD	*
+S	SGD	*
+S	TGD	*
+S	UGD	*
+S	VGD	*
+S	WGD	*
+S	XGD	*
+S	YGD	*
+S	ZGD	*
+S	AHD	*
+S	BHD	*
+S	CHD	*
+S	DHD	*
+S	EHD	*
+S	FHD	*
+S	GHD	*
+S	HHD	*
+S	IHD	*
+S	JHD	*
+S	KHD	*
+S	LHD	*
+S	MHD	*
+S	NHD	*
+S	OHD	*
+S	PHD	*
+S	QHD	*
+S	RHD	*
+S	SHD	*
+S	THD	*
+S	UHD	*
+S	VHD	*
+S	WHD	*
+S	XHD	*
+S	YHD	*
+S	ZHD	*
+S	AID	*
+S	BID	*
+S	CID	*
+S	DID	*
+S	EID	*
+S	FID	*
+S	GID	*
+S	HID	*
+S	IID	*
+S	JID	*
+S	KID	*
+S	LID	*
+S	MID	*
+S	NID	*
+S	OID	*
+S	PID	*
+S	QID	*
+S	RID	*
+S	SID	*
+S	TID	*
+S	UID	*
+S	VID	*
+S	WID	*
+S	XID	*
+S	YID	*
+S	ZID	*
+S	AJD	*
+S	BJD	*
+S	CJD	*
+S	DJD	*
+S	EJD	*
+S	FJD	*
+S	GJD	*
+S	HJD	*
+S	IJD	*
+S	JJD	*
+S	KJD	*
+S	LJD	*
+S	MJD	*
+S	NJD	*
+S	OJD	*
+S	PJD	*
+S	QJD	*
+S	RJD	*
+S	SJD	*
+S	TJD	*
+S	UJD	*
+S	VJD	*
+S	WJD	*
+S	XJD	*
+S	YJD	*
+S	ZJD	*
+S	AKD	*
+S	BKD	*
+S	CKD	*
+S	DKD	*
+S	EKD	*
+S	FKD	*
+S	GKD	*
+S	HKD	*
+S	IKD	*
+S	JKD	*
+S	KKD	*
+S	LKD	*
+S	MKD	*
+S	NKD	*
+S	OKD	*
+S	PKD	*
+S	QKD	*
+S	RKD	*
+S	SKD	*
+S	TKD	*
+S	UKD	*
+S	VKD	*
+S	WKD	*
+S	XKD	*
+S	YKD	*
+S	ZKD	*
+S	ALD	*
+S	BLD	*
+S	CLD	*
+S	DLD	*
+S	ELD	*
+S	FLD	*
+S	GLD	*
+S	HLD	*
+S	ILD	*
+S	JLD	*
+S	KLD	*
+S	LLD	*
+S	MLD	*
+S	NLD	*
+S	OLD	*
+S	PLD	*
+S	QLD	*
+S	RLD	*
+S	SLD	*
+S	TLD	*
+S	ULD	*
+S	VLD	*
+S	WLD	*
+S	XLD	*
+S	YLD	*
+S	ZLD	*
+S	AMD	*
+S	BMD	*
+S	CMD	*
+S	DMD	*
+S	EMD	*
+S	FMD	*
+S	GMD	*
+S	HMD	*
+S	IMD	*
+S	JMD	*
+S	KMD	*
+S	LMD	*
+S	MMD	*
+S	NMD	*
+S	OMD	*
+S	PMD	*
+S	QMD	*
+S	RMD	*
+S	SMD	*
+S	TMD	*
+S	UMD	*
+S	VMD	*
+S	WMD	*
+S	XMD	*
+S	YMD	*
+S	ZMD	*
+S	AND	*
+S	BND	*
+S	CND	*
+S	DND	*
+S	END	*
+S	FND	*
+S	GND	*
+S	HND	*
+S	IND	*
+S	JND	*
+S	KND	*
+S	LND	*
+S	MND	*
+S	NND	*
+S	OND	*
+S	PND	*
+S	QND	*
+S	RND	*
+S	SND	*
+S	TND	*
+S	UND	*
+S	VND	*
+S	WND	*
+S	XND	*
+S	YND	*
+S	ZND	*
+S	AOD	*
+S	BOD	*
+S	COD	*
+S	DOD	*
+S	EOD	*
+S	FOD	*
+S	GOD	*
+S	HOD	*
+S	IOD	*
+S	JOD	*
+S	KOD	*
+S	LOD	*
+S	MOD	*
+S	NOD	*
+S	OOD	*
+S	POD	*
+S	QOD	*
+S	ROD	*
+S	SOD	*
+S	TOD	*
+S	UOD	*
+S	VOD	*
+S	WOD	*
+S	XOD	*
+S	YOD	*
+S	ZOD	*
+S	APD	*
+S	BPD	*
+S	CPD	*
+S	DPD	*
+S	EPD	*
+S	FPD	*
+S	GPD	*
+S	HPD	*
+S	IPD	*
+S	JPD	*
+S	KPD	*
+S	LPD	*
+S	MPD	*
+S	NPD	*
+S	OPD	*
+S	PPD	*
+S	QPD	*
+S	RPD	*
+S	SPD	*
+S	TPD	*
+S	UPD	*
+S	VPD	*
+S	WPD	*
+S	XPD	*
+S	YPD	*
+S	ZPD	*
+S	AQD	*
+S	BQD	*
+S	CQD	*
+S	DQD	*
+S	EQD	*
+S	FQD	*
+S	GQD	*
+S	HQD	*
+S	IQD	*
+S	JQD	*
+S	KQD	*
+S	LQD	*
+S	MQD	*
+S	NQD	*
+S	OQD	*
+S	PQD	*
+S	QQD	*
+S	RQD	*
+S	SQD	*
+S	TQD	*
+S	UQD	*
+S	VQD	*
+S	WQD	*
+S	XQD	*
+S	YQD	*
+S	ZQD	*
+S	ARD	*
+S	BRD	*
+S	CRD	*
+S	DRD	*
+S	ERD	*
+S	FRD	*
+S	GRD	*
+S	HRD	*
+S	IRD	*
+S	JRD	*
+S	KRD	*
+S	LRD	*
+S	MRD	*
+S	NRD	*
+S	ORD	*
+S	PRD	*
+S	QRD	*
+S	RRD	*
+S	SRD	*
+S	TRD	*
+S	URD	*
+S	VRD	*
+S	WRD	*
+S	XRD	*
+S	YRD	*
+S	ZRD	*
+S	ASD	*
+S	BSD	*
+S	CSD	*
+S	DSD	*
+S	ESD	*
+S	FSD	*
+S	GSD	*
+S	HSD	*
+S	ISD	*
+S	JSD	*
+S	KSD	*
+S	LSD	*
+S	MSD	*
+S	NSD	*
+S	OSD	*
+S	PSD	*
+S	QSD	*
+S	RSD	*
+S	SSD	*
+S	TSD	*
+S	USD	*
+S	VSD	*
+S	WSD	*
+S	XSD	*
+S	YSD	*
+S	ZSD	*
+S	ATD	*
+S	BTD	*
+S	CTD	*
+S	DTD	*
+S	ETD	*
+S	FTD	*
+S	GTD	*
+S	HTD	*
+S	ITD	*
+S	JTD	*
+S	KTD	*
+S	LTD	*
+S	MTD	*
+S	NTD	*
+S	OTD	*
+S	PTD	*
+S	QTD	*
+S	RTD	*
+S	STD	*
+S	TTD	*
+S	UTD	*
+S	VTD	*
+S	WTD	*
+S	XTD	*
+S	YTD	*
+S	ZTD	*
+S	AUD	*
+S	BUD	*
+S	CUD	*
+S	DUD	*
+S	EUD	*
+S	FUD	*
+S	GUD	*
+S	HUD	*
+S	IUD	*
+S	JUD	*
+S	KUD	*
+S	LUD	*
+S	MUD	*
+S	NUD	*
+S	OUD	*
+S	PUD	*
+S	QUD	*
+S	RUD	*
+S	SUD	*
+S	TUD	*
+S	UUD	*
+S	VUD	*
+S	WUD	*
+S	XUD	*
+S	YUD	*
+S	ZUD	*
+S	AVD	*
+S	BVD	*
+S	CVD	*
+S	DVD	*
+S	EVD	*
+S	FVD	*
+S	GVD	*
+S	HVD	*
+S	IVD	*
+S	JVD	*
+S	KVD	*
+S	LVD	*
+S	MVD	*
+S	NVD	*
+S	OVD	*
+S	PVD	*
+S	QVD	*
+S	RVD	*
+S	SVD	*
+S	TVD	*
+S	UVD	*
+S	VVD	*
+S	WVD	*
+S	XVD	*
+S	YVD	*
+S	ZVD	*
+S	AWD	*
+S	BWD	*
+S	CWD	*
+S	DWD	*
+S	EWD	*
+S	FWD	*
+S	GWD	*
+S	HWD	*
+S	IWD	*
+S	JWD	*
+S	KWD	*
+S	LWD	*
+S	MWD	*
+S	NWD	*
+S	OWD	*
+S	PWD	*
+S	QWD	*
+S	RWD	*
+S	SWD	*
+S	TWD	*
+S	UWD	*
+S	VWD	*
+S	WWD	*
+S	XWD	*
+S	YWD	*
+S	ZWD	*
+S	AXD	*
+S	BXD	*
+S	CXD	*
+S	DXD	*
+S	EXD	*
+S	FXD	*
+S	GXD	*
+S	HXD	*
+S	IXD	*
+S	JXD	*
+S	KXD	*
+S	LXD	*
+S	MXD	*
+S	NXD	*
+S	OXD	*
+S	PXD	*
+S	QXD	*
+S	RXD	*
+S	SXD	*
+S	TXD	*
+S	UXD	*
+S	VXD	*
+S	WXD	*
+S	XXD	*
+S	YXD	*
+S	ZXD	*
+S	AYD	*
+S	BYD	*
+S	CYD	*
+S	DYD	*
+S	EYD	*
+S	FYD	*
+S	GYD	*
+S	HYD	*
+S	IYD	*
+S	JYD	*
+S	KYD	*
+S	LYD	*
+S	MYD	*
+S	NYD	*
+S	OYD	*
+S	PYD	*
+S	QYD	*
+S	RYD	*
+S	SYD	*
+S	TYD	*
+S	UYD	*
+S	VYD	*
+S	WYD	*
+S	XYD	*
+S	YYD	*
+S	ZYD	*
+S	AZD	*
+S	BZD	*
+S	CZD	*
+S	DZD	*
+S	EZD	*
+S	FZD	*
+S	GZD	*
+S	HZD	*
+S	IZD	*
+S	JZD	*
+S	KZD	*
+S	LZD	*
+S	MZD	*
+S	NZD	*
+S	OZD	*
+S	PZD	*
+S	QZD	*
+S	RZD	*
+S	SZD	*
+S	TZD	*
+S	UZD	*
+S	VZD	*
+S	WZD	*
+S	XZD	*
+S	YZD	*
+S	ZZD	*
+S	AAE	*
+S	BAE	*
+S	CAE	*
+S	DAE	*
+S	EAE	*
+S	FAE	*
+S	GAE	*
+S	HAE	*
+S	IAE	*
+S	JAE	*
+S	KAE	*
+S	LAE	*
+S	MAE	*
+S	NAE	*
+S	OAE	*
+S	PAE	*
+S	QAE	*
+S	RAE	*
+S	SAE	*
+S	TAE	*
+S	UAE	*
+S	VAE	*
+S	WAE	*
+S	XAE	*
+S	YAE	*
+S	ZAE	*
+S	ABE	*
+S	BBE	*
+S	CBE	*
+S	DBE	*
+S	EBE	*
+S	FBE	*
+S	GBE	*
+S	HBE	*
+S	IBE	*
+S	JBE	*
+S	KBE	*
+S	LBE	*
+S	MBE	*
+S	NBE	*
+S	OBE	*
+S	PBE	*
+S	QBE	*
+S	RBE	*
+S	SBE	*
+S	TBE	*
+S	UBE	*
+S	VBE	*
+S	WBE	*
+S	XBE	*
+S	YBE	*
+S	ZBE	*
+S	ACE	*
+S	BCE	*
+S	CCE	*
+S	DCE	*
+S	ECE	*
+S	FCE	*
+S	GCE	*
+S	HCE	*
+S	ICE	*
+S	JCE	*
+S	KCE	*
+S	LCE	*
+S	MCE	*
+S	NCE	*
+S	OCE	*
+S	PCE	*
+S	QCE	*
+S	RCE	*
+S	SCE	*
+S	TCE	*
+S	UCE	*
+S	VCE	*
+S	WCE	*
+S	XCE	*
+S	YCE	*
+S	ZCE	*
+S	ADE	*
+S	BDE	*
+S	CDE	*
+S	DDE	*
+S	EDE	*
+S	FDE	*
+S	GDE	*
+S	HDE	*
+S	IDE	*
+S	JDE	*
+S	KDE	*
+S	LDE	*
+S	MDE	*
+S	NDE	*
+S	ODE	*
+S	PDE	*
+S	QDE	*
+S	RDE	*
+S	SDE	*
+S	TDE	*
+S	UDE	*
+S	VDE	*
+S	WDE	*
+S	XDE	*
+S	YDE	*
+S	ZDE	*
+S	AEE	*
+S	BEE	*
+S	CEE	*
+S	DEE	*
+S	EEE	*
+S	FEE	*
+S	GEE	*
+S	HEE	*
+S	IEE	*
+S	JEE	*
+S	KEE	*
+S	LEE	*
+S	MEE	*
+S	NEE	*
+S	OEE	*
+S	PEE	*
+S	QEE	*
+S	REE	*
+S	SEE	*
+S	TEE	*
+S	UEE	*
+S	VEE	*
+S	WEE	*
+S	XEE	*
+S	YEE	*
+S	ZEE	*
+S	AFE	*
+S	BFE	*
+S	CFE	*
+S	DFE	*
+S	EFE	*
+S	FFE	*
+S	GFE	*
+S	HFE	*
+S	IFE	*
+S	JFE	*
+S	KFE	*
+S	LFE	*
+S	MFE	*
+S	NFE	*
+S	OFE	*
+S	PFE	*
+S	QFE	*
+S	RFE	*
+S	SFE	*
+S	TFE	*
+S	UFE	*
+S	VFE	*
+S	WFE	*
+S	XFE	*
+S	YFE	*
+S	ZFE	*
+S	AGE	*
+S	BGE	*
+S	CGE	*
+S	DGE	*
+S	EGE	*
+S	FGE	*
+S	GGE	*
+S	HGE	*
+S	IGE	*
+S	JGE	*
+S	KGE	*
+S	LGE	*
+S	MGE	*
+S	NGE	*
+S	OGE	*
+S	PGE	*
+S	QGE	*
+S	RGE	*
+S	SGE	*
+S	TGE	*
+S	UGE	*
+S	VGE	*
+S	WGE	*
+S	XGE	*
+S	YGE	*
+S	ZGE	*
+S	AHE	*
+S	BHE	*
+S	CHE	*
+S	DHE	*
+S	EHE	*
+S	FHE	*
+S	GHE	*
+S	HHE	*
+S	IHE	*
+S	JHE	*
+S	KHE	*
+S	LHE	*
+S	MHE	*
+S	NHE	*
+S	OHE	*
+S	PHE	*
+S	QHE	*
+S	RHE	*
+S	SHE	*
+S	THE	*
+S	UHE	*
+S	VHE	*
+S	WHE	*
+S	XHE	*
+S	YHE	*
+S	ZHE	*
+S	AIE	*
+S	BIE	*
+S	CIE	*
+S	DIE	*
+S	EIE	*
+S	FIE	*
+S	GIE	*
+S	HIE	*
+S	IIE	*
+S	JIE	*
+S	KIE	*
+S	LIE	*
+S	MIE	*
+S	NIE	*
+S	OIE	*
+S	PIE	*
+S	QIE	*
+S	RIE	*
+S	SIE	*
+S	TIE	*
+S	UIE	*
+S	VIE	*
+S	WIE	*
+S	XIE	*
+S	YIE	*
+S	ZIE	*
+S	AJE	*
+S	BJE	*
+S	CJE	*
+S	DJE	*
+S	EJE	*
+S	FJE	*
+S	GJE	*
+S	HJE	*
+S	IJE	*
+S	JJE	*
+S	KJE	*
+S	LJE	*
+S	MJE	*
+S	NJE	*
+S	OJE	*
+S	PJE	*
+S	QJE	*
+S	RJE	*
+S	SJE	*
+S	TJE	*
+S	UJE	*
+S	VJE	*
+S	WJE	*
+S	XJE	*
+S	YJE	*
+S	ZJE	*
+S	AKE	*
+S	BKE	*
+S	CKE	*
+S	DKE	*
+S	EKE	*
+S	FKE	*
+S	GKE	*
+S	HKE	*
+S	IKE	*
+S	JKE	*
+S	KKE	*
+S	LKE	*
+S	MKE	*
+S	NKE	*
+S	OKE	*
+S	PKE	*
+S	QKE	*
+S	RKE	*
+S	SKE	*
+S	TKE	*
+S	UKE	*
+S	VKE	*
+S	WKE	*
+S	XKE	*
+S	YKE	*
+S	ZKE	*
+S	ALE	*
+S	BLE	*
+S	CLE	*
+S	DLE	*
+S	ELE	*
+S	FLE	*
+S	GLE	*
+S	HLE	*
+S	ILE	*
+S	JLE	*
+S	KLE	*
+S	LLE	*
+S	MLE	*
+S	NLE	*
+S	OLE	*
+S	PLE	*
+S	QLE	*
+S	RLE	*
+S	SLE	*
+S	TLE	*
+S	ULE	*
+S	VLE	*
+S	WLE	*
+S	XLE	*
+S	YLE	*
+S	ZLE	*
+S	AME	*
+S	BME	*
+S	CME	*
+S	DME	*
+S	EME	*
+S	FME	*
+S	GME	*
+S	HME	*
+S	IME	*
+S	JME	*
+S	KME	*
+S	LME	*
+S	MME	*
+S	NME	*
+S	OME	*
+S	PME	*
+S	QME	*
+S	RME	*
+S	SME	*
+S	TME	*
+S	UME	*
+S	VME	*
+S	WME	*
+S	XME	*
+S	YME	*
+S	ZME	*
+S	ANE	*
+S	BNE	*
+S	CNE	*
+S	DNE	*
+S	ENE	*
+S	FNE	*
+S	GNE	*
+S	HNE	*
+S	INE	*
+S	JNE	*
+S	KNE	*
+S	LNE	*
+S	MNE	*
+S	NNE	*
+S	ONE	*
+S	PNE	*
+S	QNE	*
+S	RNE	*
+S	SNE	*
+S	TNE	*
+S	UNE	*
+S	VNE	*
+S	WNE	*
+S	XNE	*
+S	YNE	*
+S	ZNE	*
+S	AOE	*
+S	BOE	*
+S	COE	*
+S	DOE	*
+S	EOE	*
+S	FOE	*
+S	GOE	*
+S	HOE	*
+S	IOE	*
+S	JOE	*
+S	KOE	*
+S	LOE	*
+S	MOE	*
+S	NOE	*
+S	OOE	*
+S	POE	*
+S	QOE	*
+S	ROE	*
+S	SOE	*
+S	TOE	*
+S	UOE	*
+S	VOE	*
+S	WOE	*
+S	XOE	*
+S	YOE	*
+S	ZOE	*
+S	APE	*
+S	BPE	*
+S	CPE	*
+S	DPE	*
+S	EPE	*
+S	FPE	*
+S	GPE	*
+S	HPE	*
+S	IPE	*
+S	JPE	*
+S	KPE	*
+S	LPE	*
+S	MPE	*
+S	NPE	*
+S	OPE	*
+S	PPE	*
+S	QPE	*
+S	RPE	*
+S	SPE	*
+S	TPE	*
+S	UPE	*
+S	VPE	*
+S	WPE	*
+S	XPE	*
+S	YPE	*
+S	ZPE	*
+S	AQE	*
+S	BQE	*
+S	CQE	*
+S	DQE	*
+S	EQE	*
+S	FQE	*
+S	GQE	*
+S	HQE	*
+S	IQE	*
+S	JQE	*
+S	KQE	*
+S	LQE	*
+S	MQE	*
+S	NQE	*
+S	OQE	*
+S	PQE	*
+S	QQE	*
+S	RQE	*
+S	SQE	*
+S	TQE	*
+S	UQE	*
+S	VQE	*
+S	WQE	*
+S	XQE	*
+S	YQE	*
+S	ZQE	*
+S	ARE	*
+S	BRE	*
+S	CRE	*
+S	DRE	*
+S	ERE	*
+S	FRE	*
+S	GRE	*
+S	HRE	*
+S	IRE	*
+S	JRE	*
+S	KRE	*
+S	LRE	*
+S	MRE	*
+S	NRE	*
+S	ORE	*
+S	PRE	*
+S	QRE	*
+S	RRE	*
+S	SRE	*
+S	TRE	*
+S	URE	*
+S	VRE	*
+S	WRE	*
+S	XRE	*
+S	YRE	*
+S	ZRE	*
+S	ASE	*
+S	BSE	*
+S	CSE	*
+S	DSE	*
+S	ESE	*
+S	FSE	*
+S	GSE	*
+S	HSE	*
+S	ISE	*
+S	JSE	*
+S	KSE	*
+S	LSE	*
+S	MSE	*
+S	NSE	*
+S	OSE	*
+S	PSE	*
+S	QSE	*
+S	RSE	*
+S	SSE	*
+S	TSE	*
+S	USE	*
+S	VSE	*
+S	WSE	*
+S	XSE	*
+S	YSE	*
+S	ZSE	*
+S	ATE	*
+S	BTE	*
+S	CTE	*
+S	DTE	*
+S	ETE	*
+S	FTE	*
+S	GTE	*
+S	HTE	*
+S	ITE	*
+S	JTE	*
+S	KTE	*
+S	LTE	*
+S	MTE	*
+S	NTE	*
+S	OTE	*
+S	PTE	*
+S	QTE	*
+S	RTE	*
+S	STE	*
+S	TTE	*
+S	UTE	*
+S	VTE	*
+S	WTE	*
+S	XTE	*
+S	YTE	*
+S	ZTE	*
+S	AUE	*
+S	BUE	*
+S	CUE	*
+S	DUE	*
+S	EUE	*
+S	FUE	*
+S	GUE	*
+S	HUE	*
+S	IUE	*
+S	JUE	*
+S	KUE	*
+S	LUE	*
+S	MUE	*
+S	NUE	*
+S	OUE	*
+S	PUE	*
+S	QUE	*
+S	RUE	*
+S	SUE	*
+S	TUE	*
+S	UUE	*
+S	VUE	*
+S	WUE	*
+S	XUE	*
+S	YUE	*
+S	ZUE	*
+S	AVE	*
+S	BVE	*
+S	CVE	*
+S	DVE	*
+S	EVE	*
+S	FVE	*
+S	GVE	*
+S	HVE	*
+S	IVE	*
+S	JVE	*
+S	KVE	*
+S	LVE	*
+S	MVE	*
+S	NVE	*
+S	OVE	*
+S	PVE	*
+S	QVE	*
+S	RVE	*
+S	SVE	*
+S	TVE	*
+S	UVE	*
+S	VVE	*
+S	WVE	*
+S	XVE	*
+S	YVE	*
+S	ZVE	*
+S	AWE	*
+S	BWE	*
+S	CWE	*
+S	DWE	*
+S	EWE	*
+S	FWE	*
+S	GWE	*
+S	HWE	*
+S	IWE	*
+S	JWE	*
+S	KWE	*
+S	LWE	*
+S	MWE	*
+S	NWE	*
+S	OWE	*
+S	PWE	*
+S	QWE	*
+S	RWE	*
+S	SWE	*
+S	TWE	*
+S	UWE	*
+S	VWE	*
+S	WWE	*
+S	XWE	*
+S	YWE	*
+S	ZWE	*
+S	AXE	*
+S	BXE	*
+S	CXE	*
+S	DXE	*
+S	EXE	*
+S	FXE	*
+S	GXE	*
+S	HXE	*
+S	IXE	*
+S	JXE	*
+S	KXE	*
+S	LXE	*
+S	MXE	*
+S	NXE	*
+S	OXE	*
+S	PXE	*
+S	QXE	*
+S	RXE	*
+S	SXE	*
+S	TXE	*
+S	UXE	*
+S	VXE	*
+S	WXE	*
+S	XXE	*
+S	YXE	*
+S	ZXE	*
+S	AYE	*
+S	BYE	*
+S	CYE	*
+S	DYE	*
+S	EYE	*
+S	FYE	*
+S	GYE	*
+S	HYE	*
+S	IYE	*
+S	JYE	*
+S	KYE	*
+S	LYE	*
+S	MYE	*
+S	NYE	*
+S	OYE	*
+S	PYE	*
+S	QYE	*
+S	RYE	*
+S	SYE	*
+S	TYE	*
+S	UYE	*
+S	VYE	*
+S	WYE	*
+S	XYE	*
+S	YYE	*
+S	ZYE	*
+S	AZE	*
+S	BZE	*
+S	CZE	*
+S	DZE	*
+S	EZE	*
+S	FZE	*
+S	GZE	*
+S	HZE	*
+S	IZE	*
+S	JZE	*
+S	KZE	*
+S	LZE	*
+S	MZE	*
+S	NZE	*
+S	OZE	*
+S	PZE	*
+S	QZE	*
+S	RZE	*
+S	SZE	*
+S	TZE	*
+S	UZE	*
+S	VZE	*
+S	WZE	*
+S	XZE	*
+S	YZE	*
+S	ZZE	*
+S	AAF	*
+S	BAF	*
+S	CAF	*
+S	DAF	*
+S	EAF	*
+S	FAF	*
+S	GAF	*
+S	HAF	*
+S	IAF	*
+S	JAF	*
+S	KAF	*
+S	LAF	*
+S	MAF	*
+S	NAF	*
+S	OAF	*
+S	PAF	*
+S	QAF	*
+S	RAF	*
+S	SAF	*
+S	TAF	*
+S	UAF	*
+S	VAF	*
+S	WAF	*
+S	XAF	*
+S	YAF	*
+S	ZAF	*
+S	ABF	*
+S	BBF	*
+S	CBF	*
+S	DBF	*
+S	EBF	*
+S	FBF	*
+S	GBF	*
+S	HBF	*
+S	IBF	*
+S	JBF	*
+S	KBF	*
+S	LBF	*
+S	MBF	*
+S	NBF	*
+S	OBF	*
+S	PBF	*
+S	QBF	*
+S	RBF	*
+S	SBF	*
+S	TBF	*
+S	UBF	*
+S	VBF	*
+S	WBF	*
+S	XBF	*
+S	YBF	*
+S	ZBF	*
+S	ACF	*
+S	BCF	*
+S	CCF	*
+S	DCF	*
+S	ECF	*
+S	FCF	*
+S	GCF	*
+S	HCF	*
+S	ICF	*
+S	JCF	*
+S	KCF	*
+S	LCF	*
+S	MCF	*
+S	NCF	*
+S	OCF	*
+S	PCF	*
+S	QCF	*
+S	RCF	*
+S	SCF	*
+S	TCF	*
+S	UCF	*
+S	VCF	*
+S	WCF	*
+S	XCF	*
+S	YCF	*
+S	ZCF	*
+S	ADF	*
+S	BDF	*
+S	CDF	*
+S	DDF	*
+S	EDF	*
+S	FDF	*
+S	GDF	*
+S	HDF	*
+S	IDF	*
+S	JDF	*
+S	KDF	*
+S	LDF	*
+S	MDF	*
+S	NDF	*
+S	ODF	*
+S	PDF	*
+S	QDF	*
+S	RDF	*
+S	SDF	*
+S	TDF	*
+S	UDF	*
+S	VDF	*
+S	WDF	*
+S	XDF	*
+S	YDF	*
+S	ZDF	*
+S	AEF	*
+S	BEF	*
+S	CEF	*
+S	DEF	*
+S	EEF	*
+S	FEF	*
+S	GEF	*
+S	HEF	*
+S	IEF	*
+S	JEF	*
+S	KEF	*
+S	LEF	*
+S	MEF	*
+S	NEF	*
+S	OEF	*
+S	PEF	*
+S	QEF	*
+S	REF	*
+S	SEF	*
+S	TEF	*
+S	UEF	*
+S	VEF	*
+S	WEF	*
+S	XEF	*
+S	YEF	*
+S	ZEF	*
+S	AFF	*
+S	BFF	*
+S	CFF	*
+S	DFF	*
+S	EFF	*
+S	FFF	*
+S	GFF	*
+S	HFF	*
+S	IFF	*
+S	JFF	*
+S	KFF	*
+S	LFF	*
+S	MFF	*
+S	NFF	*
+S	OFF	*
+S	PFF	*
+S	QFF	*
+S	RFF	*
+S	SFF	*
+S	TFF	*
+S	UFF	*
+S	VFF	*
+S	WFF	*
+S	XFF	*
+S	YFF	*
+S	ZFF	*
+S	AGF	*
+S	BGF	*
+S	CGF	*
+S	DGF	*
+S	EGF	*
+S	FGF	*
+S	GGF	*
+S	HGF	*
+S	IGF	*
+S	JGF	*
+S	KGF	*
+S	LGF	*
+S	MGF	*
+S	NGF	*
+S	OGF	*
+S	PGF	*
+S	QGF	*
+S	RGF	*
+S	SGF	*
+S	TGF	*
+S	UGF	*
+S	VGF	*
+S	WGF	*
+S	XGF	*
+S	YGF	*
+S	ZGF	*
+S	AHF	*
+S	BHF	*
+S	CHF	*
+S	DHF	*
+S	EHF	*
+S	FHF	*
+S	GHF	*
+S	HHF	*
+S	IHF	*
+S	JHF	*
+S	KHF	*
+S	LHF	*
+S	MHF	*
+S	NHF	*
+S	OHF	*
+S	PHF	*
+S	QHF	*
+S	RHF	*
+S	SHF	*
+S	THF	*
+S	UHF	*
+S	VHF	*
+S	WHF	*
+S	XHF	*
+S	YHF	*
+S	ZHF	*
+S	AIF	*
+S	BIF	*
+S	CIF	*
+S	DIF	*
+S	EIF	*
+S	FIF	*
+S	GIF	*
+S	HIF	*
+S	IIF	*
+S	JIF	*
+S	KIF	*
+S	LIF	*
+S	MIF	*
+S	NIF	*
+S	OIF	*
+S	PIF	*
+S	QIF	*
+S	RIF	*
+S	SIF	*
+S	TIF	*
+S	UIF	*
+S	VIF	*
+S	WIF	*
+S	XIF	*
+S	YIF	*
+S	ZIF	*
+S	AJF	*
+S	BJF	*
+S	CJF	*
+S	DJF	*
+S	EJF	*
+S	FJF	*
+S	GJF	*
+S	HJF	*
+S	IJF	*
+S	JJF	*
+S	KJF	*
+S	LJF	*
+S	MJF	*
+S	NJF	*
+S	OJF	*
+S	PJF	*
+S	QJF	*
+S	RJF	*
+S	SJF	*
+S	TJF	*
+S	UJF	*
+S	VJF	*
+S	WJF	*
+S	XJF	*
+S	YJF	*
+S	ZJF	*
+S	AKF	*
+S	BKF	*
+S	CKF	*
+S	DKF	*
+S	EKF	*
+S	FKF	*
+S	GKF	*
+S	HKF	*
+S	IKF	*
+S	JKF	*
+S	KKF	*
+S	LKF	*
+S	MKF	*
+S	NKF	*
+S	OKF	*
+S	PKF	*
+S	QKF	*
+S	RKF	*
+S	SKF	*
+S	TKF	*
+S	UKF	*
+S	VKF	*
+S	WKF	*
+S	XKF	*
+S	YKF	*
+S	ZKF	*
+S	ALF	*
+S	BLF	*
+S	CLF	*
+S	DLF	*
+S	ELF	*
+S	FLF	*
+S	GLF	*
+S	HLF	*
+S	ILF	*
+S	JLF	*
+S	KLF	*
+S	LLF	*
+S	MLF	*
+S	NLF	*
+S	OLF	*
+S	PLF	*
+S	QLF	*
+S	RLF	*
+S	SLF	*
+S	TLF	*
+S	ULF	*
+S	VLF	*
+S	WLF	*
+S	XLF	*
+S	YLF	*
+S	ZLF	*
+S	AMF	*
+S	BMF	*
+S	CMF	*
+S	DMF	*
+S	EMF	*
+S	FMF	*
+S	GMF	*
+S	HMF	*
+S	IMF	*
+S	JMF	*
+S	KMF	*
+S	LMF	*
+S	MMF	*
+S	NMF	*
+S	OMF	*
+S	PMF	*
+S	QMF	*
+S	RMF	*
+S	SMF	*
+S	TMF	*
+S	UMF	*
+S	VMF	*
+S	WMF	*
+S	XMF	*
+S	YMF	*
+S	ZMF	*
+S	ANF	*
+S	BNF	*
+S	CNF	*
+S	DNF	*
+S	ENF	*
+S	FNF	*
+S	GNF	*
+S	HNF	*
+S	INF	*
+S	JNF	*
+S	KNF	*
+S	LNF	*
+S	MNF	*
+S	NNF	*
+S	ONF	*
+S	PNF	*
+S	QNF	*
+S	RNF	*
+S	SNF	*
+S	TNF	*
+S	UNF	*
+S	VNF	*
+S	WNF	*
+S	XNF	*
+S	YNF	*
+S	ZNF	*
+S	AOF	*
+S	BOF	*
+S	COF	*
+S	DOF	*
+S	EOF	*
+S	FOF	*
+S	GOF	*
+S	HOF	*
+S	IOF	*
+S	JOF	*
+S	KOF	*
+S	LOF	*
+S	MOF	*
+S	NOF	*
+S	OOF	*
+S	POF	*
+S	QOF	*
+S	ROF	*
+S	SOF	*
+S	TOF	*
+S	UOF	*
+S	VOF	*
+S	WOF	*
+S	XOF	*
+S	YOF	*
+S	ZOF	*
+S	APF	*
+S	BPF	*
+S	CPF	*
+S	DPF	*
+S	EPF	*
+S	FPF	*
+S	GPF	*
+S	HPF	*
+S	IPF	*
+S	JPF	*
+S	KPF	*
+S	LPF	*
+S	MPF	*
+S	NPF	*
+S	OPF	*
+S	PPF	*
+S	QPF	*
+S	RPF	*
+S	SPF	*
+S	TPF	*
+S	UPF	*
+S	VPF	*
+S	WPF	*
+S	XPF	*
+S	YPF	*
+S	ZPF	*
+S	AQF	*
+S	BQF	*
+S	CQF	*
+S	DQF	*
+S	EQF	*
+S	FQF	*
+S	GQF	*
+S	HQF	*
+S	IQF	*
+S	JQF	*
+S	KQF	*
+S	LQF	*
+S	MQF	*
+S	NQF	*
+S	OQF	*
+S	PQF	*
+S	QQF	*
+S	RQF	*
+S	SQF	*
+S	TQF	*
+S	UQF	*
+S	VQF	*
+S	WQF	*
+S	XQF	*
+S	YQF	*
+S	ZQF	*
+S	ARF	*
+S	BRF	*
+S	CRF	*
+S	DRF	*
+S	ERF	*
+S	FRF	*
+S	GRF	*
+S	HRF	*
+S	IRF	*
+S	JRF	*
+S	KRF	*
+S	LRF	*
+S	MRF	*
+S	NRF	*
+S	ORF	*
+S	PRF	*
+S	QRF	*
+S	RRF	*
+S	SRF	*
+S	TRF	*
+S	URF	*
+S	VRF	*
+S	WRF	*
+S	XRF	*
+S	YRF	*
+S	ZRF	*
+S	ASF	*
+S	BSF	*
+S	CSF	*
+S	DSF	*
+S	ESF	*
+S	FSF	*
+S	GSF	*
+S	HSF	*
+S	ISF	*
+S	JSF	*
+S	KSF	*
+S	LSF	*
+S	MSF	*
+S	NSF	*
+S	OSF	*
+S	PSF	*
+S	QSF	*
+S	RSF	*
+S	SSF	*
+S	TSF	*
+S	USF	*
+S	VSF	*
+S	WSF	*
+S	XSF	*
+S	YSF	*
+S	ZSF	*
+S	ATF	*
+S	BTF	*
+S	CTF	*
+S	DTF	*
+S	ETF	*
+S	FTF	*
+S	GTF	*
+S	HTF	*
+S	ITF	*
+S	JTF	*
+S	KTF	*
+S	LTF	*
+S	MTF	*
+S	NTF	*
+S	OTF	*
+S	PTF	*
+S	QTF	*
+S	RTF	*
+S	STF	*
+S	TTF	*
+S	UTF	*
+S	VTF	*
+S	WTF	*
+S	XTF	*
+S	YTF	*
+S	ZTF	*
+S	AUF	*
+S	BUF	*
+S	CUF	*
+S	DUF	*
+S	EUF	*
+S	FUF	*
+S	GUF	*
+S	HUF	*
+S	IUF	*
+S	JUF	*
+S	KUF	*
+S	LUF	*
+S	MUF	*
+S	NUF	*
+S	OUF	*
+S	PUF	*
+S	QUF	*
+S	RUF	*
+S	SUF	*
+S	TUF	*
+S	UUF	*
+S	VUF	*
+S	WUF	*
+S	XUF	*
+S	YUF	*
+S	ZUF	*
+S	AVF	*
+S	BVF	*
+S	CVF	*
+S	DVF	*
+S	EVF	*
+S	FVF	*
+S	GVF	*
+S	HVF	*
+S	IVF	*
+S	JVF	*
+S	KVF	*
+S	LVF	*
+S	MVF	*
+S	NVF	*
+S	OVF	*
+S	PVF	*
+S	QVF	*
+S	RVF	*
+S	SVF	*
+S	TVF	*
+S	UVF	*
+S	VVF	*
+S	WVF	*
+S	XVF	*
+S	YVF	*
+S	ZVF	*
+S	AWF	*
+S	BWF	*
+S	CWF	*
+S	DWF	*
+S	EWF	*
+S	FWF	*
+S	GWF	*
+S	HWF	*
+S	IWF	*
+S	JWF	*
+S	KWF	*
+S	LWF	*
+S	MWF	*
+S	NWF	*
+S	OWF	*
+S	PWF	*
+S	QWF	*
+S	RWF	*
+S	SWF	*
+S	TWF	*
+S	UWF	*
+S	VWF	*
+S	WWF	*
+S	XWF	*
+S	YWF	*
+S	ZWF	*
+S	AXF	*
+S	BXF	*
+S	CXF	*
+S	DXF	*
+S	EXF	*
+S	FXF	*
+S	GXF	*
+S	HXF	*
+S	IXF	*
+S	JXF	*
+S	KXF	*
+S	LXF	*
+S	MXF	*
+S	NXF	*
+S	OXF	*
+S	PXF	*
+S	QXF	*
+S	RXF	*
+S	SXF	*
+S	TXF	*
+S	UXF	*
+S	VXF	*
+L	A	+	C	+
+L	A	+	D	+
+L	C	+	B	+
+L	D	+	B	+
+L	E	+	G	+
+L	E	+	H	+
+L	G	+	F	+
+L	H	+	F	+
+L	A	+	E	+
+L	F	+	B	+
+L	I	+	K	+
+L	I	+	L	+
+L	K	+	J	+
+L	L	+	J	+
+L	E	+	I	+
+L	J	+	F	+
+L	M	+	O	+
+L	M	+	P	+
+L	O	+	N	+
+L	P	+	N	+
+L	I	+	M	+
+L	N	+	J	+
+L	Q	+	S	+
+L	Q	+	T	+
+L	S	+	R	+
+L	T	+	R	+
+L	M	+	Q	+
+L	R	+	N	+
+L	U	+	W	+
+L	U	+	X	+
+L	W	+	V	+
+L	X	+	V	+
+L	Q	+	U	+
+L	V	+	R	+
+L	Y	+	AB	+
+L	Y	+	BB	+
+L	AB	+	Z	+
+L	BB	+	Z	+
+L	U	+	Y	+
+L	Z	+	V	+
+L	CB	+	EB	+
+L	CB	+	FB	+
+L	EB	+	DB	+
+L	FB	+	DB	+
+L	Y	+	CB	+
+L	DB	+	Z	+
+L	GB	+	IB	+
+L	GB	+	JB	+
+L	IB	+	HB	+
+L	JB	+	HB	+
+L	CB	+	GB	+
+L	HB	+	DB	+
+L	KB	+	MB	+
+L	KB	+	NB	+
+L	MB	+	LB	+
+L	NB	+	LB	+
+L	GB	+	KB	+
+L	LB	+	HB	+
+L	OB	+	QB	+
+L	OB	+	RB	+
+L	QB	+	PB	+
+L	RB	+	PB	+
+L	KB	+	OB	+
+L	PB	+	LB	+
+L	SB	+	UB	+
+L	SB	+	VB	+
+L	UB	+	TB	+
+L	VB	+	TB	+
+L	OB	+	SB	+
+L	TB	+	PB	+
+L	WB	+	YB	+
+L	WB	+	ZB	+
+L	YB	+	XB	+
+L	ZB	+	XB	+
+L	SB	+	WB	+
+L	XB	+	TB	+
+L	AC	+	CC	+
+L	AC	+	DC	+
+L	CC	+	BC	+
+L	DC	+	BC	+
+L	WB	+	AC	+
+L	BC	+	XB	+
+L	EC	+	GC	+
+L	EC	+	HC	+
+L	GC	+	FC	+
+L	HC	+	FC	+
+L	AC	+	EC	+
+L	FC	+	BC	+
+L	IC	+	KC	+
+L	IC	+	LC	+
+L	KC	+	JC	+
+L	LC	+	JC	+
+L	EC	+	IC	+
+L	JC	+	FC	+
+L	MC	+	OC	+
+L	MC	+	PC	+
+L	OC	+	NC	+
+L	PC	+	NC	+
+L	IC	+	MC	+
+L	NC	+	JC	+
+L	QC	+	SC	+
+L	QC	+	TC	+
+L	SC	+	RC	+
+L	TC	+	RC	+
+L	MC	+	QC	+
+L	RC	+	NC	+
+L	UC	+	WC	+
+L	UC	+	XC	+
+L	WC	+	VC	+
+L	XC	+	VC	+
+L	QC	+	UC	+
+L	VC	+	RC	+
+L	YC	+	AD	+
+L	YC	+	BD	+
+L	AD	+	ZC	+
+L	BD	+	ZC	+
+L	UC	+	YC	+
+L	ZC	+	VC	+
+L	CD	+	ED	+
+L	CD	+	FD	+
+L	ED	+	DD	+
+L	FD	+	DD	+
+L	YC	+	CD	+
+L	DD	+	ZC	+
+L	GD	+	ID	+
+L	GD	+	JD	+
+L	ID	+	HD	+
+L	JD	+	HD	+
+L	CD	+	GD	+
+L	HD	+	DD	+
+L	KD	+	MD	+
+L	KD	+	ND	+
+L	MD	+	LD	+
+L	ND	+	LD	+
+L	GD	+	KD	+
+L	LD	+	HD	+
+L	OD	+	QD	+
+L	OD	+	RD	+
+L	QD	+	PD	+
+L	RD	+	PD	+
+L	KD	+	OD	+
+L	PD	+	LD	+
+L	SD	+	UD	+
+L	SD	+	VD	+
+L	UD	+	TD	+
+L	VD	+	TD	+
+L	OD	+	SD	+
+L	TD	+	PD	+
+L	WD	+	YD	+
+L	WD	+	ZD	+
+L	YD	+	XD	+
+L	ZD	+	XD	+
+L	SD	+	WD	+
+L	XD	+	TD	+
+L	AE	+	CE	+
+L	AE	+	DE	+
+L	CE	+	BE	+
+L	DE	+	BE	+
+L	WD	+	AE	+
+L	BE	+	XD	+
+L	EE	+	GE	+
+L	EE	+	HE	+
+L	GE	+	FE	+
+L	HE	+	FE	+
+L	AE	+	EE	+
+L	FE	+	BE	+
+L	IE	+	KE	+
+L	IE	+	LE	+
+L	KE	+	JE	+
+L	LE	+	JE	+
+L	EE	+	IE	+
+L	JE	+	FE	+
+L	ME	+	OE	+
+L	ME	+	PE	+
+L	OE	+	NE	+
+L	PE	+	NE	+
+L	IE	+	ME	+
+L	NE	+	JE	+
+L	QE	+	SE	+
+L	QE	+	TE	+
+L	SE	+	RE	+
+L	TE	+	RE	+
+L	ME	+	QE	+
+L	RE	+	NE	+
+L	UE	+	WE	+
+L	UE	+	XE	+
+L	WE	+	VE	+
+L	XE	+	VE	+
+L	QE	+	UE	+
+L	VE	+	RE	+
+L	YE	+	AF	+
+L	YE	+	BF	+
+L	AF	+	ZE	+
+L	BF	+	ZE	+
+L	UE	+	YE	+
+L	ZE	+	VE	+
+L	CF	+	EF	+
+L	CF	+	FF	+
+L	EF	+	DF	+
+L	FF	+	DF	+
+L	YE	+	CF	+
+L	DF	+	ZE	+
+L	GF	+	IF	+
+L	GF	+	JF	+
+L	IF	+	HF	+
+L	JF	+	HF	+
+L	CF	+	GF	+
+L	HF	+	DF	+
+L	KF	+	MF	+
+L	KF	+	NF	+
+L	MF	+	LF	+
+L	NF	+	LF	+
+L	GF	+	KF	+
+L	LF	+	HF	+
+L	OF	+	QF	+
+L	OF	+	RF	+
+L	QF	+	PF	+
+L	RF	+	PF	+
+L	KF	+	OF	+
+L	PF	+	LF	+
+L	SF	+	UF	+
+L	SF	+	VF	+
+L	UF	+	TF	+
+L	VF	+	TF	+
+L	OF	+	SF	+
+L	TF	+	PF	+
+L	WF	+	YF	+
+L	WF	+	ZF	+
+L	YF	+	XF	+
+L	ZF	+	XF	+
+L	SF	+	WF	+
+L	XF	+	TF	+
+L	AG	+	CG	+
+L	AG	+	DG	+
+L	CG	+	BG	+
+L	DG	+	BG	+
+L	WF	+	AG	+
+L	BG	+	XF	+
+L	EG	+	GG	+
+L	EG	+	HG	+
+L	GG	+	FG	+
+L	HG	+	FG	+
+L	AG	+	EG	+
+L	FG	+	BG	+
+L	IG	+	KG	+
+L	IG	+	LG	+
+L	KG	+	JG	+
+L	LG	+	JG	+
+L	EG	+	IG	+
+L	JG	+	FG	+
+L	MG	+	OG	+
+L	MG	+	PG	+
+L	OG	+	NG	+
+L	PG	+	NG	+
+L	IG	+	MG	+
+L	NG	+	JG	+
+L	QG	+	SG	+
+L	QG	+	TG	+
+L	SG	+	RG	+
+L	TG	+	RG	+
+L	MG	+	QG	+
+L	RG	+	NG	+
+L	UG	+	WG	+
+L	UG	+	XG	+
+L	WG	+	VG	+
+L	XG	+	VG	+
+L	QG	+	UG	+
+L	VG	+	RG	+
+L	YG	+	AH	+
+L	YG	+	BH	+
+L	AH	+	ZG	+
+L	BH	+	ZG	+
+L	UG	+	YG	+
+L	ZG	+	VG	+
+L	CH	+	EH	+
+L	CH	+	FH	+
+L	EH	+	DH	+
+L	FH	+	DH	+
+L	YG	+	CH	+
+L	DH	+	ZG	+
+L	GH	+	IH	+
+L	GH	+	JH	+
+L	IH	+	HH	+
+L	JH	+	HH	+
+L	CH	+	GH	+
+L	HH	+	DH	+
+L	KH	+	MH	+
+L	KH	+	NH	+
+L	MH	+	LH	+
+L	NH	+	LH	+
+L	GH	+	KH	+
+L	LH	+	HH	+
+L	OH	+	QH	+
+L	OH	+	RH	+
+L	QH	+	PH	+
+L	RH	+	PH	+
+L	KH	+	OH	+
+L	PH	+	LH	+
+L	SH	+	UH	+
+L	SH	+	VH	+
+L	UH	+	TH	+
+L	VH	+	TH	+
+L	OH	+	SH	+
+L	TH	+	PH	+
+L	WH	+	YH	+
+L	WH	+	ZH	+
+L	YH	+	XH	+
+L	ZH	+	XH	+
+L	SH	+	WH	+
+L	XH	+	TH	+
+L	AI	+	CI	+
+L	AI	+	DI	+
+L	CI	+	BI	+
+L	DI	+	BI	+
+L	WH	+	AI	+
+L	BI	+	XH	+
+L	EI	+	GI	+
+L	EI	+	HI	+
+L	GI	+	FI	+
+L	HI	+	FI	+
+L	AI	+	EI	+
+L	FI	+	BI	+
+L	II	+	KI	+
+L	II	+	LI	+
+L	KI	+	JI	+
+L	LI	+	JI	+
+L	EI	+	II	+
+L	JI	+	FI	+
+L	MI	+	OI	+
+L	MI	+	PI	+
+L	OI	+	NI	+
+L	PI	+	NI	+
+L	II	+	MI	+
+L	NI	+	JI	+
+L	QI	+	SI	+
+L	QI	+	TI	+
+L	SI	+	RI	+
+L	TI	+	RI	+
+L	MI	+	QI	+
+L	RI	+	NI	+
+L	UI	+	WI	+
+L	UI	+	XI	+
+L	WI	+	VI	+
+L	XI	+	VI	+
+L	QI	+	UI	+
+L	VI	+	RI	+
+L	YI	+	AJ	+
+L	YI	+	BJ	+
+L	AJ	+	ZI	+
+L	BJ	+	ZI	+
+L	UI	+	YI	+
+L	ZI	+	VI	+
+L	CJ	+	EJ	+
+L	CJ	+	FJ	+
+L	EJ	+	DJ	+
+L	FJ	+	DJ	+
+L	YI	+	CJ	+
+L	DJ	+	ZI	+
+L	GJ	+	IJ	+
+L	GJ	+	JJ	+
+L	IJ	+	HJ	+
+L	JJ	+	HJ	+
+L	CJ	+	GJ	+
+L	HJ	+	DJ	+
+L	KJ	+	MJ	+
+L	KJ	+	NJ	+
+L	MJ	+	LJ	+
+L	NJ	+	LJ	+
+L	GJ	+	KJ	+
+L	LJ	+	HJ	+
+L	OJ	+	QJ	+
+L	OJ	+	RJ	+
+L	QJ	+	PJ	+
+L	RJ	+	PJ	+
+L	KJ	+	OJ	+
+L	PJ	+	LJ	+
+L	SJ	+	UJ	+
+L	SJ	+	VJ	+
+L	UJ	+	TJ	+
+L	VJ	+	TJ	+
+L	OJ	+	SJ	+
+L	TJ	+	PJ	+
+L	WJ	+	YJ	+
+L	WJ	+	ZJ	+
+L	YJ	+	XJ	+
+L	ZJ	+	XJ	+
+L	SJ	+	WJ	+
+L	XJ	+	TJ	+
+L	AK	+	CK	+
+L	AK	+	DK	+
+L	CK	+	BK	+
+L	DK	+	BK	+
+L	WJ	+	AK	+
+L	BK	+	XJ	+
+L	EK	+	GK	+
+L	EK	+	HK	+
+L	GK	+	FK	+
+L	HK	+	FK	+
+L	AK	+	EK	+
+L	FK	+	BK	+
+L	IK	+	KK	+
+L	IK	+	LK	+
+L	KK	+	JK	+
+L	LK	+	JK	+
+L	EK	+	IK	+
+L	JK	+	FK	+
+L	MK	+	OK	+
+L	MK	+	PK	+
+L	OK	+	NK	+
+L	PK	+	NK	+
+L	IK	+	MK	+
+L	NK	+	JK	+
+L	QK	+	SK	+
+L	QK	+	TK	+
+L	SK	+	RK	+
+L	TK	+	RK	+
+L	MK	+	QK	+
+L	RK	+	NK	+
+L	UK	+	WK	+
+L	UK	+	XK	+
+L	WK	+	VK	+
+L	XK	+	VK	+
+L	QK	+	UK	+
+L	VK	+	RK	+
+L	YK	+	AL	+
+L	YK	+	BL	+
+L	AL	+	ZK	+
+L	BL	+	ZK	+
+L	UK	+	YK	+
+L	ZK	+	VK	+
+L	CL	+	EL	+
+L	CL	+	FL	+
+L	EL	+	DL	+
+L	FL	+	DL	+
+L	YK	+	CL	+
+L	DL	+	ZK	+
+L	GL	+	IL	+
+L	GL	+	JL	+
+L	IL	+	HL	+
+L	JL	+	HL	+
+L	CL	+	GL	+
+L	HL	+	DL	+
+L	KL	+	ML	+
+L	KL	+	NL	+
+L	ML	+	LL	+
+L	NL	+	LL	+
+L	GL	+	KL	+
+L	LL	+	HL	+
+L	OL	+	QL	+
+L	OL	+	RL	+
+L	QL	+	PL	+
+L	RL	+	PL	+
+L	KL	+	OL	+
+L	PL	+	LL	+
+L	SL	+	UL	+
+L	SL	+	VL	+
+L	UL	+	TL	+
+L	VL	+	TL	+
+L	OL	+	SL	+
+L	TL	+	PL	+
+L	WL	+	YL	+
+L	WL	+	ZL	+
+L	YL	+	XL	+
+L	ZL	+	XL	+
+L	SL	+	WL	+
+L	XL	+	TL	+
+L	AM	+	CM	+
+L	AM	+	DM	+
+L	CM	+	BM	+
+L	DM	+	BM	+
+L	WL	+	AM	+
+L	BM	+	XL	+
+L	EM	+	GM	+
+L	EM	+	HM	+
+L	GM	+	FM	+
+L	HM	+	FM	+
+L	AM	+	EM	+
+L	FM	+	BM	+
+L	IM	+	KM	+
+L	IM	+	LM	+
+L	KM	+	JM	+
+L	LM	+	JM	+
+L	EM	+	IM	+
+L	JM	+	FM	+
+L	MM	+	OM	+
+L	MM	+	PM	+
+L	OM	+	NM	+
+L	PM	+	NM	+
+L	IM	+	MM	+
+L	NM	+	JM	+
+L	QM	+	SM	+
+L	QM	+	TM	+
+L	SM	+	RM	+
+L	TM	+	RM	+
+L	MM	+	QM	+
+L	RM	+	NM	+
+L	UM	+	WM	+
+L	UM	+	XM	+
+L	WM	+	VM	+
+L	XM	+	VM	+
+L	QM	+	UM	+
+L	VM	+	RM	+
+L	YM	+	AN	+
+L	YM	+	BN	+
+L	AN	+	ZM	+
+L	BN	+	ZM	+
+L	UM	+	YM	+
+L	ZM	+	VM	+
+L	CN	+	EN	+
+L	CN	+	FN	+
+L	EN	+	DN	+
+L	FN	+	DN	+
+L	YM	+	CN	+
+L	DN	+	ZM	+
+L	GN	+	IN	+
+L	GN	+	JN	+
+L	IN	+	HN	+
+L	JN	+	HN	+
+L	CN	+	GN	+
+L	HN	+	DN	+
+L	KN	+	MN	+
+L	KN	+	NN	+
+L	MN	+	LN	+
+L	NN	+	LN	+
+L	GN	+	KN	+
+L	LN	+	HN	+
+L	ON	+	QN	+
+L	ON	+	RN	+
+L	QN	+	PN	+
+L	RN	+	PN	+
+L	KN	+	ON	+
+L	PN	+	LN	+
+L	SN	+	UN	+
+L	SN	+	VN	+
+L	UN	+	TN	+
+L	VN	+	TN	+
+L	ON	+	SN	+
+L	TN	+	PN	+
+L	WN	+	YN	+
+L	WN	+	ZN	+
+L	YN	+	XN	+
+L	ZN	+	XN	+
+L	SN	+	WN	+
+L	XN	+	TN	+
+L	AO	+	CO	+
+L	AO	+	DO	+
+L	CO	+	BO	+
+L	DO	+	BO	+
+L	WN	+	AO	+
+L	BO	+	XN	+
+L	EO	+	GO	+
+L	EO	+	HO	+
+L	GO	+	FO	+
+L	HO	+	FO	+
+L	AO	+	EO	+
+L	FO	+	BO	+
+L	IO	+	KO	+
+L	IO	+	LO	+
+L	KO	+	JO	+
+L	LO	+	JO	+
+L	EO	+	IO	+
+L	JO	+	FO	+
+L	MO	+	OO	+
+L	MO	+	PO	+
+L	OO	+	NO	+
+L	PO	+	NO	+
+L	IO	+	MO	+
+L	NO	+	JO	+
+L	QO	+	SO	+
+L	QO	+	TO	+
+L	SO	+	RO	+
+L	TO	+	RO	+
+L	MO	+	QO	+
+L	RO	+	NO	+
+L	UO	+	WO	+
+L	UO	+	XO	+
+L	WO	+	VO	+
+L	XO	+	VO	+
+L	QO	+	UO	+
+L	VO	+	RO	+
+L	YO	+	AP	+
+L	YO	+	BP	+
+L	AP	+	ZO	+
+L	BP	+	ZO	+
+L	UO	+	YO	+
+L	ZO	+	VO	+
+L	CP	+	EP	+
+L	CP	+	FP	+
+L	EP	+	DP	+
+L	FP	+	DP	+
+L	YO	+	CP	+
+L	DP	+	ZO	+
+L	GP	+	IP	+
+L	GP	+	JP	+
+L	IP	+	HP	+
+L	JP	+	HP	+
+L	CP	+	GP	+
+L	HP	+	DP	+
+L	KP	+	MP	+
+L	KP	+	NP	+
+L	MP	+	LP	+
+L	NP	+	LP	+
+L	GP	+	KP	+
+L	LP	+	HP	+
+L	OP	+	QP	+
+L	OP	+	RP	+
+L	QP	+	PP	+
+L	RP	+	PP	+
+L	KP	+	OP	+
+L	PP	+	LP	+
+L	SP	+	UP	+
+L	SP	+	VP	+
+L	UP	+	TP	+
+L	VP	+	TP	+
+L	OP	+	SP	+
+L	TP	+	PP	+
+L	WP	+	YP	+
+L	WP	+	ZP	+
+L	YP	+	XP	+
+L	ZP	+	XP	+
+L	SP	+	WP	+
+L	XP	+	TP	+
+L	AQ	+	CQ	+
+L	AQ	+	DQ	+
+L	CQ	+	BQ	+
+L	DQ	+	BQ	+
+L	WP	+	AQ	+
+L	BQ	+	XP	+
+L	EQ	+	GQ	+
+L	EQ	+	HQ	+
+L	GQ	+	FQ	+
+L	HQ	+	FQ	+
+L	AQ	+	EQ	+
+L	FQ	+	BQ	+
+L	IQ	+	KQ	+
+L	IQ	+	LQ	+
+L	KQ	+	JQ	+
+L	LQ	+	JQ	+
+L	EQ	+	IQ	+
+L	JQ	+	FQ	+
+L	MQ	+	OQ	+
+L	MQ	+	PQ	+
+L	OQ	+	NQ	+
+L	PQ	+	NQ	+
+L	IQ	+	MQ	+
+L	NQ	+	JQ	+
+L	QQ	+	SQ	+
+L	QQ	+	TQ	+
+L	SQ	+	RQ	+
+L	TQ	+	RQ	+
+L	MQ	+	QQ	+
+L	RQ	+	NQ	+
+L	UQ	+	WQ	+
+L	UQ	+	XQ	+
+L	WQ	+	VQ	+
+L	XQ	+	VQ	+
+L	QQ	+	UQ	+
+L	VQ	+	RQ	+
+L	YQ	+	AR	+
+L	YQ	+	BR	+
+L	AR	+	ZQ	+
+L	BR	+	ZQ	+
+L	UQ	+	YQ	+
+L	ZQ	+	VQ	+
+L	CR	+	ER	+
+L	CR	+	FR	+
+L	ER	+	DR	+
+L	FR	+	DR	+
+L	YQ	+	CR	+
+L	DR	+	ZQ	+
+L	GR	+	IR	+
+L	GR	+	JR	+
+L	IR	+	HR	+
+L	JR	+	HR	+
+L	CR	+	GR	+
+L	HR	+	DR	+
+L	KR	+	MR	+
+L	KR	+	NR	+
+L	MR	+	LR	+
+L	NR	+	LR	+
+L	GR	+	KR	+
+L	LR	+	HR	+
+L	OR	+	QR	+
+L	OR	+	RR	+
+L	QR	+	PR	+
+L	RR	+	PR	+
+L	KR	+	OR	+
+L	PR	+	LR	+
+L	SR	+	UR	+
+L	SR	+	VR	+
+L	UR	+	TR	+
+L	VR	+	TR	+
+L	OR	+	SR	+
+L	TR	+	PR	+
+L	WR	+	YR	+
+L	WR	+	ZR	+
+L	YR	+	XR	+
+L	ZR	+	XR	+
+L	SR	+	WR	+
+L	XR	+	TR	+
+L	AS	+	CS	+
+L	AS	+	DS	+
+L	CS	+	BS	+
+L	DS	+	BS	+
+L	WR	+	AS	+
+L	BS	+	XR	+
+L	ES	+	GS	+
+L	ES	+	HS	+
+L	GS	+	FS	+
+L	HS	+	FS	+
+L	AS	+	ES	+
+L	FS	+	BS	+
+L	IS	+	KS	+
+L	IS	+	LS	+
+L	KS	+	JS	+
+L	LS	+	JS	+
+L	ES	+	IS	+
+L	JS	+	FS	+
+L	MS	+	OS	+
+L	MS	+	PS	+
+L	OS	+	NS	+
+L	PS	+	NS	+
+L	IS	+	MS	+
+L	NS	+	JS	+
+L	QS	+	SS	+
+L	QS	+	TS	+
+L	SS	+	RS	+
+L	TS	+	RS	+
+L	MS	+	QS	+
+L	RS	+	NS	+
+L	US	+	WS	+
+L	US	+	XS	+
+L	WS	+	VS	+
+L	XS	+	VS	+
+L	QS	+	US	+
+L	VS	+	RS	+
+L	YS	+	AT	+
+L	YS	+	BT	+
+L	AT	+	ZS	+
+L	BT	+	ZS	+
+L	US	+	YS	+
+L	ZS	+	VS	+
+L	CT	+	ET	+
+L	CT	+	FT	+
+L	ET	+	DT	+
+L	FT	+	DT	+
+L	YS	+	CT	+
+L	DT	+	ZS	+
+L	GT	+	IT	+
+L	GT	+	JT	+
+L	IT	+	HT	+
+L	JT	+	HT	+
+L	CT	+	GT	+
+L	HT	+	DT	+
+L	KT	+	MT	+
+L	KT	+	NT	+
+L	MT	+	LT	+
+L	NT	+	LT	+
+L	GT	+	KT	+
+L	LT	+	HT	+
+L	OT	+	QT	+
+L	OT	+	RT	+
+L	QT	+	PT	+
+L	RT	+	PT	+
+L	KT	+	OT	+
+L	PT	+	LT	+
+L	ST	+	UT	+
+L	ST	+	VT	+
+L	UT	+	TT	+
+L	VT	+	TT	+
+L	OT	+	ST	+
+L	TT	+	PT	+
+L	WT	+	YT	+
+L	WT	+	ZT	+
+L	YT	+	XT	+
+L	ZT	+	XT	+
+L	ST	+	WT	+
+L	XT	+	TT	+
+L	AU	+	CU	+
+L	AU	+	DU	+
+L	CU	+	BU	+
+L	DU	+	BU	+
+L	WT	+	AU	+
+L	BU	+	XT	+
+L	EU	+	GU	+
+L	EU	+	HU	+
+L	GU	+	FU	+
+L	HU	+	FU	+
+L	AU	+	EU	+
+L	FU	+	BU	+
+L	IU	+	KU	+
+L	IU	+	LU	+
+L	KU	+	JU	+
+L	LU	+	JU	+
+L	EU	+	IU	+
+L	JU	+	FU	+
+L	MU	+	OU	+
+L	MU	+	PU	+
+L	OU	+	NU	+
+L	PU	+	NU	+
+L	IU	+	MU	+
+L	NU	+	JU	+
+L	QU	+	SU	+
+L	QU	+	TU	+
+L	SU	+	RU	+
+L	TU	+	RU	+
+L	MU	+	QU	+
+L	RU	+	NU	+
+L	UU	+	WU	+
+L	UU	+	XU	+
+L	WU	+	VU	+
+L	XU	+	VU	+
+L	QU	+	UU	+
+L	VU	+	RU	+
+L	YU	+	AV	+
+L	YU	+	BV	+
+L	AV	+	ZU	+
+L	BV	+	ZU	+
+L	UU	+	YU	+
+L	ZU	+	VU	+
+L	CV	+	EV	+
+L	CV	+	FV	+
+L	EV	+	DV	+
+L	FV	+	DV	+
+L	YU	+	CV	+
+L	DV	+	ZU	+
+L	GV	+	IV	+
+L	GV	+	JV	+
+L	IV	+	HV	+
+L	JV	+	HV	+
+L	CV	+	GV	+
+L	HV	+	DV	+
+L	KV	+	MV	+
+L	KV	+	NV	+
+L	MV	+	LV	+
+L	NV	+	LV	+
+L	GV	+	KV	+
+L	LV	+	HV	+
+L	OV	+	QV	+
+L	OV	+	RV	+
+L	QV	+	PV	+
+L	RV	+	PV	+
+L	KV	+	OV	+
+L	PV	+	LV	+
+L	SV	+	UV	+
+L	SV	+	VV	+
+L	UV	+	TV	+
+L	VV	+	TV	+
+L	OV	+	SV	+
+L	TV	+	PV	+
+L	WV	+	YV	+
+L	WV	+	ZV	+
+L	YV	+	XV	+
+L	ZV	+	XV	+
+L	SV	+	WV	+
+L	XV	+	TV	+
+L	AW	+	CW	+
+L	AW	+	DW	+
+L	CW	+	BW	+
+L	DW	+	BW	+
+L	WV	+	AW	+
+L	BW	+	XV	+
+L	EW	+	GW	+
+L	EW	+	HW	+
+L	GW	+	FW	+
+L	HW	+	FW	+
+L	AW	+	EW	+
+L	FW	+	BW	+
+L	IW	+	KW	+
+L	IW	+	LW	+
+L	KW	+	JW	+
+L	LW	+	JW	+
+L	EW	+	IW	+
+L	JW	+	FW	+
+L	MW	+	OW	+
+L	MW	+	PW	+
+L	OW	+	NW	+
+L	PW	+	NW	+
+L	IW	+	MW	+
+L	NW	+	JW	+
+L	QW	+	SW	+
+L	QW	+	TW	+
+L	SW	+	RW	+
+L	TW	+	RW	+
+L	MW	+	QW	+
+L	RW	+	NW	+
+L	UW	+	WW	+
+L	UW	+	XW	+
+L	WW	+	VW	+
+L	XW	+	VW	+
+L	QW	+	UW	+
+L	VW	+	RW	+
+L	YW	+	AX	+
+L	YW	+	BX	+
+L	AX	+	ZW	+
+L	BX	+	ZW	+
+L	UW	+	YW	+
+L	ZW	+	VW	+
+L	CX	+	EX	+
+L	CX	+	FX	+
+L	EX	+	DX	+
+L	FX	+	DX	+
+L	YW	+	CX	+
+L	DX	+	ZW	+
+L	GX	+	IX	+
+L	GX	+	JX	+
+L	IX	+	HX	+
+L	JX	+	HX	+
+L	CX	+	GX	+
+L	HX	+	DX	+
+L	KX	+	MX	+
+L	KX	+	NX	+
+L	MX	+	LX	+
+L	NX	+	LX	+
+L	GX	+	KX	+
+L	LX	+	HX	+
+L	OX	+	QX	+
+L	OX	+	RX	+
+L	QX	+	PX	+
+L	RX	+	PX	+
+L	KX	+	OX	+
+L	PX	+	LX	+
+L	SX	+	UX	+
+L	SX	+	VX	+
+L	UX	+	TX	+
+L	VX	+	TX	+
+L	OX	+	SX	+
+L	TX	+	PX	+
+L	WX	+	YX	+
+L	WX	+	ZX	+
+L	YX	+	XX	+
+L	ZX	+	XX	+
+L	SX	+	WX	+
+L	XX	+	TX	+
+L	AY	+	CY	+
+L	AY	+	DY	+
+L	CY	+	BY	+
+L	DY	+	BY	+
+L	WX	+	AY	+
+L	BY	+	XX	+
+L	EY	+	GY	+
+L	EY	+	HY	+
+L	GY	+	FY	+
+L	HY	+	FY	+
+L	AY	+	EY	+
+L	FY	+	BY	+
+L	IY	+	KY	+
+L	IY	+	LY	+
+L	KY	+	JY	+
+L	LY	+	JY	+
+L	EY	+	IY	+
+L	JY	+	FY	+
+L	MY	+	OY	+
+L	MY	+	PY	+
+L	OY	+	NY	+
+L	PY	+	NY	+
+L	IY	+	MY	+
+L	NY	+	JY	+
+L	QY	+	SY	+
+L	QY	+	TY	+
+L	SY	+	RY	+
+L	TY	+	RY	+
+L	MY	+	QY	+
+L	RY	+	NY	+
+L	UY	+	WY	+
+L	UY	+	XY	+
+L	WY	+	VY	+
+L	XY	+	VY	+
+L	QY	+	UY	+
+L	VY	+	RY	+
+L	YY	+	AZ	+
+L	YY	+	BZ	+
+L	AZ	+	ZY	+
+L	BZ	+	ZY	+
+L	UY	+	YY	+
+L	ZY	+	VY	+
+L	CZ	+	EZ	+
+L	CZ	+	FZ	+
+L	EZ	+	DZ	+
+L	FZ	+	DZ	+
+L	YY	+	CZ	+
+L	DZ	+	ZY	+
+L	GZ	+	IZ	+
+L	GZ	+	JZ	+
+L	IZ	+	HZ	+
+L	JZ	+	HZ	+
+L	CZ	+	GZ	+
+L	HZ	+	DZ	+
+L	KZ	+	MZ	+
+L	KZ	+	NZ	+
+L	MZ	+	LZ	+
+L	NZ	+	LZ	+
+L	GZ	+	KZ	+
+L	LZ	+	HZ	+
+L	OZ	+	QZ	+
+L	OZ	+	RZ	+
+L	QZ	+	PZ	+
+L	RZ	+	PZ	+
+L	KZ	+	OZ	+
+L	PZ	+	LZ	+
+L	SZ	+	UZ	+
+L	SZ	+	VZ	+
+L	UZ	+	TZ	+
+L	VZ	+	TZ	+
+L	OZ	+	SZ	+
+L	TZ	+	PZ	+
+L	WZ	+	YZ	+
+L	WZ	+	ZZ	+
+L	YZ	+	XZ	+
+L	ZZ	+	XZ	+
+L	SZ	+	WZ	+
+L	XZ	+	TZ	+
+L	AAB	+	CAB	+
+L	AAB	+	DAB	+
+L	CAB	+	BAB	+
+L	DAB	+	BAB	+
+L	WZ	+	AAB	+
+L	BAB	+	XZ	+
+L	EAB	+	GAB	+
+L	EAB	+	HAB	+
+L	GAB	+	FAB	+
+L	HAB	+	FAB	+
+L	AAB	+	EAB	+
+L	FAB	+	BAB	+
+L	IAB	+	KAB	+
+L	IAB	+	LAB	+
+L	KAB	+	JAB	+
+L	LAB	+	JAB	+
+L	EAB	+	IAB	+
+L	JAB	+	FAB	+
+L	MAB	+	OAB	+
+L	MAB	+	PAB	+
+L	OAB	+	NAB	+
+L	PAB	+	NAB	+
+L	IAB	+	MAB	+
+L	NAB	+	JAB	+
+L	QAB	+	SAB	+
+L	QAB	+	TAB	+
+L	SAB	+	RAB	+
+L	TAB	+	RAB	+
+L	MAB	+	QAB	+
+L	RAB	+	NAB	+
+L	UAB	+	WAB	+
+L	UAB	+	XAB	+
+L	WAB	+	VAB	+
+L	XAB	+	VAB	+
+L	QAB	+	UAB	+
+L	VAB	+	RAB	+
+L	YAB	+	ABB	+
+L	YAB	+	BBB	+
+L	ABB	+	ZAB	+
+L	BBB	+	ZAB	+
+L	UAB	+	YAB	+
+L	ZAB	+	VAB	+
+L	CBB	+	EBB	+
+L	CBB	+	FBB	+
+L	EBB	+	DBB	+
+L	FBB	+	DBB	+
+L	YAB	+	CBB	+
+L	DBB	+	ZAB	+
+L	GBB	+	IBB	+
+L	GBB	+	JBB	+
+L	IBB	+	HBB	+
+L	JBB	+	HBB	+
+L	CBB	+	GBB	+
+L	HBB	+	DBB	+
+L	KBB	+	MBB	+
+L	KBB	+	NBB	+
+L	MBB	+	LBB	+
+L	NBB	+	LBB	+
+L	GBB	+	KBB	+
+L	LBB	+	HBB	+
+L	OBB	+	QBB	+
+L	OBB	+	RBB	+
+L	QBB	+	PBB	+
+L	RBB	+	PBB	+
+L	KBB	+	OBB	+
+L	PBB	+	LBB	+
+L	SBB	+	UBB	+
+L	SBB	+	VBB	+
+L	UBB	+	TBB	+
+L	VBB	+	TBB	+
+L	OBB	+	SBB	+
+L	TBB	+	PBB	+
+L	WBB	+	YBB	+
+L	WBB	+	ZBB	+
+L	YBB	+	XBB	+
+L	ZBB	+	XBB	+
+L	SBB	+	WBB	+
+L	XBB	+	TBB	+
+L	ACB	+	CCB	+
+L	ACB	+	DCB	+
+L	CCB	+	BCB	+
+L	DCB	+	BCB	+
+L	WBB	+	ACB	+
+L	BCB	+	XBB	+
+L	ECB	+	GCB	+
+L	ECB	+	HCB	+
+L	GCB	+	FCB	+
+L	HCB	+	FCB	+
+L	ACB	+	ECB	+
+L	FCB	+	BCB	+
+L	ICB	+	KCB	+
+L	ICB	+	LCB	+
+L	KCB	+	JCB	+
+L	LCB	+	JCB	+
+L	ECB	+	ICB	+
+L	JCB	+	FCB	+
+L	MCB	+	OCB	+
+L	MCB	+	PCB	+
+L	OCB	+	NCB	+
+L	PCB	+	NCB	+
+L	ICB	+	MCB	+
+L	NCB	+	JCB	+
+L	QCB	+	SCB	+
+L	QCB	+	TCB	+
+L	SCB	+	RCB	+
+L	TCB	+	RCB	+
+L	MCB	+	QCB	+
+L	RCB	+	NCB	+
+L	UCB	+	WCB	+
+L	UCB	+	XCB	+
+L	WCB	+	VCB	+
+L	XCB	+	VCB	+
+L	QCB	+	UCB	+
+L	VCB	+	RCB	+
+L	YCB	+	ADB	+
+L	YCB	+	BDB	+
+L	ADB	+	ZCB	+
+L	BDB	+	ZCB	+
+L	UCB	+	YCB	+
+L	ZCB	+	VCB	+
+L	CDB	+	EDB	+
+L	CDB	+	FDB	+
+L	EDB	+	DDB	+
+L	FDB	+	DDB	+
+L	YCB	+	CDB	+
+L	DDB	+	ZCB	+
+L	GDB	+	IDB	+
+L	GDB	+	JDB	+
+L	IDB	+	HDB	+
+L	JDB	+	HDB	+
+L	CDB	+	GDB	+
+L	HDB	+	DDB	+
+L	KDB	+	MDB	+
+L	KDB	+	NDB	+
+L	MDB	+	LDB	+
+L	NDB	+	LDB	+
+L	GDB	+	KDB	+
+L	LDB	+	HDB	+
+L	ODB	+	QDB	+
+L	ODB	+	RDB	+
+L	QDB	+	PDB	+
+L	RDB	+	PDB	+
+L	KDB	+	ODB	+
+L	PDB	+	LDB	+
+L	SDB	+	UDB	+
+L	SDB	+	VDB	+
+L	UDB	+	TDB	+
+L	VDB	+	TDB	+
+L	ODB	+	SDB	+
+L	TDB	+	PDB	+
+L	WDB	+	YDB	+
+L	WDB	+	ZDB	+
+L	YDB	+	XDB	+
+L	ZDB	+	XDB	+
+L	SDB	+	WDB	+
+L	XDB	+	TDB	+
+L	AEB	+	CEB	+
+L	AEB	+	DEB	+
+L	CEB	+	BEB	+
+L	DEB	+	BEB	+
+L	WDB	+	AEB	+
+L	BEB	+	XDB	+
+L	EEB	+	GEB	+
+L	EEB	+	HEB	+
+L	GEB	+	FEB	+
+L	HEB	+	FEB	+
+L	AEB	+	EEB	+
+L	FEB	+	BEB	+
+L	IEB	+	KEB	+
+L	IEB	+	LEB	+
+L	KEB	+	JEB	+
+L	LEB	+	JEB	+
+L	EEB	+	IEB	+
+L	JEB	+	FEB	+
+L	MEB	+	OEB	+
+L	MEB	+	PEB	+
+L	OEB	+	NEB	+
+L	PEB	+	NEB	+
+L	IEB	+	MEB	+
+L	NEB	+	JEB	+
+L	QEB	+	SEB	+
+L	QEB	+	TEB	+
+L	SEB	+	REB	+
+L	TEB	+	REB	+
+L	MEB	+	QEB	+
+L	REB	+	NEB	+
+L	UEB	+	WEB	+
+L	UEB	+	XEB	+
+L	WEB	+	VEB	+
+L	XEB	+	VEB	+
+L	QEB	+	UEB	+
+L	VEB	+	REB	+
+L	YEB	+	AFB	+
+L	YEB	+	BFB	+
+L	AFB	+	ZEB	+
+L	BFB	+	ZEB	+
+L	UEB	+	YEB	+
+L	ZEB	+	VEB	+
+L	CFB	+	EFB	+
+L	CFB	+	FFB	+
+L	EFB	+	DFB	+
+L	FFB	+	DFB	+
+L	YEB	+	CFB	+
+L	DFB	+	ZEB	+
+L	GFB	+	IFB	+
+L	GFB	+	JFB	+
+L	IFB	+	HFB	+
+L	JFB	+	HFB	+
+L	CFB	+	GFB	+
+L	HFB	+	DFB	+
+L	KFB	+	MFB	+
+L	KFB	+	NFB	+
+L	MFB	+	LFB	+
+L	NFB	+	LFB	+
+L	GFB	+	KFB	+
+L	LFB	+	HFB	+
+L	OFB	+	QFB	+
+L	OFB	+	RFB	+
+L	QFB	+	PFB	+
+L	RFB	+	PFB	+
+L	KFB	+	OFB	+
+L	PFB	+	LFB	+
+L	SFB	+	UFB	+
+L	SFB	+	VFB	+
+L	UFB	+	TFB	+
+L	VFB	+	TFB	+
+L	OFB	+	SFB	+
+L	TFB	+	PFB	+
+L	WFB	+	YFB	+
+L	WFB	+	ZFB	+
+L	YFB	+	XFB	+
+L	ZFB	+	XFB	+
+L	SFB	+	WFB	+
+L	XFB	+	TFB	+
+L	AGB	+	CGB	+
+L	AGB	+	DGB	+
+L	CGB	+	BGB	+
+L	DGB	+	BGB	+
+L	WFB	+	AGB	+
+L	BGB	+	XFB	+
+L	EGB	+	GGB	+
+L	EGB	+	HGB	+
+L	GGB	+	FGB	+
+L	HGB	+	FGB	+
+L	AGB	+	EGB	+
+L	FGB	+	BGB	+
+L	IGB	+	KGB	+
+L	IGB	+	LGB	+
+L	KGB	+	JGB	+
+L	LGB	+	JGB	+
+L	EGB	+	IGB	+
+L	JGB	+	FGB	+
+L	MGB	+	OGB	+
+L	MGB	+	PGB	+
+L	OGB	+	NGB	+
+L	PGB	+	NGB	+
+L	IGB	+	MGB	+
+L	NGB	+	JGB	+
+L	QGB	+	SGB	+
+L	QGB	+	TGB	+
+L	SGB	+	RGB	+
+L	TGB	+	RGB	+
+L	MGB	+	QGB	+
+L	RGB	+	NGB	+
+L	UGB	+	WGB	+
+L	UGB	+	XGB	+
+L	WGB	+	VGB	+
+L	XGB	+	VGB	+
+L	QGB	+	UGB	+
+L	VGB	+	RGB	+
+L	YGB	+	AHB	+
+L	YGB	+	BHB	+
+L	AHB	+	ZGB	+
+L	BHB	+	ZGB	+
+L	UGB	+	YGB	+
+L	ZGB	+	VGB	+
+L	CHB	+	EHB	+
+L	CHB	+	FHB	+
+L	EHB	+	DHB	+
+L	FHB	+	DHB	+
+L	YGB	+	CHB	+
+L	DHB	+	ZGB	+
+L	GHB	+	IHB	+
+L	GHB	+	JHB	+
+L	IHB	+	HHB	+
+L	JHB	+	HHB	+
+L	CHB	+	GHB	+
+L	HHB	+	DHB	+
+L	KHB	+	MHB	+
+L	KHB	+	NHB	+
+L	MHB	+	LHB	+
+L	NHB	+	LHB	+
+L	GHB	+	KHB	+
+L	LHB	+	HHB	+
+L	OHB	+	QHB	+
+L	OHB	+	RHB	+
+L	QHB	+	PHB	+
+L	RHB	+	PHB	+
+L	KHB	+	OHB	+
+L	PHB	+	LHB	+
+L	SHB	+	UHB	+
+L	SHB	+	VHB	+
+L	UHB	+	THB	+
+L	VHB	+	THB	+
+L	OHB	+	SHB	+
+L	THB	+	PHB	+
+L	WHB	+	YHB	+
+L	WHB	+	ZHB	+
+L	YHB	+	XHB	+
+L	ZHB	+	XHB	+
+L	SHB	+	WHB	+
+L	XHB	+	THB	+
+L	AIB	+	CIB	+
+L	AIB	+	DIB	+
+L	CIB	+	BIB	+
+L	DIB	+	BIB	+
+L	WHB	+	AIB	+
+L	BIB	+	XHB	+
+L	EIB	+	GIB	+
+L	EIB	+	HIB	+
+L	GIB	+	FIB	+
+L	HIB	+	FIB	+
+L	AIB	+	EIB	+
+L	FIB	+	BIB	+
+L	IIB	+	KIB	+
+L	IIB	+	LIB	+
+L	KIB	+	JIB	+
+L	LIB	+	JIB	+
+L	EIB	+	IIB	+
+L	JIB	+	FIB	+
+L	MIB	+	OIB	+
+L	MIB	+	PIB	+
+L	OIB	+	NIB	+
+L	PIB	+	NIB	+
+L	IIB	+	MIB	+
+L	NIB	+	JIB	+
+L	QIB	+	SIB	+
+L	QIB	+	TIB	+
+L	SIB	+	RIB	+
+L	TIB	+	RIB	+
+L	MIB	+	QIB	+
+L	RIB	+	NIB	+
+L	UIB	+	WIB	+
+L	UIB	+	XIB	+
+L	WIB	+	VIB	+
+L	XIB	+	VIB	+
+L	QIB	+	UIB	+
+L	VIB	+	RIB	+
+L	YIB	+	AJB	+
+L	YIB	+	BJB	+
+L	AJB	+	ZIB	+
+L	BJB	+	ZIB	+
+L	UIB	+	YIB	+
+L	ZIB	+	VIB	+
+L	CJB	+	EJB	+
+L	CJB	+	FJB	+
+L	EJB	+	DJB	+
+L	FJB	+	DJB	+
+L	YIB	+	CJB	+
+L	DJB	+	ZIB	+
+L	GJB	+	IJB	+
+L	GJB	+	JJB	+
+L	IJB	+	HJB	+
+L	JJB	+	HJB	+
+L	CJB	+	GJB	+
+L	HJB	+	DJB	+
+L	KJB	+	MJB	+
+L	KJB	+	NJB	+
+L	MJB	+	LJB	+
+L	NJB	+	LJB	+
+L	GJB	+	KJB	+
+L	LJB	+	HJB	+
+L	OJB	+	QJB	+
+L	OJB	+	RJB	+
+L	QJB	+	PJB	+
+L	RJB	+	PJB	+
+L	KJB	+	OJB	+
+L	PJB	+	LJB	+
+L	SJB	+	UJB	+
+L	SJB	+	VJB	+
+L	UJB	+	TJB	+
+L	VJB	+	TJB	+
+L	OJB	+	SJB	+
+L	TJB	+	PJB	+
+L	WJB	+	YJB	+
+L	WJB	+	ZJB	+
+L	YJB	+	XJB	+
+L	ZJB	+	XJB	+
+L	SJB	+	WJB	+
+L	XJB	+	TJB	+
+L	AKB	+	CKB	+
+L	AKB	+	DKB	+
+L	CKB	+	BKB	+
+L	DKB	+	BKB	+
+L	WJB	+	AKB	+
+L	BKB	+	XJB	+
+L	EKB	+	GKB	+
+L	EKB	+	HKB	+
+L	GKB	+	FKB	+
+L	HKB	+	FKB	+
+L	AKB	+	EKB	+
+L	FKB	+	BKB	+
+L	IKB	+	KKB	+
+L	IKB	+	LKB	+
+L	KKB	+	JKB	+
+L	LKB	+	JKB	+
+L	EKB	+	IKB	+
+L	JKB	+	FKB	+
+L	MKB	+	OKB	+
+L	MKB	+	PKB	+
+L	OKB	+	NKB	+
+L	PKB	+	NKB	+
+L	IKB	+	MKB	+
+L	NKB	+	JKB	+
+L	QKB	+	SKB	+
+L	QKB	+	TKB	+
+L	SKB	+	RKB	+
+L	TKB	+	RKB	+
+L	MKB	+	QKB	+
+L	RKB	+	NKB	+
+L	UKB	+	WKB	+
+L	UKB	+	XKB	+
+L	WKB	+	VKB	+
+L	XKB	+	VKB	+
+L	QKB	+	UKB	+
+L	VKB	+	RKB	+
+L	YKB	+	ALB	+
+L	YKB	+	BLB	+
+L	ALB	+	ZKB	+
+L	BLB	+	ZKB	+
+L	UKB	+	YKB	+
+L	ZKB	+	VKB	+
+L	CLB	+	ELB	+
+L	CLB	+	FLB	+
+L	ELB	+	DLB	+
+L	FLB	+	DLB	+
+L	YKB	+	CLB	+
+L	DLB	+	ZKB	+
+L	GLB	+	ILB	+
+L	GLB	+	JLB	+
+L	ILB	+	HLB	+
+L	JLB	+	HLB	+
+L	CLB	+	GLB	+
+L	HLB	+	DLB	+
+L	KLB	+	MLB	+
+L	KLB	+	NLB	+
+L	MLB	+	LLB	+
+L	NLB	+	LLB	+
+L	GLB	+	KLB	+
+L	LLB	+	HLB	+
+L	OLB	+	QLB	+
+L	OLB	+	RLB	+
+L	QLB	+	PLB	+
+L	RLB	+	PLB	+
+L	KLB	+	OLB	+
+L	PLB	+	LLB	+
+L	SLB	+	ULB	+
+L	SLB	+	VLB	+
+L	ULB	+	TLB	+
+L	VLB	+	TLB	+
+L	OLB	+	SLB	+
+L	TLB	+	PLB	+
+L	WLB	+	YLB	+
+L	WLB	+	ZLB	+
+L	YLB	+	XLB	+
+L	ZLB	+	XLB	+
+L	SLB	+	WLB	+
+L	XLB	+	TLB	+
+L	AMB	+	CMB	+
+L	AMB	+	DMB	+
+L	CMB	+	BMB	+
+L	DMB	+	BMB	+
+L	WLB	+	AMB	+
+L	BMB	+	XLB	+
+L	EMB	+	GMB	+
+L	EMB	+	HMB	+
+L	GMB	+	FMB	+
+L	HMB	+	FMB	+
+L	AMB	+	EMB	+
+L	FMB	+	BMB	+
+L	IMB	+	KMB	+
+L	IMB	+	LMB	+
+L	KMB	+	JMB	+
+L	LMB	+	JMB	+
+L	EMB	+	IMB	+
+L	JMB	+	FMB	+
+L	MMB	+	OMB	+
+L	MMB	+	PMB	+
+L	OMB	+	NMB	+
+L	PMB	+	NMB	+
+L	IMB	+	MMB	+
+L	NMB	+	JMB	+
+L	QMB	+	SMB	+
+L	QMB	+	TMB	+
+L	SMB	+	RMB	+
+L	TMB	+	RMB	+
+L	MMB	+	QMB	+
+L	RMB	+	NMB	+
+L	UMB	+	WMB	+
+L	UMB	+	XMB	+
+L	WMB	+	VMB	+
+L	XMB	+	VMB	+
+L	QMB	+	UMB	+
+L	VMB	+	RMB	+
+L	YMB	+	ANB	+
+L	YMB	+	BNB	+
+L	ANB	+	ZMB	+
+L	BNB	+	ZMB	+
+L	UMB	+	YMB	+
+L	ZMB	+	VMB	+
+L	CNB	+	ENB	+
+L	CNB	+	FNB	+
+L	ENB	+	DNB	+
+L	FNB	+	DNB	+
+L	YMB	+	CNB	+
+L	DNB	+	ZMB	+
+L	GNB	+	INB	+
+L	GNB	+	JNB	+
+L	INB	+	HNB	+
+L	JNB	+	HNB	+
+L	CNB	+	GNB	+
+L	HNB	+	DNB	+
+L	KNB	+	MNB	+
+L	KNB	+	NNB	+
+L	MNB	+	LNB	+
+L	NNB	+	LNB	+
+L	GNB	+	KNB	+
+L	LNB	+	HNB	+
+L	ONB	+	QNB	+
+L	ONB	+	RNB	+
+L	QNB	+	PNB	+
+L	RNB	+	PNB	+
+L	KNB	+	ONB	+
+L	PNB	+	LNB	+
+L	SNB	+	UNB	+
+L	SNB	+	VNB	+
+L	UNB	+	TNB	+
+L	VNB	+	TNB	+
+L	ONB	+	SNB	+
+L	TNB	+	PNB	+
+L	WNB	+	YNB	+
+L	WNB	+	ZNB	+
+L	YNB	+	XNB	+
+L	ZNB	+	XNB	+
+L	SNB	+	WNB	+
+L	XNB	+	TNB	+
+L	AOB	+	COB	+
+L	AOB	+	DOB	+
+L	COB	+	BOB	+
+L	DOB	+	BOB	+
+L	WNB	+	AOB	+
+L	BOB	+	XNB	+
+L	EOB	+	GOB	+
+L	EOB	+	HOB	+
+L	GOB	+	FOB	+
+L	HOB	+	FOB	+
+L	AOB	+	EOB	+
+L	FOB	+	BOB	+
+L	IOB	+	KOB	+
+L	IOB	+	LOB	+
+L	KOB	+	JOB	+
+L	LOB	+	JOB	+
+L	EOB	+	IOB	+
+L	JOB	+	FOB	+
+L	MOB	+	OOB	+
+L	MOB	+	POB	+
+L	OOB	+	NOB	+
+L	POB	+	NOB	+
+L	IOB	+	MOB	+
+L	NOB	+	JOB	+
+L	QOB	+	SOB	+
+L	QOB	+	TOB	+
+L	SOB	+	ROB	+
+L	TOB	+	ROB	+
+L	MOB	+	QOB	+
+L	ROB	+	NOB	+
+L	UOB	+	WOB	+
+L	UOB	+	XOB	+
+L	WOB	+	VOB	+
+L	XOB	+	VOB	+
+L	QOB	+	UOB	+
+L	VOB	+	ROB	+
+L	YOB	+	APB	+
+L	YOB	+	BPB	+
+L	APB	+	ZOB	+
+L	BPB	+	ZOB	+
+L	UOB	+	YOB	+
+L	ZOB	+	VOB	+
+L	CPB	+	EPB	+
+L	CPB	+	FPB	+
+L	EPB	+	DPB	+
+L	FPB	+	DPB	+
+L	YOB	+	CPB	+
+L	DPB	+	ZOB	+
+L	GPB	+	IPB	+
+L	GPB	+	JPB	+
+L	IPB	+	HPB	+
+L	JPB	+	HPB	+
+L	CPB	+	GPB	+
+L	HPB	+	DPB	+
+L	KPB	+	MPB	+
+L	KPB	+	NPB	+
+L	MPB	+	LPB	+
+L	NPB	+	LPB	+
+L	GPB	+	KPB	+
+L	LPB	+	HPB	+
+L	OPB	+	QPB	+
+L	OPB	+	RPB	+
+L	QPB	+	PPB	+
+L	RPB	+	PPB	+
+L	KPB	+	OPB	+
+L	PPB	+	LPB	+
+L	SPB	+	UPB	+
+L	SPB	+	VPB	+
+L	UPB	+	TPB	+
+L	VPB	+	TPB	+
+L	OPB	+	SPB	+
+L	TPB	+	PPB	+
+L	WPB	+	YPB	+
+L	WPB	+	ZPB	+
+L	YPB	+	XPB	+
+L	ZPB	+	XPB	+
+L	SPB	+	WPB	+
+L	XPB	+	TPB	+
+L	AQB	+	CQB	+
+L	AQB	+	DQB	+
+L	CQB	+	BQB	+
+L	DQB	+	BQB	+
+L	WPB	+	AQB	+
+L	BQB	+	XPB	+
+L	EQB	+	GQB	+
+L	EQB	+	HQB	+
+L	GQB	+	FQB	+
+L	HQB	+	FQB	+
+L	AQB	+	EQB	+
+L	FQB	+	BQB	+
+L	IQB	+	KQB	+
+L	IQB	+	LQB	+
+L	KQB	+	JQB	+
+L	LQB	+	JQB	+
+L	EQB	+	IQB	+
+L	JQB	+	FQB	+
+L	MQB	+	OQB	+
+L	MQB	+	PQB	+
+L	OQB	+	NQB	+
+L	PQB	+	NQB	+
+L	IQB	+	MQB	+
+L	NQB	+	JQB	+
+L	QQB	+	SQB	+
+L	QQB	+	TQB	+
+L	SQB	+	RQB	+
+L	TQB	+	RQB	+
+L	MQB	+	QQB	+
+L	RQB	+	NQB	+
+L	UQB	+	WQB	+
+L	UQB	+	XQB	+
+L	WQB	+	VQB	+
+L	XQB	+	VQB	+
+L	QQB	+	UQB	+
+L	VQB	+	RQB	+
+L	YQB	+	ARB	+
+L	YQB	+	BRB	+
+L	ARB	+	ZQB	+
+L	BRB	+	ZQB	+
+L	UQB	+	YQB	+
+L	ZQB	+	VQB	+
+L	CRB	+	ERB	+
+L	CRB	+	FRB	+
+L	ERB	+	DRB	+
+L	FRB	+	DRB	+
+L	YQB	+	CRB	+
+L	DRB	+	ZQB	+
+L	GRB	+	IRB	+
+L	GRB	+	JRB	+
+L	IRB	+	HRB	+
+L	JRB	+	HRB	+
+L	CRB	+	GRB	+
+L	HRB	+	DRB	+
+L	KRB	+	MRB	+
+L	KRB	+	NRB	+
+L	MRB	+	LRB	+
+L	NRB	+	LRB	+
+L	GRB	+	KRB	+
+L	LRB	+	HRB	+
+L	ORB	+	QRB	+
+L	ORB	+	RRB	+
+L	QRB	+	PRB	+
+L	RRB	+	PRB	+
+L	KRB	+	ORB	+
+L	PRB	+	LRB	+
+L	SRB	+	URB	+
+L	SRB	+	VRB	+
+L	URB	+	TRB	+
+L	VRB	+	TRB	+
+L	ORB	+	SRB	+
+L	TRB	+	PRB	+
+L	WRB	+	YRB	+
+L	WRB	+	ZRB	+
+L	YRB	+	XRB	+
+L	ZRB	+	XRB	+
+L	SRB	+	WRB	+
+L	XRB	+	TRB	+
+L	ASB	+	CSB	+
+L	ASB	+	DSB	+
+L	CSB	+	BSB	+
+L	DSB	+	BSB	+
+L	WRB	+	ASB	+
+L	BSB	+	XRB	+
+L	ESB	+	GSB	+
+L	ESB	+	HSB	+
+L	GSB	+	FSB	+
+L	HSB	+	FSB	+
+L	ASB	+	ESB	+
+L	FSB	+	BSB	+
+L	ISB	+	KSB	+
+L	ISB	+	LSB	+
+L	KSB	+	JSB	+
+L	LSB	+	JSB	+
+L	ESB	+	ISB	+
+L	JSB	+	FSB	+
+L	MSB	+	OSB	+
+L	MSB	+	PSB	+
+L	OSB	+	NSB	+
+L	PSB	+	NSB	+
+L	ISB	+	MSB	+
+L	NSB	+	JSB	+
+L	QSB	+	SSB	+
+L	QSB	+	TSB	+
+L	SSB	+	RSB	+
+L	TSB	+	RSB	+
+L	MSB	+	QSB	+
+L	RSB	+	NSB	+
+L	USB	+	WSB	+
+L	USB	+	XSB	+
+L	WSB	+	VSB	+
+L	XSB	+	VSB	+
+L	QSB	+	USB	+
+L	VSB	+	RSB	+
+L	YSB	+	ATB	+
+L	YSB	+	BTB	+
+L	ATB	+	ZSB	+
+L	BTB	+	ZSB	+
+L	USB	+	YSB	+
+L	ZSB	+	VSB	+
+L	CTB	+	ETB	+
+L	CTB	+	FTB	+
+L	ETB	+	DTB	+
+L	FTB	+	DTB	+
+L	YSB	+	CTB	+
+L	DTB	+	ZSB	+
+L	GTB	+	ITB	+
+L	GTB	+	JTB	+
+L	ITB	+	HTB	+
+L	JTB	+	HTB	+
+L	CTB	+	GTB	+
+L	HTB	+	DTB	+
+L	KTB	+	MTB	+
+L	KTB	+	NTB	+
+L	MTB	+	LTB	+
+L	NTB	+	LTB	+
+L	GTB	+	KTB	+
+L	LTB	+	HTB	+
+L	OTB	+	QTB	+
+L	OTB	+	RTB	+
+L	QTB	+	PTB	+
+L	RTB	+	PTB	+
+L	KTB	+	OTB	+
+L	PTB	+	LTB	+
+L	STB	+	UTB	+
+L	STB	+	VTB	+
+L	UTB	+	TTB	+
+L	VTB	+	TTB	+
+L	OTB	+	STB	+
+L	TTB	+	PTB	+
+L	WTB	+	YTB	+
+L	WTB	+	ZTB	+
+L	YTB	+	XTB	+
+L	ZTB	+	XTB	+
+L	STB	+	WTB	+
+L	XTB	+	TTB	+
+L	AUB	+	CUB	+
+L	AUB	+	DUB	+
+L	CUB	+	BUB	+
+L	DUB	+	BUB	+
+L	WTB	+	AUB	+
+L	BUB	+	XTB	+
+L	EUB	+	GUB	+
+L	EUB	+	HUB	+
+L	GUB	+	FUB	+
+L	HUB	+	FUB	+
+L	AUB	+	EUB	+
+L	FUB	+	BUB	+
+L	IUB	+	KUB	+
+L	IUB	+	LUB	+
+L	KUB	+	JUB	+
+L	LUB	+	JUB	+
+L	EUB	+	IUB	+
+L	JUB	+	FUB	+
+L	MUB	+	OUB	+
+L	MUB	+	PUB	+
+L	OUB	+	NUB	+
+L	PUB	+	NUB	+
+L	IUB	+	MUB	+
+L	NUB	+	JUB	+
+L	QUB	+	SUB	+
+L	QUB	+	TUB	+
+L	SUB	+	RUB	+
+L	TUB	+	RUB	+
+L	MUB	+	QUB	+
+L	RUB	+	NUB	+
+L	UUB	+	WUB	+
+L	UUB	+	XUB	+
+L	WUB	+	VUB	+
+L	XUB	+	VUB	+
+L	QUB	+	UUB	+
+L	VUB	+	RUB	+
+L	YUB	+	AVB	+
+L	YUB	+	BVB	+
+L	AVB	+	ZUB	+
+L	BVB	+	ZUB	+
+L	UUB	+	YUB	+
+L	ZUB	+	VUB	+
+L	CVB	+	EVB	+
+L	CVB	+	FVB	+
+L	EVB	+	DVB	+
+L	FVB	+	DVB	+
+L	YUB	+	CVB	+
+L	DVB	+	ZUB	+
+L	GVB	+	IVB	+
+L	GVB	+	JVB	+
+L	IVB	+	HVB	+
+L	JVB	+	HVB	+
+L	CVB	+	GVB	+
+L	HVB	+	DVB	+
+L	KVB	+	MVB	+
+L	KVB	+	NVB	+
+L	MVB	+	LVB	+
+L	NVB	+	LVB	+
+L	GVB	+	KVB	+
+L	LVB	+	HVB	+
+L	OVB	+	QVB	+
+L	OVB	+	RVB	+
+L	QVB	+	PVB	+
+L	RVB	+	PVB	+
+L	KVB	+	OVB	+
+L	PVB	+	LVB	+
+L	SVB	+	UVB	+
+L	SVB	+	VVB	+
+L	UVB	+	TVB	+
+L	VVB	+	TVB	+
+L	OVB	+	SVB	+
+L	TVB	+	PVB	+
+L	WVB	+	YVB	+
+L	WVB	+	ZVB	+
+L	YVB	+	XVB	+
+L	ZVB	+	XVB	+
+L	SVB	+	WVB	+
+L	XVB	+	TVB	+
+L	AWB	+	CWB	+
+L	AWB	+	DWB	+
+L	CWB	+	BWB	+
+L	DWB	+	BWB	+
+L	WVB	+	AWB	+
+L	BWB	+	XVB	+
+L	EWB	+	GWB	+
+L	EWB	+	HWB	+
+L	GWB	+	FWB	+
+L	HWB	+	FWB	+
+L	AWB	+	EWB	+
+L	FWB	+	BWB	+
+L	IWB	+	KWB	+
+L	IWB	+	LWB	+
+L	KWB	+	JWB	+
+L	LWB	+	JWB	+
+L	EWB	+	IWB	+
+L	JWB	+	FWB	+
+L	MWB	+	OWB	+
+L	MWB	+	PWB	+
+L	OWB	+	NWB	+
+L	PWB	+	NWB	+
+L	IWB	+	MWB	+
+L	NWB	+	JWB	+
+L	QWB	+	SWB	+
+L	QWB	+	TWB	+
+L	SWB	+	RWB	+
+L	TWB	+	RWB	+
+L	MWB	+	QWB	+
+L	RWB	+	NWB	+
+L	UWB	+	WWB	+
+L	UWB	+	XWB	+
+L	WWB	+	VWB	+
+L	XWB	+	VWB	+
+L	QWB	+	UWB	+
+L	VWB	+	RWB	+
+L	YWB	+	AXB	+
+L	YWB	+	BXB	+
+L	AXB	+	ZWB	+
+L	BXB	+	ZWB	+
+L	UWB	+	YWB	+
+L	ZWB	+	VWB	+
+L	CXB	+	EXB	+
+L	CXB	+	FXB	+
+L	EXB	+	DXB	+
+L	FXB	+	DXB	+
+L	YWB	+	CXB	+
+L	DXB	+	ZWB	+
+L	GXB	+	IXB	+
+L	GXB	+	JXB	+
+L	IXB	+	HXB	+
+L	JXB	+	HXB	+
+L	CXB	+	GXB	+
+L	HXB	+	DXB	+
+L	KXB	+	MXB	+
+L	KXB	+	NXB	+
+L	MXB	+	LXB	+
+L	NXB	+	LXB	+
+L	GXB	+	KXB	+
+L	LXB	+	HXB	+
+L	OXB	+	QXB	+
+L	OXB	+	RXB	+
+L	QXB	+	PXB	+
+L	RXB	+	PXB	+
+L	KXB	+	OXB	+
+L	PXB	+	LXB	+
+L	SXB	+	UXB	+
+L	SXB	+	VXB	+
+L	UXB	+	TXB	+
+L	VXB	+	TXB	+
+L	OXB	+	SXB	+
+L	TXB	+	PXB	+
+L	WXB	+	YXB	+
+L	WXB	+	ZXB	+
+L	YXB	+	XXB	+
+L	ZXB	+	XXB	+
+L	SXB	+	WXB	+
+L	XXB	+	TXB	+
+L	AYB	+	CYB	+
+L	AYB	+	DYB	+
+L	CYB	+	BYB	+
+L	DYB	+	BYB	+
+L	WXB	+	AYB	+
+L	BYB	+	XXB	+
+L	EYB	+	GYB	+
+L	EYB	+	HYB	+
+L	GYB	+	FYB	+
+L	HYB	+	FYB	+
+L	AYB	+	EYB	+
+L	FYB	+	BYB	+
+L	IYB	+	KYB	+
+L	IYB	+	LYB	+
+L	KYB	+	JYB	+
+L	LYB	+	JYB	+
+L	EYB	+	IYB	+
+L	JYB	+	FYB	+
+L	MYB	+	OYB	+
+L	MYB	+	PYB	+
+L	OYB	+	NYB	+
+L	PYB	+	NYB	+
+L	IYB	+	MYB	+
+L	NYB	+	JYB	+
+L	QYB	+	SYB	+
+L	QYB	+	TYB	+
+L	SYB	+	RYB	+
+L	TYB	+	RYB	+
+L	MYB	+	QYB	+
+L	RYB	+	NYB	+
+L	UYB	+	WYB	+
+L	UYB	+	XYB	+
+L	WYB	+	VYB	+
+L	XYB	+	VYB	+
+L	QYB	+	UYB	+
+L	VYB	+	RYB	+
+L	YYB	+	AZB	+
+L	YYB	+	BZB	+
+L	AZB	+	ZYB	+
+L	BZB	+	ZYB	+
+L	UYB	+	YYB	+
+L	ZYB	+	VYB	+
+L	CZB	+	EZB	+
+L	CZB	+	FZB	+
+L	EZB	+	DZB	+
+L	FZB	+	DZB	+
+L	YYB	+	CZB	+
+L	DZB	+	ZYB	+
+L	GZB	+	IZB	+
+L	GZB	+	JZB	+
+L	IZB	+	HZB	+
+L	JZB	+	HZB	+
+L	CZB	+	GZB	+
+L	HZB	+	DZB	+
+L	KZB	+	MZB	+
+L	KZB	+	NZB	+
+L	MZB	+	LZB	+
+L	NZB	+	LZB	+
+L	GZB	+	KZB	+
+L	LZB	+	HZB	+
+L	OZB	+	QZB	+
+L	OZB	+	RZB	+
+L	QZB	+	PZB	+
+L	RZB	+	PZB	+
+L	KZB	+	OZB	+
+L	PZB	+	LZB	+
+L	SZB	+	UZB	+
+L	SZB	+	VZB	+
+L	UZB	+	TZB	+
+L	VZB	+	TZB	+
+L	OZB	+	SZB	+
+L	TZB	+	PZB	+
+L	WZB	+	YZB	+
+L	WZB	+	ZZB	+
+L	YZB	+	XZB	+
+L	ZZB	+	XZB	+
+L	SZB	+	WZB	+
+L	XZB	+	TZB	+
+L	AAC	+	CAC	+
+L	AAC	+	DAC	+
+L	CAC	+	BAC	+
+L	DAC	+	BAC	+
+L	WZB	+	AAC	+
+L	BAC	+	XZB	+
+L	EAC	+	GAC	+
+L	EAC	+	HAC	+
+L	GAC	+	FAC	+
+L	HAC	+	FAC	+
+L	AAC	+	EAC	+
+L	FAC	+	BAC	+
+L	IAC	+	KAC	+
+L	IAC	+	LAC	+
+L	KAC	+	JAC	+
+L	LAC	+	JAC	+
+L	EAC	+	IAC	+
+L	JAC	+	FAC	+
+L	MAC	+	OAC	+
+L	MAC	+	PAC	+
+L	OAC	+	NAC	+
+L	PAC	+	NAC	+
+L	IAC	+	MAC	+
+L	NAC	+	JAC	+
+L	QAC	+	SAC	+
+L	QAC	+	TAC	+
+L	SAC	+	RAC	+
+L	TAC	+	RAC	+
+L	MAC	+	QAC	+
+L	RAC	+	NAC	+
+L	UAC	+	WAC	+
+L	UAC	+	XAC	+
+L	WAC	+	VAC	+
+L	XAC	+	VAC	+
+L	QAC	+	UAC	+
+L	VAC	+	RAC	+
+L	YAC	+	ABC	+
+L	YAC	+	BBC	+
+L	ABC	+	ZAC	+
+L	BBC	+	ZAC	+
+L	UAC	+	YAC	+
+L	ZAC	+	VAC	+
+L	CBC	+	EBC	+
+L	CBC	+	FBC	+
+L	EBC	+	DBC	+
+L	FBC	+	DBC	+
+L	YAC	+	CBC	+
+L	DBC	+	ZAC	+
+L	GBC	+	IBC	+
+L	GBC	+	JBC	+
+L	IBC	+	HBC	+
+L	JBC	+	HBC	+
+L	CBC	+	GBC	+
+L	HBC	+	DBC	+
+L	KBC	+	MBC	+
+L	KBC	+	NBC	+
+L	MBC	+	LBC	+
+L	NBC	+	LBC	+
+L	GBC	+	KBC	+
+L	LBC	+	HBC	+
+L	OBC	+	QBC	+
+L	OBC	+	RBC	+
+L	QBC	+	PBC	+
+L	RBC	+	PBC	+
+L	KBC	+	OBC	+
+L	PBC	+	LBC	+
+L	SBC	+	UBC	+
+L	SBC	+	VBC	+
+L	UBC	+	TBC	+
+L	VBC	+	TBC	+
+L	OBC	+	SBC	+
+L	TBC	+	PBC	+
+L	WBC	+	YBC	+
+L	WBC	+	ZBC	+
+L	YBC	+	XBC	+
+L	ZBC	+	XBC	+
+L	SBC	+	WBC	+
+L	XBC	+	TBC	+
+L	ACC	+	CCC	+
+L	ACC	+	DCC	+
+L	CCC	+	BCC	+
+L	DCC	+	BCC	+
+L	WBC	+	ACC	+
+L	BCC	+	XBC	+
+L	ECC	+	GCC	+
+L	ECC	+	HCC	+
+L	GCC	+	FCC	+
+L	HCC	+	FCC	+
+L	ACC	+	ECC	+
+L	FCC	+	BCC	+
+L	ICC	+	KCC	+
+L	ICC	+	LCC	+
+L	KCC	+	JCC	+
+L	LCC	+	JCC	+
+L	ECC	+	ICC	+
+L	JCC	+	FCC	+
+L	MCC	+	OCC	+
+L	MCC	+	PCC	+
+L	OCC	+	NCC	+
+L	PCC	+	NCC	+
+L	ICC	+	MCC	+
+L	NCC	+	JCC	+
+L	QCC	+	SCC	+
+L	QCC	+	TCC	+
+L	SCC	+	RCC	+
+L	TCC	+	RCC	+
+L	MCC	+	QCC	+
+L	RCC	+	NCC	+
+L	UCC	+	WCC	+
+L	UCC	+	XCC	+
+L	WCC	+	VCC	+
+L	XCC	+	VCC	+
+L	QCC	+	UCC	+
+L	VCC	+	RCC	+
+L	YCC	+	ADC	+
+L	YCC	+	BDC	+
+L	ADC	+	ZCC	+
+L	BDC	+	ZCC	+
+L	UCC	+	YCC	+
+L	ZCC	+	VCC	+
+L	CDC	+	EDC	+
+L	CDC	+	FDC	+
+L	EDC	+	DDC	+
+L	FDC	+	DDC	+
+L	YCC	+	CDC	+
+L	DDC	+	ZCC	+
+L	GDC	+	IDC	+
+L	GDC	+	JDC	+
+L	IDC	+	HDC	+
+L	JDC	+	HDC	+
+L	CDC	+	GDC	+
+L	HDC	+	DDC	+
+L	KDC	+	MDC	+
+L	KDC	+	NDC	+
+L	MDC	+	LDC	+
+L	NDC	+	LDC	+
+L	GDC	+	KDC	+
+L	LDC	+	HDC	+
+L	ODC	+	QDC	+
+L	ODC	+	RDC	+
+L	QDC	+	PDC	+
+L	RDC	+	PDC	+
+L	KDC	+	ODC	+
+L	PDC	+	LDC	+
+L	SDC	+	UDC	+
+L	SDC	+	VDC	+
+L	UDC	+	TDC	+
+L	VDC	+	TDC	+
+L	ODC	+	SDC	+
+L	TDC	+	PDC	+
+L	WDC	+	YDC	+
+L	WDC	+	ZDC	+
+L	YDC	+	XDC	+
+L	ZDC	+	XDC	+
+L	SDC	+	WDC	+
+L	XDC	+	TDC	+
+L	AEC	+	CEC	+
+L	AEC	+	DEC	+
+L	CEC	+	BEC	+
+L	DEC	+	BEC	+
+L	WDC	+	AEC	+
+L	BEC	+	XDC	+
+L	EEC	+	GEC	+
+L	EEC	+	HEC	+
+L	GEC	+	FEC	+
+L	HEC	+	FEC	+
+L	AEC	+	EEC	+
+L	FEC	+	BEC	+
+L	IEC	+	KEC	+
+L	IEC	+	LEC	+
+L	KEC	+	JEC	+
+L	LEC	+	JEC	+
+L	EEC	+	IEC	+
+L	JEC	+	FEC	+
+L	MEC	+	OEC	+
+L	MEC	+	PEC	+
+L	OEC	+	NEC	+
+L	PEC	+	NEC	+
+L	IEC	+	MEC	+
+L	NEC	+	JEC	+
+L	QEC	+	SEC	+
+L	QEC	+	TEC	+
+L	SEC	+	REC	+
+L	TEC	+	REC	+
+L	MEC	+	QEC	+
+L	REC	+	NEC	+
+L	UEC	+	WEC	+
+L	UEC	+	XEC	+
+L	WEC	+	VEC	+
+L	XEC	+	VEC	+
+L	QEC	+	UEC	+
+L	VEC	+	REC	+
+L	YEC	+	AFC	+
+L	YEC	+	BFC	+
+L	AFC	+	ZEC	+
+L	BFC	+	ZEC	+
+L	UEC	+	YEC	+
+L	ZEC	+	VEC	+
+L	CFC	+	EFC	+
+L	CFC	+	FFC	+
+L	EFC	+	DFC	+
+L	FFC	+	DFC	+
+L	YEC	+	CFC	+
+L	DFC	+	ZEC	+
+L	GFC	+	IFC	+
+L	GFC	+	JFC	+
+L	IFC	+	HFC	+
+L	JFC	+	HFC	+
+L	CFC	+	GFC	+
+L	HFC	+	DFC	+
+L	KFC	+	MFC	+
+L	KFC	+	NFC	+
+L	MFC	+	LFC	+
+L	NFC	+	LFC	+
+L	GFC	+	KFC	+
+L	LFC	+	HFC	+
+L	OFC	+	QFC	+
+L	OFC	+	RFC	+
+L	QFC	+	PFC	+
+L	RFC	+	PFC	+
+L	KFC	+	OFC	+
+L	PFC	+	LFC	+
+L	SFC	+	UFC	+
+L	SFC	+	VFC	+
+L	UFC	+	TFC	+
+L	VFC	+	TFC	+
+L	OFC	+	SFC	+
+L	TFC	+	PFC	+
+L	WFC	+	YFC	+
+L	WFC	+	ZFC	+
+L	YFC	+	XFC	+
+L	ZFC	+	XFC	+
+L	SFC	+	WFC	+
+L	XFC	+	TFC	+
+L	AGC	+	CGC	+
+L	AGC	+	DGC	+
+L	CGC	+	BGC	+
+L	DGC	+	BGC	+
+L	WFC	+	AGC	+
+L	BGC	+	XFC	+
+L	EGC	+	GGC	+
+L	EGC	+	HGC	+
+L	GGC	+	FGC	+
+L	HGC	+	FGC	+
+L	AGC	+	EGC	+
+L	FGC	+	BGC	+
+L	IGC	+	KGC	+
+L	IGC	+	LGC	+
+L	KGC	+	JGC	+
+L	LGC	+	JGC	+
+L	EGC	+	IGC	+
+L	JGC	+	FGC	+
+L	MGC	+	OGC	+
+L	MGC	+	PGC	+
+L	OGC	+	NGC	+
+L	PGC	+	NGC	+
+L	IGC	+	MGC	+
+L	NGC	+	JGC	+
+L	QGC	+	SGC	+
+L	QGC	+	TGC	+
+L	SGC	+	RGC	+
+L	TGC	+	RGC	+
+L	MGC	+	QGC	+
+L	RGC	+	NGC	+
+L	UGC	+	WGC	+
+L	UGC	+	XGC	+
+L	WGC	+	VGC	+
+L	XGC	+	VGC	+
+L	QGC	+	UGC	+
+L	VGC	+	RGC	+
+L	YGC	+	AHC	+
+L	YGC	+	BHC	+
+L	AHC	+	ZGC	+
+L	BHC	+	ZGC	+
+L	UGC	+	YGC	+
+L	ZGC	+	VGC	+
+L	CHC	+	EHC	+
+L	CHC	+	FHC	+
+L	EHC	+	DHC	+
+L	FHC	+	DHC	+
+L	YGC	+	CHC	+
+L	DHC	+	ZGC	+
+L	GHC	+	IHC	+
+L	GHC	+	JHC	+
+L	IHC	+	HHC	+
+L	JHC	+	HHC	+
+L	CHC	+	GHC	+
+L	HHC	+	DHC	+
+L	KHC	+	MHC	+
+L	KHC	+	NHC	+
+L	MHC	+	LHC	+
+L	NHC	+	LHC	+
+L	GHC	+	KHC	+
+L	LHC	+	HHC	+
+L	OHC	+	QHC	+
+L	OHC	+	RHC	+
+L	QHC	+	PHC	+
+L	RHC	+	PHC	+
+L	KHC	+	OHC	+
+L	PHC	+	LHC	+
+L	SHC	+	UHC	+
+L	SHC	+	VHC	+
+L	UHC	+	THC	+
+L	VHC	+	THC	+
+L	OHC	+	SHC	+
+L	THC	+	PHC	+
+L	WHC	+	YHC	+
+L	WHC	+	ZHC	+
+L	YHC	+	XHC	+
+L	ZHC	+	XHC	+
+L	SHC	+	WHC	+
+L	XHC	+	THC	+
+L	AIC	+	CIC	+
+L	AIC	+	DIC	+
+L	CIC	+	BIC	+
+L	DIC	+	BIC	+
+L	WHC	+	AIC	+
+L	BIC	+	XHC	+
+L	EIC	+	GIC	+
+L	EIC	+	HIC	+
+L	GIC	+	FIC	+
+L	HIC	+	FIC	+
+L	AIC	+	EIC	+
+L	FIC	+	BIC	+
+L	IIC	+	KIC	+
+L	IIC	+	LIC	+
+L	KIC	+	JIC	+
+L	LIC	+	JIC	+
+L	EIC	+	IIC	+
+L	JIC	+	FIC	+
+L	MIC	+	OIC	+
+L	MIC	+	PIC	+
+L	OIC	+	NIC	+
+L	PIC	+	NIC	+
+L	IIC	+	MIC	+
+L	NIC	+	JIC	+
+L	QIC	+	SIC	+
+L	QIC	+	TIC	+
+L	SIC	+	RIC	+
+L	TIC	+	RIC	+
+L	MIC	+	QIC	+
+L	RIC	+	NIC	+
+L	UIC	+	WIC	+
+L	UIC	+	XIC	+
+L	WIC	+	VIC	+
+L	XIC	+	VIC	+
+L	QIC	+	UIC	+
+L	VIC	+	RIC	+
+L	YIC	+	AJC	+
+L	YIC	+	BJC	+
+L	AJC	+	ZIC	+
+L	BJC	+	ZIC	+
+L	UIC	+	YIC	+
+L	ZIC	+	VIC	+
+L	CJC	+	EJC	+
+L	CJC	+	FJC	+
+L	EJC	+	DJC	+
+L	FJC	+	DJC	+
+L	YIC	+	CJC	+
+L	DJC	+	ZIC	+
+L	GJC	+	IJC	+
+L	GJC	+	JJC	+
+L	IJC	+	HJC	+
+L	JJC	+	HJC	+
+L	CJC	+	GJC	+
+L	HJC	+	DJC	+
+L	KJC	+	MJC	+
+L	KJC	+	NJC	+
+L	MJC	+	LJC	+
+L	NJC	+	LJC	+
+L	GJC	+	KJC	+
+L	LJC	+	HJC	+
+L	OJC	+	QJC	+
+L	OJC	+	RJC	+
+L	QJC	+	PJC	+
+L	RJC	+	PJC	+
+L	KJC	+	OJC	+
+L	PJC	+	LJC	+
+L	SJC	+	UJC	+
+L	SJC	+	VJC	+
+L	UJC	+	TJC	+
+L	VJC	+	TJC	+
+L	OJC	+	SJC	+
+L	TJC	+	PJC	+
+L	WJC	+	YJC	+
+L	WJC	+	ZJC	+
+L	YJC	+	XJC	+
+L	ZJC	+	XJC	+
+L	SJC	+	WJC	+
+L	XJC	+	TJC	+
+L	AKC	+	CKC	+
+L	AKC	+	DKC	+
+L	CKC	+	BKC	+
+L	DKC	+	BKC	+
+L	WJC	+	AKC	+
+L	BKC	+	XJC	+
+L	EKC	+	GKC	+
+L	EKC	+	HKC	+
+L	GKC	+	FKC	+
+L	HKC	+	FKC	+
+L	AKC	+	EKC	+
+L	FKC	+	BKC	+
+L	IKC	+	KKC	+
+L	IKC	+	LKC	+
+L	KKC	+	JKC	+
+L	LKC	+	JKC	+
+L	EKC	+	IKC	+
+L	JKC	+	FKC	+
+L	MKC	+	OKC	+
+L	MKC	+	PKC	+
+L	OKC	+	NKC	+
+L	PKC	+	NKC	+
+L	IKC	+	MKC	+
+L	NKC	+	JKC	+
+L	QKC	+	SKC	+
+L	QKC	+	TKC	+
+L	SKC	+	RKC	+
+L	TKC	+	RKC	+
+L	MKC	+	QKC	+
+L	RKC	+	NKC	+
+L	UKC	+	WKC	+
+L	UKC	+	XKC	+
+L	WKC	+	VKC	+
+L	XKC	+	VKC	+
+L	QKC	+	UKC	+
+L	VKC	+	RKC	+
+L	YKC	+	ALC	+
+L	YKC	+	BLC	+
+L	ALC	+	ZKC	+
+L	BLC	+	ZKC	+
+L	UKC	+	YKC	+
+L	ZKC	+	VKC	+
+L	CLC	+	ELC	+
+L	CLC	+	FLC	+
+L	ELC	+	DLC	+
+L	FLC	+	DLC	+
+L	YKC	+	CLC	+
+L	DLC	+	ZKC	+
+L	GLC	+	ILC	+
+L	GLC	+	JLC	+
+L	ILC	+	HLC	+
+L	JLC	+	HLC	+
+L	CLC	+	GLC	+
+L	HLC	+	DLC	+
+L	KLC	+	MLC	+
+L	KLC	+	NLC	+
+L	MLC	+	LLC	+
+L	NLC	+	LLC	+
+L	GLC	+	KLC	+
+L	LLC	+	HLC	+
+L	OLC	+	QLC	+
+L	OLC	+	RLC	+
+L	QLC	+	PLC	+
+L	RLC	+	PLC	+
+L	KLC	+	OLC	+
+L	PLC	+	LLC	+
+L	SLC	+	ULC	+
+L	SLC	+	VLC	+
+L	ULC	+	TLC	+
+L	VLC	+	TLC	+
+L	OLC	+	SLC	+
+L	TLC	+	PLC	+
+L	WLC	+	YLC	+
+L	WLC	+	ZLC	+
+L	YLC	+	XLC	+
+L	ZLC	+	XLC	+
+L	SLC	+	WLC	+
+L	XLC	+	TLC	+
+L	AMC	+	CMC	+
+L	AMC	+	DMC	+
+L	CMC	+	BMC	+
+L	DMC	+	BMC	+
+L	WLC	+	AMC	+
+L	BMC	+	XLC	+
+L	EMC	+	GMC	+
+L	EMC	+	HMC	+
+L	GMC	+	FMC	+
+L	HMC	+	FMC	+
+L	AMC	+	EMC	+
+L	FMC	+	BMC	+
+L	IMC	+	KMC	+
+L	IMC	+	LMC	+
+L	KMC	+	JMC	+
+L	LMC	+	JMC	+
+L	EMC	+	IMC	+
+L	JMC	+	FMC	+
+L	MMC	+	OMC	+
+L	MMC	+	PMC	+
+L	OMC	+	NMC	+
+L	PMC	+	NMC	+
+L	IMC	+	MMC	+
+L	NMC	+	JMC	+
+L	QMC	+	SMC	+
+L	QMC	+	TMC	+
+L	SMC	+	RMC	+
+L	TMC	+	RMC	+
+L	MMC	+	QMC	+
+L	RMC	+	NMC	+
+L	UMC	+	WMC	+
+L	UMC	+	XMC	+
+L	WMC	+	VMC	+
+L	XMC	+	VMC	+
+L	QMC	+	UMC	+
+L	VMC	+	RMC	+
+L	YMC	+	ANC	+
+L	YMC	+	BNC	+
+L	ANC	+	ZMC	+
+L	BNC	+	ZMC	+
+L	UMC	+	YMC	+
+L	ZMC	+	VMC	+
+L	CNC	+	ENC	+
+L	CNC	+	FNC	+
+L	ENC	+	DNC	+
+L	FNC	+	DNC	+
+L	YMC	+	CNC	+
+L	DNC	+	ZMC	+
+L	GNC	+	INC	+
+L	GNC	+	JNC	+
+L	INC	+	HNC	+
+L	JNC	+	HNC	+
+L	CNC	+	GNC	+
+L	HNC	+	DNC	+
+L	KNC	+	MNC	+
+L	KNC	+	NNC	+
+L	MNC	+	LNC	+
+L	NNC	+	LNC	+
+L	GNC	+	KNC	+
+L	LNC	+	HNC	+
+L	ONC	+	QNC	+
+L	ONC	+	RNC	+
+L	QNC	+	PNC	+
+L	RNC	+	PNC	+
+L	KNC	+	ONC	+
+L	PNC	+	LNC	+
+L	SNC	+	UNC	+
+L	SNC	+	VNC	+
+L	UNC	+	TNC	+
+L	VNC	+	TNC	+
+L	ONC	+	SNC	+
+L	TNC	+	PNC	+
+L	WNC	+	YNC	+
+L	WNC	+	ZNC	+
+L	YNC	+	XNC	+
+L	ZNC	+	XNC	+
+L	SNC	+	WNC	+
+L	XNC	+	TNC	+
+L	AOC	+	COC	+
+L	AOC	+	DOC	+
+L	COC	+	BOC	+
+L	DOC	+	BOC	+
+L	WNC	+	AOC	+
+L	BOC	+	XNC	+
+L	EOC	+	GOC	+
+L	EOC	+	HOC	+
+L	GOC	+	FOC	+
+L	HOC	+	FOC	+
+L	AOC	+	EOC	+
+L	FOC	+	BOC	+
+L	IOC	+	KOC	+
+L	IOC	+	LOC	+
+L	KOC	+	JOC	+
+L	LOC	+	JOC	+
+L	EOC	+	IOC	+
+L	JOC	+	FOC	+
+L	MOC	+	OOC	+
+L	MOC	+	POC	+
+L	OOC	+	NOC	+
+L	POC	+	NOC	+
+L	IOC	+	MOC	+
+L	NOC	+	JOC	+
+L	QOC	+	SOC	+
+L	QOC	+	TOC	+
+L	SOC	+	ROC	+
+L	TOC	+	ROC	+
+L	MOC	+	QOC	+
+L	ROC	+	NOC	+
+L	UOC	+	WOC	+
+L	UOC	+	XOC	+
+L	WOC	+	VOC	+
+L	XOC	+	VOC	+
+L	QOC	+	UOC	+
+L	VOC	+	ROC	+
+L	YOC	+	APC	+
+L	YOC	+	BPC	+
+L	APC	+	ZOC	+
+L	BPC	+	ZOC	+
+L	UOC	+	YOC	+
+L	ZOC	+	VOC	+
+L	CPC	+	EPC	+
+L	CPC	+	FPC	+
+L	EPC	+	DPC	+
+L	FPC	+	DPC	+
+L	YOC	+	CPC	+
+L	DPC	+	ZOC	+
+L	GPC	+	IPC	+
+L	GPC	+	JPC	+
+L	IPC	+	HPC	+
+L	JPC	+	HPC	+
+L	CPC	+	GPC	+
+L	HPC	+	DPC	+
+L	KPC	+	MPC	+
+L	KPC	+	NPC	+
+L	MPC	+	LPC	+
+L	NPC	+	LPC	+
+L	GPC	+	KPC	+
+L	LPC	+	HPC	+
+L	OPC	+	QPC	+
+L	OPC	+	RPC	+
+L	QPC	+	PPC	+
+L	RPC	+	PPC	+
+L	KPC	+	OPC	+
+L	PPC	+	LPC	+
+L	SPC	+	UPC	+
+L	SPC	+	VPC	+
+L	UPC	+	TPC	+
+L	VPC	+	TPC	+
+L	OPC	+	SPC	+
+L	TPC	+	PPC	+
+L	WPC	+	YPC	+
+L	WPC	+	ZPC	+
+L	YPC	+	XPC	+
+L	ZPC	+	XPC	+
+L	SPC	+	WPC	+
+L	XPC	+	TPC	+
+L	AQC	+	CQC	+
+L	AQC	+	DQC	+
+L	CQC	+	BQC	+
+L	DQC	+	BQC	+
+L	WPC	+	AQC	+
+L	BQC	+	XPC	+
+L	EQC	+	GQC	+
+L	EQC	+	HQC	+
+L	GQC	+	FQC	+
+L	HQC	+	FQC	+
+L	AQC	+	EQC	+
+L	FQC	+	BQC	+
+L	IQC	+	KQC	+
+L	IQC	+	LQC	+
+L	KQC	+	JQC	+
+L	LQC	+	JQC	+
+L	EQC	+	IQC	+
+L	JQC	+	FQC	+
+L	MQC	+	OQC	+
+L	MQC	+	PQC	+
+L	OQC	+	NQC	+
+L	PQC	+	NQC	+
+L	IQC	+	MQC	+
+L	NQC	+	JQC	+
+L	QQC	+	SQC	+
+L	QQC	+	TQC	+
+L	SQC	+	RQC	+
+L	TQC	+	RQC	+
+L	MQC	+	QQC	+
+L	RQC	+	NQC	+
+L	UQC	+	WQC	+
+L	UQC	+	XQC	+
+L	WQC	+	VQC	+
+L	XQC	+	VQC	+
+L	QQC	+	UQC	+
+L	VQC	+	RQC	+
+L	YQC	+	ARC	+
+L	YQC	+	BRC	+
+L	ARC	+	ZQC	+
+L	BRC	+	ZQC	+
+L	UQC	+	YQC	+
+L	ZQC	+	VQC	+
+L	CRC	+	ERC	+
+L	CRC	+	FRC	+
+L	ERC	+	DRC	+
+L	FRC	+	DRC	+
+L	YQC	+	CRC	+
+L	DRC	+	ZQC	+
+L	GRC	+	IRC	+
+L	GRC	+	JRC	+
+L	IRC	+	HRC	+
+L	JRC	+	HRC	+
+L	CRC	+	GRC	+
+L	HRC	+	DRC	+
+L	KRC	+	MRC	+
+L	KRC	+	NRC	+
+L	MRC	+	LRC	+
+L	NRC	+	LRC	+
+L	GRC	+	KRC	+
+L	LRC	+	HRC	+
+L	ORC	+	QRC	+
+L	ORC	+	RRC	+
+L	QRC	+	PRC	+
+L	RRC	+	PRC	+
+L	KRC	+	ORC	+
+L	PRC	+	LRC	+
+L	SRC	+	URC	+
+L	SRC	+	VRC	+
+L	URC	+	TRC	+
+L	VRC	+	TRC	+
+L	ORC	+	SRC	+
+L	TRC	+	PRC	+
+L	WRC	+	YRC	+
+L	WRC	+	ZRC	+
+L	YRC	+	XRC	+
+L	ZRC	+	XRC	+
+L	SRC	+	WRC	+
+L	XRC	+	TRC	+
+L	ASC	+	CSC	+
+L	ASC	+	DSC	+
+L	CSC	+	BSC	+
+L	DSC	+	BSC	+
+L	WRC	+	ASC	+
+L	BSC	+	XRC	+
+L	ESC	+	GSC	+
+L	ESC	+	HSC	+
+L	GSC	+	FSC	+
+L	HSC	+	FSC	+
+L	ASC	+	ESC	+
+L	FSC	+	BSC	+
+L	ISC	+	KSC	+
+L	ISC	+	LSC	+
+L	KSC	+	JSC	+
+L	LSC	+	JSC	+
+L	ESC	+	ISC	+
+L	JSC	+	FSC	+
+L	MSC	+	OSC	+
+L	MSC	+	PSC	+
+L	OSC	+	NSC	+
+L	PSC	+	NSC	+
+L	ISC	+	MSC	+
+L	NSC	+	JSC	+
+L	QSC	+	SSC	+
+L	QSC	+	TSC	+
+L	SSC	+	RSC	+
+L	TSC	+	RSC	+
+L	MSC	+	QSC	+
+L	RSC	+	NSC	+
+L	USC	+	WSC	+
+L	USC	+	XSC	+
+L	WSC	+	VSC	+
+L	XSC	+	VSC	+
+L	QSC	+	USC	+
+L	VSC	+	RSC	+
+L	YSC	+	ATC	+
+L	YSC	+	BTC	+
+L	ATC	+	ZSC	+
+L	BTC	+	ZSC	+
+L	USC	+	YSC	+
+L	ZSC	+	VSC	+
+L	CTC	+	ETC	+
+L	CTC	+	FTC	+
+L	ETC	+	DTC	+
+L	FTC	+	DTC	+
+L	YSC	+	CTC	+
+L	DTC	+	ZSC	+
+L	GTC	+	ITC	+
+L	GTC	+	JTC	+
+L	ITC	+	HTC	+
+L	JTC	+	HTC	+
+L	CTC	+	GTC	+
+L	HTC	+	DTC	+
+L	KTC	+	MTC	+
+L	KTC	+	NTC	+
+L	MTC	+	LTC	+
+L	NTC	+	LTC	+
+L	GTC	+	KTC	+
+L	LTC	+	HTC	+
+L	OTC	+	QTC	+
+L	OTC	+	RTC	+
+L	QTC	+	PTC	+
+L	RTC	+	PTC	+
+L	KTC	+	OTC	+
+L	PTC	+	LTC	+
+L	STC	+	UTC	+
+L	STC	+	VTC	+
+L	UTC	+	TTC	+
+L	VTC	+	TTC	+
+L	OTC	+	STC	+
+L	TTC	+	PTC	+
+L	WTC	+	YTC	+
+L	WTC	+	ZTC	+
+L	YTC	+	XTC	+
+L	ZTC	+	XTC	+
+L	STC	+	WTC	+
+L	XTC	+	TTC	+
+L	AUC	+	CUC	+
+L	AUC	+	DUC	+
+L	CUC	+	BUC	+
+L	DUC	+	BUC	+
+L	WTC	+	AUC	+
+L	BUC	+	XTC	+
+L	EUC	+	GUC	+
+L	EUC	+	HUC	+
+L	GUC	+	FUC	+
+L	HUC	+	FUC	+
+L	AUC	+	EUC	+
+L	FUC	+	BUC	+
+L	IUC	+	KUC	+
+L	IUC	+	LUC	+
+L	KUC	+	JUC	+
+L	LUC	+	JUC	+
+L	EUC	+	IUC	+
+L	JUC	+	FUC	+
+L	MUC	+	OUC	+
+L	MUC	+	PUC	+
+L	OUC	+	NUC	+
+L	PUC	+	NUC	+
+L	IUC	+	MUC	+
+L	NUC	+	JUC	+
+L	QUC	+	SUC	+
+L	QUC	+	TUC	+
+L	SUC	+	RUC	+
+L	TUC	+	RUC	+
+L	MUC	+	QUC	+
+L	RUC	+	NUC	+
+L	UUC	+	WUC	+
+L	UUC	+	XUC	+
+L	WUC	+	VUC	+
+L	XUC	+	VUC	+
+L	QUC	+	UUC	+
+L	VUC	+	RUC	+
+L	YUC	+	AVC	+
+L	YUC	+	BVC	+
+L	AVC	+	ZUC	+
+L	BVC	+	ZUC	+
+L	UUC	+	YUC	+
+L	ZUC	+	VUC	+
+L	CVC	+	EVC	+
+L	CVC	+	FVC	+
+L	EVC	+	DVC	+
+L	FVC	+	DVC	+
+L	YUC	+	CVC	+
+L	DVC	+	ZUC	+
+L	GVC	+	IVC	+
+L	GVC	+	JVC	+
+L	IVC	+	HVC	+
+L	JVC	+	HVC	+
+L	CVC	+	GVC	+
+L	HVC	+	DVC	+
+L	KVC	+	MVC	+
+L	KVC	+	NVC	+
+L	MVC	+	LVC	+
+L	NVC	+	LVC	+
+L	GVC	+	KVC	+
+L	LVC	+	HVC	+
+L	OVC	+	QVC	+
+L	OVC	+	RVC	+
+L	QVC	+	PVC	+
+L	RVC	+	PVC	+
+L	KVC	+	OVC	+
+L	PVC	+	LVC	+
+L	SVC	+	UVC	+
+L	SVC	+	VVC	+
+L	UVC	+	TVC	+
+L	VVC	+	TVC	+
+L	OVC	+	SVC	+
+L	TVC	+	PVC	+
+L	WVC	+	YVC	+
+L	WVC	+	ZVC	+
+L	YVC	+	XVC	+
+L	ZVC	+	XVC	+
+L	SVC	+	WVC	+
+L	XVC	+	TVC	+
+L	AWC	+	CWC	+
+L	AWC	+	DWC	+
+L	CWC	+	BWC	+
+L	DWC	+	BWC	+
+L	WVC	+	AWC	+
+L	BWC	+	XVC	+
+L	EWC	+	GWC	+
+L	EWC	+	HWC	+
+L	GWC	+	FWC	+
+L	HWC	+	FWC	+
+L	AWC	+	EWC	+
+L	FWC	+	BWC	+
+L	IWC	+	KWC	+
+L	IWC	+	LWC	+
+L	KWC	+	JWC	+
+L	LWC	+	JWC	+
+L	EWC	+	IWC	+
+L	JWC	+	FWC	+
+L	MWC	+	OWC	+
+L	MWC	+	PWC	+
+L	OWC	+	NWC	+
+L	PWC	+	NWC	+
+L	IWC	+	MWC	+
+L	NWC	+	JWC	+
+L	QWC	+	SWC	+
+L	QWC	+	TWC	+
+L	SWC	+	RWC	+
+L	TWC	+	RWC	+
+L	MWC	+	QWC	+
+L	RWC	+	NWC	+
+L	UWC	+	WWC	+
+L	UWC	+	XWC	+
+L	WWC	+	VWC	+
+L	XWC	+	VWC	+
+L	QWC	+	UWC	+
+L	VWC	+	RWC	+
+L	YWC	+	AXC	+
+L	YWC	+	BXC	+
+L	AXC	+	ZWC	+
+L	BXC	+	ZWC	+
+L	UWC	+	YWC	+
+L	ZWC	+	VWC	+
+L	CXC	+	EXC	+
+L	CXC	+	FXC	+
+L	EXC	+	DXC	+
+L	FXC	+	DXC	+
+L	YWC	+	CXC	+
+L	DXC	+	ZWC	+
+L	GXC	+	IXC	+
+L	GXC	+	JXC	+
+L	IXC	+	HXC	+
+L	JXC	+	HXC	+
+L	CXC	+	GXC	+
+L	HXC	+	DXC	+
+L	KXC	+	MXC	+
+L	KXC	+	NXC	+
+L	MXC	+	LXC	+
+L	NXC	+	LXC	+
+L	GXC	+	KXC	+
+L	LXC	+	HXC	+
+L	OXC	+	QXC	+
+L	OXC	+	RXC	+
+L	QXC	+	PXC	+
+L	RXC	+	PXC	+
+L	KXC	+	OXC	+
+L	PXC	+	LXC	+
+L	SXC	+	UXC	+
+L	SXC	+	VXC	+
+L	UXC	+	TXC	+
+L	VXC	+	TXC	+
+L	OXC	+	SXC	+
+L	TXC	+	PXC	+
+L	WXC	+	YXC	+
+L	WXC	+	ZXC	+
+L	YXC	+	XXC	+
+L	ZXC	+	XXC	+
+L	SXC	+	WXC	+
+L	XXC	+	TXC	+
+L	AYC	+	CYC	+
+L	AYC	+	DYC	+
+L	CYC	+	BYC	+
+L	DYC	+	BYC	+
+L	WXC	+	AYC	+
+L	BYC	+	XXC	+
+L	EYC	+	GYC	+
+L	EYC	+	HYC	+
+L	GYC	+	FYC	+
+L	HYC	+	FYC	+
+L	AYC	+	EYC	+
+L	FYC	+	BYC	+
+L	IYC	+	KYC	+
+L	IYC	+	LYC	+
+L	KYC	+	JYC	+
+L	LYC	+	JYC	+
+L	EYC	+	IYC	+
+L	JYC	+	FYC	+
+L	MYC	+	OYC	+
+L	MYC	+	PYC	+
+L	OYC	+	NYC	+
+L	PYC	+	NYC	+
+L	IYC	+	MYC	+
+L	NYC	+	JYC	+
+L	QYC	+	SYC	+
+L	QYC	+	TYC	+
+L	SYC	+	RYC	+
+L	TYC	+	RYC	+
+L	MYC	+	QYC	+
+L	RYC	+	NYC	+
+L	UYC	+	WYC	+
+L	UYC	+	XYC	+
+L	WYC	+	VYC	+
+L	XYC	+	VYC	+
+L	QYC	+	UYC	+
+L	VYC	+	RYC	+
+L	YYC	+	AZC	+
+L	YYC	+	BZC	+
+L	AZC	+	ZYC	+
+L	BZC	+	ZYC	+
+L	UYC	+	YYC	+
+L	ZYC	+	VYC	+
+L	CZC	+	EZC	+
+L	CZC	+	FZC	+
+L	EZC	+	DZC	+
+L	FZC	+	DZC	+
+L	YYC	+	CZC	+
+L	DZC	+	ZYC	+
+L	GZC	+	IZC	+
+L	GZC	+	JZC	+
+L	IZC	+	HZC	+
+L	JZC	+	HZC	+
+L	CZC	+	GZC	+
+L	HZC	+	DZC	+
+L	KZC	+	MZC	+
+L	KZC	+	NZC	+
+L	MZC	+	LZC	+
+L	NZC	+	LZC	+
+L	GZC	+	KZC	+
+L	LZC	+	HZC	+
+L	OZC	+	QZC	+
+L	OZC	+	RZC	+
+L	QZC	+	PZC	+
+L	RZC	+	PZC	+
+L	KZC	+	OZC	+
+L	PZC	+	LZC	+
+L	SZC	+	UZC	+
+L	SZC	+	VZC	+
+L	UZC	+	TZC	+
+L	VZC	+	TZC	+
+L	OZC	+	SZC	+
+L	TZC	+	PZC	+
+L	WZC	+	YZC	+
+L	WZC	+	ZZC	+
+L	YZC	+	XZC	+
+L	ZZC	+	XZC	+
+L	SZC	+	WZC	+
+L	XZC	+	TZC	+
+L	AAD	+	CAD	+
+L	AAD	+	DAD	+
+L	CAD	+	BAD	+
+L	DAD	+	BAD	+
+L	WZC	+	AAD	+
+L	BAD	+	XZC	+
+L	EAD	+	GAD	+
+L	EAD	+	HAD	+
+L	GAD	+	FAD	+
+L	HAD	+	FAD	+
+L	AAD	+	EAD	+
+L	FAD	+	BAD	+
+L	IAD	+	KAD	+
+L	IAD	+	LAD	+
+L	KAD	+	JAD	+
+L	LAD	+	JAD	+
+L	EAD	+	IAD	+
+L	JAD	+	FAD	+
+L	MAD	+	OAD	+
+L	MAD	+	PAD	+
+L	OAD	+	NAD	+
+L	PAD	+	NAD	+
+L	IAD	+	MAD	+
+L	NAD	+	JAD	+
+L	QAD	+	SAD	+
+L	QAD	+	TAD	+
+L	SAD	+	RAD	+
+L	TAD	+	RAD	+
+L	MAD	+	QAD	+
+L	RAD	+	NAD	+
+L	UAD	+	WAD	+
+L	UAD	+	XAD	+
+L	WAD	+	VAD	+
+L	XAD	+	VAD	+
+L	QAD	+	UAD	+
+L	VAD	+	RAD	+
+L	YAD	+	ABD	+
+L	YAD	+	BBD	+
+L	ABD	+	ZAD	+
+L	BBD	+	ZAD	+
+L	UAD	+	YAD	+
+L	ZAD	+	VAD	+
+L	CBD	+	EBD	+
+L	CBD	+	FBD	+
+L	EBD	+	DBD	+
+L	FBD	+	DBD	+
+L	YAD	+	CBD	+
+L	DBD	+	ZAD	+
+L	GBD	+	IBD	+
+L	GBD	+	JBD	+
+L	IBD	+	HBD	+
+L	JBD	+	HBD	+
+L	CBD	+	GBD	+
+L	HBD	+	DBD	+
+L	KBD	+	MBD	+
+L	KBD	+	NBD	+
+L	MBD	+	LBD	+
+L	NBD	+	LBD	+
+L	GBD	+	KBD	+
+L	LBD	+	HBD	+
+L	OBD	+	QBD	+
+L	OBD	+	RBD	+
+L	QBD	+	PBD	+
+L	RBD	+	PBD	+
+L	KBD	+	OBD	+
+L	PBD	+	LBD	+
+L	SBD	+	UBD	+
+L	SBD	+	VBD	+
+L	UBD	+	TBD	+
+L	VBD	+	TBD	+
+L	OBD	+	SBD	+
+L	TBD	+	PBD	+
+L	WBD	+	YBD	+
+L	WBD	+	ZBD	+
+L	YBD	+	XBD	+
+L	ZBD	+	XBD	+
+L	SBD	+	WBD	+
+L	XBD	+	TBD	+
+L	ACD	+	CCD	+
+L	ACD	+	DCD	+
+L	CCD	+	BCD	+
+L	DCD	+	BCD	+
+L	WBD	+	ACD	+
+L	BCD	+	XBD	+
+L	ECD	+	GCD	+
+L	ECD	+	HCD	+
+L	GCD	+	FCD	+
+L	HCD	+	FCD	+
+L	ACD	+	ECD	+
+L	FCD	+	BCD	+
+L	ICD	+	KCD	+
+L	ICD	+	LCD	+
+L	KCD	+	JCD	+
+L	LCD	+	JCD	+
+L	ECD	+	ICD	+
+L	JCD	+	FCD	+
+L	MCD	+	OCD	+
+L	MCD	+	PCD	+
+L	OCD	+	NCD	+
+L	PCD	+	NCD	+
+L	ICD	+	MCD	+
+L	NCD	+	JCD	+
+L	QCD	+	SCD	+
+L	QCD	+	TCD	+
+L	SCD	+	RCD	+
+L	TCD	+	RCD	+
+L	MCD	+	QCD	+
+L	RCD	+	NCD	+
+L	UCD	+	WCD	+
+L	UCD	+	XCD	+
+L	WCD	+	VCD	+
+L	XCD	+	VCD	+
+L	QCD	+	UCD	+
+L	VCD	+	RCD	+
+L	YCD	+	ADD	+
+L	YCD	+	BDD	+
+L	ADD	+	ZCD	+
+L	BDD	+	ZCD	+
+L	UCD	+	YCD	+
+L	ZCD	+	VCD	+
+L	CDD	+	EDD	+
+L	CDD	+	FDD	+
+L	EDD	+	DDD	+
+L	FDD	+	DDD	+
+L	YCD	+	CDD	+
+L	DDD	+	ZCD	+
+L	GDD	+	IDD	+
+L	GDD	+	JDD	+
+L	IDD	+	HDD	+
+L	JDD	+	HDD	+
+L	CDD	+	GDD	+
+L	HDD	+	DDD	+
+L	KDD	+	MDD	+
+L	KDD	+	NDD	+
+L	MDD	+	LDD	+
+L	NDD	+	LDD	+
+L	GDD	+	KDD	+
+L	LDD	+	HDD	+
+L	ODD	+	QDD	+
+L	ODD	+	RDD	+
+L	QDD	+	PDD	+
+L	RDD	+	PDD	+
+L	KDD	+	ODD	+
+L	PDD	+	LDD	+
+L	SDD	+	UDD	+
+L	SDD	+	VDD	+
+L	UDD	+	TDD	+
+L	VDD	+	TDD	+
+L	ODD	+	SDD	+
+L	TDD	+	PDD	+
+L	WDD	+	YDD	+
+L	WDD	+	ZDD	+
+L	YDD	+	XDD	+
+L	ZDD	+	XDD	+
+L	SDD	+	WDD	+
+L	XDD	+	TDD	+
+L	AED	+	CED	+
+L	AED	+	DED	+
+L	CED	+	BED	+
+L	DED	+	BED	+
+L	WDD	+	AED	+
+L	BED	+	XDD	+
+L	EED	+	GED	+
+L	EED	+	HED	+
+L	GED	+	FED	+
+L	HED	+	FED	+
+L	AED	+	EED	+
+L	FED	+	BED	+
+L	IED	+	KED	+
+L	IED	+	LED	+
+L	KED	+	JED	+
+L	LED	+	JED	+
+L	EED	+	IED	+
+L	JED	+	FED	+
+L	MED	+	OED	+
+L	MED	+	PED	+
+L	OED	+	NED	+
+L	PED	+	NED	+
+L	IED	+	MED	+
+L	NED	+	JED	+
+L	QED	+	SED	+
+L	QED	+	TED	+
+L	SED	+	RED	+
+L	TED	+	RED	+
+L	MED	+	QED	+
+L	RED	+	NED	+
+L	UED	+	WED	+
+L	UED	+	XED	+
+L	WED	+	VED	+
+L	XED	+	VED	+
+L	QED	+	UED	+
+L	VED	+	RED	+
+L	YED	+	AFD	+
+L	YED	+	BFD	+
+L	AFD	+	ZED	+
+L	BFD	+	ZED	+
+L	UED	+	YED	+
+L	ZED	+	VED	+
+L	CFD	+	EFD	+
+L	CFD	+	FFD	+
+L	EFD	+	DFD	+
+L	FFD	+	DFD	+
+L	YED	+	CFD	+
+L	DFD	+	ZED	+
+L	GFD	+	IFD	+
+L	GFD	+	JFD	+
+L	IFD	+	HFD	+
+L	JFD	+	HFD	+
+L	CFD	+	GFD	+
+L	HFD	+	DFD	+
+L	KFD	+	MFD	+
+L	KFD	+	NFD	+
+L	MFD	+	LFD	+
+L	NFD	+	LFD	+
+L	GFD	+	KFD	+
+L	LFD	+	HFD	+
+L	OFD	+	QFD	+
+L	OFD	+	RFD	+
+L	QFD	+	PFD	+
+L	RFD	+	PFD	+
+L	KFD	+	OFD	+
+L	PFD	+	LFD	+
+L	SFD	+	UFD	+
+L	SFD	+	VFD	+
+L	UFD	+	TFD	+
+L	VFD	+	TFD	+
+L	OFD	+	SFD	+
+L	TFD	+	PFD	+
+L	WFD	+	YFD	+
+L	WFD	+	ZFD	+
+L	YFD	+	XFD	+
+L	ZFD	+	XFD	+
+L	SFD	+	WFD	+
+L	XFD	+	TFD	+
+L	AGD	+	CGD	+
+L	AGD	+	DGD	+
+L	CGD	+	BGD	+
+L	DGD	+	BGD	+
+L	WFD	+	AGD	+
+L	BGD	+	XFD	+
+L	EGD	+	GGD	+
+L	EGD	+	HGD	+
+L	GGD	+	FGD	+
+L	HGD	+	FGD	+
+L	AGD	+	EGD	+
+L	FGD	+	BGD	+
+L	IGD	+	KGD	+
+L	IGD	+	LGD	+
+L	KGD	+	JGD	+
+L	LGD	+	JGD	+
+L	EGD	+	IGD	+
+L	JGD	+	FGD	+
+L	MGD	+	OGD	+
+L	MGD	+	PGD	+
+L	OGD	+	NGD	+
+L	PGD	+	NGD	+
+L	IGD	+	MGD	+
+L	NGD	+	JGD	+
+L	QGD	+	SGD	+
+L	QGD	+	TGD	+
+L	SGD	+	RGD	+
+L	TGD	+	RGD	+
+L	MGD	+	QGD	+
+L	RGD	+	NGD	+
+L	UGD	+	WGD	+
+L	UGD	+	XGD	+
+L	WGD	+	VGD	+
+L	XGD	+	VGD	+
+L	QGD	+	UGD	+
+L	VGD	+	RGD	+
+L	YGD	+	AHD	+
+L	YGD	+	BHD	+
+L	AHD	+	ZGD	+
+L	BHD	+	ZGD	+
+L	UGD	+	YGD	+
+L	ZGD	+	VGD	+
+L	CHD	+	EHD	+
+L	CHD	+	FHD	+
+L	EHD	+	DHD	+
+L	FHD	+	DHD	+
+L	YGD	+	CHD	+
+L	DHD	+	ZGD	+
+L	GHD	+	IHD	+
+L	GHD	+	JHD	+
+L	IHD	+	HHD	+
+L	JHD	+	HHD	+
+L	CHD	+	GHD	+
+L	HHD	+	DHD	+
+L	KHD	+	MHD	+
+L	KHD	+	NHD	+
+L	MHD	+	LHD	+
+L	NHD	+	LHD	+
+L	GHD	+	KHD	+
+L	LHD	+	HHD	+
+L	OHD	+	QHD	+
+L	OHD	+	RHD	+
+L	QHD	+	PHD	+
+L	RHD	+	PHD	+
+L	KHD	+	OHD	+
+L	PHD	+	LHD	+
+L	SHD	+	UHD	+
+L	SHD	+	VHD	+
+L	UHD	+	THD	+
+L	VHD	+	THD	+
+L	OHD	+	SHD	+
+L	THD	+	PHD	+
+L	WHD	+	YHD	+
+L	WHD	+	ZHD	+
+L	YHD	+	XHD	+
+L	ZHD	+	XHD	+
+L	SHD	+	WHD	+
+L	XHD	+	THD	+
+L	AID	+	CID	+
+L	AID	+	DID	+
+L	CID	+	BID	+
+L	DID	+	BID	+
+L	WHD	+	AID	+
+L	BID	+	XHD	+
+L	EID	+	GID	+
+L	EID	+	HID	+
+L	GID	+	FID	+
+L	HID	+	FID	+
+L	AID	+	EID	+
+L	FID	+	BID	+
+L	IID	+	KID	+
+L	IID	+	LID	+
+L	KID	+	JID	+
+L	LID	+	JID	+
+L	EID	+	IID	+
+L	JID	+	FID	+
+L	MID	+	OID	+
+L	MID	+	PID	+
+L	OID	+	NID	+
+L	PID	+	NID	+
+L	IID	+	MID	+
+L	NID	+	JID	+
+L	QID	+	SID	+
+L	QID	+	TID	+
+L	SID	+	RID	+
+L	TID	+	RID	+
+L	MID	+	QID	+
+L	RID	+	NID	+
+L	UID	+	WID	+
+L	UID	+	XID	+
+L	WID	+	VID	+
+L	XID	+	VID	+
+L	QID	+	UID	+
+L	VID	+	RID	+
+L	YID	+	AJD	+
+L	YID	+	BJD	+
+L	AJD	+	ZID	+
+L	BJD	+	ZID	+
+L	UID	+	YID	+
+L	ZID	+	VID	+
+L	CJD	+	EJD	+
+L	CJD	+	FJD	+
+L	EJD	+	DJD	+
+L	FJD	+	DJD	+
+L	YID	+	CJD	+
+L	DJD	+	ZID	+
+L	GJD	+	IJD	+
+L	GJD	+	JJD	+
+L	IJD	+	HJD	+
+L	JJD	+	HJD	+
+L	CJD	+	GJD	+
+L	HJD	+	DJD	+
+L	KJD	+	MJD	+
+L	KJD	+	NJD	+
+L	MJD	+	LJD	+
+L	NJD	+	LJD	+
+L	GJD	+	KJD	+
+L	LJD	+	HJD	+
+L	OJD	+	QJD	+
+L	OJD	+	RJD	+
+L	QJD	+	PJD	+
+L	RJD	+	PJD	+
+L	KJD	+	OJD	+
+L	PJD	+	LJD	+
+L	SJD	+	UJD	+
+L	SJD	+	VJD	+
+L	UJD	+	TJD	+
+L	VJD	+	TJD	+
+L	OJD	+	SJD	+
+L	TJD	+	PJD	+
+L	WJD	+	YJD	+
+L	WJD	+	ZJD	+
+L	YJD	+	XJD	+
+L	ZJD	+	XJD	+
+L	SJD	+	WJD	+
+L	XJD	+	TJD	+
+L	AKD	+	CKD	+
+L	AKD	+	DKD	+
+L	CKD	+	BKD	+
+L	DKD	+	BKD	+
+L	WJD	+	AKD	+
+L	BKD	+	XJD	+
+L	EKD	+	GKD	+
+L	EKD	+	HKD	+
+L	GKD	+	FKD	+
+L	HKD	+	FKD	+
+L	AKD	+	EKD	+
+L	FKD	+	BKD	+
+L	IKD	+	KKD	+
+L	IKD	+	LKD	+
+L	KKD	+	JKD	+
+L	LKD	+	JKD	+
+L	EKD	+	IKD	+
+L	JKD	+	FKD	+
+L	MKD	+	OKD	+
+L	MKD	+	PKD	+
+L	OKD	+	NKD	+
+L	PKD	+	NKD	+
+L	IKD	+	MKD	+
+L	NKD	+	JKD	+
+L	QKD	+	SKD	+
+L	QKD	+	TKD	+
+L	SKD	+	RKD	+
+L	TKD	+	RKD	+
+L	MKD	+	QKD	+
+L	RKD	+	NKD	+
+L	UKD	+	WKD	+
+L	UKD	+	XKD	+
+L	WKD	+	VKD	+
+L	XKD	+	VKD	+
+L	QKD	+	UKD	+
+L	VKD	+	RKD	+
+L	YKD	+	ALD	+
+L	YKD	+	BLD	+
+L	ALD	+	ZKD	+
+L	BLD	+	ZKD	+
+L	UKD	+	YKD	+
+L	ZKD	+	VKD	+
+L	CLD	+	ELD	+
+L	CLD	+	FLD	+
+L	ELD	+	DLD	+
+L	FLD	+	DLD	+
+L	YKD	+	CLD	+
+L	DLD	+	ZKD	+
+L	GLD	+	ILD	+
+L	GLD	+	JLD	+
+L	ILD	+	HLD	+
+L	JLD	+	HLD	+
+L	CLD	+	GLD	+
+L	HLD	+	DLD	+
+L	KLD	+	MLD	+
+L	KLD	+	NLD	+
+L	MLD	+	LLD	+
+L	NLD	+	LLD	+
+L	GLD	+	KLD	+
+L	LLD	+	HLD	+
+L	OLD	+	QLD	+
+L	OLD	+	RLD	+
+L	QLD	+	PLD	+
+L	RLD	+	PLD	+
+L	KLD	+	OLD	+
+L	PLD	+	LLD	+
+L	SLD	+	ULD	+
+L	SLD	+	VLD	+
+L	ULD	+	TLD	+
+L	VLD	+	TLD	+
+L	OLD	+	SLD	+
+L	TLD	+	PLD	+
+L	WLD	+	YLD	+
+L	WLD	+	ZLD	+
+L	YLD	+	XLD	+
+L	ZLD	+	XLD	+
+L	SLD	+	WLD	+
+L	XLD	+	TLD	+
+L	AMD	+	CMD	+
+L	AMD	+	DMD	+
+L	CMD	+	BMD	+
+L	DMD	+	BMD	+
+L	WLD	+	AMD	+
+L	BMD	+	XLD	+
+L	EMD	+	GMD	+
+L	EMD	+	HMD	+
+L	GMD	+	FMD	+
+L	HMD	+	FMD	+
+L	AMD	+	EMD	+
+L	FMD	+	BMD	+
+L	IMD	+	KMD	+
+L	IMD	+	LMD	+
+L	KMD	+	JMD	+
+L	LMD	+	JMD	+
+L	EMD	+	IMD	+
+L	JMD	+	FMD	+
+L	MMD	+	OMD	+
+L	MMD	+	PMD	+
+L	OMD	+	NMD	+
+L	PMD	+	NMD	+
+L	IMD	+	MMD	+
+L	NMD	+	JMD	+
+L	QMD	+	SMD	+
+L	QMD	+	TMD	+
+L	SMD	+	RMD	+
+L	TMD	+	RMD	+
+L	MMD	+	QMD	+
+L	RMD	+	NMD	+
+L	UMD	+	WMD	+
+L	UMD	+	XMD	+
+L	WMD	+	VMD	+
+L	XMD	+	VMD	+
+L	QMD	+	UMD	+
+L	VMD	+	RMD	+
+L	YMD	+	AND	+
+L	YMD	+	BND	+
+L	AND	+	ZMD	+
+L	BND	+	ZMD	+
+L	UMD	+	YMD	+
+L	ZMD	+	VMD	+
+L	CND	+	END	+
+L	CND	+	FND	+
+L	END	+	DND	+
+L	FND	+	DND	+
+L	YMD	+	CND	+
+L	DND	+	ZMD	+
+L	GND	+	IND	+
+L	GND	+	JND	+
+L	IND	+	HND	+
+L	JND	+	HND	+
+L	CND	+	GND	+
+L	HND	+	DND	+
+L	KND	+	MND	+
+L	KND	+	NND	+
+L	MND	+	LND	+
+L	NND	+	LND	+
+L	GND	+	KND	+
+L	LND	+	HND	+
+L	OND	+	QND	+
+L	OND	+	RND	+
+L	QND	+	PND	+
+L	RND	+	PND	+
+L	KND	+	OND	+
+L	PND	+	LND	+
+L	SND	+	UND	+
+L	SND	+	VND	+
+L	UND	+	TND	+
+L	VND	+	TND	+
+L	OND	+	SND	+
+L	TND	+	PND	+
+L	WND	+	YND	+
+L	WND	+	ZND	+
+L	YND	+	XND	+
+L	ZND	+	XND	+
+L	SND	+	WND	+
+L	XND	+	TND	+
+L	AOD	+	COD	+
+L	AOD	+	DOD	+
+L	COD	+	BOD	+
+L	DOD	+	BOD	+
+L	WND	+	AOD	+
+L	BOD	+	XND	+
+L	EOD	+	GOD	+
+L	EOD	+	HOD	+
+L	GOD	+	FOD	+
+L	HOD	+	FOD	+
+L	AOD	+	EOD	+
+L	FOD	+	BOD	+
+L	IOD	+	KOD	+
+L	IOD	+	LOD	+
+L	KOD	+	JOD	+
+L	LOD	+	JOD	+
+L	EOD	+	IOD	+
+L	JOD	+	FOD	+
+L	MOD	+	OOD	+
+L	MOD	+	POD	+
+L	OOD	+	NOD	+
+L	POD	+	NOD	+
+L	IOD	+	MOD	+
+L	NOD	+	JOD	+
+L	QOD	+	SOD	+
+L	QOD	+	TOD	+
+L	SOD	+	ROD	+
+L	TOD	+	ROD	+
+L	MOD	+	QOD	+
+L	ROD	+	NOD	+
+L	UOD	+	WOD	+
+L	UOD	+	XOD	+
+L	WOD	+	VOD	+
+L	XOD	+	VOD	+
+L	QOD	+	UOD	+
+L	VOD	+	ROD	+
+L	YOD	+	APD	+
+L	YOD	+	BPD	+
+L	APD	+	ZOD	+
+L	BPD	+	ZOD	+
+L	UOD	+	YOD	+
+L	ZOD	+	VOD	+
+L	CPD	+	EPD	+
+L	CPD	+	FPD	+
+L	EPD	+	DPD	+
+L	FPD	+	DPD	+
+L	YOD	+	CPD	+
+L	DPD	+	ZOD	+
+L	GPD	+	IPD	+
+L	GPD	+	JPD	+
+L	IPD	+	HPD	+
+L	JPD	+	HPD	+
+L	CPD	+	GPD	+
+L	HPD	+	DPD	+
+L	KPD	+	MPD	+
+L	KPD	+	NPD	+
+L	MPD	+	LPD	+
+L	NPD	+	LPD	+
+L	GPD	+	KPD	+
+L	LPD	+	HPD	+
+L	OPD	+	QPD	+
+L	OPD	+	RPD	+
+L	QPD	+	PPD	+
+L	RPD	+	PPD	+
+L	KPD	+	OPD	+
+L	PPD	+	LPD	+
+L	SPD	+	UPD	+
+L	SPD	+	VPD	+
+L	UPD	+	TPD	+
+L	VPD	+	TPD	+
+L	OPD	+	SPD	+
+L	TPD	+	PPD	+
+L	WPD	+	YPD	+
+L	WPD	+	ZPD	+
+L	YPD	+	XPD	+
+L	ZPD	+	XPD	+
+L	SPD	+	WPD	+
+L	XPD	+	TPD	+
+L	AQD	+	CQD	+
+L	AQD	+	DQD	+
+L	CQD	+	BQD	+
+L	DQD	+	BQD	+
+L	WPD	+	AQD	+
+L	BQD	+	XPD	+
+L	EQD	+	GQD	+
+L	EQD	+	HQD	+
+L	GQD	+	FQD	+
+L	HQD	+	FQD	+
+L	AQD	+	EQD	+
+L	FQD	+	BQD	+
+L	IQD	+	KQD	+
+L	IQD	+	LQD	+
+L	KQD	+	JQD	+
+L	LQD	+	JQD	+
+L	EQD	+	IQD	+
+L	JQD	+	FQD	+
+L	MQD	+	OQD	+
+L	MQD	+	PQD	+
+L	OQD	+	NQD	+
+L	PQD	+	NQD	+
+L	IQD	+	MQD	+
+L	NQD	+	JQD	+
+L	QQD	+	SQD	+
+L	QQD	+	TQD	+
+L	SQD	+	RQD	+
+L	TQD	+	RQD	+
+L	MQD	+	QQD	+
+L	RQD	+	NQD	+
+L	UQD	+	WQD	+
+L	UQD	+	XQD	+
+L	WQD	+	VQD	+
+L	XQD	+	VQD	+
+L	QQD	+	UQD	+
+L	VQD	+	RQD	+
+L	YQD	+	ARD	+
+L	YQD	+	BRD	+
+L	ARD	+	ZQD	+
+L	BRD	+	ZQD	+
+L	UQD	+	YQD	+
+L	ZQD	+	VQD	+
+L	CRD	+	ERD	+
+L	CRD	+	FRD	+
+L	ERD	+	DRD	+
+L	FRD	+	DRD	+
+L	YQD	+	CRD	+
+L	DRD	+	ZQD	+
+L	GRD	+	IRD	+
+L	GRD	+	JRD	+
+L	IRD	+	HRD	+
+L	JRD	+	HRD	+
+L	CRD	+	GRD	+
+L	HRD	+	DRD	+
+L	KRD	+	MRD	+
+L	KRD	+	NRD	+
+L	MRD	+	LRD	+
+L	NRD	+	LRD	+
+L	GRD	+	KRD	+
+L	LRD	+	HRD	+
+L	ORD	+	QRD	+
+L	ORD	+	RRD	+
+L	QRD	+	PRD	+
+L	RRD	+	PRD	+
+L	KRD	+	ORD	+
+L	PRD	+	LRD	+
+L	SRD	+	URD	+
+L	SRD	+	VRD	+
+L	URD	+	TRD	+
+L	VRD	+	TRD	+
+L	ORD	+	SRD	+
+L	TRD	+	PRD	+
+L	WRD	+	YRD	+
+L	WRD	+	ZRD	+
+L	YRD	+	XRD	+
+L	ZRD	+	XRD	+
+L	SRD	+	WRD	+
+L	XRD	+	TRD	+
+L	ASD	+	CSD	+
+L	ASD	+	DSD	+
+L	CSD	+	BSD	+
+L	DSD	+	BSD	+
+L	WRD	+	ASD	+
+L	BSD	+	XRD	+
+L	ESD	+	GSD	+
+L	ESD	+	HSD	+
+L	GSD	+	FSD	+
+L	HSD	+	FSD	+
+L	ASD	+	ESD	+
+L	FSD	+	BSD	+
+L	ISD	+	KSD	+
+L	ISD	+	LSD	+
+L	KSD	+	JSD	+
+L	LSD	+	JSD	+
+L	ESD	+	ISD	+
+L	JSD	+	FSD	+
+L	MSD	+	OSD	+
+L	MSD	+	PSD	+
+L	OSD	+	NSD	+
+L	PSD	+	NSD	+
+L	ISD	+	MSD	+
+L	NSD	+	JSD	+
+L	QSD	+	SSD	+
+L	QSD	+	TSD	+
+L	SSD	+	RSD	+
+L	TSD	+	RSD	+
+L	MSD	+	QSD	+
+L	RSD	+	NSD	+
+L	USD	+	WSD	+
+L	USD	+	XSD	+
+L	WSD	+	VSD	+
+L	XSD	+	VSD	+
+L	QSD	+	USD	+
+L	VSD	+	RSD	+
+L	YSD	+	ATD	+
+L	YSD	+	BTD	+
+L	ATD	+	ZSD	+
+L	BTD	+	ZSD	+
+L	USD	+	YSD	+
+L	ZSD	+	VSD	+
+L	CTD	+	ETD	+
+L	CTD	+	FTD	+
+L	ETD	+	DTD	+
+L	FTD	+	DTD	+
+L	YSD	+	CTD	+
+L	DTD	+	ZSD	+
+L	GTD	+	ITD	+
+L	GTD	+	JTD	+
+L	ITD	+	HTD	+
+L	JTD	+	HTD	+
+L	CTD	+	GTD	+
+L	HTD	+	DTD	+
+L	KTD	+	MTD	+
+L	KTD	+	NTD	+
+L	MTD	+	LTD	+
+L	NTD	+	LTD	+
+L	GTD	+	KTD	+
+L	LTD	+	HTD	+
+L	OTD	+	QTD	+
+L	OTD	+	RTD	+
+L	QTD	+	PTD	+
+L	RTD	+	PTD	+
+L	KTD	+	OTD	+
+L	PTD	+	LTD	+
+L	STD	+	UTD	+
+L	STD	+	VTD	+
+L	UTD	+	TTD	+
+L	VTD	+	TTD	+
+L	OTD	+	STD	+
+L	TTD	+	PTD	+
+L	WTD	+	YTD	+
+L	WTD	+	ZTD	+
+L	YTD	+	XTD	+
+L	ZTD	+	XTD	+
+L	STD	+	WTD	+
+L	XTD	+	TTD	+
+L	AUD	+	CUD	+
+L	AUD	+	DUD	+
+L	CUD	+	BUD	+
+L	DUD	+	BUD	+
+L	WTD	+	AUD	+
+L	BUD	+	XTD	+
+L	EUD	+	GUD	+
+L	EUD	+	HUD	+
+L	GUD	+	FUD	+
+L	HUD	+	FUD	+
+L	AUD	+	EUD	+
+L	FUD	+	BUD	+
+L	IUD	+	KUD	+
+L	IUD	+	LUD	+
+L	KUD	+	JUD	+
+L	LUD	+	JUD	+
+L	EUD	+	IUD	+
+L	JUD	+	FUD	+
+L	MUD	+	OUD	+
+L	MUD	+	PUD	+
+L	OUD	+	NUD	+
+L	PUD	+	NUD	+
+L	IUD	+	MUD	+
+L	NUD	+	JUD	+
+L	QUD	+	SUD	+
+L	QUD	+	TUD	+
+L	SUD	+	RUD	+
+L	TUD	+	RUD	+
+L	MUD	+	QUD	+
+L	RUD	+	NUD	+
+L	UUD	+	WUD	+
+L	UUD	+	XUD	+
+L	WUD	+	VUD	+
+L	XUD	+	VUD	+
+L	QUD	+	UUD	+
+L	VUD	+	RUD	+
+L	YUD	+	AVD	+
+L	YUD	+	BVD	+
+L	AVD	+	ZUD	+
+L	BVD	+	ZUD	+
+L	UUD	+	YUD	+
+L	ZUD	+	VUD	+
+L	CVD	+	EVD	+
+L	CVD	+	FVD	+
+L	EVD	+	DVD	+
+L	FVD	+	DVD	+
+L	YUD	+	CVD	+
+L	DVD	+	ZUD	+
+L	GVD	+	IVD	+
+L	GVD	+	JVD	+
+L	IVD	+	HVD	+
+L	JVD	+	HVD	+
+L	CVD	+	GVD	+
+L	HVD	+	DVD	+
+L	KVD	+	MVD	+
+L	KVD	+	NVD	+
+L	MVD	+	LVD	+
+L	NVD	+	LVD	+
+L	GVD	+	KVD	+
+L	LVD	+	HVD	+
+L	OVD	+	QVD	+
+L	OVD	+	RVD	+
+L	QVD	+	PVD	+
+L	RVD	+	PVD	+
+L	KVD	+	OVD	+
+L	PVD	+	LVD	+
+L	SVD	+	UVD	+
+L	SVD	+	VVD	+
+L	UVD	+	TVD	+
+L	VVD	+	TVD	+
+L	OVD	+	SVD	+
+L	TVD	+	PVD	+
+L	WVD	+	YVD	+
+L	WVD	+	ZVD	+
+L	YVD	+	XVD	+
+L	ZVD	+	XVD	+
+L	SVD	+	WVD	+
+L	XVD	+	TVD	+
+L	AWD	+	CWD	+
+L	AWD	+	DWD	+
+L	CWD	+	BWD	+
+L	DWD	+	BWD	+
+L	WVD	+	AWD	+
+L	BWD	+	XVD	+
+L	EWD	+	GWD	+
+L	EWD	+	HWD	+
+L	GWD	+	FWD	+
+L	HWD	+	FWD	+
+L	AWD	+	EWD	+
+L	FWD	+	BWD	+
+L	IWD	+	KWD	+
+L	IWD	+	LWD	+
+L	KWD	+	JWD	+
+L	LWD	+	JWD	+
+L	EWD	+	IWD	+
+L	JWD	+	FWD	+
+L	MWD	+	OWD	+
+L	MWD	+	PWD	+
+L	OWD	+	NWD	+
+L	PWD	+	NWD	+
+L	IWD	+	MWD	+
+L	NWD	+	JWD	+
+L	QWD	+	SWD	+
+L	QWD	+	TWD	+
+L	SWD	+	RWD	+
+L	TWD	+	RWD	+
+L	MWD	+	QWD	+
+L	RWD	+	NWD	+
+L	UWD	+	WWD	+
+L	UWD	+	XWD	+
+L	WWD	+	VWD	+
+L	XWD	+	VWD	+
+L	QWD	+	UWD	+
+L	VWD	+	RWD	+
+L	YWD	+	AXD	+
+L	YWD	+	BXD	+
+L	AXD	+	ZWD	+
+L	BXD	+	ZWD	+
+L	UWD	+	YWD	+
+L	ZWD	+	VWD	+
+L	CXD	+	EXD	+
+L	CXD	+	FXD	+
+L	EXD	+	DXD	+
+L	FXD	+	DXD	+
+L	YWD	+	CXD	+
+L	DXD	+	ZWD	+
+L	GXD	+	IXD	+
+L	GXD	+	JXD	+
+L	IXD	+	HXD	+
+L	JXD	+	HXD	+
+L	CXD	+	GXD	+
+L	HXD	+	DXD	+
+L	KXD	+	MXD	+
+L	KXD	+	NXD	+
+L	MXD	+	LXD	+
+L	NXD	+	LXD	+
+L	GXD	+	KXD	+
+L	LXD	+	HXD	+
+L	OXD	+	QXD	+
+L	OXD	+	RXD	+
+L	QXD	+	PXD	+
+L	RXD	+	PXD	+
+L	KXD	+	OXD	+
+L	PXD	+	LXD	+
+L	SXD	+	UXD	+
+L	SXD	+	VXD	+
+L	UXD	+	TXD	+
+L	VXD	+	TXD	+
+L	OXD	+	SXD	+
+L	TXD	+	PXD	+
+L	WXD	+	YXD	+
+L	WXD	+	ZXD	+
+L	YXD	+	XXD	+
+L	ZXD	+	XXD	+
+L	SXD	+	WXD	+
+L	XXD	+	TXD	+
+L	AYD	+	CYD	+
+L	AYD	+	DYD	+
+L	CYD	+	BYD	+
+L	DYD	+	BYD	+
+L	WXD	+	AYD	+
+L	BYD	+	XXD	+
+L	EYD	+	GYD	+
+L	EYD	+	HYD	+
+L	GYD	+	FYD	+
+L	HYD	+	FYD	+
+L	AYD	+	EYD	+
+L	FYD	+	BYD	+
+L	IYD	+	KYD	+
+L	IYD	+	LYD	+
+L	KYD	+	JYD	+
+L	LYD	+	JYD	+
+L	EYD	+	IYD	+
+L	JYD	+	FYD	+
+L	MYD	+	OYD	+
+L	MYD	+	PYD	+
+L	OYD	+	NYD	+
+L	PYD	+	NYD	+
+L	IYD	+	MYD	+
+L	NYD	+	JYD	+
+L	QYD	+	SYD	+
+L	QYD	+	TYD	+
+L	SYD	+	RYD	+
+L	TYD	+	RYD	+
+L	MYD	+	QYD	+
+L	RYD	+	NYD	+
+L	UYD	+	WYD	+
+L	UYD	+	XYD	+
+L	WYD	+	VYD	+
+L	XYD	+	VYD	+
+L	QYD	+	UYD	+
+L	VYD	+	RYD	+
+L	YYD	+	AZD	+
+L	YYD	+	BZD	+
+L	AZD	+	ZYD	+
+L	BZD	+	ZYD	+
+L	UYD	+	YYD	+
+L	ZYD	+	VYD	+
+L	CZD	+	EZD	+
+L	CZD	+	FZD	+
+L	EZD	+	DZD	+
+L	FZD	+	DZD	+
+L	YYD	+	CZD	+
+L	DZD	+	ZYD	+
+L	GZD	+	IZD	+
+L	GZD	+	JZD	+
+L	IZD	+	HZD	+
+L	JZD	+	HZD	+
+L	CZD	+	GZD	+
+L	HZD	+	DZD	+
+L	KZD	+	MZD	+
+L	KZD	+	NZD	+
+L	MZD	+	LZD	+
+L	NZD	+	LZD	+
+L	GZD	+	KZD	+
+L	LZD	+	HZD	+
+L	OZD	+	QZD	+
+L	OZD	+	RZD	+
+L	QZD	+	PZD	+
+L	RZD	+	PZD	+
+L	KZD	+	OZD	+
+L	PZD	+	LZD	+
+L	SZD	+	UZD	+
+L	SZD	+	VZD	+
+L	UZD	+	TZD	+
+L	VZD	+	TZD	+
+L	OZD	+	SZD	+
+L	TZD	+	PZD	+
+L	WZD	+	YZD	+
+L	WZD	+	ZZD	+
+L	YZD	+	XZD	+
+L	ZZD	+	XZD	+
+L	SZD	+	WZD	+
+L	XZD	+	TZD	+
+L	AAE	+	CAE	+
+L	AAE	+	DAE	+
+L	CAE	+	BAE	+
+L	DAE	+	BAE	+
+L	WZD	+	AAE	+
+L	BAE	+	XZD	+
+L	EAE	+	GAE	+
+L	EAE	+	HAE	+
+L	GAE	+	FAE	+
+L	HAE	+	FAE	+
+L	AAE	+	EAE	+
+L	FAE	+	BAE	+
+L	IAE	+	KAE	+
+L	IAE	+	LAE	+
+L	KAE	+	JAE	+
+L	LAE	+	JAE	+
+L	EAE	+	IAE	+
+L	JAE	+	FAE	+
+L	MAE	+	OAE	+
+L	MAE	+	PAE	+
+L	OAE	+	NAE	+
+L	PAE	+	NAE	+
+L	IAE	+	MAE	+
+L	NAE	+	JAE	+
+L	QAE	+	SAE	+
+L	QAE	+	TAE	+
+L	SAE	+	RAE	+
+L	TAE	+	RAE	+
+L	MAE	+	QAE	+
+L	RAE	+	NAE	+
+L	UAE	+	WAE	+
+L	UAE	+	XAE	+
+L	WAE	+	VAE	+
+L	XAE	+	VAE	+
+L	QAE	+	UAE	+
+L	VAE	+	RAE	+
+L	YAE	+	ABE	+
+L	YAE	+	BBE	+
+L	ABE	+	ZAE	+
+L	BBE	+	ZAE	+
+L	UAE	+	YAE	+
+L	ZAE	+	VAE	+
+L	CBE	+	EBE	+
+L	CBE	+	FBE	+
+L	EBE	+	DBE	+
+L	FBE	+	DBE	+
+L	YAE	+	CBE	+
+L	DBE	+	ZAE	+
+L	GBE	+	IBE	+
+L	GBE	+	JBE	+
+L	IBE	+	HBE	+
+L	JBE	+	HBE	+
+L	CBE	+	GBE	+
+L	HBE	+	DBE	+
+L	KBE	+	MBE	+
+L	KBE	+	NBE	+
+L	MBE	+	LBE	+
+L	NBE	+	LBE	+
+L	GBE	+	KBE	+
+L	LBE	+	HBE	+
+L	OBE	+	QBE	+
+L	OBE	+	RBE	+
+L	QBE	+	PBE	+
+L	RBE	+	PBE	+
+L	KBE	+	OBE	+
+L	PBE	+	LBE	+
+L	SBE	+	UBE	+
+L	SBE	+	VBE	+
+L	UBE	+	TBE	+
+L	VBE	+	TBE	+
+L	OBE	+	SBE	+
+L	TBE	+	PBE	+
+L	WBE	+	YBE	+
+L	WBE	+	ZBE	+
+L	YBE	+	XBE	+
+L	ZBE	+	XBE	+
+L	SBE	+	WBE	+
+L	XBE	+	TBE	+
+L	ACE	+	CCE	+
+L	ACE	+	DCE	+
+L	CCE	+	BCE	+
+L	DCE	+	BCE	+
+L	WBE	+	ACE	+
+L	BCE	+	XBE	+
+L	ECE	+	GCE	+
+L	ECE	+	HCE	+
+L	GCE	+	FCE	+
+L	HCE	+	FCE	+
+L	ACE	+	ECE	+
+L	FCE	+	BCE	+
+L	ICE	+	KCE	+
+L	ICE	+	LCE	+
+L	KCE	+	JCE	+
+L	LCE	+	JCE	+
+L	ECE	+	ICE	+
+L	JCE	+	FCE	+
+L	MCE	+	OCE	+
+L	MCE	+	PCE	+
+L	OCE	+	NCE	+
+L	PCE	+	NCE	+
+L	ICE	+	MCE	+
+L	NCE	+	JCE	+
+L	QCE	+	SCE	+
+L	QCE	+	TCE	+
+L	SCE	+	RCE	+
+L	TCE	+	RCE	+
+L	MCE	+	QCE	+
+L	RCE	+	NCE	+
+L	UCE	+	WCE	+
+L	UCE	+	XCE	+
+L	WCE	+	VCE	+
+L	XCE	+	VCE	+
+L	QCE	+	UCE	+
+L	VCE	+	RCE	+
+L	YCE	+	ADE	+
+L	YCE	+	BDE	+
+L	ADE	+	ZCE	+
+L	BDE	+	ZCE	+
+L	UCE	+	YCE	+
+L	ZCE	+	VCE	+
+L	CDE	+	EDE	+
+L	CDE	+	FDE	+
+L	EDE	+	DDE	+
+L	FDE	+	DDE	+
+L	YCE	+	CDE	+
+L	DDE	+	ZCE	+
+L	GDE	+	IDE	+
+L	GDE	+	JDE	+
+L	IDE	+	HDE	+
+L	JDE	+	HDE	+
+L	CDE	+	GDE	+
+L	HDE	+	DDE	+
+L	KDE	+	MDE	+
+L	KDE	+	NDE	+
+L	MDE	+	LDE	+
+L	NDE	+	LDE	+
+L	GDE	+	KDE	+
+L	LDE	+	HDE	+
+L	ODE	+	QDE	+
+L	ODE	+	RDE	+
+L	QDE	+	PDE	+
+L	RDE	+	PDE	+
+L	KDE	+	ODE	+
+L	PDE	+	LDE	+
+L	SDE	+	UDE	+
+L	SDE	+	VDE	+
+L	UDE	+	TDE	+
+L	VDE	+	TDE	+
+L	ODE	+	SDE	+
+L	TDE	+	PDE	+
+L	WDE	+	YDE	+
+L	WDE	+	ZDE	+
+L	YDE	+	XDE	+
+L	ZDE	+	XDE	+
+L	SDE	+	WDE	+
+L	XDE	+	TDE	+
+L	AEE	+	CEE	+
+L	AEE	+	DEE	+
+L	CEE	+	BEE	+
+L	DEE	+	BEE	+
+L	WDE	+	AEE	+
+L	BEE	+	XDE	+
+L	EEE	+	GEE	+
+L	EEE	+	HEE	+
+L	GEE	+	FEE	+
+L	HEE	+	FEE	+
+L	AEE	+	EEE	+
+L	FEE	+	BEE	+
+L	IEE	+	KEE	+
+L	IEE	+	LEE	+
+L	KEE	+	JEE	+
+L	LEE	+	JEE	+
+L	EEE	+	IEE	+
+L	JEE	+	FEE	+
+L	MEE	+	OEE	+
+L	MEE	+	PEE	+
+L	OEE	+	NEE	+
+L	PEE	+	NEE	+
+L	IEE	+	MEE	+
+L	NEE	+	JEE	+
+L	QEE	+	SEE	+
+L	QEE	+	TEE	+
+L	SEE	+	REE	+
+L	TEE	+	REE	+
+L	MEE	+	QEE	+
+L	REE	+	NEE	+
+L	UEE	+	WEE	+
+L	UEE	+	XEE	+
+L	WEE	+	VEE	+
+L	XEE	+	VEE	+
+L	QEE	+	UEE	+
+L	VEE	+	REE	+
+L	YEE	+	AFE	+
+L	YEE	+	BFE	+
+L	AFE	+	ZEE	+
+L	BFE	+	ZEE	+
+L	UEE	+	YEE	+
+L	ZEE	+	VEE	+
+L	CFE	+	EFE	+
+L	CFE	+	FFE	+
+L	EFE	+	DFE	+
+L	FFE	+	DFE	+
+L	YEE	+	CFE	+
+L	DFE	+	ZEE	+
+L	GFE	+	IFE	+
+L	GFE	+	JFE	+
+L	IFE	+	HFE	+
+L	JFE	+	HFE	+
+L	CFE	+	GFE	+
+L	HFE	+	DFE	+
+L	KFE	+	MFE	+
+L	KFE	+	NFE	+
+L	MFE	+	LFE	+
+L	NFE	+	LFE	+
+L	GFE	+	KFE	+
+L	LFE	+	HFE	+
+L	OFE	+	QFE	+
+L	OFE	+	RFE	+
+L	QFE	+	PFE	+
+L	RFE	+	PFE	+
+L	KFE	+	OFE	+
+L	PFE	+	LFE	+
+L	SFE	+	UFE	+
+L	SFE	+	VFE	+
+L	UFE	+	TFE	+
+L	VFE	+	TFE	+
+L	OFE	+	SFE	+
+L	TFE	+	PFE	+
+L	WFE	+	YFE	+
+L	WFE	+	ZFE	+
+L	YFE	+	XFE	+
+L	ZFE	+	XFE	+
+L	SFE	+	WFE	+
+L	XFE	+	TFE	+
+L	AGE	+	CGE	+
+L	AGE	+	DGE	+
+L	CGE	+	BGE	+
+L	DGE	+	BGE	+
+L	WFE	+	AGE	+
+L	BGE	+	XFE	+
+L	EGE	+	GGE	+
+L	EGE	+	HGE	+
+L	GGE	+	FGE	+
+L	HGE	+	FGE	+
+L	AGE	+	EGE	+
+L	FGE	+	BGE	+
+L	IGE	+	KGE	+
+L	IGE	+	LGE	+
+L	KGE	+	JGE	+
+L	LGE	+	JGE	+
+L	EGE	+	IGE	+
+L	JGE	+	FGE	+
+L	MGE	+	OGE	+
+L	MGE	+	PGE	+
+L	OGE	+	NGE	+
+L	PGE	+	NGE	+
+L	IGE	+	MGE	+
+L	NGE	+	JGE	+
+L	QGE	+	SGE	+
+L	QGE	+	TGE	+
+L	SGE	+	RGE	+
+L	TGE	+	RGE	+
+L	MGE	+	QGE	+
+L	RGE	+	NGE	+
+L	UGE	+	WGE	+
+L	UGE	+	XGE	+
+L	WGE	+	VGE	+
+L	XGE	+	VGE	+
+L	QGE	+	UGE	+
+L	VGE	+	RGE	+
+L	YGE	+	AHE	+
+L	YGE	+	BHE	+
+L	AHE	+	ZGE	+
+L	BHE	+	ZGE	+
+L	UGE	+	YGE	+
+L	ZGE	+	VGE	+
+L	CHE	+	EHE	+
+L	CHE	+	FHE	+
+L	EHE	+	DHE	+
+L	FHE	+	DHE	+
+L	YGE	+	CHE	+
+L	DHE	+	ZGE	+
+L	GHE	+	IHE	+
+L	GHE	+	JHE	+
+L	IHE	+	HHE	+
+L	JHE	+	HHE	+
+L	CHE	+	GHE	+
+L	HHE	+	DHE	+
+L	KHE	+	MHE	+
+L	KHE	+	NHE	+
+L	MHE	+	LHE	+
+L	NHE	+	LHE	+
+L	GHE	+	KHE	+
+L	LHE	+	HHE	+
+L	OHE	+	QHE	+
+L	OHE	+	RHE	+
+L	QHE	+	PHE	+
+L	RHE	+	PHE	+
+L	KHE	+	OHE	+
+L	PHE	+	LHE	+
+L	SHE	+	UHE	+
+L	SHE	+	VHE	+
+L	UHE	+	THE	+
+L	VHE	+	THE	+
+L	OHE	+	SHE	+
+L	THE	+	PHE	+
+L	WHE	+	YHE	+
+L	WHE	+	ZHE	+
+L	YHE	+	XHE	+
+L	ZHE	+	XHE	+
+L	SHE	+	WHE	+
+L	XHE	+	THE	+
+L	AIE	+	CIE	+
+L	AIE	+	DIE	+
+L	CIE	+	BIE	+
+L	DIE	+	BIE	+
+L	WHE	+	AIE	+
+L	BIE	+	XHE	+
+L	EIE	+	GIE	+
+L	EIE	+	HIE	+
+L	GIE	+	FIE	+
+L	HIE	+	FIE	+
+L	AIE	+	EIE	+
+L	FIE	+	BIE	+
+L	IIE	+	KIE	+
+L	IIE	+	LIE	+
+L	KIE	+	JIE	+
+L	LIE	+	JIE	+
+L	EIE	+	IIE	+
+L	JIE	+	FIE	+
+L	MIE	+	OIE	+
+L	MIE	+	PIE	+
+L	OIE	+	NIE	+
+L	PIE	+	NIE	+
+L	IIE	+	MIE	+
+L	NIE	+	JIE	+
+L	QIE	+	SIE	+
+L	QIE	+	TIE	+
+L	SIE	+	RIE	+
+L	TIE	+	RIE	+
+L	MIE	+	QIE	+
+L	RIE	+	NIE	+
+L	UIE	+	WIE	+
+L	UIE	+	XIE	+
+L	WIE	+	VIE	+
+L	XIE	+	VIE	+
+L	QIE	+	UIE	+
+L	VIE	+	RIE	+
+L	YIE	+	AJE	+
+L	YIE	+	BJE	+
+L	AJE	+	ZIE	+
+L	BJE	+	ZIE	+
+L	UIE	+	YIE	+
+L	ZIE	+	VIE	+
+L	CJE	+	EJE	+
+L	CJE	+	FJE	+
+L	EJE	+	DJE	+
+L	FJE	+	DJE	+
+L	YIE	+	CJE	+
+L	DJE	+	ZIE	+
+L	GJE	+	IJE	+
+L	GJE	+	JJE	+
+L	IJE	+	HJE	+
+L	JJE	+	HJE	+
+L	CJE	+	GJE	+
+L	HJE	+	DJE	+
+L	KJE	+	MJE	+
+L	KJE	+	NJE	+
+L	MJE	+	LJE	+
+L	NJE	+	LJE	+
+L	GJE	+	KJE	+
+L	LJE	+	HJE	+
+L	OJE	+	QJE	+
+L	OJE	+	RJE	+
+L	QJE	+	PJE	+
+L	RJE	+	PJE	+
+L	KJE	+	OJE	+
+L	PJE	+	LJE	+
+L	SJE	+	UJE	+
+L	SJE	+	VJE	+
+L	UJE	+	TJE	+
+L	VJE	+	TJE	+
+L	OJE	+	SJE	+
+L	TJE	+	PJE	+
+L	WJE	+	YJE	+
+L	WJE	+	ZJE	+
+L	YJE	+	XJE	+
+L	ZJE	+	XJE	+
+L	SJE	+	WJE	+
+L	XJE	+	TJE	+
+L	AKE	+	CKE	+
+L	AKE	+	DKE	+
+L	CKE	+	BKE	+
+L	DKE	+	BKE	+
+L	WJE	+	AKE	+
+L	BKE	+	XJE	+
+L	EKE	+	GKE	+
+L	EKE	+	HKE	+
+L	GKE	+	FKE	+
+L	HKE	+	FKE	+
+L	AKE	+	EKE	+
+L	FKE	+	BKE	+
+L	IKE	+	KKE	+
+L	IKE	+	LKE	+
+L	KKE	+	JKE	+
+L	LKE	+	JKE	+
+L	EKE	+	IKE	+
+L	JKE	+	FKE	+
+L	MKE	+	OKE	+
+L	MKE	+	PKE	+
+L	OKE	+	NKE	+
+L	PKE	+	NKE	+
+L	IKE	+	MKE	+
+L	NKE	+	JKE	+
+L	QKE	+	SKE	+
+L	QKE	+	TKE	+
+L	SKE	+	RKE	+
+L	TKE	+	RKE	+
+L	MKE	+	QKE	+
+L	RKE	+	NKE	+
+L	UKE	+	WKE	+
+L	UKE	+	XKE	+
+L	WKE	+	VKE	+
+L	XKE	+	VKE	+
+L	QKE	+	UKE	+
+L	VKE	+	RKE	+
+L	YKE	+	ALE	+
+L	YKE	+	BLE	+
+L	ALE	+	ZKE	+
+L	BLE	+	ZKE	+
+L	UKE	+	YKE	+
+L	ZKE	+	VKE	+
+L	CLE	+	ELE	+
+L	CLE	+	FLE	+
+L	ELE	+	DLE	+
+L	FLE	+	DLE	+
+L	YKE	+	CLE	+
+L	DLE	+	ZKE	+
+L	GLE	+	ILE	+
+L	GLE	+	JLE	+
+L	ILE	+	HLE	+
+L	JLE	+	HLE	+
+L	CLE	+	GLE	+
+L	HLE	+	DLE	+
+L	KLE	+	MLE	+
+L	KLE	+	NLE	+
+L	MLE	+	LLE	+
+L	NLE	+	LLE	+
+L	GLE	+	KLE	+
+L	LLE	+	HLE	+
+L	OLE	+	QLE	+
+L	OLE	+	RLE	+
+L	QLE	+	PLE	+
+L	RLE	+	PLE	+
+L	KLE	+	OLE	+
+L	PLE	+	LLE	+
+L	SLE	+	ULE	+
+L	SLE	+	VLE	+
+L	ULE	+	TLE	+
+L	VLE	+	TLE	+
+L	OLE	+	SLE	+
+L	TLE	+	PLE	+
+L	WLE	+	YLE	+
+L	WLE	+	ZLE	+
+L	YLE	+	XLE	+
+L	ZLE	+	XLE	+
+L	SLE	+	WLE	+
+L	XLE	+	TLE	+
+L	AME	+	CME	+
+L	AME	+	DME	+
+L	CME	+	BME	+
+L	DME	+	BME	+
+L	WLE	+	AME	+
+L	BME	+	XLE	+
+L	EME	+	GME	+
+L	EME	+	HME	+
+L	GME	+	FME	+
+L	HME	+	FME	+
+L	AME	+	EME	+
+L	FME	+	BME	+
+L	IME	+	KME	+
+L	IME	+	LME	+
+L	KME	+	JME	+
+L	LME	+	JME	+
+L	EME	+	IME	+
+L	JME	+	FME	+
+L	MME	+	OME	+
+L	MME	+	PME	+
+L	OME	+	NME	+
+L	PME	+	NME	+
+L	IME	+	MME	+
+L	NME	+	JME	+
+L	QME	+	SME	+
+L	QME	+	TME	+
+L	SME	+	RME	+
+L	TME	+	RME	+
+L	MME	+	QME	+
+L	RME	+	NME	+
+L	UME	+	WME	+
+L	UME	+	XME	+
+L	WME	+	VME	+
+L	XME	+	VME	+
+L	QME	+	UME	+
+L	VME	+	RME	+
+L	YME	+	ANE	+
+L	YME	+	BNE	+
+L	ANE	+	ZME	+
+L	BNE	+	ZME	+
+L	UME	+	YME	+
+L	ZME	+	VME	+
+L	CNE	+	ENE	+
+L	CNE	+	FNE	+
+L	ENE	+	DNE	+
+L	FNE	+	DNE	+
+L	YME	+	CNE	+
+L	DNE	+	ZME	+
+L	GNE	+	INE	+
+L	GNE	+	JNE	+
+L	INE	+	HNE	+
+L	JNE	+	HNE	+
+L	CNE	+	GNE	+
+L	HNE	+	DNE	+
+L	KNE	+	MNE	+
+L	KNE	+	NNE	+
+L	MNE	+	LNE	+
+L	NNE	+	LNE	+
+L	GNE	+	KNE	+
+L	LNE	+	HNE	+
+L	ONE	+	QNE	+
+L	ONE	+	RNE	+
+L	QNE	+	PNE	+
+L	RNE	+	PNE	+
+L	KNE	+	ONE	+
+L	PNE	+	LNE	+
+L	SNE	+	UNE	+
+L	SNE	+	VNE	+
+L	UNE	+	TNE	+
+L	VNE	+	TNE	+
+L	ONE	+	SNE	+
+L	TNE	+	PNE	+
+L	WNE	+	YNE	+
+L	WNE	+	ZNE	+
+L	YNE	+	XNE	+
+L	ZNE	+	XNE	+
+L	SNE	+	WNE	+
+L	XNE	+	TNE	+
+L	AOE	+	COE	+
+L	AOE	+	DOE	+
+L	COE	+	BOE	+
+L	DOE	+	BOE	+
+L	WNE	+	AOE	+
+L	BOE	+	XNE	+
+L	EOE	+	GOE	+
+L	EOE	+	HOE	+
+L	GOE	+	FOE	+
+L	HOE	+	FOE	+
+L	AOE	+	EOE	+
+L	FOE	+	BOE	+
+L	IOE	+	KOE	+
+L	IOE	+	LOE	+
+L	KOE	+	JOE	+
+L	LOE	+	JOE	+
+L	EOE	+	IOE	+
+L	JOE	+	FOE	+
+L	MOE	+	OOE	+
+L	MOE	+	POE	+
+L	OOE	+	NOE	+
+L	POE	+	NOE	+
+L	IOE	+	MOE	+
+L	NOE	+	JOE	+
+L	QOE	+	SOE	+
+L	QOE	+	TOE	+
+L	SOE	+	ROE	+
+L	TOE	+	ROE	+
+L	MOE	+	QOE	+
+L	ROE	+	NOE	+
+L	UOE	+	WOE	+
+L	UOE	+	XOE	+
+L	WOE	+	VOE	+
+L	XOE	+	VOE	+
+L	QOE	+	UOE	+
+L	VOE	+	ROE	+
+L	YOE	+	APE	+
+L	YOE	+	BPE	+
+L	APE	+	ZOE	+
+L	BPE	+	ZOE	+
+L	UOE	+	YOE	+
+L	ZOE	+	VOE	+
+L	CPE	+	EPE	+
+L	CPE	+	FPE	+
+L	EPE	+	DPE	+
+L	FPE	+	DPE	+
+L	YOE	+	CPE	+
+L	DPE	+	ZOE	+
+L	GPE	+	IPE	+
+L	GPE	+	JPE	+
+L	IPE	+	HPE	+
+L	JPE	+	HPE	+
+L	CPE	+	GPE	+
+L	HPE	+	DPE	+
+L	KPE	+	MPE	+
+L	KPE	+	NPE	+
+L	MPE	+	LPE	+
+L	NPE	+	LPE	+
+L	GPE	+	KPE	+
+L	LPE	+	HPE	+
+L	OPE	+	QPE	+
+L	OPE	+	RPE	+
+L	QPE	+	PPE	+
+L	RPE	+	PPE	+
+L	KPE	+	OPE	+
+L	PPE	+	LPE	+
+L	SPE	+	UPE	+
+L	SPE	+	VPE	+
+L	UPE	+	TPE	+
+L	VPE	+	TPE	+
+L	OPE	+	SPE	+
+L	TPE	+	PPE	+
+L	WPE	+	YPE	+
+L	WPE	+	ZPE	+
+L	YPE	+	XPE	+
+L	ZPE	+	XPE	+
+L	SPE	+	WPE	+
+L	XPE	+	TPE	+
+L	AQE	+	CQE	+
+L	AQE	+	DQE	+
+L	CQE	+	BQE	+
+L	DQE	+	BQE	+
+L	WPE	+	AQE	+
+L	BQE	+	XPE	+
+L	EQE	+	GQE	+
+L	EQE	+	HQE	+
+L	GQE	+	FQE	+
+L	HQE	+	FQE	+
+L	AQE	+	EQE	+
+L	FQE	+	BQE	+
+L	IQE	+	KQE	+
+L	IQE	+	LQE	+
+L	KQE	+	JQE	+
+L	LQE	+	JQE	+
+L	EQE	+	IQE	+
+L	JQE	+	FQE	+
+L	MQE	+	OQE	+
+L	MQE	+	PQE	+
+L	OQE	+	NQE	+
+L	PQE	+	NQE	+
+L	IQE	+	MQE	+
+L	NQE	+	JQE	+
+L	QQE	+	SQE	+
+L	QQE	+	TQE	+
+L	SQE	+	RQE	+
+L	TQE	+	RQE	+
+L	MQE	+	QQE	+
+L	RQE	+	NQE	+
+L	UQE	+	WQE	+
+L	UQE	+	XQE	+
+L	WQE	+	VQE	+
+L	XQE	+	VQE	+
+L	QQE	+	UQE	+
+L	VQE	+	RQE	+
+L	YQE	+	ARE	+
+L	YQE	+	BRE	+
+L	ARE	+	ZQE	+
+L	BRE	+	ZQE	+
+L	UQE	+	YQE	+
+L	ZQE	+	VQE	+
+L	CRE	+	ERE	+
+L	CRE	+	FRE	+
+L	ERE	+	DRE	+
+L	FRE	+	DRE	+
+L	YQE	+	CRE	+
+L	DRE	+	ZQE	+
+L	GRE	+	IRE	+
+L	GRE	+	JRE	+
+L	IRE	+	HRE	+
+L	JRE	+	HRE	+
+L	CRE	+	GRE	+
+L	HRE	+	DRE	+
+L	KRE	+	MRE	+
+L	KRE	+	NRE	+
+L	MRE	+	LRE	+
+L	NRE	+	LRE	+
+L	GRE	+	KRE	+
+L	LRE	+	HRE	+
+L	ORE	+	QRE	+
+L	ORE	+	RRE	+
+L	QRE	+	PRE	+
+L	RRE	+	PRE	+
+L	KRE	+	ORE	+
+L	PRE	+	LRE	+
+L	SRE	+	URE	+
+L	SRE	+	VRE	+
+L	URE	+	TRE	+
+L	VRE	+	TRE	+
+L	ORE	+	SRE	+
+L	TRE	+	PRE	+
+L	WRE	+	YRE	+
+L	WRE	+	ZRE	+
+L	YRE	+	XRE	+
+L	ZRE	+	XRE	+
+L	SRE	+	WRE	+
+L	XRE	+	TRE	+
+L	ASE	+	CSE	+
+L	ASE	+	DSE	+
+L	CSE	+	BSE	+
+L	DSE	+	BSE	+
+L	WRE	+	ASE	+
+L	BSE	+	XRE	+
+L	ESE	+	GSE	+
+L	ESE	+	HSE	+
+L	GSE	+	FSE	+
+L	HSE	+	FSE	+
+L	ASE	+	ESE	+
+L	FSE	+	BSE	+
+L	ISE	+	KSE	+
+L	ISE	+	LSE	+
+L	KSE	+	JSE	+
+L	LSE	+	JSE	+
+L	ESE	+	ISE	+
+L	JSE	+	FSE	+
+L	MSE	+	OSE	+
+L	MSE	+	PSE	+
+L	OSE	+	NSE	+
+L	PSE	+	NSE	+
+L	ISE	+	MSE	+
+L	NSE	+	JSE	+
+L	QSE	+	SSE	+
+L	QSE	+	TSE	+
+L	SSE	+	RSE	+
+L	TSE	+	RSE	+
+L	MSE	+	QSE	+
+L	RSE	+	NSE	+
+L	USE	+	WSE	+
+L	USE	+	XSE	+
+L	WSE	+	VSE	+
+L	XSE	+	VSE	+
+L	QSE	+	USE	+
+L	VSE	+	RSE	+
+L	YSE	+	ATE	+
+L	YSE	+	BTE	+
+L	ATE	+	ZSE	+
+L	BTE	+	ZSE	+
+L	USE	+	YSE	+
+L	ZSE	+	VSE	+
+L	CTE	+	ETE	+
+L	CTE	+	FTE	+
+L	ETE	+	DTE	+
+L	FTE	+	DTE	+
+L	YSE	+	CTE	+
+L	DTE	+	ZSE	+
+L	GTE	+	ITE	+
+L	GTE	+	JTE	+
+L	ITE	+	HTE	+
+L	JTE	+	HTE	+
+L	CTE	+	GTE	+
+L	HTE	+	DTE	+
+L	KTE	+	MTE	+
+L	KTE	+	NTE	+
+L	MTE	+	LTE	+
+L	NTE	+	LTE	+
+L	GTE	+	KTE	+
+L	LTE	+	HTE	+
+L	OTE	+	QTE	+
+L	OTE	+	RTE	+
+L	QTE	+	PTE	+
+L	RTE	+	PTE	+
+L	KTE	+	OTE	+
+L	PTE	+	LTE	+
+L	STE	+	UTE	+
+L	STE	+	VTE	+
+L	UTE	+	TTE	+
+L	VTE	+	TTE	+
+L	OTE	+	STE	+
+L	TTE	+	PTE	+
+L	WTE	+	YTE	+
+L	WTE	+	ZTE	+
+L	YTE	+	XTE	+
+L	ZTE	+	XTE	+
+L	STE	+	WTE	+
+L	XTE	+	TTE	+
+L	AUE	+	CUE	+
+L	AUE	+	DUE	+
+L	CUE	+	BUE	+
+L	DUE	+	BUE	+
+L	WTE	+	AUE	+
+L	BUE	+	XTE	+
+L	EUE	+	GUE	+
+L	EUE	+	HUE	+
+L	GUE	+	FUE	+
+L	HUE	+	FUE	+
+L	AUE	+	EUE	+
+L	FUE	+	BUE	+
+L	IUE	+	KUE	+
+L	IUE	+	LUE	+
+L	KUE	+	JUE	+
+L	LUE	+	JUE	+
+L	EUE	+	IUE	+
+L	JUE	+	FUE	+
+L	MUE	+	OUE	+
+L	MUE	+	PUE	+
+L	OUE	+	NUE	+
+L	PUE	+	NUE	+
+L	IUE	+	MUE	+
+L	NUE	+	JUE	+
+L	QUE	+	SUE	+
+L	QUE	+	TUE	+
+L	SUE	+	RUE	+
+L	TUE	+	RUE	+
+L	MUE	+	QUE	+
+L	RUE	+	NUE	+
+L	UUE	+	WUE	+
+L	UUE	+	XUE	+
+L	WUE	+	VUE	+
+L	XUE	+	VUE	+
+L	QUE	+	UUE	+
+L	VUE	+	RUE	+
+L	YUE	+	AVE	+
+L	YUE	+	BVE	+
+L	AVE	+	ZUE	+
+L	BVE	+	ZUE	+
+L	UUE	+	YUE	+
+L	ZUE	+	VUE	+
+L	CVE	+	EVE	+
+L	CVE	+	FVE	+
+L	EVE	+	DVE	+
+L	FVE	+	DVE	+
+L	YUE	+	CVE	+
+L	DVE	+	ZUE	+
+L	GVE	+	IVE	+
+L	GVE	+	JVE	+
+L	IVE	+	HVE	+
+L	JVE	+	HVE	+
+L	CVE	+	GVE	+
+L	HVE	+	DVE	+
+L	KVE	+	MVE	+
+L	KVE	+	NVE	+
+L	MVE	+	LVE	+
+L	NVE	+	LVE	+
+L	GVE	+	KVE	+
+L	LVE	+	HVE	+
+L	OVE	+	QVE	+
+L	OVE	+	RVE	+
+L	QVE	+	PVE	+
+L	RVE	+	PVE	+
+L	KVE	+	OVE	+
+L	PVE	+	LVE	+
+L	SVE	+	UVE	+
+L	SVE	+	VVE	+
+L	UVE	+	TVE	+
+L	VVE	+	TVE	+
+L	OVE	+	SVE	+
+L	TVE	+	PVE	+
+L	WVE	+	YVE	+
+L	WVE	+	ZVE	+
+L	YVE	+	XVE	+
+L	ZVE	+	XVE	+
+L	SVE	+	WVE	+
+L	XVE	+	TVE	+
+L	AWE	+	CWE	+
+L	AWE	+	DWE	+
+L	CWE	+	BWE	+
+L	DWE	+	BWE	+
+L	WVE	+	AWE	+
+L	BWE	+	XVE	+
+L	EWE	+	GWE	+
+L	EWE	+	HWE	+
+L	GWE	+	FWE	+
+L	HWE	+	FWE	+
+L	AWE	+	EWE	+
+L	FWE	+	BWE	+
+L	IWE	+	KWE	+
+L	IWE	+	LWE	+
+L	KWE	+	JWE	+
+L	LWE	+	JWE	+
+L	EWE	+	IWE	+
+L	JWE	+	FWE	+
+L	MWE	+	OWE	+
+L	MWE	+	PWE	+
+L	OWE	+	NWE	+
+L	PWE	+	NWE	+
+L	IWE	+	MWE	+
+L	NWE	+	JWE	+
+L	QWE	+	SWE	+
+L	QWE	+	TWE	+
+L	SWE	+	RWE	+
+L	TWE	+	RWE	+
+L	MWE	+	QWE	+
+L	RWE	+	NWE	+
+L	UWE	+	WWE	+
+L	UWE	+	XWE	+
+L	WWE	+	VWE	+
+L	XWE	+	VWE	+
+L	QWE	+	UWE	+
+L	VWE	+	RWE	+
+L	YWE	+	AXE	+
+L	YWE	+	BXE	+
+L	AXE	+	ZWE	+
+L	BXE	+	ZWE	+
+L	UWE	+	YWE	+
+L	ZWE	+	VWE	+
+L	CXE	+	EXE	+
+L	CXE	+	FXE	+
+L	EXE	+	DXE	+
+L	FXE	+	DXE	+
+L	YWE	+	CXE	+
+L	DXE	+	ZWE	+
+L	GXE	+	IXE	+
+L	GXE	+	JXE	+
+L	IXE	+	HXE	+
+L	JXE	+	HXE	+
+L	CXE	+	GXE	+
+L	HXE	+	DXE	+
+L	KXE	+	MXE	+
+L	KXE	+	NXE	+
+L	MXE	+	LXE	+
+L	NXE	+	LXE	+
+L	GXE	+	KXE	+
+L	LXE	+	HXE	+
+L	OXE	+	QXE	+
+L	OXE	+	RXE	+
+L	QXE	+	PXE	+
+L	RXE	+	PXE	+
+L	KXE	+	OXE	+
+L	PXE	+	LXE	+
+L	SXE	+	UXE	+
+L	SXE	+	VXE	+
+L	UXE	+	TXE	+
+L	VXE	+	TXE	+
+L	OXE	+	SXE	+
+L	TXE	+	PXE	+
+L	WXE	+	YXE	+
+L	WXE	+	ZXE	+
+L	YXE	+	XXE	+
+L	ZXE	+	XXE	+
+L	SXE	+	WXE	+
+L	XXE	+	TXE	+
+L	AYE	+	CYE	+
+L	AYE	+	DYE	+
+L	CYE	+	BYE	+
+L	DYE	+	BYE	+
+L	WXE	+	AYE	+
+L	BYE	+	XXE	+
+L	EYE	+	GYE	+
+L	EYE	+	HYE	+
+L	GYE	+	FYE	+
+L	HYE	+	FYE	+
+L	AYE	+	EYE	+
+L	FYE	+	BYE	+
+L	IYE	+	KYE	+
+L	IYE	+	LYE	+
+L	KYE	+	JYE	+
+L	LYE	+	JYE	+
+L	EYE	+	IYE	+
+L	JYE	+	FYE	+
+L	MYE	+	OYE	+
+L	MYE	+	PYE	+
+L	OYE	+	NYE	+
+L	PYE	+	NYE	+
+L	IYE	+	MYE	+
+L	NYE	+	JYE	+
+L	QYE	+	SYE	+
+L	QYE	+	TYE	+
+L	SYE	+	RYE	+
+L	TYE	+	RYE	+
+L	MYE	+	QYE	+
+L	RYE	+	NYE	+
+L	UYE	+	WYE	+
+L	UYE	+	XYE	+
+L	WYE	+	VYE	+
+L	XYE	+	VYE	+
+L	QYE	+	UYE	+
+L	VYE	+	RYE	+
+L	YYE	+	AZE	+
+L	YYE	+	BZE	+
+L	AZE	+	ZYE	+
+L	BZE	+	ZYE	+
+L	UYE	+	YYE	+
+L	ZYE	+	VYE	+
+L	CZE	+	EZE	+
+L	CZE	+	FZE	+
+L	EZE	+	DZE	+
+L	FZE	+	DZE	+
+L	YYE	+	CZE	+
+L	DZE	+	ZYE	+
+L	GZE	+	IZE	+
+L	GZE	+	JZE	+
+L	IZE	+	HZE	+
+L	JZE	+	HZE	+
+L	CZE	+	GZE	+
+L	HZE	+	DZE	+
+L	KZE	+	MZE	+
+L	KZE	+	NZE	+
+L	MZE	+	LZE	+
+L	NZE	+	LZE	+
+L	GZE	+	KZE	+
+L	LZE	+	HZE	+
+L	OZE	+	QZE	+
+L	OZE	+	RZE	+
+L	QZE	+	PZE	+
+L	RZE	+	PZE	+
+L	KZE	+	OZE	+
+L	PZE	+	LZE	+
+L	SZE	+	UZE	+
+L	SZE	+	VZE	+
+L	UZE	+	TZE	+
+L	VZE	+	TZE	+
+L	OZE	+	SZE	+
+L	TZE	+	PZE	+
+L	WZE	+	YZE	+
+L	WZE	+	ZZE	+
+L	YZE	+	XZE	+
+L	ZZE	+	XZE	+
+L	SZE	+	WZE	+
+L	XZE	+	TZE	+
+L	AAF	+	CAF	+
+L	AAF	+	DAF	+
+L	CAF	+	BAF	+
+L	DAF	+	BAF	+
+L	WZE	+	AAF	+
+L	BAF	+	XZE	+
+L	EAF	+	GAF	+
+L	EAF	+	HAF	+
+L	GAF	+	FAF	+
+L	HAF	+	FAF	+
+L	AAF	+	EAF	+
+L	FAF	+	BAF	+
+L	IAF	+	KAF	+
+L	IAF	+	LAF	+
+L	KAF	+	JAF	+
+L	LAF	+	JAF	+
+L	EAF	+	IAF	+
+L	JAF	+	FAF	+
+L	MAF	+	OAF	+
+L	MAF	+	PAF	+
+L	OAF	+	NAF	+
+L	PAF	+	NAF	+
+L	IAF	+	MAF	+
+L	NAF	+	JAF	+
+L	QAF	+	SAF	+
+L	QAF	+	TAF	+
+L	SAF	+	RAF	+
+L	TAF	+	RAF	+
+L	MAF	+	QAF	+
+L	RAF	+	NAF	+
+L	UAF	+	WAF	+
+L	UAF	+	XAF	+
+L	WAF	+	VAF	+
+L	XAF	+	VAF	+
+L	QAF	+	UAF	+
+L	VAF	+	RAF	+
+L	YAF	+	ABF	+
+L	YAF	+	BBF	+
+L	ABF	+	ZAF	+
+L	BBF	+	ZAF	+
+L	UAF	+	YAF	+
+L	ZAF	+	VAF	+
+L	CBF	+	EBF	+
+L	CBF	+	FBF	+
+L	EBF	+	DBF	+
+L	FBF	+	DBF	+
+L	YAF	+	CBF	+
+L	DBF	+	ZAF	+
+L	GBF	+	IBF	+
+L	GBF	+	JBF	+
+L	IBF	+	HBF	+
+L	JBF	+	HBF	+
+L	CBF	+	GBF	+
+L	HBF	+	DBF	+
+L	KBF	+	MBF	+
+L	KBF	+	NBF	+
+L	MBF	+	LBF	+
+L	NBF	+	LBF	+
+L	GBF	+	KBF	+
+L	LBF	+	HBF	+
+L	OBF	+	QBF	+
+L	OBF	+	RBF	+
+L	QBF	+	PBF	+
+L	RBF	+	PBF	+
+L	KBF	+	OBF	+
+L	PBF	+	LBF	+
+L	SBF	+	UBF	+
+L	SBF	+	VBF	+
+L	UBF	+	TBF	+
+L	VBF	+	TBF	+
+L	OBF	+	SBF	+
+L	TBF	+	PBF	+
+L	WBF	+	YBF	+
+L	WBF	+	ZBF	+
+L	YBF	+	XBF	+
+L	ZBF	+	XBF	+
+L	SBF	+	WBF	+
+L	XBF	+	TBF	+
+L	ACF	+	CCF	+
+L	ACF	+	DCF	+
+L	CCF	+	BCF	+
+L	DCF	+	BCF	+
+L	WBF	+	ACF	+
+L	BCF	+	XBF	+
+L	ECF	+	GCF	+
+L	ECF	+	HCF	+
+L	GCF	+	FCF	+
+L	HCF	+	FCF	+
+L	ACF	+	ECF	+
+L	FCF	+	BCF	+
+L	ICF	+	KCF	+
+L	ICF	+	LCF	+
+L	KCF	+	JCF	+
+L	LCF	+	JCF	+
+L	ECF	+	ICF	+
+L	JCF	+	FCF	+
+L	MCF	+	OCF	+
+L	MCF	+	PCF	+
+L	OCF	+	NCF	+
+L	PCF	+	NCF	+
+L	ICF	+	MCF	+
+L	NCF	+	JCF	+
+L	QCF	+	SCF	+
+L	QCF	+	TCF	+
+L	SCF	+	RCF	+
+L	TCF	+	RCF	+
+L	MCF	+	QCF	+
+L	RCF	+	NCF	+
+L	UCF	+	WCF	+
+L	UCF	+	XCF	+
+L	WCF	+	VCF	+
+L	XCF	+	VCF	+
+L	QCF	+	UCF	+
+L	VCF	+	RCF	+
+L	YCF	+	ADF	+
+L	YCF	+	BDF	+
+L	ADF	+	ZCF	+
+L	BDF	+	ZCF	+
+L	UCF	+	YCF	+
+L	ZCF	+	VCF	+
+L	CDF	+	EDF	+
+L	CDF	+	FDF	+
+L	EDF	+	DDF	+
+L	FDF	+	DDF	+
+L	YCF	+	CDF	+
+L	DDF	+	ZCF	+
+L	GDF	+	IDF	+
+L	GDF	+	JDF	+
+L	IDF	+	HDF	+
+L	JDF	+	HDF	+
+L	CDF	+	GDF	+
+L	HDF	+	DDF	+
+L	KDF	+	MDF	+
+L	KDF	+	NDF	+
+L	MDF	+	LDF	+
+L	NDF	+	LDF	+
+L	GDF	+	KDF	+
+L	LDF	+	HDF	+
+L	ODF	+	QDF	+
+L	ODF	+	RDF	+
+L	QDF	+	PDF	+
+L	RDF	+	PDF	+
+L	KDF	+	ODF	+
+L	PDF	+	LDF	+
+L	SDF	+	UDF	+
+L	SDF	+	VDF	+
+L	UDF	+	TDF	+
+L	VDF	+	TDF	+
+L	ODF	+	SDF	+
+L	TDF	+	PDF	+
+L	WDF	+	YDF	+
+L	WDF	+	ZDF	+
+L	YDF	+	XDF	+
+L	ZDF	+	XDF	+
+L	SDF	+	WDF	+
+L	XDF	+	TDF	+
+L	AEF	+	CEF	+
+L	AEF	+	DEF	+
+L	CEF	+	BEF	+
+L	DEF	+	BEF	+
+L	WDF	+	AEF	+
+L	BEF	+	XDF	+
+L	EEF	+	GEF	+
+L	EEF	+	HEF	+
+L	GEF	+	FEF	+
+L	HEF	+	FEF	+
+L	AEF	+	EEF	+
+L	FEF	+	BEF	+
+L	IEF	+	KEF	+
+L	IEF	+	LEF	+
+L	KEF	+	JEF	+
+L	LEF	+	JEF	+
+L	EEF	+	IEF	+
+L	JEF	+	FEF	+
+L	MEF	+	OEF	+
+L	MEF	+	PEF	+
+L	OEF	+	NEF	+
+L	PEF	+	NEF	+
+L	IEF	+	MEF	+
+L	NEF	+	JEF	+
+L	QEF	+	SEF	+
+L	QEF	+	TEF	+
+L	SEF	+	REF	+
+L	TEF	+	REF	+
+L	MEF	+	QEF	+
+L	REF	+	NEF	+
+L	UEF	+	WEF	+
+L	UEF	+	XEF	+
+L	WEF	+	VEF	+
+L	XEF	+	VEF	+
+L	QEF	+	UEF	+
+L	VEF	+	REF	+
+L	YEF	+	AFF	+
+L	YEF	+	BFF	+
+L	AFF	+	ZEF	+
+L	BFF	+	ZEF	+
+L	UEF	+	YEF	+
+L	ZEF	+	VEF	+
+L	CFF	+	EFF	+
+L	CFF	+	FFF	+
+L	EFF	+	DFF	+
+L	FFF	+	DFF	+
+L	YEF	+	CFF	+
+L	DFF	+	ZEF	+
+L	GFF	+	IFF	+
+L	GFF	+	JFF	+
+L	IFF	+	HFF	+
+L	JFF	+	HFF	+
+L	CFF	+	GFF	+
+L	HFF	+	DFF	+
+L	KFF	+	MFF	+
+L	KFF	+	NFF	+
+L	MFF	+	LFF	+
+L	NFF	+	LFF	+
+L	GFF	+	KFF	+
+L	LFF	+	HFF	+
+L	OFF	+	QFF	+
+L	OFF	+	RFF	+
+L	QFF	+	PFF	+
+L	RFF	+	PFF	+
+L	KFF	+	OFF	+
+L	PFF	+	LFF	+
+L	SFF	+	UFF	+
+L	SFF	+	VFF	+
+L	UFF	+	TFF	+
+L	VFF	+	TFF	+
+L	OFF	+	SFF	+
+L	TFF	+	PFF	+
+L	WFF	+	YFF	+
+L	WFF	+	ZFF	+
+L	YFF	+	XFF	+
+L	ZFF	+	XFF	+
+L	SFF	+	WFF	+
+L	XFF	+	TFF	+
+L	AGF	+	CGF	+
+L	AGF	+	DGF	+
+L	CGF	+	BGF	+
+L	DGF	+	BGF	+
+L	WFF	+	AGF	+
+L	BGF	+	XFF	+
+L	EGF	+	GGF	+
+L	EGF	+	HGF	+
+L	GGF	+	FGF	+
+L	HGF	+	FGF	+
+L	AGF	+	EGF	+
+L	FGF	+	BGF	+
+L	IGF	+	KGF	+
+L	IGF	+	LGF	+
+L	KGF	+	JGF	+
+L	LGF	+	JGF	+
+L	EGF	+	IGF	+
+L	JGF	+	FGF	+
+L	MGF	+	OGF	+
+L	MGF	+	PGF	+
+L	OGF	+	NGF	+
+L	PGF	+	NGF	+
+L	IGF	+	MGF	+
+L	NGF	+	JGF	+
+L	QGF	+	SGF	+
+L	QGF	+	TGF	+
+L	SGF	+	RGF	+
+L	TGF	+	RGF	+
+L	MGF	+	QGF	+
+L	RGF	+	NGF	+
+L	UGF	+	WGF	+
+L	UGF	+	XGF	+
+L	WGF	+	VGF	+
+L	XGF	+	VGF	+
+L	QGF	+	UGF	+
+L	VGF	+	RGF	+
+L	YGF	+	AHF	+
+L	YGF	+	BHF	+
+L	AHF	+	ZGF	+
+L	BHF	+	ZGF	+
+L	UGF	+	YGF	+
+L	ZGF	+	VGF	+
+L	CHF	+	EHF	+
+L	CHF	+	FHF	+
+L	EHF	+	DHF	+
+L	FHF	+	DHF	+
+L	YGF	+	CHF	+
+L	DHF	+	ZGF	+
+L	GHF	+	IHF	+
+L	GHF	+	JHF	+
+L	IHF	+	HHF	+
+L	JHF	+	HHF	+
+L	CHF	+	GHF	+
+L	HHF	+	DHF	+
+L	KHF	+	MHF	+
+L	KHF	+	NHF	+
+L	MHF	+	LHF	+
+L	NHF	+	LHF	+
+L	GHF	+	KHF	+
+L	LHF	+	HHF	+
+L	OHF	+	QHF	+
+L	OHF	+	RHF	+
+L	QHF	+	PHF	+
+L	RHF	+	PHF	+
+L	KHF	+	OHF	+
+L	PHF	+	LHF	+
+L	SHF	+	UHF	+
+L	SHF	+	VHF	+
+L	UHF	+	THF	+
+L	VHF	+	THF	+
+L	OHF	+	SHF	+
+L	THF	+	PHF	+
+L	WHF	+	YHF	+
+L	WHF	+	ZHF	+
+L	YHF	+	XHF	+
+L	ZHF	+	XHF	+
+L	SHF	+	WHF	+
+L	XHF	+	THF	+
+L	AIF	+	CIF	+
+L	AIF	+	DIF	+
+L	CIF	+	BIF	+
+L	DIF	+	BIF	+
+L	WHF	+	AIF	+
+L	BIF	+	XHF	+
+L	EIF	+	GIF	+
+L	EIF	+	HIF	+
+L	GIF	+	FIF	+
+L	HIF	+	FIF	+
+L	AIF	+	EIF	+
+L	FIF	+	BIF	+
+L	IIF	+	KIF	+
+L	IIF	+	LIF	+
+L	KIF	+	JIF	+
+L	LIF	+	JIF	+
+L	EIF	+	IIF	+
+L	JIF	+	FIF	+
+L	MIF	+	OIF	+
+L	MIF	+	PIF	+
+L	OIF	+	NIF	+
+L	PIF	+	NIF	+
+L	IIF	+	MIF	+
+L	NIF	+	JIF	+
+L	QIF	+	SIF	+
+L	QIF	+	TIF	+
+L	SIF	+	RIF	+
+L	TIF	+	RIF	+
+L	MIF	+	QIF	+
+L	RIF	+	NIF	+
+L	UIF	+	WIF	+
+L	UIF	+	XIF	+
+L	WIF	+	VIF	+
+L	XIF	+	VIF	+
+L	QIF	+	UIF	+
+L	VIF	+	RIF	+
+L	YIF	+	AJF	+
+L	YIF	+	BJF	+
+L	AJF	+	ZIF	+
+L	BJF	+	ZIF	+
+L	UIF	+	YIF	+
+L	ZIF	+	VIF	+
+L	CJF	+	EJF	+
+L	CJF	+	FJF	+
+L	EJF	+	DJF	+
+L	FJF	+	DJF	+
+L	YIF	+	CJF	+
+L	DJF	+	ZIF	+
+L	GJF	+	IJF	+
+L	GJF	+	JJF	+
+L	IJF	+	HJF	+
+L	JJF	+	HJF	+
+L	CJF	+	GJF	+
+L	HJF	+	DJF	+
+L	KJF	+	MJF	+
+L	KJF	+	NJF	+
+L	MJF	+	LJF	+
+L	NJF	+	LJF	+
+L	GJF	+	KJF	+
+L	LJF	+	HJF	+
+L	OJF	+	QJF	+
+L	OJF	+	RJF	+
+L	QJF	+	PJF	+
+L	RJF	+	PJF	+
+L	KJF	+	OJF	+
+L	PJF	+	LJF	+
+L	SJF	+	UJF	+
+L	SJF	+	VJF	+
+L	UJF	+	TJF	+
+L	VJF	+	TJF	+
+L	OJF	+	SJF	+
+L	TJF	+	PJF	+
+L	WJF	+	YJF	+
+L	WJF	+	ZJF	+
+L	YJF	+	XJF	+
+L	ZJF	+	XJF	+
+L	SJF	+	WJF	+
+L	XJF	+	TJF	+
+L	AKF	+	CKF	+
+L	AKF	+	DKF	+
+L	CKF	+	BKF	+
+L	DKF	+	BKF	+
+L	WJF	+	AKF	+
+L	BKF	+	XJF	+
+L	EKF	+	GKF	+
+L	EKF	+	HKF	+
+L	GKF	+	FKF	+
+L	HKF	+	FKF	+
+L	AKF	+	EKF	+
+L	FKF	+	BKF	+
+L	IKF	+	KKF	+
+L	IKF	+	LKF	+
+L	KKF	+	JKF	+
+L	LKF	+	JKF	+
+L	EKF	+	IKF	+
+L	JKF	+	FKF	+
+L	MKF	+	OKF	+
+L	MKF	+	PKF	+
+L	OKF	+	NKF	+
+L	PKF	+	NKF	+
+L	IKF	+	MKF	+
+L	NKF	+	JKF	+
+L	QKF	+	SKF	+
+L	QKF	+	TKF	+
+L	SKF	+	RKF	+
+L	TKF	+	RKF	+
+L	MKF	+	QKF	+
+L	RKF	+	NKF	+
+L	UKF	+	WKF	+
+L	UKF	+	XKF	+
+L	WKF	+	VKF	+
+L	XKF	+	VKF	+
+L	QKF	+	UKF	+
+L	VKF	+	RKF	+
+L	YKF	+	ALF	+
+L	YKF	+	BLF	+
+L	ALF	+	ZKF	+
+L	BLF	+	ZKF	+
+L	UKF	+	YKF	+
+L	ZKF	+	VKF	+
+L	CLF	+	ELF	+
+L	CLF	+	FLF	+
+L	ELF	+	DLF	+
+L	FLF	+	DLF	+
+L	YKF	+	CLF	+
+L	DLF	+	ZKF	+
+L	GLF	+	ILF	+
+L	GLF	+	JLF	+
+L	ILF	+	HLF	+
+L	JLF	+	HLF	+
+L	CLF	+	GLF	+
+L	HLF	+	DLF	+
+L	KLF	+	MLF	+
+L	KLF	+	NLF	+
+L	MLF	+	LLF	+
+L	NLF	+	LLF	+
+L	GLF	+	KLF	+
+L	LLF	+	HLF	+
+L	OLF	+	QLF	+
+L	OLF	+	RLF	+
+L	QLF	+	PLF	+
+L	RLF	+	PLF	+
+L	KLF	+	OLF	+
+L	PLF	+	LLF	+
+L	SLF	+	ULF	+
+L	SLF	+	VLF	+
+L	ULF	+	TLF	+
+L	VLF	+	TLF	+
+L	OLF	+	SLF	+
+L	TLF	+	PLF	+
+L	WLF	+	YLF	+
+L	WLF	+	ZLF	+
+L	YLF	+	XLF	+
+L	ZLF	+	XLF	+
+L	SLF	+	WLF	+
+L	XLF	+	TLF	+
+L	AMF	+	CMF	+
+L	AMF	+	DMF	+
+L	CMF	+	BMF	+
+L	DMF	+	BMF	+
+L	WLF	+	AMF	+
+L	BMF	+	XLF	+
+L	EMF	+	GMF	+
+L	EMF	+	HMF	+
+L	GMF	+	FMF	+
+L	HMF	+	FMF	+
+L	AMF	+	EMF	+
+L	FMF	+	BMF	+
+L	IMF	+	KMF	+
+L	IMF	+	LMF	+
+L	KMF	+	JMF	+
+L	LMF	+	JMF	+
+L	EMF	+	IMF	+
+L	JMF	+	FMF	+
+L	MMF	+	OMF	+
+L	MMF	+	PMF	+
+L	OMF	+	NMF	+
+L	PMF	+	NMF	+
+L	IMF	+	MMF	+
+L	NMF	+	JMF	+
+L	QMF	+	SMF	+
+L	QMF	+	TMF	+
+L	SMF	+	RMF	+
+L	TMF	+	RMF	+
+L	MMF	+	QMF	+
+L	RMF	+	NMF	+
+L	UMF	+	WMF	+
+L	UMF	+	XMF	+
+L	WMF	+	VMF	+
+L	XMF	+	VMF	+
+L	QMF	+	UMF	+
+L	VMF	+	RMF	+
+L	YMF	+	ANF	+
+L	YMF	+	BNF	+
+L	ANF	+	ZMF	+
+L	BNF	+	ZMF	+
+L	UMF	+	YMF	+
+L	ZMF	+	VMF	+
+L	CNF	+	ENF	+
+L	CNF	+	FNF	+
+L	ENF	+	DNF	+
+L	FNF	+	DNF	+
+L	YMF	+	CNF	+
+L	DNF	+	ZMF	+
+L	GNF	+	INF	+
+L	GNF	+	JNF	+
+L	INF	+	HNF	+
+L	JNF	+	HNF	+
+L	CNF	+	GNF	+
+L	HNF	+	DNF	+
+L	KNF	+	MNF	+
+L	KNF	+	NNF	+
+L	MNF	+	LNF	+
+L	NNF	+	LNF	+
+L	GNF	+	KNF	+
+L	LNF	+	HNF	+
+L	ONF	+	QNF	+
+L	ONF	+	RNF	+
+L	QNF	+	PNF	+
+L	RNF	+	PNF	+
+L	KNF	+	ONF	+
+L	PNF	+	LNF	+
+L	SNF	+	UNF	+
+L	SNF	+	VNF	+
+L	UNF	+	TNF	+
+L	VNF	+	TNF	+
+L	ONF	+	SNF	+
+L	TNF	+	PNF	+
+L	WNF	+	YNF	+
+L	WNF	+	ZNF	+
+L	YNF	+	XNF	+
+L	ZNF	+	XNF	+
+L	SNF	+	WNF	+
+L	XNF	+	TNF	+
+L	AOF	+	COF	+
+L	AOF	+	DOF	+
+L	COF	+	BOF	+
+L	DOF	+	BOF	+
+L	WNF	+	AOF	+
+L	BOF	+	XNF	+
+L	EOF	+	GOF	+
+L	EOF	+	HOF	+
+L	GOF	+	FOF	+
+L	HOF	+	FOF	+
+L	AOF	+	EOF	+
+L	FOF	+	BOF	+
+L	IOF	+	KOF	+
+L	IOF	+	LOF	+
+L	KOF	+	JOF	+
+L	LOF	+	JOF	+
+L	EOF	+	IOF	+
+L	JOF	+	FOF	+
+L	MOF	+	OOF	+
+L	MOF	+	POF	+
+L	OOF	+	NOF	+
+L	POF	+	NOF	+
+L	IOF	+	MOF	+
+L	NOF	+	JOF	+
+L	QOF	+	SOF	+
+L	QOF	+	TOF	+
+L	SOF	+	ROF	+
+L	TOF	+	ROF	+
+L	MOF	+	QOF	+
+L	ROF	+	NOF	+
+L	UOF	+	WOF	+
+L	UOF	+	XOF	+
+L	WOF	+	VOF	+
+L	XOF	+	VOF	+
+L	QOF	+	UOF	+
+L	VOF	+	ROF	+
+L	YOF	+	APF	+
+L	YOF	+	BPF	+
+L	APF	+	ZOF	+
+L	BPF	+	ZOF	+
+L	UOF	+	YOF	+
+L	ZOF	+	VOF	+
+L	CPF	+	EPF	+
+L	CPF	+	FPF	+
+L	EPF	+	DPF	+
+L	FPF	+	DPF	+
+L	YOF	+	CPF	+
+L	DPF	+	ZOF	+
+L	GPF	+	IPF	+
+L	GPF	+	JPF	+
+L	IPF	+	HPF	+
+L	JPF	+	HPF	+
+L	CPF	+	GPF	+
+L	HPF	+	DPF	+
+L	KPF	+	MPF	+
+L	KPF	+	NPF	+
+L	MPF	+	LPF	+
+L	NPF	+	LPF	+
+L	GPF	+	KPF	+
+L	LPF	+	HPF	+
+L	OPF	+	QPF	+
+L	OPF	+	RPF	+
+L	QPF	+	PPF	+
+L	RPF	+	PPF	+
+L	KPF	+	OPF	+
+L	PPF	+	LPF	+
+L	SPF	+	UPF	+
+L	SPF	+	VPF	+
+L	UPF	+	TPF	+
+L	VPF	+	TPF	+
+L	OPF	+	SPF	+
+L	TPF	+	PPF	+
+L	WPF	+	YPF	+
+L	WPF	+	ZPF	+
+L	YPF	+	XPF	+
+L	ZPF	+	XPF	+
+L	SPF	+	WPF	+
+L	XPF	+	TPF	+
+L	AQF	+	CQF	+
+L	AQF	+	DQF	+
+L	CQF	+	BQF	+
+L	DQF	+	BQF	+
+L	WPF	+	AQF	+
+L	BQF	+	XPF	+
+L	EQF	+	GQF	+
+L	EQF	+	HQF	+
+L	GQF	+	FQF	+
+L	HQF	+	FQF	+
+L	AQF	+	EQF	+
+L	FQF	+	BQF	+
+L	IQF	+	KQF	+
+L	IQF	+	LQF	+
+L	KQF	+	JQF	+
+L	LQF	+	JQF	+
+L	EQF	+	IQF	+
+L	JQF	+	FQF	+
+L	MQF	+	OQF	+
+L	MQF	+	PQF	+
+L	OQF	+	NQF	+
+L	PQF	+	NQF	+
+L	IQF	+	MQF	+
+L	NQF	+	JQF	+
+L	QQF	+	SQF	+
+L	QQF	+	TQF	+
+L	SQF	+	RQF	+
+L	TQF	+	RQF	+
+L	MQF	+	QQF	+
+L	RQF	+	NQF	+
+L	UQF	+	WQF	+
+L	UQF	+	XQF	+
+L	WQF	+	VQF	+
+L	XQF	+	VQF	+
+L	QQF	+	UQF	+
+L	VQF	+	RQF	+
+L	YQF	+	ARF	+
+L	YQF	+	BRF	+
+L	ARF	+	ZQF	+
+L	BRF	+	ZQF	+
+L	UQF	+	YQF	+
+L	ZQF	+	VQF	+
+L	CRF	+	ERF	+
+L	CRF	+	FRF	+
+L	ERF	+	DRF	+
+L	FRF	+	DRF	+
+L	YQF	+	CRF	+
+L	DRF	+	ZQF	+
+L	GRF	+	IRF	+
+L	GRF	+	JRF	+
+L	IRF	+	HRF	+
+L	JRF	+	HRF	+
+L	CRF	+	GRF	+
+L	HRF	+	DRF	+
+L	KRF	+	MRF	+
+L	KRF	+	NRF	+
+L	MRF	+	LRF	+
+L	NRF	+	LRF	+
+L	GRF	+	KRF	+
+L	LRF	+	HRF	+
+L	ORF	+	QRF	+
+L	ORF	+	RRF	+
+L	QRF	+	PRF	+
+L	RRF	+	PRF	+
+L	KRF	+	ORF	+
+L	PRF	+	LRF	+
+L	SRF	+	URF	+
+L	SRF	+	VRF	+
+L	URF	+	TRF	+
+L	VRF	+	TRF	+
+L	ORF	+	SRF	+
+L	TRF	+	PRF	+
+L	WRF	+	YRF	+
+L	WRF	+	ZRF	+
+L	YRF	+	XRF	+
+L	ZRF	+	XRF	+
+L	SRF	+	WRF	+
+L	XRF	+	TRF	+
+L	ASF	+	CSF	+
+L	ASF	+	DSF	+
+L	CSF	+	BSF	+
+L	DSF	+	BSF	+
+L	WRF	+	ASF	+
+L	BSF	+	XRF	+
+L	ESF	+	GSF	+
+L	ESF	+	HSF	+
+L	GSF	+	FSF	+
+L	HSF	+	FSF	+
+L	ASF	+	ESF	+
+L	FSF	+	BSF	+
+L	ISF	+	KSF	+
+L	ISF	+	LSF	+
+L	KSF	+	JSF	+
+L	LSF	+	JSF	+
+L	ESF	+	ISF	+
+L	JSF	+	FSF	+
+L	MSF	+	OSF	+
+L	MSF	+	PSF	+
+L	OSF	+	NSF	+
+L	PSF	+	NSF	+
+L	ISF	+	MSF	+
+L	NSF	+	JSF	+
+L	QSF	+	SSF	+
+L	QSF	+	TSF	+
+L	SSF	+	RSF	+
+L	TSF	+	RSF	+
+L	MSF	+	QSF	+
+L	RSF	+	NSF	+
+L	USF	+	WSF	+
+L	USF	+	XSF	+
+L	WSF	+	VSF	+
+L	XSF	+	VSF	+
+L	QSF	+	USF	+
+L	VSF	+	RSF	+
+L	YSF	+	ATF	+
+L	YSF	+	BTF	+
+L	ATF	+	ZSF	+
+L	BTF	+	ZSF	+
+L	USF	+	YSF	+
+L	ZSF	+	VSF	+
+L	CTF	+	ETF	+
+L	CTF	+	FTF	+
+L	ETF	+	DTF	+
+L	FTF	+	DTF	+
+L	YSF	+	CTF	+
+L	DTF	+	ZSF	+
+L	GTF	+	ITF	+
+L	GTF	+	JTF	+
+L	ITF	+	HTF	+
+L	JTF	+	HTF	+
+L	CTF	+	GTF	+
+L	HTF	+	DTF	+
+L	KTF	+	MTF	+
+L	KTF	+	NTF	+
+L	MTF	+	LTF	+
+L	NTF	+	LTF	+
+L	GTF	+	KTF	+
+L	LTF	+	HTF	+
+L	OTF	+	QTF	+
+L	OTF	+	RTF	+
+L	QTF	+	PTF	+
+L	RTF	+	PTF	+
+L	KTF	+	OTF	+
+L	PTF	+	LTF	+
+L	STF	+	UTF	+
+L	STF	+	VTF	+
+L	UTF	+	TTF	+
+L	VTF	+	TTF	+
+L	OTF	+	STF	+
+L	TTF	+	PTF	+
+L	WTF	+	YTF	+
+L	WTF	+	ZTF	+
+L	YTF	+	XTF	+
+L	ZTF	+	XTF	+
+L	STF	+	WTF	+
+L	XTF	+	TTF	+
+L	AUF	+	CUF	+
+L	AUF	+	DUF	+
+L	CUF	+	BUF	+
+L	DUF	+	BUF	+
+L	WTF	+	AUF	+
+L	BUF	+	XTF	+
+L	EUF	+	GUF	+
+L	EUF	+	HUF	+
+L	GUF	+	FUF	+
+L	HUF	+	FUF	+
+L	AUF	+	EUF	+
+L	FUF	+	BUF	+
+L	IUF	+	KUF	+
+L	IUF	+	LUF	+
+L	KUF	+	JUF	+
+L	LUF	+	JUF	+
+L	EUF	+	IUF	+
+L	JUF	+	FUF	+
+L	MUF	+	OUF	+
+L	MUF	+	PUF	+
+L	OUF	+	NUF	+
+L	PUF	+	NUF	+
+L	IUF	+	MUF	+
+L	NUF	+	JUF	+
+L	QUF	+	SUF	+
+L	QUF	+	TUF	+
+L	SUF	+	RUF	+
+L	TUF	+	RUF	+
+L	MUF	+	QUF	+
+L	RUF	+	NUF	+
+L	UUF	+	WUF	+
+L	UUF	+	XUF	+
+L	WUF	+	VUF	+
+L	XUF	+	VUF	+
+L	QUF	+	UUF	+
+L	VUF	+	RUF	+
+L	YUF	+	AVF	+
+L	YUF	+	BVF	+
+L	AVF	+	ZUF	+
+L	BVF	+	ZUF	+
+L	UUF	+	YUF	+
+L	ZUF	+	VUF	+
+L	CVF	+	EVF	+
+L	CVF	+	FVF	+
+L	EVF	+	DVF	+
+L	FVF	+	DVF	+
+L	YUF	+	CVF	+
+L	DVF	+	ZUF	+
+L	GVF	+	IVF	+
+L	GVF	+	JVF	+
+L	IVF	+	HVF	+
+L	JVF	+	HVF	+
+L	CVF	+	GVF	+
+L	HVF	+	DVF	+
+L	KVF	+	MVF	+
+L	KVF	+	NVF	+
+L	MVF	+	LVF	+
+L	NVF	+	LVF	+
+L	GVF	+	KVF	+
+L	LVF	+	HVF	+
+L	OVF	+	QVF	+
+L	OVF	+	RVF	+
+L	QVF	+	PVF	+
+L	RVF	+	PVF	+
+L	KVF	+	OVF	+
+L	PVF	+	LVF	+
+L	SVF	+	UVF	+
+L	SVF	+	VVF	+
+L	UVF	+	TVF	+
+L	VVF	+	TVF	+
+L	OVF	+	SVF	+
+L	TVF	+	PVF	+
+L	WVF	+	YVF	+
+L	WVF	+	ZVF	+
+L	YVF	+	XVF	+
+L	ZVF	+	XVF	+
+L	SVF	+	WVF	+
+L	XVF	+	TVF	+
+L	AWF	+	CWF	+
+L	AWF	+	DWF	+
+L	CWF	+	BWF	+
+L	DWF	+	BWF	+
+L	WVF	+	AWF	+
+L	BWF	+	XVF	+
+L	EWF	+	GWF	+
+L	EWF	+	HWF	+
+L	GWF	+	FWF	+
+L	HWF	+	FWF	+
+L	AWF	+	EWF	+
+L	FWF	+	BWF	+
+L	IWF	+	KWF	+
+L	IWF	+	LWF	+
+L	KWF	+	JWF	+
+L	LWF	+	JWF	+
+L	EWF	+	IWF	+
+L	JWF	+	FWF	+
+L	MWF	+	OWF	+
+L	MWF	+	PWF	+
+L	OWF	+	NWF	+
+L	PWF	+	NWF	+
+L	IWF	+	MWF	+
+L	NWF	+	JWF	+
+L	QWF	+	SWF	+
+L	QWF	+	TWF	+
+L	SWF	+	RWF	+
+L	TWF	+	RWF	+
+L	MWF	+	QWF	+
+L	RWF	+	NWF	+
+L	UWF	+	WWF	+
+L	UWF	+	XWF	+
+L	WWF	+	VWF	+
+L	XWF	+	VWF	+
+L	QWF	+	UWF	+
+L	VWF	+	RWF	+
+L	YWF	+	AXF	+
+L	YWF	+	BXF	+
+L	AXF	+	ZWF	+
+L	BXF	+	ZWF	+
+L	UWF	+	YWF	+
+L	ZWF	+	VWF	+
+L	CXF	+	EXF	+
+L	CXF	+	FXF	+
+L	EXF	+	DXF	+
+L	FXF	+	DXF	+
+L	YWF	+	CXF	+
+L	DXF	+	ZWF	+
+L	GXF	+	IXF	+
+L	GXF	+	JXF	+
+L	IXF	+	HXF	+
+L	JXF	+	HXF	+
+L	CXF	+	GXF	+
+L	HXF	+	DXF	+
+L	KXF	+	MXF	+
+L	KXF	+	NXF	+
+L	MXF	+	LXF	+
+L	NXF	+	LXF	+
+L	GXF	+	KXF	+
+L	LXF	+	HXF	+
+L	OXF	+	QXF	+
+L	OXF	+	RXF	+
+L	QXF	+	PXF	+
+L	RXF	+	PXF	+
+L	KXF	+	OXF	+
+L	PXF	+	LXF	+
+L	SXF	+	UXF	+
+L	SXF	+	VXF	+
+L	UXF	+	TXF	+
+L	VXF	+	TXF	+
+L	OXF	+	SXF	+
+L	TXF	+	PXF	+

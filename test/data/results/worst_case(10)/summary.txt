@@ -1,0 +1,11 @@
+Total canonical cycle equivalent pairs found: 10
+LB - KB -
+GB + HB +
+DB - CB -
+Y + Z +
+V - U -
+Q + R +
+N - M -
+I + J +
+F - E -
+A + B +
