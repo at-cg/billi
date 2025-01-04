@@ -1,0 +1,4 @@
+Total canonical cycle equivalent pairs found: 3
+H - F -
+L - I -
+A + E +

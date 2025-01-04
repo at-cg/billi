@@ -1,0 +1,2 @@
+Total canonical cycle equivalent pairs found: 1
+SLC6A2 + CES5A -

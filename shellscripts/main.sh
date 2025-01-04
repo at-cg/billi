@@ -32,7 +32,7 @@ for FILE in "$DDIR"/*; do
         # echo "$FILENAME"
         IFS='.' read -ra PARTS <<< "$FILENAME"
         TAG="${PARTS[0]}"
-        if [[ "$TAG" = "EC1" ]] || [[ "$TAG" = "EC5" ]]; then
+        if [[ "$TAG" = "EC1" ]] || [[ "$TAG" = "EC2" ]]; then
             continue
         fi
         echo "$TAG"

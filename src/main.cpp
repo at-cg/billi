@@ -44,18 +44,22 @@ struct bracketlist{
 
 template <typename... Args>
 void printArgs(Args... args){
+    return;
     ((cout << args << " "), ...) << endl; // Fold expression
 }
 
-void printBracketList(edge *it){
+void printBracketList(bracketlist* bl){
+    return;
+    printArgs("d1:", bl->d1, "d2:", bl->d2);
     cout << "Bracket List: ";
+    edge* it = bl->start;
     while(it){
         cout << it->id << " ";
         it = it->front;
     }cout << endl;
 }
 
-// Not required : eid
+// Not required : last_bit, upd variable in merge function
 
 vector<vector<pii>> g;
 vector<vector<edge*>> remove_brackets;
@@ -71,13 +75,12 @@ vector<string> ilmap; // for storing the gene for a particular label
 int Ss = -1, Se = -1; // for connecting the tips
 int tot_grey = 0; // for storing total number of grey edges, will help in accessing the brackets
 
-inline int last_bit(string s){
-    return s == "+" ? 0 : 1;
-}
+// inline int last_bit(string s){
+//     return s == "+" ? 0 : 1;
+// }
 
-inline string get_label(int x){
-    // printArgs("x:", x);
-    return (ilmap[x >> 1] + " " + (x & 1 ? "-" : "+"));
+inline string get_label(int x, int y){
+    return (ilmap[x >> 1] + " " + (x & 1 ? "+" : "-") + " " + ilmap[y >> 1] + " " + (y & 1 ? "-" : "+"));
 }
 
 void get_n(){
@@ -128,7 +131,9 @@ void make_graph(){
                 int n1 = lmap[tokens[1]]; string s1 = tokens[2]; 
                 int n2 = lmap[tokens[3]]; string s2 = tokens[4]; 
                 // n1 and n2 are 0-indexed
-                int id1 = (n1 << 1) + last_bit(s1), id2 = (n2 << 1) + last_bit(s2);
+                int id1 = n1 << 1, id2 = n2 << 1;
+                if(s1 == "+")id1++;
+                if(s2 == "-")id2++;
                 // deg[(n1 << 1) + last_bit(s1)]++; deg[(n2 << 1) + last_bit(s2)]++;
                 if(n1 == n2)continue; // there will be a black edge b/w them <- safe operation
                 tot_grey++;
@@ -170,12 +175,11 @@ bracketlist* sese(int u, int parent){
     mark[u] = true;
     if(parent != -1)depth[u] = depth[parent] + 1;
 
-    // printArgs(u, parent); 
+    printArgs(u, parent); 
     bracketlist* bl = new bracketlist(); 
     int cnt_back = 0;
     for(pii child : g[u]){
         int v = child.F;
-        // printArgs("child", v);
         if(v == parent)continue;
         bracketlist* bl1;
         if(mark[v]){// back-edge -> will come first in the dfs traversal for the node at greater depth
@@ -186,36 +190,36 @@ bracketlist* sese(int u, int parent){
             remove_brackets[v].pb(ed);
         }else bl1 = sese(v, u);
         if((u ^ v) == 1){// check for canonical sese if it is a black edge, won't be true for back edge
-            // printArgs("IN", bl1->sz);
+            printArgs("Bracket list size on reaching the solid edge:", bl1->sz);
             if(bl1->sz > 0){
                 int br = bl1->end->id;
-                // printArgs("HI1");
                 assert(br != -1);
-                // printArgs("HI2");
                 if(st[br] != mp(0, 0)){
-                    // printArgs("HI3");
+                    printArgs("Found the canonical pair");
                     assert(st[br].S == bl1->sz);
-                    if(g[v].size() > 2 && g[st[br].F].size() > 2){ // to avoid linear chains
+                    if(g[v].size() > 2 || g[st[br].F].size() > 2){ // to avoid linear chains
+                        printArgs("Found the contributing canonical pair:", v, st[br].F);
                         canonical_sese.pb({v, st[br].F});
                     }
-                    st[br] = {0, 0};
-                }else{
-                    st[br] = {u, bl1->sz};
                 }
+                st[br] = {u, bl1->sz}; // will happen regardless you found something or not
             }
         }
         if(bl1->start){
-            // printArgs(u, "child", v);
-            // printBracketList(bl->start); printBracketList(bl1->start);
-            merge(bl, bl1, depth[v] > depth[u]); // merging brackets from the child nodes
-            // printBracketList(bl->start);
+            printArgs(u, "child", v);
+            printBracketList(bl); printBracketList(bl1);
+            merge(bl, bl1, true); // merging brackets from the child nodes
+            printBracketList(bl);
             if(bl1->d1 < depth[u] && depth[v] > depth[u])cnt_back++; // an edge from u to its ancestor won't contribute to capping backedge
         }
     }
 
     // removing brackets from respective lists after computing the value for the outgoing edges from that node
     for(edge* ed : remove_brackets[u]){
-        // printArgs("remove", eid[ed->id].F, eid[ed->id].S);
+        printArgs("remove", eid[ed->id].F, eid[ed->id].S);
+        int min_depth = min(depth[eid[ed->id].F], depth[eid[ed->id].S]);
+        if(bl->d1 == min_depth)bl->d1 = maxd;
+        else if(bl->d2 == min_depth)bl->d2 = maxd;
         if(ed->front){
             if(ed->back){
                 ed->back->front = ed->front;
@@ -233,7 +237,7 @@ bracketlist* sese(int u, int parent){
         }
         delete(ed);
         bl->sz--; // The current bracket list will only contain the edges that are being removed
-        // printBracketList(bl->start);
+        printBracketList(bl);
     }
    
     // only left with the brackets that go up the node u
@@ -249,13 +253,15 @@ bracketlist* sese(int u, int parent){
                 exists = true; break;
             }
         }
+        printArgs("Capping back-edge", u, w);
         if(!exists){
+            printArgs("Capping back-edge does not exist");
             tot_grey++;
             edge* ed = new edge(tot_grey);
             eid.pb({min(w, u), max(w, u)});
             bracketlist* bl1 = new bracketlist(1, depth[w], maxd, ed, ed);
             remove_brackets[w].pb(ed);
-            merge(bl, bl1, false);
+            merge(bl, bl1, true);
         }
     }
 
@@ -343,7 +349,7 @@ int main(int argc, char* argv[])
         assert(st.size() == 0);
     }
     cout << "Total canonical cycle equivalent pairs found: " << canonical_sese.size() << endl;
-    for(pii rs : canonical_sese)cout << get_label(rs.F) << " " << get_label(rs.S) << endl;
+    for(pii rs : canonical_sese)cout << get_label(rs.F, rs.S) << endl;
     f.flush();
     f.close();
 } 
