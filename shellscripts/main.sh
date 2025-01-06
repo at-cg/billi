@@ -18,6 +18,8 @@ cd ../src
 make clean
 make
 
+# time ./main ../test/data/gfa_files/worst_case\(100000\).gfa ../test/data/results/worst_case\(100000\)
+
 DIR=../test/data/
 DDIR=$DIR/gfa_files
 RDIR=$DIR/results

@@ -1,3 +1,5 @@
+// Remove initial return statements in the print helpers
+
 #include<iostream>
 #include<fstream>
 #include<filesystem>
@@ -31,7 +33,7 @@ int backedge_cnt; // upper bound on number of back edges
 ll multiplier = 1; // for computing the hash
 int maxd; // max depth possible = total number of nodes
 int Ss = -1, Se = -1; // for connecting the tips
-int tot_grey = 0; // for storing total number of grey edges, will help in accessing the brackets
+int tot_grey = -1; // for storing total number of grey edges, will help in accessing the brackets
 
 struct edge{
     int id; // a bracket can uniquely be identified by the lower and higher vertices it connects to : low -> lower height, assigning a unique to each
@@ -56,7 +58,7 @@ vector<pii> eid;
 vector<pii> canonical_sese; // for storing the canonical sese pairs
 vector<vector<pii>> g;
 vector<vector<edge*>> remove_brackets;
-unordered_map<ll, int> st; // (node, size) will store the size of the bracket list when that bracket is the topmost bracket and for which node that was topmost previously
+unordered_map<ll, int> st; // (edge, size) -> hashed into a ll key
 map<string, int> lmap; // for storing the label for a particular gene
 
 template <typename... Args>
@@ -89,7 +91,7 @@ void get_n(){
     string line;
     regex strip("^\\s+|\\s+$"), split("\\t");
     vector<string> tokens;
-    n = 0; // number of nodes in the pangene graph
+    n = 0; 
     if(f.is_open()){
         while(getline(f, line)){
             tokens.clear();
@@ -101,7 +103,7 @@ void get_n(){
             }
             if(tokens[0] == "S"){
                 assert(tokens.size() >= 3);
-                lmap[tokens[1]] = n;
+                lmap[tokens[1]] = n; // 0-indexed
                 ilmap.pb(tokens[1]);
                 n++;
             }else if(tokens[0] == "L"){
@@ -135,11 +137,10 @@ void make_graph(){
                 int id1 = n1 << 1, id2 = n2 << 1;
                 if(s1 == "+")id1++;
                 if(s2 == "-")id2++;
-                // deg[(n1 << 1) + last_bit(s1)]++; deg[(n2 << 1) + last_bit(s2)]++;
                 if(n1 == n2)continue; // there will be a black edge b/w them <- safe operation
                 tot_grey++;
                 // printArgs(id1, id2, tot_grey);
-                g[id1].pb({id2, tot_grey}); g[id2].pb({id1, tot_grey});
+                g[id1].pb({id2, tot_grey}); g[id2].pb({id1, tot_grey}); // 1-indexed
                 eid.pb({min(id1, id2), max(id1, id2)});
             }
         }
@@ -192,8 +193,8 @@ bracketlist* sese(int u, int parent){
         bracketlist* bl1;
         if(mark[v]){// back-edge -> will come first in the dfs traversal for the node at greater depth
             if(depth[v] > depth[u])continue; // front-edge
-            assert(child.S != -1);
-            edge* ed = new edge(child.S - 1); // tot_grey count starts from 1
+            assert(child.S != -1); // black edges can't be backedges
+            edge* ed = new edge(child.S); // tot_grey count starts from 0
             bl1 = new bracketlist(1, depth[v], maxd, ed, ed);
             remove_brackets[v].pb(ed);
         }else bl1 = sese(v, u);
@@ -225,9 +226,10 @@ bracketlist* sese(int u, int parent){
     // removing brackets from respective lists after computing the value for the outgoing edges from that node
     for(edge* ed : remove_brackets[u]){
         printArgs("remove", eid[ed->id].F, eid[ed->id].S);
-        int min_depth = min(depth[eid[ed->id].F], depth[eid[ed->id].S]);
-        if(bl->d1 == min_depth)bl->d1 = maxd;
-        else if(bl->d2 == min_depth)bl->d2 = maxd;
+        // int min_depth = min(depth[eid[ed->id].F], depth[eid[ed->id].S]);
+        // assert(min_depth == depth[u]);
+        if(bl->d1 == depth[u])bl->d1 = maxd;
+        else if(bl->d2 == depth[u])bl->d2 = maxd;
         if(ed->front){
             if(ed->back){
                 ed->back->front = ed->front;
@@ -293,7 +295,7 @@ int main(int argc, char* argv[])
     get_n();
     // deg.resize(2 * n);
 
-    // for a node x (0-indexed) in pangene graph - two nodes 2 * x (+), 2 * x + 1 (-) are created in the bi-edged graph 
+    // for a node x (0-indexed) in pangene graph - two nodes 2 * x (tail of arrow), 2 * x + 1 (head of arrow) are created in the bi-edged graph 
     // using vectors will be good coz we will have to add capping backedges as well
     g.resize(2 * n); // // +2 is for S if required -> not needed
     // adding black edges first <- important since don't want black edge to appear as a back or front edge
@@ -376,6 +378,4 @@ int main(int argc, char* argv[])
     }
     cout << "Total canonical cycle equivalent pairs found: " << canonical_sese.size() << endl;
     for(pii rs : canonical_sese)cout << get_label(rs.F, rs.S) << endl;
-    f.flush();
-    f.close();
 } 

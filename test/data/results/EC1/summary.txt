@@ -1,2 +1,3 @@
-Total canonical cycle equivalent pairs found: 1
+Total canonical cycle equivalent pairs found: 2
+C - G -
 A + C -
