@@ -32,6 +32,7 @@ int n; // no of nodes (genes)
 int backedge_cnt; // upper bound on number of back edges
 ll multiplier = 1; // for computing the hash
 int maxd; // max depth possible = total number of nodes
+int valid_pairs = 0; // storing the number of valid bibubble pairs
 int Ss = -1, Se = -1; // for connecting the tips
 int tot_grey = -1; // for storing total number of grey edges, will help in accessing the brackets
 
@@ -51,12 +52,16 @@ struct bracketlist{
 };
 
 vector<bool> mark; // for marking back edges
+vector<bool> valid; // for marking whether a potential bi-bubble is valid
 vector<int> stack_trace; // for storing the vertices in the stack during dfs traversal
 vector<int> depth; // for storing the depth of the vertices in the spanning tree
+vector<int> cc_comp; // connected-component to which a node belongs to
 vector<string> ilmap; // for storing the gene for a particular label
 vector<pii> eid; 
 vector<pii> canonical_sese; // for storing the canonical sese pairs
-vector<vector<pii>> g;
+vector<vector<int>> bb_nodes; // storing the nodes for different bibubbles
+vector<vector<int>> ag; // directed graph
+vector<vector<pii>> g; // (node_id, grey_edge_id)
 vector<vector<edge*>> remove_brackets;
 unordered_map<ll, int> st; // (edge, size) -> hashed into a ll key
 map<string, int> lmap; // for storing the label for a particular gene
@@ -133,11 +138,46 @@ void make_graph(){
                 assert(tokens.size() >= 5);
                 int n1 = lmap[tokens[1]]; string s1 = tokens[2]; 
                 int n2 = lmap[tokens[3]]; string s2 = tokens[4]; 
+                if(n1 == n2)continue; // there will be a black edge b/w them <- safe operation
+                
                 // n1 and n2 are 0-indexed
                 int id1 = n1 << 1, id2 = n2 << 1;
                 if(s1 == "+")id1++;
                 if(s2 == "-")id2++;
+                tot_grey++;
+                // printArgs(id1, id2, tot_grey);
+                g[id1].pb({id2, tot_grey}); g[id2].pb({id1, tot_grey}); // 1-indexed
+                eid.pb({min(id1, id2), max(id1, id2)});
+            }
+        }
+        f.close();
+    }
+}
+
+void make_auxillary_graph(){
+    f.open(inputpath, ios::in);
+    string line;
+    regex strip("^\\s+|\\s+$"), split("\\t");
+    vector<string> tokens;
+    if(f.is_open()){
+        while(getline(f, line)){
+            tokens.clear();
+            line = regex_replace(line, strip, "");        
+            sregex_token_iterator it(line.begin(), line.end(), split, -1), end;
+            while(it != end){
+                tokens.pb(*it);
+                it++;
+            }
+            if(tokens[0] == "L"){
+                assert(tokens.size() >= 5);
+                int n1 = lmap[tokens[1]]; string s1 = tokens[2]; 
+                int n2 = lmap[tokens[3]]; string s2 = tokens[4]; 
                 if(n1 == n2)continue; // there will be a black edge b/w them <- safe operation
+                
+                // n1 and n2 are 0-indexed
+                int id1 = n1 << 1, id2 = n2 << 1;
+                if(s1 == "+")id1++;
+                if(s2 == "-")id2++;
                 tot_grey++;
                 // printArgs(id1, id2, tot_grey);
                 g[id1].pb({id2, tot_grey}); g[id2].pb({id1, tot_grey}); // 1-indexed
@@ -280,8 +320,29 @@ bracketlist* sese(int u, int parent){
     return bl;
 }
 
+void mark_bb_nodes(int u, int end, int id){
+    mark[u] = true;
+    bb_nodes[id].pb(u); 
+    cc_comp[u] = id;
+    if(u == end){
+        mark[u^1] = true;
+        bb_nodes[id].pb(u^1);
+        cc_comp[u^1] = id;
+        return;
+    }
+    for(pii child : g[u]){
+        int v = child.F;
+        if(mark[v]) continue;
+        mark_bb_nodes(v, end, id);
+    }
+}
+
 int main(int argc, char* argv[])
 {   
+    // ************************************
+    // *** IO + data preparation ***
+    // ************************************
+    
     ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0); // Fast IO
     if(argc != 3){
         return 1;
@@ -338,6 +399,10 @@ int main(int argc, char* argv[])
     //     printArgs(i, eid[i].F, eid[i].S);
     // }
     
+    // ************************************
+    // *** Finding Possible Bibubble Pairs ***
+    // ************************************
+    
     // SESE
     // An important observation is that bibubble ends won't turn as backedges
     mark.resize(2 * n);
@@ -376,6 +441,35 @@ int main(int argc, char* argv[])
         sese(Ss, -1);
         assert(stack_trace.size() == 0);
     }
-    cout << "Total canonical cycle equivalent pairs found: " << canonical_sese.size() << endl;
-    for(pii rs : canonical_sese)cout << get_label(rs.F, rs.S) << endl;
+
+    int possible_pairs = canonical_sese.size();
+    cout << "Total possible canonical cycle equivalent pairs found: " << possible_pairs << endl;
+
+    fill(mark.begin(), mark.end(), false);
+    cc_comp.resize(2 * n, -1);
+    bb_nodes.resize(possible_pairs);
+    valid.resize(possible_pairs);
+
+    for(int i = 0; i < possible_pairs; i++){
+        pii rs = canonical_sese[i];
+        cout << get_label(rs.F, rs.S) << endl;
+        mark[rs.F^1] = true;
+        bb_nodes[i].pb(rs.F^1);
+        cc_comp[rs.F^1] = i;
+        mark_bb_nodes(rs.F, rs.S, i);
+    }
+
+    // ************************************
+    // *** Finding Valid Bibubble Pairs ***
+    // ************************************
+    
+    ag.resize(2 * n);
+    make_auxillary_graph();
+
+    cout << "Total valid canonical cycle equivalent pairs found: " << valid_pairs << endl;
+    for(int i = 0; i < possible_pairs; i++){
+        if(!valid[i])continue;
+        pii rs = canonical_sese[i];
+        cout << get_label(rs.F, rs.S) << endl;
+    }
 } 
