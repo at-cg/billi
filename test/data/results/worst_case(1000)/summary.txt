@@ -1,4 +1,4 @@
-Total canonical cycle equivalent pairs found: 1000
+Total possible canonical cycle equivalent pairs found: 1000
 TXF - SXF -
 OXF + PXF +
 LXF - KXF -
@@ -999,3 +999,4 @@ N - M -
 I + J +
 F - E -
 A + B +
+Total valid canonical cycle equivalent pairs found: 0

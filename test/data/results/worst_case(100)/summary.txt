@@ -1,4 +1,4 @@
-Total canonical cycle equivalent pairs found: 100
+Total possible canonical cycle equivalent pairs found: 100
 HP - GP -
 CP + DP +
 ZO - YO -
@@ -99,3 +99,4 @@ N - M -
 I + J +
 F - E -
 A + B +
+Total valid canonical cycle equivalent pairs found: 0

@@ -1,2 +1,3 @@
-Total canonical cycle equivalent pairs found: 1
+Total possible canonical cycle equivalent pairs found: 1
 DMRTC1B - FAM236A +
+Total valid canonical cycle equivalent pairs found: 0

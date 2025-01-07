@@ -1,2 +1,3 @@
-Total canonical cycle equivalent pairs found: 1
+Total possible canonical cycle equivalent pairs found: 1
 s1 + s4 +
+Total valid canonical cycle equivalent pairs found: 0

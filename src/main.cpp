@@ -1,4 +1,4 @@
-// Remove initial return statements in the print helpers
+// Remove eid, initial return statements in the print helpers
 
 #include<iostream>
 #include<fstream>
@@ -32,7 +32,7 @@ int n; // no of nodes (genes)
 int backedge_cnt; // upper bound on number of back edges
 ll multiplier = 1; // for computing the hash
 int maxd; // max depth possible = total number of nodes
-int valid_pairs = 0; // storing the number of valid bibubble pairs
+int possible_pairs = 0, valid_pairs = 0; // storing the number of valid bibubble pairs
 int Ss = -1, Se = -1; // for connecting the tips
 int tot_grey = -1; // for storing total number of grey edges, will help in accessing the brackets
 
@@ -56,11 +56,13 @@ vector<bool> valid; // for marking whether a potential bi-bubble is valid
 vector<int> stack_trace; // for storing the vertices in the stack during dfs traversal
 vector<int> depth; // for storing the depth of the vertices in the spanning tree
 vector<int> cc_comp; // connected-component to which a node belongs to
+vector<int> order; // will be a sorted list of G's vertices by exit time
 vector<string> ilmap; // for storing the gene for a particular label
 vector<pii> eid; 
 vector<pii> canonical_sese; // for storing the canonical sese pairs
 vector<vector<int>> bb_nodes; // storing the nodes for different bibubbles
 vector<vector<int>> ag; // directed graph
+vector<vector<int>> ag_rev; // create adjacency list of G^T   
 vector<vector<pii>> g; // (node_id, grey_edge_id)
 vector<vector<edge*>> remove_brackets;
 unordered_map<ll, int> st; // (edge, size) -> hashed into a ll key
@@ -120,6 +122,22 @@ void get_n(){
     }
 }
 
+void add_directed_edges(int& id1, int& id2, string s1, string s2){
+    if(s1 == s2){ // >x denotes +x 
+        if(s1 == "+"){
+            ag[id1].pb(id2); ag[id2^1].pb(id1^1);
+        }else{
+            ag[id2].pb(id1); ag[id1^1].pb(id2^1);
+        }
+    }else{
+        if(s1 == "+"){
+            ag[id1].pb(id2^1); ag[id2].pb(id1^1);
+        }else{
+            ag[id1^1].pb(id2); ag[id2^1].pb(id1);
+        }
+    }
+}
+
 void make_graph(){
     f.open(inputpath, ios::in);
     string line;
@@ -159,6 +177,8 @@ void make_auxillary_graph(){
     string line;
     regex strip("^\\s+|\\s+$"), split("\\t");
     vector<string> tokens;
+
+    // using the input edges
     if(f.is_open()){
         while(getline(f, line)){
             tokens.clear();
@@ -176,15 +196,18 @@ void make_auxillary_graph(){
                 
                 // n1 and n2 are 0-indexed
                 int id1 = n1 << 1, id2 = n2 << 1;
-                if(s1 == "+")id1++;
-                if(s2 == "-")id2++;
-                tot_grey++;
-                // printArgs(id1, id2, tot_grey);
-                g[id1].pb({id2, tot_grey}); g[id2].pb({id1, tot_grey}); // 1-indexed
-                eid.pb({min(id1, id2), max(id1, id2)});
+                add_directed_edges(id1, id2, s1, s2);
             }
         }
         f.close();
+    }
+
+    // using the extra added edges
+    for(pii rs : canonical_sese){
+        int id1 = (rs.F | 1) ^ 1, id2 = (rs.S | 1) ^ 1;
+        string s1 = (rs.F & 1) ? "-" : "+";
+        string s2 =  !(rs.S & 1) ? "-" : "+"; // signs are reversed
+        add_directed_edges(id1, id2, s1, s2);
     }
 }
 
@@ -337,6 +360,44 @@ void mark_bb_nodes(int u, int end, int id){
     }
 }
 
+// runs depth first search starting at vertex v.
+// each visited vertex is appended to the output vector when dfs leaves it.
+void scc_dfs(int v, vector<vector<int>> const& adj, vector<int>& output) {
+    mark[v] = true;
+    for (auto u : adj[v])
+        if (!mark[u])
+            scc_dfs(u, adj, output);
+    output.push_back(v);
+}
+
+void scc(){
+    fill(mark.begin(), mark.end(), false);
+
+    // first series of depth first searches
+    for (int i = 0; i < 2 * n; i++)
+        if (!mark[i])
+            scc_dfs(i, ag, order);
+
+    ag_rev.resize(2 * n);
+    
+    for (int v = 0; v < 2 * n; v++)
+        for (int u : ag[v])
+            ag_rev[u].push_back(v);
+
+    fill(mark.begin(), mark.end(), false);
+    reverse(order.begin(), order.end());
+
+    // second series of depth first searches
+    for (int v : order)
+        if (!mark[v]) {
+            vector<int> component;
+            scc_dfs(v, ag_rev, component);
+            int root = *min_element(begin(component), end(component));
+            for (auto u : component)
+                cc_comp[u] = root;
+        }
+}
+
 int main(int argc, char* argv[])
 {   
     // ************************************
@@ -442,7 +503,7 @@ int main(int argc, char* argv[])
         assert(stack_trace.size() == 0);
     }
 
-    int possible_pairs = canonical_sese.size();
+    possible_pairs = canonical_sese.size();
     cout << "Total possible canonical cycle equivalent pairs found: " << possible_pairs << endl;
 
     fill(mark.begin(), mark.end(), false);
@@ -463,8 +524,24 @@ int main(int argc, char* argv[])
     // *** Finding Valid Bibubble Pairs ***
     // ************************************
     
-    ag.resize(2 * n);
-    make_auxillary_graph();
+    if(possible_pairs != 0){
+        fill(valid.begin(), valid.end(), true);
+        valid_pairs = possible_pairs;
+        ag.resize(2 * n);
+        // need not connect tips here
+        make_auxillary_graph();
+        scc(); // ref - https://cp-algorithms.com/graph/strongly-connected-components.html extended to multigraph
+        for(int i = 0; i < possible_pairs; i++){
+            pii rs = canonical_sese[i];
+            for(int u : bb_nodes[i]){
+                if(cc_comp[u] != cc_comp[rs.F] || cc_comp[u] != cc_comp[rs.F^1]){
+                    valid[i] = false;
+                    valid_pairs--;
+                    break;
+                }
+            }
+        }
+    }
 
     cout << "Total valid canonical cycle equivalent pairs found: " << valid_pairs << endl;
     for(int i = 0; i < possible_pairs; i++){

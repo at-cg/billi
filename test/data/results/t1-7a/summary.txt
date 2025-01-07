@@ -1,2 +1,4 @@
-Total canonical cycle equivalent pairs found: 1
+Total possible canonical cycle equivalent pairs found: 1
+RSPH10B - RSPH10B2 +
+Total valid canonical cycle equivalent pairs found: 1
 RSPH10B - RSPH10B2 +

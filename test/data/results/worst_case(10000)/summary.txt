@@ -1,4 +1,4 @@
-Total canonical cycle equivalent pairs found: 10000
+Total possible canonical cycle equivalent pairs found: 10000
 JEHC - IEHC -
 EEHC + FEHC +
 BEHC - AEHC -
@@ -9999,3 +9999,4 @@ N - M -
 I + J +
 F - E -
 A + B +
+Total valid canonical cycle equivalent pairs found: 0
