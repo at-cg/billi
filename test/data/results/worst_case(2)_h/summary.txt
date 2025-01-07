@@ -1,0 +1,6 @@
+Total possible canonical cycle equivalent pairs found: 2
+F - E -
+A + B +
+Total valid canonical cycle equivalent pairs found: 2
+F - E -
+A + B +

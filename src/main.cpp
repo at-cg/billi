@@ -1,4 +1,4 @@
-// Remove eid, initial return statements in the print helpers
+// Remove eid
 
 #include<iostream>
 #include<fstream>
@@ -70,19 +70,26 @@ map<string, int> lmap; // for storing the label for a particular gene
 
 template <typename... Args>
 void printArgs(Args... args){
-    return;
+    // return;
     ((cout << args << " "), ...) << endl; // Fold expression
 }
 
 void printBracketList(bracketlist* bl){
-    return;
-    printArgs("d1:", bl->d1, "d2:", bl->d2);
+    // return;
+    // printArgs("d1:", bl->d1, "d2:", bl->d2);
     cout << "Bracket List: ";
     edge* it = bl->start;
     while(it){
         cout << it->id << " ";
         it = it->front;
     }cout << endl;
+}
+
+void printVector(vector<int>& v){
+    for(int x : v){
+        cout << x << " ";
+    }
+    cout << endl;
 }
 
 ll get_key(int id, int size){
@@ -247,7 +254,7 @@ bracketlist* sese(int u, int parent){
     stack_trace.pb(u);
     mark[u] = true;
 
-    printArgs(u, parent); 
+    // printArgs(u, parent); 
     bracketlist* bl = new bracketlist(); 
     int cnt_back = 0;
     for(pii child : g[u]){
@@ -262,15 +269,15 @@ bracketlist* sese(int u, int parent){
             remove_brackets[v].pb(ed);
         }else bl1 = sese(v, u);
         if((u ^ v) == 1){// check for canonical sese if it is a black edge, won't be true for back edge
-            printArgs("Bracket list size on reaching the solid edge:", bl1->sz);
+            // printArgs("Bracket list size on reaching the solid edge:", bl1->sz);
             if(bl1->sz > 0){
                 int br = bl1->end->id;
                 assert(br != -1); // not a black edge
                 ll key = get_key(br, bl1->sz);
                 if(st.find(key) != st.end()){
-                    printArgs("Found the canonical pair");
+                    // printArgs("Found the canonical pair");
                     if(g[v].size() > 2 || g[st[key]].size() > 2){ // to avoid linear chains
-                        printArgs("Found the contributing canonical pair:", v, st[key]);
+                        // printArgs("Found the contributing canonical pair:", v, st[key]);
                         canonical_sese.pb({v, st[key]});
                     }
                 }
@@ -278,17 +285,17 @@ bracketlist* sese(int u, int parent){
             }
         }
         if(bl1->start){
-            printArgs(u, "child", v);
-            printBracketList(bl); printBracketList(bl1);
+            // printArgs(u, "child", v);
+            // printBracketList(bl); printBracketList(bl1);
             merge(bl, bl1); // merging brackets from the child nodes
-            printBracketList(bl);
+            // printBracketList(bl);
             if(bl1->d1 < depth[u] && depth[v] > depth[u])cnt_back++; // an edge from u to its ancestor won't contribute to capping backedge
         }
     }
 
     // removing brackets from respective lists after computing the value for the outgoing edges from that node
     for(edge* ed : remove_brackets[u]){
-        printArgs("remove", eid[ed->id].F, eid[ed->id].S);
+        // printArgs("remove", eid[ed->id].F, eid[ed->id].S);
         // int min_depth = min(depth[eid[ed->id].F], depth[eid[ed->id].S]);
         // assert(min_depth == depth[u]);
         if(bl->d1 == depth[u])bl->d1 = maxd;
@@ -310,7 +317,7 @@ bracketlist* sese(int u, int parent){
         }
         delete(ed);
         bl->sz--; // The current bracket list will only contain the edges that are being removed
-        printBracketList(bl);
+        // printBracketList(bl);
     }
    
     // only left with the brackets that go up the node u
@@ -326,9 +333,9 @@ bracketlist* sese(int u, int parent){
                 exists = true; break;
             }
         }
-        printArgs("Capping back-edge", u, w);
+        // printArgs("Capping back-edge", u, w);
         if(!exists){
-            printArgs("Capping back-edge does not exist");
+            // printArgs("Capping back-edge does not exist");
             tot_grey++;
             edge* ed = new edge(tot_grey);
             eid.pb({min(w, u), max(w, u)});
@@ -346,11 +353,9 @@ bracketlist* sese(int u, int parent){
 void mark_bb_nodes(int u, int end, int id){
     mark[u] = true;
     bb_nodes[id].pb(u); 
-    cc_comp[u] = id;
     if(u == end){
         mark[u^1] = true;
         bb_nodes[id].pb(u^1);
-        cc_comp[u^1] = id;
         return;
     }
     for(pii child : g[u]){
@@ -392,8 +397,9 @@ void scc(){
         if (!mark[v]) {
             vector<int> component;
             scc_dfs(v, ag_rev, component);
+            // printVector(component);
             int root = *min_element(begin(component), end(component));
-            for (auto u : component)
+            for (int u : component)
                 cc_comp[u] = root;
         }
 }
@@ -511,13 +517,13 @@ int main(int argc, char* argv[])
     bb_nodes.resize(possible_pairs);
     valid.resize(possible_pairs);
 
-    for(int i = 0; i < possible_pairs; i++){
+    for(int i = 0; i < possible_pairs; i++){ // space requirement is linear since the inner-most nested bubbles will appear on the top
         pii rs = canonical_sese[i];
         cout << get_label(rs.F, rs.S) << endl;
         mark[rs.F^1] = true;
         bb_nodes[i].pb(rs.F^1);
-        cc_comp[rs.F^1] = i;
         mark_bb_nodes(rs.F, rs.S, i);
+        // printVector(bb_nodes[i]);
     }
 
     // ************************************
@@ -534,7 +540,8 @@ int main(int argc, char* argv[])
         for(int i = 0; i < possible_pairs; i++){
             pii rs = canonical_sese[i];
             for(int u : bb_nodes[i]){
-                if(cc_comp[u] != cc_comp[rs.F] || cc_comp[u] != cc_comp[rs.F^1]){
+                // printArgs(rs.F, "-", cc_comp[rs.F], rs.F^1, "-", cc_comp[rs.F^1], u, "-", cc_comp[u]);
+                if(!(cc_comp[u] == cc_comp[rs.F] || cc_comp[u] == cc_comp[rs.F^1])){
                     valid[i] = false;
                     valid_pairs--;
                     break;

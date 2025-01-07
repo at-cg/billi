@@ -2,4 +2,7 @@ Total possible canonical cycle equivalent pairs found: 3
 TNXB - ATF6B -
 STK19 + TNXB -
 DXO - STK19 +
-Total valid canonical cycle equivalent pairs found: 0
+Total valid canonical cycle equivalent pairs found: 3
+TNXB - ATF6B -
+STK19 + TNXB -
+DXO - STK19 +

@@ -1,6 +1,6 @@
 import os
 
-depth = 10
+depth = 2
 ofile = open(f'../test/data/gfa_files/worst_case({depth})_h.gfa', 'w')
 
 tot_nodes = 4 * depth

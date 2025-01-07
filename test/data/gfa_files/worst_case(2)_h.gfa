@@ -1,0 +1,18 @@
+S	A	*	LN:i:495	ng:i:33	nc:i:39	c1:i:33	c2:i:0	pp:Z:A:ENSP00000496625.1
+S	B	*	LN:i:495	ng:i:33	nc:i:39	c1:i:33	c2:i:0	pp:Z:B:ENSP00000496625.1
+S	C	*	LN:i:495	ng:i:33	nc:i:39	c1:i:33	c2:i:0	pp:Z:C:ENSP00000496625.1
+S	D	*	LN:i:495	ng:i:33	nc:i:39	c1:i:33	c2:i:0	pp:Z:D:ENSP00000496625.1
+S	E	*	LN:i:495	ng:i:33	nc:i:39	c1:i:33	c2:i:0	pp:Z:E:ENSP00000496625.1
+S	F	*	LN:i:495	ng:i:33	nc:i:39	c1:i:33	c2:i:0	pp:Z:F:ENSP00000496625.1
+S	G	*	LN:i:495	ng:i:33	nc:i:39	c1:i:33	c2:i:0	pp:Z:G:ENSP00000496625.1
+S	H	*	LN:i:495	ng:i:33	nc:i:39	c1:i:33	c2:i:0	pp:Z:H:ENSP00000496625.1
+L	A	+	C	+	0M	ng:i:33	nc:i:33	ad:i:8451	s1:i:2181	s2:i:1325
+L	A	+	D	+	0M	ng:i:33	nc:i:33	ad:i:8451	s1:i:2181	s2:i:1325
+L	C	+	B	+	0M	ng:i:33	nc:i:33	ad:i:8451	s1:i:2181	s2:i:1325
+L	D	+	B	+	0M	ng:i:33	nc:i:33	ad:i:8451	s1:i:2181	s2:i:1325
+L	E	+	G	+	0M	ng:i:33	nc:i:33	ad:i:8451	s1:i:2181	s2:i:1325
+L	E	+	H	+	0M	ng:i:33	nc:i:33	ad:i:8451	s1:i:2181	s2:i:1325
+L	G	+	F	+	0M	ng:i:33	nc:i:33	ad:i:8451	s1:i:2181	s2:i:1325
+L	H	+	F	+	0M	ng:i:33	nc:i:33	ad:i:8451	s1:i:2181	s2:i:1325
+L	A	+	E	+	0M	ng:i:33	nc:i:33	ad:i:8451	s1:i:2181	s2:i:1325
+L	F	+	B	+	0M	ng:i:33	nc:i:33	ad:i:8451	s1:i:2181	s2:i:1325
