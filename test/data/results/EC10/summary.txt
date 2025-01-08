@@ -1,0 +1,9 @@
+Total possible canonical cycle equivalent pairs found: 5
+J + M -
+I + P -
+U + X -
+H - R +
+A + D -
+Total valid canonical cycle equivalent pairs found: 2
+U + X -
+A + D -

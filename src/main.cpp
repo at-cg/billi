@@ -56,6 +56,7 @@ vector<bool> valid; // for marking whether a potential bi-bubble is valid
 vector<int> stack_trace; // for storing the vertices in the stack during dfs traversal
 vector<int> depth; // for storing the depth of the vertices in the spanning tree
 vector<int> cc_comp; // connected-component to which a node belongs to
+vector<int> bb_comp; // bibubble-component to which a node belongs to
 vector<int> order; // will be a sorted list of G's vertices by exit time
 vector<string> ilmap; // for storing the gene for a particular label
 vector<pii> eid; 
@@ -90,6 +91,14 @@ void printVector(vector<int>& v){
         cout << x << " ";
     }
     cout << endl;
+}
+
+void printGraph(vector<vector<int>>& g){
+    int sz = g.size();
+    for(int i = 0; i < sz; i++){
+        cout << i << ": ";
+        printVector(g[i]);
+    }
 }
 
 ll get_key(int id, int size){
@@ -270,19 +279,22 @@ bracketlist* sese(int u, int parent){
         }else bl1 = sese(v, u);
         if((u ^ v) == 1){// check for canonical sese if it is a black edge, won't be true for back edge
             // printArgs("Bracket list size on reaching the solid edge:", bl1->sz);
+            ll key;
             if(bl1->sz > 0){
                 int br = bl1->end->id;
                 assert(br != -1); // not a black edge
-                ll key = get_key(br, bl1->sz);
-                if(st.find(key) != st.end()){
-                    // printArgs("Found the canonical pair");
-                    if(g[v].size() > 2 || g[st[key]].size() > 2){ // to avoid linear chains
-                        // printArgs("Found the contributing canonical pair:", v, st[key]);
-                        canonical_sese.pb({v, st[key]});
-                    }
-                }
-                st[key] = u; // will happen regardless you found something or not
+                key = get_key(br, bl1->sz);
+            }else{
+                key = 0;
             }
+            if(st.find(key) != st.end()){
+                // printArgs("Found the canonical pair");
+                if(g[v].size() > 2 || g[st[key]].size() > 2){ // to avoid linear chains
+                    // printArgs("Found the contributing canonical pair:", v, st[key]);
+                    canonical_sese.pb({v, st[key]});
+                }
+            }
+            st[key] = u; // will happen regardless you found something or not
         }
         if(bl1->start){
             // printArgs(u, "child", v);
@@ -350,17 +362,25 @@ bracketlist* sese(int u, int parent){
     return bl;
 }
 
-void mark_bb_nodes(int u, int end, int id){
+void upd_node(int u, int id){
     mark[u] = true;
-    bb_nodes[id].pb(u); 
+    bb_nodes[id].pb(u);
+    bb_comp[u] = id;
+}
+
+void mark_bb_nodes(int u, int end, int id){
+    // printArgs("u, end, id:", u, end, id);
+    upd_node(u, id);
     if(u == end){
-        mark[u^1] = true;
-        bb_nodes[id].pb(u^1);
-        return;
+        upd_node(u^1, id);
     }
     for(pii child : g[u]){
         int v = child.F;
-        if(mark[v]) continue;
+        // printArgs("u, v:", u, v, mark[u], mark[v]);
+        if(mark[v]){
+            if(bb_comp[v] != bb_comp[u])bb_nodes[id].pb(v);
+            continue;
+        }
         mark_bb_nodes(v, end, id);
     }
 }
@@ -496,7 +516,7 @@ int main(int argc, char* argv[])
     remove_brackets.resize(2 * n);
     
     maxd = 2 * n + 100;
-    sese(Ss, -1);     
+    sese(Ss, -1); // graph g is not changed
     assert(stack_trace.size() == 0);
     // Taking care of multiple components
     for(int i = 0; i < 2 * n; i += 2){
@@ -513,15 +533,14 @@ int main(int argc, char* argv[])
     cout << "Total possible canonical cycle equivalent pairs found: " << possible_pairs << endl;
 
     fill(mark.begin(), mark.end(), false);
-    cc_comp.resize(2 * n, -1);
+    bb_comp.resize(2 * n, -1);
     bb_nodes.resize(possible_pairs);
     valid.resize(possible_pairs);
 
     for(int i = 0; i < possible_pairs; i++){ // space requirement is linear since the inner-most nested bubbles will appear on the top
         pii rs = canonical_sese[i];
         cout << get_label(rs.F, rs.S) << endl;
-        mark[rs.F^1] = true;
-        bb_nodes[i].pb(rs.F^1);
+        upd_node(rs.F^1, i);
         mark_bb_nodes(rs.F, rs.S, i);
         // printVector(bb_nodes[i]);
     }
@@ -532,16 +551,19 @@ int main(int argc, char* argv[])
     
     if(possible_pairs != 0){
         fill(valid.begin(), valid.end(), true);
+        cc_comp.resize(2 * n, -1);
         valid_pairs = possible_pairs;
         ag.resize(2 * n);
         // need not connect tips here
         make_auxillary_graph();
+        // printGraph(ag);
         scc(); // ref - https://cp-algorithms.com/graph/strongly-connected-components.html extended to multigraph
         for(int i = 0; i < possible_pairs; i++){
             pii rs = canonical_sese[i];
             for(int u : bb_nodes[i]){
+                assert(bb_comp[u] != -1);
                 // printArgs(rs.F, "-", cc_comp[rs.F], rs.F^1, "-", cc_comp[rs.F^1], u, "-", cc_comp[u]);
-                if(!(cc_comp[u] == cc_comp[rs.F] || cc_comp[u] == cc_comp[rs.F^1])){
+                if(!((cc_comp[u] == cc_comp[rs.F] || cc_comp[u] == cc_comp[rs.F^1]) && valid[bb_comp[u]])){
                     valid[i] = false;
                     valid_pairs--;
                     break;

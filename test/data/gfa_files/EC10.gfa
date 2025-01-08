@@ -1,0 +1,51 @@
+S	A	*	LN:i:100
+S	B	*	LN:i:100
+S	C	*	LN:i:100
+S	D	*	LN:i:100
+S	E	*	LN:i:100
+S	F	*	LN:i:100
+S	G	*	LN:i:100
+S	H	*	LN:i:100
+S	I	*	LN:i:100
+S	J	*	LN:i:100
+S	K	*	LN:i:100
+S	L	*	LN:i:100
+S	M	*	LN:i:100
+S	N	*	LN:i:100
+S	O	*	LN:i:100
+S	P	*	LN:i:100
+S	Q	*	LN:i:100
+S	R	*	LN:i:100
+S	U	*	LN:i:100
+S	V	*	LN:i:100
+S	W	*	LN:i:100
+S	X	*	LN:i:100
+L	A	+	B	+	0M
+L	A	+	C	+	0M
+L	B	+	D	-	0M
+L	C	+	D	-	0M
+L	E	-	D	+	0M
+L	E	+	F	+	0M
+L	F	+	G	+	0M
+L	F	+	H	-	0M
+L	E	+	H	-	0M
+L	I	-	H	+	0M
+L	I	+	J	+	0M
+L	I	+	N	+	0M
+L	J	+	K	+	0M
+L	K	+	L	+	0M
+L	L	+	K	+	0M
+L	N	+	O	-	0M
+L	P	+	O	+	0M
+L	J	+	M	-	0M
+L	P	+	M	+	0M
+L	H	-	Q	+	0M
+L	Q	+	R	+	0M
+L	Q	+	U	+	0M
+L	R	+	U	+	0M
+L	R	+	V	-	0M
+L	V	+	V	+	0M
+L	U	+	W	+	0M
+L	U	+	W	-	0M
+L	X	+	W	+	0M
+L	X	+	W	-	0M

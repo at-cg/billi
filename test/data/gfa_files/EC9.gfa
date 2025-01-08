@@ -1,0 +1,21 @@
+S	A	*	LN:i:100
+S	B	*	LN:i:100
+S	C	*	LN:i:100
+S	D	*	LN:i:100
+S	E	*	LN:i:100
+S	F	*	LN:i:100
+S	G	*	LN:i:100
+S	H	*	LN:i:100
+S	I	*	LN:i:100
+S	J	*	LN:i:100
+L	A	+	B	+	0M
+L	A	+	C	+	0M
+L	C	+	G	+	0M
+L	C	+	E	+	0M
+L	G	+	H	+	0M
+L	H	+	I	+	0M
+L	H	+	J	+	0M
+L	J	+	I	-	0M
+L	E	+	F	-	0M
+L	D	+	F	-	0M
+L	B	+	D	+	0M

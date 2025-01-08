@@ -1,2 +1,4 @@
-Total possible canonical cycle equivalent pairs found: 0
-Total valid canonical cycle equivalent pairs found: 0
+Total possible canonical cycle equivalent pairs found: 1
+SMIM10L2B - ETDB -
+Total valid canonical cycle equivalent pairs found: 1
+SMIM10L2B - ETDB -

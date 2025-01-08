@@ -20,6 +20,7 @@ make
 ulimit -s unlimited
 
 # time ./main ../test/data/gfa_files/worst_case\(2\)_h.gfa ../test/data/results/worst_case\(2\)_h
+# time ./main ../test/data/gfa_files/EC9.gfa ../test/data/results/EC9
 
 DIR=../test/data/
 DDIR=$DIR/gfa_files
