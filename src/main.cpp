@@ -5,6 +5,7 @@
 #include<filesystem>
 #include<vector>
 #include<map>
+#include<set>
 #include<unordered_map>
 #include<algorithm>
 #include<stack>
@@ -174,6 +175,16 @@ void make_graph(){
                 int n2 = lmap[tokens[3]]; string s2 = tokens[4]; 
                 if(n1 == n2)continue; // there will be a black edge b/w them <- safe operation
                 
+                // making sure edges are added only in one direction
+                if(n1 > n2){
+                    swap(n1, n2); 
+                    if(s1 == "+")s1 = "-";
+                    else s1 = "+";
+                    if(s2 == "+")s2 = "-";
+                    else s2 = "+";
+                    swap(s1, s2);
+                }
+
                 // n1 and n2 are 0-indexed
                 int id1 = n1 << 1, id2 = n2 << 1;
                 if(s1 == "+")id1++;
@@ -259,6 +270,16 @@ void dfs(int u, int parent){
     }
 }
 
+int find_unique(int u){
+    set<int> s;
+    for(pii child : g[u]){
+        if((child.F^u) == 1)continue;
+        s.insert(child.F);
+        if(s.size() == 2)break;
+    }
+    return s.size();
+}
+
 bracketlist* sese(int u, int parent){
     stack_trace.pb(u);
     mark[u] = true;
@@ -289,7 +310,7 @@ bracketlist* sese(int u, int parent){
             }
             if(st.find(key) != st.end()){
                 // printArgs("Found the canonical pair");
-                if(g[v].size() > 2 || g[st[key]].size() > 2){ // to avoid linear chains
+                if(find_unique(v) == 2 || find_unique(st[key]) == 2){ // to avoid linear chains
                     // printArgs("Found the contributing canonical pair:", v, st[key]);
                     canonical_sese.pb({v, st[key]});
                 }
@@ -465,7 +486,7 @@ int main(int argc, char* argv[])
         }
     }
 
-    // cout << "TIPS\n";
+    // cout << "TIPS: ";
     // for(int x : tips)cout << x << " ";
     // cout << endl;
 
@@ -552,14 +573,22 @@ int main(int argc, char* argv[])
     if(possible_pairs != 0){
         fill(valid.begin(), valid.end(), true);
         cc_comp.resize(2 * n, -1);
-        valid_pairs = possible_pairs;
         ag.resize(2 * n);
+        valid_pairs = possible_pairs;
         // need not connect tips here
         make_auxillary_graph();
         // printGraph(ag);
         scc(); // ref - https://cp-algorithms.com/graph/strongly-connected-components.html extended to multigraph
         for(int i = 0; i < possible_pairs; i++){
             pii rs = canonical_sese[i];
+            // for(pii child : g[rs.F]){
+            //     if(child.F == rs.S){ // removing adjacent pairs that might have been added because of edge redundancy
+            //         valid[i] = false;
+            //         valid_pairs--;
+            //         break;
+            //     }
+            // }
+            // if(!valid[i])continue;
             for(int u : bb_nodes[i]){
                 assert(bb_comp[u] != -1);
                 // printArgs(rs.F, "-", cc_comp[rs.F], rs.F^1, "-", cc_comp[rs.F^1], u, "-", cc_comp[u]);
