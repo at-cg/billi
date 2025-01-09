@@ -221,6 +221,16 @@ void make_auxillary_graph(){
                 int n2 = lmap[tokens[3]]; string s2 = tokens[4]; 
                 if(n1 == n2)continue; // there will be a black edge b/w them <- safe operation
                 
+                // making sure edges are added only in one direction
+                if(n1 > n2){
+                    swap(n1, n2); 
+                    if(s1 == "+")s1 = "-";
+                    else s1 = "+";
+                    if(s2 == "+")s2 = "-";
+                    else s2 = "+";
+                    swap(s1, s2);
+                }
+                
                 // n1 and n2 are 0-indexed
                 int id1 = n1 << 1, id2 = n2 << 1;
                 add_directed_edges(id1, id2, s1, s2);
@@ -310,9 +320,11 @@ bracketlist* sese(int u, int parent){
             }
             if(st.find(key) != st.end()){
                 // printArgs("Found the canonical pair");
-                if(find_unique(v) == 2 || find_unique(st[key]) == 2){ // to avoid linear chains
+                // if(g[v].size() > 2 || g[st[key]].size() > 2){ // to avoid linear chains <- fails in case of multiple edges
+                int w = st[key];
+                if(find_unique(v) == 2 || find_unique(w) == 2 || (find_unique(v) == 1 && g[v][1].F != w) || (find_unique(w) == 1 && g[w][1].F != v)){ // to avoid linear chains
                     // printArgs("Found the contributing canonical pair:", v, st[key]);
-                    canonical_sese.pb({v, st[key]});
+                    canonical_sese.pb({v, w});
                 }
             }
             st[key] = u; // will happen regardless you found something or not
