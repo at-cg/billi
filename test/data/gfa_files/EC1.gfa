@@ -22,3 +22,17 @@ L	H	+	K	+	0M
 L	K	+	K	+	0M
 L	H	+	J	+	0M
 L	I	+	J	+	0M
+L	B	-	A	-	0M
+L	B	+	A	-	0M
+L	C	+	B	+	0M
+L	C	+	B	-	0M
+L	D	-	C	+	0M
+L	F	-	C	+	0M
+L	G	+	D	-	0M
+L	G	+	F	-	0M
+L	H	-	G	+	0M
+L	I	-	G	+	0M
+L	K	-	H	-	0M
+L	K	-	K	-	0M
+L	J	-	H	-	0M
+L	J	-	I	-	0M

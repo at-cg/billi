@@ -31,10 +31,11 @@ string inputpath, outputdir;
 
 int n; // no of nodes (genes)
 int backedge_cnt; // upper bound on number of back edges
+ll tip_start = -1;
 ll multiplier = 1; // for computing the hash
 int maxd; // max depth possible = total number of nodes
 int possible_pairs = 0, valid_pairs = 0; // storing the number of valid bibubble pairs
-int Ss = -1, Se = -1; // for connecting the tips
+int Start = -1; // for connecting the tips
 int tot_grey = -1; // for storing total number of grey edges, will help in accessing the brackets
 
 struct edge{
@@ -48,7 +49,7 @@ struct bracketlist{
     int sz, d1, d2; // d1 -> first minimum depth, d2 -> second minimum depth
     edge* start;
     edge* end; // will need the end as well for merging and finding the topmost bracket
-    bracketlist():sz(0), d1(maxd), d2(maxd), start(nullptr), end(nullptr){}
+    bracketlist():sz(0), d1(maxd), d2(maxd + 10), start(nullptr), end(nullptr){}
     bracketlist(int lsz, int depth1, int depth2, edge* pstart, edge* pend): sz(lsz), d1(depth1), d2(depth2), start(pstart), end(pend){}
 };
 
@@ -140,6 +141,7 @@ void get_n(){
 }
 
 void add_directed_edges(int& id1, int& id2, string s1, string s2){
+    // printArgs(id1, id2, s1, s2);
     if(s1 == s2){ // >x denotes +x 
         if(s1 == "+"){
             ag[id1].pb(id2); ag[id2^1].pb(id1^1);
@@ -173,9 +175,9 @@ void make_graph(){
                 assert(tokens.size() >= 5);
                 int n1 = lmap[tokens[1]]; string s1 = tokens[2]; 
                 int n2 = lmap[tokens[3]]; string s2 = tokens[4]; 
-                if(n1 == n2)continue; // there will be a black edge b/w them <- safe operation
+                if(n1 == n2)continue; // there will be a black edge b/w them <- safe operation - self loops won't affect cycle equivalence
                 
-                // making sure edges are added only in one direction
+                // making sure edges are added only in one direction <- consistency of sign
                 if(n1 > n2){
                     swap(n1, n2); 
                     if(s1 == "+")s1 = "-";
@@ -219,7 +221,7 @@ void make_auxillary_graph(){
                 assert(tokens.size() >= 5);
                 int n1 = lmap[tokens[1]]; string s1 = tokens[2]; 
                 int n2 = lmap[tokens[3]]; string s2 = tokens[4]; 
-                if(n1 == n2)continue; // there will be a black edge b/w them <- safe operation
+                // if(n1 == n2)continue; // can be skipped here since self loops can help turn back through the same node
                 
                 // making sure edges are added only in one direction
                 if(n1 > n2){
@@ -258,10 +260,16 @@ void merge(bracketlist* bl1, bracketlist* bl2){
         bl2->start->back = bl1->end;
         if(bl1->d1 < bl2->d1){
             bl1->d2 = min(bl1->d2, bl2->d1);
-        }else{
+        }else if(bl1->d1 > bl2->d1){
             bl1->d2 = min(bl1->d1, bl2->d2);
             bl1->d1 = bl2->d1;
+        }else{
+            bl1->d2 = min(bl1->d2, bl2->d2);
         }
+        // else{
+        //     bl1->d2 = min(bl1->d1, bl2->d2);
+        //     bl1->d1 = bl2->d1;
+        // }
     }
     bl1->end = bl2->end;
     bl1->sz += bl2->sz;
@@ -269,8 +277,11 @@ void merge(bracketlist* bl1, bracketlist* bl2){
 }
 
 void dfs(int u, int parent){
+    if(parent != -1 && !mark[u]){
+        depth[u] = depth[parent] + 1;
+        // printArgs(u, ":", depth[u]);
+    }
     mark[u] = true;
-    if(parent != -1)depth[u] = depth[parent] + 1;
     for(pii child : g[u]){
         int v = child.F;
         if(mark[v]){
@@ -332,9 +343,10 @@ bracketlist* sese(int u, int parent){
         if(bl1->start){
             // printArgs(u, "child", v);
             // printBracketList(bl); printBracketList(bl1);
-            merge(bl, bl1); // merging brackets from the child nodes
-            // printBracketList(bl);
             if(bl1->d1 < depth[u] && depth[v] > depth[u])cnt_back++; // an edge from u to its ancestor won't contribute to capping backedge
+            // printArgs(bl1->d1, depth[u], depth[v], "count of back edges:", cnt_back);
+            merge(bl, bl1); // merging brackets from the child nodes <- should come in the end since bl1 will be deleted after this operation
+            // printBracketList(bl);
         }
     }
 
@@ -368,7 +380,7 @@ bracketlist* sese(int u, int parent){
     // only left with the brackets that go up the node u
     // adding capping backedge
     // edge to be added u -> stack_trace[bl->d2]
-    if(cnt_back >= 2){// at least two childs should have backedges with depth lower than node u in order to add a capping backedge
+    if(cnt_back >= 2 && bl->d2 < maxd){// at least two childs should have backedges with depth lower than node u in order to add a capping backedge
         int w = stack_trace[bl->d2]; // stack_trace is 0-indexed and so are bl->d1 and bl->d2
         // edge need not be added to graph g
         // check if the edge already exists
@@ -409,6 +421,7 @@ void mark_bb_nodes(int u, int end, int id){
     }
     for(pii child : g[u]){
         int v = child.F;
+        if(child.S >= tip_start)continue; // don't consider the edges added because of tips
         // printArgs("u, v:", u, v, mark[u], mark[v]);
         if(mark[v]){
             if(bb_comp[v] != bb_comp[u])bb_nodes[id].pb(v);
@@ -492,7 +505,7 @@ int main(int argc, char* argv[])
     // Basically the vertices with deg = 1
     vector<int> tips; // vector for storing the vertices that represent the tip
     for(int i = 0; i < 2 * n; i++){
-        if(g[i].size() == 1){
+        if(find_unique(i) == 0){// only connected via a black edge
             tips.pb(i);
             assert((g[i][0].F ^ i) == 1); // checking whether the node is connected via a black edge
         }
@@ -503,14 +516,16 @@ int main(int argc, char* argv[])
     // cout << endl;
 
     if(tips.size() == 0){ // there can be multiple components here, need to take care of in the dfs 
-        Ss = 0; Se = 1; // no extra edges required
+        Start = 0; // no extra edges required
+        tip_start = __LONG_LONG_MAX__;
     }else{
-        Ss = tips[0]; Se = Ss ^ 1; 
+        Start = tips[0]; 
         // if(tips.size() > 1){// else no need to add an extra edge
             for(int i = 1; i < tips.size(); i++){
                 tot_grey++;
-                g[Ss].pb({tips[i], tot_grey}); g[tips[i]].pb({Ss, tot_grey}); // edge id's are required here as well
-                eid.pb({min(Ss, tips[i]), max(Ss, tips[i])});
+                if(tip_start == -1)tip_start = tot_grey; // marking the starting id for the edges added because of tips
+                g[Start].pb({tips[i], tot_grey}); g[tips[i]].pb({Start, tot_grey}); // edge id's are required here as well
+                eid.pb({min(Start, tips[i]), max(Start, tips[i])});
             }
         // }
     }
@@ -529,15 +544,15 @@ int main(int argc, char* argv[])
     depth.resize(2 * n);
     
     // Finding an upperbound on the number of backedges
-    dfs(Ss, -1);
+    dfs(Start, -1);
     // Taking care of multiple components
     for(int i = 0; i < 2 * n; i += 2){
         if(mark[i]){
             assert(mark[i + 1]);
             continue;
         }
-        Ss = i; Se = i + 1;
-        dfs(Ss, -1);
+        Start = i; 
+        dfs(Start, -1);
     }
 
     backedge_cnt += n; // atmax n capping backedges
@@ -549,7 +564,7 @@ int main(int argc, char* argv[])
     remove_brackets.resize(2 * n);
     
     maxd = 2 * n + 100;
-    sese(Ss, -1); // graph g is not changed
+    sese(Start, -1); // graph g is not changed
     assert(stack_trace.size() == 0);
     // Taking care of multiple components
     for(int i = 0; i < 2 * n; i += 2){
@@ -557,8 +572,8 @@ int main(int argc, char* argv[])
             assert(mark[i + 1]);
             continue;
         }
-        Ss = i; Se = i + 1;
-        sese(Ss, -1);
+        Start = i; 
+        sese(Start, -1);
         assert(stack_trace.size() == 0);
     }
 
@@ -588,7 +603,7 @@ int main(int argc, char* argv[])
         ag.resize(2 * n);
         valid_pairs = possible_pairs;
         // need not connect tips here
-        make_auxillary_graph();
+        make_auxillary_graph(); // read the file again since this time the edges will be directed
         // printGraph(ag);
         scc(); // ref - https://cp-algorithms.com/graph/strongly-connected-components.html extended to multigraph
         for(int i = 0; i < possible_pairs; i++){

@@ -1,8 +1,0 @@
-S	A	*
-S	B	*
-S	C	*
-S	D	*
-L	A	+	C	+
-L	A	+	D	+
-L	C	+	B	+
-L	D	+	B	+

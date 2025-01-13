@@ -33,10 +33,10 @@ ulimit -s unlimited
 ## Others
 
 # C4-90
-time ./main /scratch/projects/daanish/data/Bubbles/Data/C4/C4-90.gfa /home/daanish/projects/Pangene/results/Billi/C4-90
+# time ./main /scratch/projects/daanish/data/Bubbles/Data/C4/C4-90.gfa /home/daanish/projects/Pangene/results/Billi/C4-90
 
 # MHC
-time ./main /scratch/projects/daanish/data/Bubbles/Data/MHC/MHC.gfa /home/daanish/projects/Pangene/results/Billi/MHC
+# time ./main /scratch/projects/daanish/data/Bubbles/Data/MHC/MHC.gfa /home/daanish/projects/Pangene/results/Billi/MHC
 
 # E-coli
 time ./main /scratch/projects/daanish/data/Bubbles/Data/Ecoli/Ecoli.gfa /home/daanish/projects/Pangene/results/Billi/Ecoli
@@ -58,8 +58,8 @@ time ./main /scratch/projects/daanish/data/Bubbles/Data/Human/Mtb152p.gfa /home/
 
 ## Testing 
 
-# time ./main ../test/data/gfa_files/worst_case\(2\)_h.gfa ../test/data/results/worst_case\(2\)_h
-# time ./main ../test/data/gfa_files/C4.gfa ../test/data/results/C4
+# time ./main ../test/data/gfa_files/worst_case\(100000\).gfa ../test/data/results/worst_case\(100000\)
+# time ./main ../test/data/gfa_files/EC10.gfa ../test/data/results/EC10
 
 
 # DIR=../test/data/

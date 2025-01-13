@@ -1,2 +1,4 @@
-Total possible canonical cycle equivalent pairs found: 0
-Total valid canonical cycle equivalent pairs found: 0
+Total possible canonical cycle equivalent pairs found: 1
+RGPD1 + RGPD2 -
+Total valid canonical cycle equivalent pairs found: 1
+RGPD1 + RGPD2 -

@@ -13,3 +13,11 @@ L	s5	+	s6	+	0M
 L	s4	+	s7	+	0M
 L	s7	+	s6	+	0M
 L	s6	+	s3	+	0M
+L	s2	-	s1	-	0M
+L	s3	-	s2	-	0M
+L	s4	-	s1	-	0M
+L	s5	-	s4	-	0M
+L	s6	-	s5	-	0M
+L	s7	-	s4	-	0M
+L	s6	-	s7	-	0M
+L	s3	-	s6	-	0M

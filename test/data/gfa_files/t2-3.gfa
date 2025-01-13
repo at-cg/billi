@@ -3,3 +3,5 @@ S	s2	*	LN:100
 S	s3	*	LN:100
 L	s1	+	s2	+	0M
 L	s3	+	s1	+	0M
+L	s2	-	s1	-	0M
+L	s1	-	s3	-	0M

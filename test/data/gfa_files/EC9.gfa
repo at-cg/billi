@@ -19,3 +19,14 @@ L	J	+	I	-	0M
 L	E	+	F	-	0M
 L	D	+	F	-	0M
 L	B	+	D	+	0M
+L	B	-	A	-	0M
+L	C	-	A	-	0M
+L	G	-	C	-	0M
+L	E	-	C	-	0M
+L	H	-	G	-	0M
+L	I	-	H	-	0M
+L	J	-	H	-	0M
+L	I	+	J	-	0M
+L	F	+	E	-	0M
+L	F	+	D	-	0M
+L	D	-	B	-	0M

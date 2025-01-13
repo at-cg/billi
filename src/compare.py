@@ -1,6 +1,7 @@
 import os
 
-genome = 'human100'
+# genome = 'human100'
+genome = 'Mtb152m-p1a2'
 billi_path = f'/home/daanish/projects/Pangene/results/Billi/{genome}/summary.txt'
 pangene_path = f'/home/daanish/projects/Pangene/results/Pangene/{genome}.txt'
 

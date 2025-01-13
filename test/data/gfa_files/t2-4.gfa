@@ -4,3 +4,6 @@ S	s3	*	LN:i:100
 L	s1	+	s2	+	0M
 L	s2	+	s2	-	0M
 L	s2	-	s3	+	0M
+L	s2	-	s1	-	0M
+L	s2	+	s2	-	0M
+L	s3	-	s2	+	0M
