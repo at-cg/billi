@@ -49,7 +49,7 @@ with open(pangene_path, 'r') as file:
             lp.append(get_string(g1, g2, s1, s2))
 lp.sort()
 
-for i in range(len(lb)):
+for i in range(len(lp)):
     if(lb[i] != lp[i]):
-        print(i, lp[i], sep = ' ')
+        print(i, lp[i], lb[i], sep = ' ')
         break

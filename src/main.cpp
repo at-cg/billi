@@ -1,4 +1,4 @@
-// Remove eid
+// Remove eid, scnt, free unused memory, implementation for different components
 
 #include<iostream>
 #include<fstream>
@@ -30,13 +30,13 @@ fstream f;
 string inputpath, outputdir;
 
 int n; // no of nodes (genes)
-int backedge_cnt; // upper bound on number of back edges
-ll tip_start = -1;
+int comp_cnt = 0; // no of connected components in the input graph
+int nodes = 0; // no of nodes in a given componenet in the input graph
 ll multiplier = 1; // for computing the hash
 int maxd; // max depth possible = total number of nodes
 int possible_pairs = 0, valid_pairs = 0; // storing the number of valid bibubble pairs
-int Start = -1; // for connecting the tips
-int tot_grey = -1; // for storing total number of grey edges, will help in accessing the brackets
+// int End = -1; // for connecting the tips
+int tot_grey = 0; // for storing total number of grey edges, will help in accessing the brackets
 
 struct edge{
     int id; // a bracket can uniquely be identified by the lower and higher vertices it connects to : low -> lower height, assigning a unique to each
@@ -57,15 +57,21 @@ vector<bool> mark; // for marking back edges
 vector<bool> valid; // for marking whether a potential bi-bubble is valid
 vector<int> stack_trace; // for storing the vertices in the stack during dfs traversal
 vector<int> depth; // for storing the depth of the vertices in the spanning tree
-vector<int> cc_comp; // connected-component to which a node belongs to
+vector<int> first_node; // for storing a node in every connected-component in the biedged graph
+vector<int> bi_cc_comp; // connected-component in the biedged graph to which a node belongs to 
+vector<int> aux_cc_comp; // connected-component in the auxiliary graph to which a node belongs to
 vector<int> bb_comp; // bibubble-component to which a node belongs to
 vector<int> order; // will be a sorted list of G's vertices by exit time
+vector<int> backedge_cnt; // upper bound on number of back edges
+vector<int> Start; // starting point of search for each component in original graph
+vector<ll> tip_start; // will store the id from which extra edges because of tips are added for each bi_cc_comp
 vector<string> ilmap; // for storing the gene for a particular label
-vector<pii> eid; 
+vector<pii> eid; // stores the edges
 vector<pii> canonical_sese; // for storing the canonical sese pairs
 vector<vector<int>> bb_nodes; // storing the nodes for different bibubbles
 vector<vector<int>> ag; // directed graph
 vector<vector<int>> ag_rev; // create adjacency list of G^T   
+vector<vector<int>> tips; // vector for storing the vertices that represent the tip
 vector<vector<pii>> g; // (node_id, grey_edge_id)
 vector<vector<edge*>> remove_brackets;
 unordered_map<ll, int> st; // (edge, size) -> hashed into a ll key
@@ -104,7 +110,7 @@ void printGraph(vector<vector<int>>& g){
 }
 
 ll get_key(int id, int size){
-    return id * multiplier + size;
+    return size * multiplier + id;
 }
 
 inline string get_label(int x, int y){
@@ -157,6 +163,12 @@ void add_directed_edges(int& id1, int& id2, string s1, string s2){
     }
 }
 
+void add_edge(int& id1, int& id2){
+    g[id1].pb({id2, tot_grey}); g[id2].pb({id1, tot_grey}); // 0-indexed
+    eid.pb({min(id1, id2), max(id1, id2)});
+    tot_grey++;
+}
+
 void make_graph(){
     f.open(inputpath, ios::in);
     string line;
@@ -175,10 +187,11 @@ void make_graph(){
                 assert(tokens.size() >= 5);
                 int n1 = lmap[tokens[1]]; string s1 = tokens[2]; 
                 int n2 = lmap[tokens[3]]; string s2 = tokens[4]; 
-                if(n1 == n2)continue; // there will be a black edge b/w them <- safe operation - self loops won't affect cycle equivalence
+                // if(n1 == n2 && s1 == s2)continue; // won't use this edge for traversal
                 
                 // making sure edges are added only in one direction <- consistency of sign
                 if(n1 > n2){
+                    // continue;
                     swap(n1, n2); 
                     if(s1 == "+")s1 = "-";
                     else s1 = "+";
@@ -191,10 +204,8 @@ void make_graph(){
                 int id1 = n1 << 1, id2 = n2 << 1;
                 if(s1 == "+")id1++;
                 if(s2 == "-")id2++;
-                tot_grey++;
+                add_edge(id1, id2);
                 // printArgs(id1, id2, tot_grey);
-                g[id1].pb({id2, tot_grey}); g[id2].pb({id1, tot_grey}); // 1-indexed
-                eid.pb({min(id1, id2), max(id1, id2)});
             }
         }
         f.close();
@@ -276,18 +287,30 @@ void merge(bracketlist* bl1, bracketlist* bl2){
     delete(bl2);
 }
 
-void dfs(int u, int parent){
+void dfs_comp(int u){
+    mark[u] = true;
+    bi_cc_comp[u] = comp_cnt;
+    for(pii child : g[u]){
+        int v = child.F;
+        if(mark[v])continue;
+        dfs_comp(v);
+    }
+}
+
+void dfs_depth(int u, int parent, int comp){
     if(parent != -1 && !mark[u]){
         depth[u] = depth[parent] + 1;
         // printArgs(u, ":", depth[u]);
     }
+    if(!mark[u])nodes++;
     mark[u] = true;
     for(pii child : g[u]){
         int v = child.F;
         if(mark[v]){
-            if(depth[v] < depth[u] && v != parent)backedge_cnt++;
+            if(depth[v] < depth[u] && v != parent)backedge_cnt[comp]++;
             continue;
-        }else dfs(v, u);
+        }
+        dfs_depth(v, u, comp);
     }
 }
 
@@ -329,6 +352,17 @@ bracketlist* sese(int u, int parent){
             }else{
                 key = 0;
             }
+            // if(u == 3996){
+            //     scnt += 1;
+            //     printArgs("HI", u, scnt, depth[u]);
+            //     printBracketList(bl1);
+            // }
+            // if(v == 1301){
+            //     scnt += 1;
+            //     printArgs("HI", v, scnt, depth[v]);
+            //     printBracketList(bl1);
+            // }
+
             if(st.find(key) != st.end()){
                 // printArgs("Found the canonical pair");
                 // if(g[v].size() > 2 || g[st[key]].size() > 2){ // to avoid linear chains <- fails in case of multiple edges
@@ -393,8 +427,7 @@ bracketlist* sese(int u, int parent){
         // printArgs("Capping back-edge", u, w);
         if(!exists){
             // printArgs("Capping back-edge does not exist");
-            tot_grey++;
-            edge* ed = new edge(tot_grey);
+            edge* ed = new edge(tot_grey); tot_grey++;
             eid.pb({min(w, u), max(w, u)});
             bracketlist* bl1 = new bracketlist(1, depth[w], maxd, ed, ed);
             remove_brackets[w].pb(ed);
@@ -421,10 +454,10 @@ void mark_bb_nodes(int u, int end, int id){
     }
     for(pii child : g[u]){
         int v = child.F;
-        if(child.S >= tip_start)continue; // don't consider the edges added because of tips
+        if(child.S >= tip_start[bi_cc_comp[end]])continue; // don't consider the edges added because of tips
         // printArgs("u, v:", u, v, mark[u], mark[v]);
         if(mark[v]){
-            if(bb_comp[v] != bb_comp[u])bb_nodes[id].pb(v);
+            if(bb_comp[v] != bb_comp[u])bb_nodes[id].pb(v); // if the two bibubbles are adjacent, then too start and end points of the bibubble will be added, however the complete gene maynot be added
             continue;
         }
         mark_bb_nodes(v, end, id);
@@ -466,7 +499,7 @@ void scc(){
             // printVector(component);
             int root = *min_element(begin(component), end(component));
             for (int u : component)
-                cc_comp[u] = root;
+                aux_cc_comp[u] = root;
         }
 }
 
@@ -487,47 +520,87 @@ int main(int argc, char* argv[])
     freopen(summarypath.c_str(), "w", stdout);
 
     get_n();
+    maxd = 2 * n + 100;
+
+    // printArgs(lmap["BENKGBHG_01759"], lmap["Rv1676"]);
     // deg.resize(2 * n);
 
     // for a node x (0-indexed) in pangene graph - two nodes 2 * x (tail of arrow), 2 * x + 1 (head of arrow) are created in the bi-edged graph 
     // using vectors will be good coz we will have to add capping backedges as well
-    g.resize(2 * n); // // +2 is for S if required -> not needed
+    g.resize(2 * n); // // +delta is for S if required -> not needed
     // adding black edges first <- important since don't want black edge to appear as a back or front edge
     for(int i = 0; i < n; i++){
         int n1 = 2 * i, n2 = 2 * i + 1;
         g[n1].pb({n2, -1}); g[n2].pb({n1, -1});
     }
     make_graph(); // adding grey edges
-    
+
+    // ************************************
+    // Finding number of connected components    
+    // ************************************
+    mark.resize(2 * n);
+    bi_cc_comp.resize(2 * n);
+
+    for(int i = 0; i < 2 * n; i += 2){
+        if(mark[i]){
+            assert(mark[i + 1]);
+            continue;
+        }
+        dfs_comp(i);
+        first_node.pb(i);
+        comp_cnt++;
+    }
+    // printArgs("Number of components:", comp_cnt);
+
     // Graph compression - removing unitigs --- Not implementing currently -> does not seem that useful
 
+    // ************************************
     // Identifying tips
-    // Basically the vertices with deg = 1
-    vector<int> tips; // vector for storing the vertices that represent the tip
+    // Basically the vertices with no of unique neighbors = 1
+    // ************************************
+    tips.resize(comp_cnt);
     for(int i = 0; i < 2 * n; i++){
-        if(find_unique(i) == 0){// only connected via a black edge
-            tips.pb(i);
+        // if(find_unique(i) == 0){// only connected via a black edge
+        if(g[i].size() == 1){
+            tips[bi_cc_comp[i]].pb(i);
             assert((g[i][0].F ^ i) == 1); // checking whether the node is connected via a black edge
         }
     }
+    // for(int i = 0; i < comp_cnt; i++){
+    //     printArgs("Tips", i);
+    //     printVector(tips[i]);
+    // }
+    // random_shuffle(tips.begin(), tips.end());
 
-    // cout << "TIPS: ";
-    // for(int x : tips)cout << x << " ";
-    // cout << endl;
-
-    if(tips.size() == 0){ // there can be multiple components here, need to take care of in the dfs 
-        Start = 0; // no extra edges required
-        tip_start = __LONG_LONG_MAX__;
-    }else{
-        Start = tips[0]; 
-        // if(tips.size() > 1){// else no need to add an extra edge
-            for(int i = 1; i < tips.size(); i++){
-                tot_grey++;
-                if(tip_start == -1)tip_start = tot_grey; // marking the starting id for the edges added because of tips
-                g[Start].pb({tips[i], tot_grey}); g[tips[i]].pb({Start, tot_grey}); // edge id's are required here as well
-                eid.pb({min(Start, tips[i]), max(Start, tips[i])});
-            }
-        // }
+    // ************************************
+    // Finding depth and number of backedges for individual components
+    // ************************************
+    tip_start.resize(comp_cnt, -1);
+    backedge_cnt.resize(comp_cnt);
+    Start.resize(comp_cnt, -1);
+    fill(mark.begin(), mark.end(), false);
+    depth.resize(2 * n);
+      
+    for(int it = 0; it < comp_cnt; it++){   
+        if(tips[it].size() == 0){ // there can be multiple components here, need to take care of in the dfs 
+            Start[it] = first_node[it]; // no extra edges required
+            tip_start[it] = __LONG_LONG_MAX__;
+        }else{
+            Start[it] = tips[it][0]; //End = n; n++;
+            // if(tips.size() > 1){// else no need to add an extra edge
+                for(int i = 1; i < tips[it].size(); i++){
+                    if(tip_start[it] == -1)tip_start[it] = tot_grey; // marking the starting id for the edges added because of tips
+                    add_edge(Start[it], tips[it][i]);
+                    // add_edge(End, tips[it][i]);
+                }
+                // add_edge(Start, End);
+            // }
+        }
+        
+        // Finding an upperbound on the number of backedges
+        nodes = 0;
+        dfs_depth(Start[it], -1, it);
+        backedge_cnt[it] += nodes; // capping backedges
     }
 
     // for(int i = 0; i < eid.size(); i++){
@@ -535,48 +608,25 @@ int main(int argc, char* argv[])
     // }
     
     // ************************************
-    // *** Finding Possible Bibubble Pairs ***
+        // *** Finding Possible Bibubble Pairs ***
     // ************************************
-    
     // SESE
     // An important observation is that bibubble ends won't turn as backedges
-    mark.resize(2 * n);
-    depth.resize(2 * n);
-    
-    // Finding an upperbound on the number of backedges
-    dfs(Start, -1);
-    // Taking care of multiple components
-    for(int i = 0; i < 2 * n; i += 2){
-        if(mark[i]){
-            assert(mark[i + 1]);
-            continue;
-        }
-        Start = i; 
-        dfs(Start, -1);
-    }
-
-    backedge_cnt += n; // atmax n capping backedges
-    while(multiplier <= backedge_cnt){
-        multiplier *= 10;
-    }
-
-    fill(mark.begin(), mark.end(), false);
+        
     remove_brackets.resize(2 * n);
-    
-    maxd = 2 * n + 100;
-    sese(Start, -1); // graph g is not changed
-    assert(stack_trace.size() == 0);
-    // Taking care of multiple components
-    for(int i = 0; i < 2 * n; i += 2){
-        if(mark[i]){
-            assert(mark[i + 1]);
-            continue;
+    fill(mark.begin(), mark.end(), false);
+    for(int it = 0; it < comp_cnt; it++){
+        multiplier = 1;
+        while(multiplier <= backedge_cnt[it]){
+            multiplier *= 10;
         }
-        Start = i; 
-        sese(Start, -1);
-        assert(stack_trace.size() == 0);
-    }
+        // printArgs("Multiplier:", multiplier);
 
+        st.clear();
+        sese(Start[it], -1); // graph g is not changed
+        assert(stack_trace.size() == 0); 
+    }
+    
     possible_pairs = canonical_sese.size();
     cout << "Total possible canonical cycle equivalent pairs found: " << possible_pairs << endl;
 
@@ -599,7 +649,7 @@ int main(int argc, char* argv[])
     
     if(possible_pairs != 0){
         fill(valid.begin(), valid.end(), true);
-        cc_comp.resize(2 * n, -1);
+        aux_cc_comp.resize(2 * n, -1);
         ag.resize(2 * n);
         valid_pairs = possible_pairs;
         // need not connect tips here
@@ -618,11 +668,13 @@ int main(int argc, char* argv[])
             // if(!valid[i])continue;
             for(int u : bb_nodes[i]){
                 assert(bb_comp[u] != -1);
-                // printArgs(rs.F, "-", cc_comp[rs.F], rs.F^1, "-", cc_comp[rs.F^1], u, "-", cc_comp[u]);
-                if(!((cc_comp[u] == cc_comp[rs.F] || cc_comp[u] == cc_comp[rs.F^1]) && valid[bb_comp[u]])){
-                    valid[i] = false;
-                    valid_pairs--;
-                    break;
+                // printArgs(rs.F, "-", aux_cc_comp[rs.F], rs.F^1, "-", aux_cc_comp[rs.F^1], u, "-", aux_cc_comp[u]);
+                if(u != rs.F && u != (rs.F ^ 1) && u != rs.S && u != (rs.S ^ 1)){ // check only for internal nodes
+                    if(!((aux_cc_comp[u] == aux_cc_comp[rs.F] || aux_cc_comp[u] == aux_cc_comp[rs.F^1]) && valid[bb_comp[u]])){
+                        valid[i] = false;
+                        valid_pairs--;
+                        break;
+                    }
                 }
             }
         }
