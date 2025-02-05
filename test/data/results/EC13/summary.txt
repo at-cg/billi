@@ -1,0 +1,4 @@
+Total possible canonical cycle equivalent pairs found: 1
+ARMCX1 - GLA +
+Total valid canonical cycle equivalent pairs found: 1
+ARMCX1 - GLA +

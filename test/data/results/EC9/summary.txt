@@ -1,4 +1,3 @@
-Total possible canonical cycle equivalent pairs found: 2
-E - C -
+Total possible canonical cycle equivalent pairs found: 1
 A + F -
 Total valid canonical cycle equivalent pairs found: 0

@@ -1,9 +1,10 @@
 import os
 
-# genome = 'human100'
-genome = 'Mtb152m-p1a2'
+genome = 'human100'
+# genome = 'Mtb152m-p1a2'
 billi_path = f'/home/daanish/projects/Pangene/results/Billi/{genome}/summary.txt'
 pangene_path = f'/home/daanish/projects/Pangene/results/Pangene/{genome}.txt'
+out_path = f'/home/daanish/projects/Pangene/results/Billi/{genome}/compare.txt'
 
 def get_string(g1, g2, s1, s2):
     if(g1 > g2):
@@ -17,6 +18,16 @@ def get_string(g1, g2, s1, s2):
         else:
             s2 = '+'
         s1, s2 = s2, s1
+    else:
+        if s1 == '>':
+            s1 = '+'
+        elif s1 == '<':
+            s1 = '-'
+        if s2 == '>':
+            s2 = '+'
+        elif s2 == '<':
+            s2 = '-'
+        
     s = g1 + ' ' + s1 + ' ' + g2 + ' ' + s2
     return s
 
@@ -49,7 +60,13 @@ with open(pangene_path, 'r') as file:
             lp.append(get_string(g1, g2, s1, s2))
 lp.sort()
 
-for i in range(len(lp)):
-    if(lb[i] != lp[i]):
-        print(i, lp[i], lb[i], sep = ' ')
-        break
+with open(out_path, 'w') as ofile:
+    for i in range(len(lp)):
+        if lp[i] not in lb:
+            print(lp[i], file = ofile)
+
+    print('====================================================', file = ofile)
+
+    for i in range(len(lb)):
+        if lb[i] not in lp:
+            print(lb[i], file = ofile)

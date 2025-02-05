@@ -1,4 +1,4 @@
-// Remove eid, scnt, free unused memory, implementation for different components
+// Remove eid, scnt, free unused memory, has_self_loop
 
 #include<iostream>
 #include<fstream>
@@ -53,6 +53,7 @@ struct bracketlist{
     bracketlist(int lsz, int depth1, int depth2, edge* pstart, edge* pend): sz(lsz), d1(depth1), d2(depth2), start(pstart), end(pend){}
 };
 
+vector<bool> has_self_loop; // whether the node has a self loop <- can't be cycle equivalent with any other node
 vector<bool> mark; // for marking back edges
 vector<bool> valid; // for marking whether a potential bi-bubble is valid
 vector<int> stack_trace; // for storing the vertices in the stack during dfs traversal
@@ -188,7 +189,7 @@ void make_graph(){
                 int n1 = lmap[tokens[1]]; string s1 = tokens[2]; 
                 int n2 = lmap[tokens[3]]; string s2 = tokens[4]; 
                 // if(n1 == n2 && s1 == s2)continue; // won't use this edge for traversal
-                
+
                 // making sure edges are added only in one direction <- consistency of sign
                 if(n1 > n2){
                     // continue;
@@ -206,6 +207,10 @@ void make_graph(){
                 if(s2 == "-")id2++;
                 add_edge(id1, id2);
                 // printArgs(id1, id2, tot_grey);
+
+                // if(n1 == n2 && s1 == s2){
+                //     has_self_loop[id1] = has_self_loop[id2] = true;
+                // }
             }
         }
         f.close();
@@ -314,7 +319,17 @@ void dfs_depth(int u, int parent, int comp){
     }
 }
 
-int find_unique(int u){
+int find_unique_excluding_selfloop(int u, int v){
+    set<int> s;
+    for(pii child : g[u]){
+        if((child.F^u) <= 1 || child.F == v)continue;
+        s.insert(child.F);
+        break;
+    }
+    return s.size();
+}
+
+int find_unique_including_selfloop(int u){
     set<int> s;
     for(pii child : g[u]){
         if((child.F^u) == 1)continue;
@@ -333,7 +348,7 @@ bracketlist* sese(int u, int parent){
     int cnt_back = 0;
     for(pii child : g[u]){
         int v = child.F;
-        if(v == parent)continue;
+        if(v == parent || v == u)continue; // v = u won't contribute anything 
         bracketlist* bl1;
         if(mark[v]){// back-edge -> will come first in the dfs traversal for the node at greater depth
             if(depth[v] > depth[u])continue; // front-edge
@@ -342,7 +357,8 @@ bracketlist* sese(int u, int parent){
             bl1 = new bracketlist(1, depth[v], maxd, ed, ed);
             remove_brackets[v].pb(ed);
         }else bl1 = sese(v, u);
-        if((u ^ v) == 1){// check for canonical sese if it is a black edge, won't be true for back edge
+        // if((u ^ v) == 1 && !has_self_loop[u]){// check for canonical sese if it is a black edge, won't be true for back edge, make sure that the node doesn't has a self loop
+        if((u ^ v) == 1){
             // printArgs("Bracket list size on reaching the solid edge:", bl1->sz);
             ll key;
             if(bl1->sz > 0){
@@ -367,7 +383,9 @@ bracketlist* sese(int u, int parent){
                 // printArgs("Found the canonical pair");
                 // if(g[v].size() > 2 || g[st[key]].size() > 2){ // to avoid linear chains <- fails in case of multiple edges
                 int w = st[key];
-                if(find_unique(v) == 2 || find_unique(w) == 2 || (find_unique(v) == 1 && g[v][1].F != w) || (find_unique(w) == 1 && g[w][1].F != v)){ // to avoid linear chains
+                // int unique_v = find_unique_excluding_selfloop(v, w), unique_w = find_unique_excluding_selfloop(w, v);
+                // if(unique_v.F == 2 || unique_w.F == 2 || (unique_v.F == 1 && unique_v.S != w) || (unique_w.F == 1 && unique_w.S != v)){ // to avoid linear chains
+                if(find_unique_excluding_selfloop(v, w) == 1 && find_unique_excluding_selfloop(w, v) == 1){
                     // printArgs("Found the contributing canonical pair:", v, st[key]);
                     canonical_sese.pb({v, w});
                 }
@@ -528,6 +546,7 @@ int main(int argc, char* argv[])
     // for a node x (0-indexed) in pangene graph - two nodes 2 * x (tail of arrow), 2 * x + 1 (head of arrow) are created in the bi-edged graph 
     // using vectors will be good coz we will have to add capping backedges as well
     g.resize(2 * n); // // +delta is for S if required -> not needed
+    // has_self_loop.resize(2 * n);
     // adding black edges first <- important since don't want black edge to appear as a back or front edge
     for(int i = 0; i < n; i++){
         int n1 = 2 * i, n2 = 2 * i + 1;
@@ -536,7 +555,7 @@ int main(int argc, char* argv[])
     make_graph(); // adding grey edges
 
     // ************************************
-    // Finding number of connected components    
+    // *** Finding number of connected components ***    
     // ************************************
     mark.resize(2 * n);
     bi_cc_comp.resize(2 * n);
@@ -555,15 +574,15 @@ int main(int argc, char* argv[])
     // Graph compression - removing unitigs --- Not implementing currently -> does not seem that useful
 
     // ************************************
-    // Identifying tips
-    // Basically the vertices with no of unique neighbors = 1
+    // *** Identifying tips ***
     // ************************************
     tips.resize(comp_cnt);
     for(int i = 0; i < 2 * n; i++){
-        // if(find_unique(i) == 0){// only connected via a black edge
-        if(g[i].size() == 1){
+        // only connected via a black edge
+        if(find_unique_including_selfloop(i) == 0){ // much stricter condition than below
+        // if(g[i].size() == 1){
             tips[bi_cc_comp[i]].pb(i);
-            assert((g[i][0].F ^ i) == 1); // checking whether the node is connected via a black edge
+            // assert((g[i][0].F ^ i) == 1); // checking whether the node is connected via a black edge
         }
     }
     // for(int i = 0; i < comp_cnt; i++){
@@ -573,7 +592,7 @@ int main(int argc, char* argv[])
     // random_shuffle(tips.begin(), tips.end());
 
     // ************************************
-    // Finding depth and number of backedges for individual components
+    // *** Finding depth and number of backedges for individual components ***
     // ************************************
     tip_start.resize(comp_cnt, -1);
     backedge_cnt.resize(comp_cnt);
@@ -597,7 +616,7 @@ int main(int argc, char* argv[])
             // }
         }
         
-        // Finding an upperbound on the number of backedges
+        // Finding an upperbound on the number of backedges <- only these will contribute to the brackets
         nodes = 0;
         dfs_depth(Start[it], -1, it);
         backedge_cnt[it] += nodes; // capping backedges
@@ -608,7 +627,7 @@ int main(int argc, char* argv[])
     // }
     
     // ************************************
-        // *** Finding Possible Bibubble Pairs ***
+    // *** Finding Possible Bibubble Pairs ***
     // ************************************
     // SESE
     // An important observation is that bibubble ends won't turn as backedges

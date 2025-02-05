@@ -1,0 +1,6 @@
+Total possible canonical cycle equivalent pairs found: 2
+RGPD1 + RGPD2 -
+KRCC1 + CD8B +
+Total valid canonical cycle equivalent pairs found: 2
+RGPD1 + RGPD2 -
+KRCC1 + CD8B +

@@ -1,0 +1,15 @@
+S	ARMCX1	*	LN:i:453	ng:i:79	nc:i:80	c1:i:79	c2:i:0	pp:Z:ARMCX1:ENSP00000361917.3
+S	ARMCX4	*	LN:i:2290	ng:i:78	nc:i:78	c1:i:78	c2:i:0	pp:Z:ARMCX4:ENSP00000404304.3
+S	ARMCX6	*	LN:i:300	ng:i:79	nc:i:80	c1:i:79	c2:i:0	pp:Z:ARMCX6:ENSP00000354708.4
+S	GLA	*	LN:i:429	ng:i:79	nc:i:79	c1:i:79	c2:i:18	pp:Z:GLA:ENSP00000218516.4
+S	RPL36A	*	LN:i:106	ng:i:79	nc:i:79	c1:i:79	c2:i:0	pp:Z:RPL36A:ENSP00000446503.2
+L	ARMCX1	+	ARMCX6	-	0M	ng:i:79	nc:i:80	ad:i:62560	s1:i:2332	s2:i:1600
+L	ARMCX6	+	ARMCX1	-	0M	ng:i:79	nc:i:80	ad:i:62560	s1:i:1600	s2:i:2332
+L	ARMCX1	-	ARMCX4	-	0M	ng:i:78	nc:i:78	ad:i:62049	s1:i:2332	s2:i:11841
+L	ARMCX4	+	ARMCX1	+	0M	ng:i:78	nc:i:78	ad:i:62049	s1:i:11841	s2:i:2332
+L	ARMCX1	-	GLA	+	0M	ng:i:1	nc:i:1	ad:i:154668	s1:i:2332	s2:i:2351
+L	GLA	-	ARMCX1	+	0M	ng:i:1	nc:i:1	ad:i:154668	s1:i:2351	s2:i:2332
+L	ARMCX4	-	GLA	+	0M	ng:i:78	nc:i:78	ad:i:93069	s1:i:11841	s2:i:2351
+L	GLA	-	ARMCX4	+	0M	ng:i:78	nc:i:78	ad:i:93069	s1:i:2351	s2:i:11841
+L	GLA	+	RPL36A	-	0M	ng:i:79	nc:i:79	ad:i:7141	s1:i:2351	s2:i:567
+L	RPL36A	+	GLA	-	0M	ng:i:79	nc:i:79	ad:i:7141	s1:i:567	s2:i:2351
