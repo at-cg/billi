@@ -5,6 +5,7 @@ S	GLA	*	LN:i:429	ng:i:79	nc:i:79	c1:i:79	c2:i:18	pp:Z:GLA:ENSP00000218516.4
 S	RPL36A	*	LN:i:106	ng:i:79	nc:i:79	c1:i:79	c2:i:0	pp:Z:RPL36A:ENSP00000446503.2
 L	ARMCX1	+	ARMCX6	-	0M	ng:i:79	nc:i:80	ad:i:62560	s1:i:2332	s2:i:1600
 L	ARMCX6	+	ARMCX1	-	0M	ng:i:79	nc:i:80	ad:i:62560	s1:i:1600	s2:i:2332
+L	ARMCX1	-	ARMCX1	-	0M	ng:i:78	nc:i:78	ad:i:62049	s1:i:2332	s2:i:2332
 L	ARMCX1	-	ARMCX4	-	0M	ng:i:78	nc:i:78	ad:i:62049	s1:i:2332	s2:i:11841
 L	ARMCX4	+	ARMCX1	+	0M	ng:i:78	nc:i:78	ad:i:62049	s1:i:11841	s2:i:2332
 L	ARMCX1	-	GLA	+	0M	ng:i:1	nc:i:1	ad:i:154668	s1:i:2332	s2:i:2351

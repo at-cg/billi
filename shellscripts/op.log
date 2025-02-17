@@ -2,6 +2,10 @@ rm -f main
 g++  -std=c++17 -O3  -o main main.cpp
 C4
 EC10
+EC11
+EC12
+EC13
+EC14
 EC1
 EC2
 EC3
@@ -25,3 +29,4 @@ t2-1
 t2-2
 t2-3
 t2-4
+worst_case(100000)

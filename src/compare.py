@@ -1,10 +1,10 @@
 import os
 
-genome = 'human100'
-# genome = 'Mtb152m-p1a2'
-billi_path = f'/home/daanish/projects/Pangene/results/Billi/{genome}/summary.txt'
-pangene_path = f'/home/daanish/projects/Pangene/results/Pangene/{genome}.txt'
-out_path = f'/home/daanish/projects/Pangene/results/Billi/{genome}/compare.txt'
+data = 'human100'
+# data = 'Mtb152m-p1a2'
+billi_path = f'/home/daanish/projects/Pangene/results/Billi/{data}/summary.txt'
+pangene_path = f'/home/daanish/projects/Pangene/results/Pangene/{data}.txt'
+out_path = f'/home/daanish/projects/Pangene/results/Billi/{data}/compare.txt'
 
 def get_string(g1, g2, s1, s2):
     if(g1 > g2):

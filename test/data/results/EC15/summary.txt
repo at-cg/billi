@@ -1,0 +1,6 @@
+Total possible canonical cycle equivalent pairs found: 2
+4 + 13 +
+1 + 4 +
+Total valid canonical cycle equivalent pairs found: 2
+4 + 13 +
+1 + 4 +
