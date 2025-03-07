@@ -54,12 +54,12 @@ ulimit -s unlimited
 # time ./main /scratch/projects/daanish/data/Bubbles/Data/Human/Mtb152m-p1a2.gfa /home/daanish/projects/Pangene/results/Billi/Mtb152m-p1a2
 
 # Mtb152p
-# time ./main /scratch/projects/daanish/data/Bubbles/Data/Human/Mtb152p.gfa /home/daanish/projects/Pangene/results/Billi/Mtb152p
+time ./main /scratch/projects/daanish/data/Bubbles/Data/Human/Mtb152p.gfa /home/daanish/projects/Pangene/results/Billi/Mtb152p
 
 ## Testing 
 
 # time ./main ../test/data/gfa_files/worst_case\(100000\).gfa ../test/data/results/worst_case\(100000\)
-# time ./main ../test/data/gfa_files/EC16.gfa ../test/data/results/EC16
+# time ./main ../test/data/gfa_files/EC17.gfa ../test/data/results/EC17
 
 
 # DIR=../test/data/

@@ -46,11 +46,11 @@ struct edge{
 };
 
 struct bracketlist{
-    int sz, d1, d2; // d1 -> first minimum depth, d2 -> second minimum depth
+    int sz, d; // d -> minimum depth
     edge* start;
     edge* end; // will need the end as well for merging and finding the topmost bracket
-    bracketlist():sz(0), d1(maxd), d2(maxd + 10), start(nullptr), end(nullptr){}
-    bracketlist(int lsz, int depth1, int depth2, edge* pstart, edge* pend): sz(lsz), d1(depth1), d2(depth2), start(pstart), end(pend){}
+    bracketlist(): sz(0), d(maxd), start(nullptr), end(nullptr){}
+    bracketlist(int lsz, int depth, edge* pstart, edge* pend): sz(lsz), d(depth), start(pstart), end(pend){}
 };
 
 vector<bool> has_self_loop; // whether the node has a self loop <- can't be cycle equivalent with any other node
@@ -77,10 +77,11 @@ vector<vector<pii>> g; // (node_id, grey_edge_id)
 vector<vector<edge*>> remove_brackets;
 unordered_map<ll, int> st; // (edge, size) -> hashed into a ll key
 map<string, int> lmap; // for storing the label for a particular gene
+vector<bracketlist*> bl;
 
 template <typename... Args>
 void printArgs(Args... args){
-    return;
+    // return;
     ((cout << args << " "), ...) << endl; // Fold expression
 }
 
@@ -261,27 +262,29 @@ void make_auxillary_graph(){
     for(pii rs : canonical_sese){
         int id1 = (rs.F | 1) ^ 1, id2 = (rs.S | 1) ^ 1;
         string s1 = (rs.F & 1) ? "-" : "+";
-        string s2 =  !(rs.S & 1) ? "-" : "+"; // signs are reversed
+        string s2 = (rs.S & 1) ? "+" : "-"; // signs are reversed
         add_directed_edges(id1, id2, s1, s2);
     }
 }
 
 void merge(bracketlist* bl1, bracketlist* bl2){
+    if(!bl2)return;
+
     if(!bl1->start){
         bl1->start = bl2->start;
-        bl1->d1 = bl2->d1;
-        bl1->d2 = bl2->d2;
+        bl1->d = bl2->d;
     }else{
         bl1->end->front = bl2->start;
         bl2->start->back = bl1->end;
-        if(bl1->d1 < bl2->d1){
-            bl1->d2 = min(bl1->d2, bl2->d1);
-        }else if(bl1->d1 > bl2->d1){
-            bl1->d2 = min(bl1->d1, bl2->d2);
-            bl1->d1 = bl2->d1;
-        }else{
-            bl1->d2 = min(bl1->d2, bl2->d2);
-        }
+        bl1->d = min(bl1->d, bl2->d);
+        // if(bl1->d1 < bl2->d1){
+        //     bl1->d2 = min(bl1->d2, bl2->d1);
+        // }else if(bl1->d1 > bl2->d1){
+        //     bl1->d2 = min(bl1->d1, bl2->d2);
+        //     bl1->d1 = bl2->d1;
+        // }else{
+        //     bl1->d2 = min(bl1->d2, bl2->d2);
+        // }
         // else{
         //     bl1->d2 = min(bl1->d1, bl2->d2);
         //     bl1->d1 = bl2->d1;
@@ -339,130 +342,100 @@ int find_unique_including_selfloop(int u){
     return s.size();
 }
 
-bracketlist* sese(int u, int parent){
+void sese(int u, int parent){
     stack_trace.pb(u);
     mark[u] = true;
 
-    printArgs(u, parent); 
-    bracketlist* bl = new bracketlist(); 
-    int cnt_back = 0;
+    int h0 = maxd, h1 = maxd, h2 = maxd;
+
     for(pii child : g[u]){
         int v = child.F;
-        if(v == parent || v == u)continue; // v = u won't contribute anything 
-        bracketlist* bl1;
+        if(v == parent || v == u)continue; // v = u won't contribute anything and v == parent won't contribute to backedge
         if(mark[v]){// back-edge -> will come first in the dfs traversal for the node at greater depth
             if(depth[v] > depth[u])continue; // front-edge -- multi edges will be taken care of here
             assert(child.S != -1); // black edges can't be backedges
-            edge* ed = new edge(child.S); // tot_grey count starts from 0
-            bl1 = new bracketlist(1, depth[v], maxd, ed, ed);
-            remove_brackets[v].pb(ed);
-        }else bl1 = sese(v, u);
-        // if((u ^ v) == 1 && !has_self_loop[u]){// check for canonical sese if it is a black edge, won't be true for back edge, make sure that the node doesn't has a self loop
-        if((u ^ v) == 1){
-            // printArgs("Bracket list size on reaching the solid edge:", bl1->sz);
-            ll key;
-            if(bl1->sz > 0){
-                int br = bl1->end->id;
-                assert(br != -1); // not a black edge
-                key = get_key(br, bl1->sz);
-            }else{
-                key = 0;
-            }
-            // if(u == 3996){
-            //     scnt += 1;
-            //     printArgs("HI", u, scnt, depth[u]);
-            //     printBracketList(bl1);
-            // }
-            // if(v == 1301){
-            //     scnt += 1;
-            //     printArgs("HI", v, scnt, depth[v]);
-            //     printBracketList(bl1);
-            // }
-
-            if(st.find(key) != st.end()){
-                printArgs("Found the canonical pair");
-                // if(g[v].size() > 2 || g[st[key]].size() > 2){ // to avoid linear chains <- fails in case of multiple edges
-                int w = st[key];
-                // int unique_v = find_unique_excluding_selfloop(v, w), unique_w = find_unique_excluding_selfloop(w, v);
-                // if(unique_v.F == 2 || unique_w.F == 2 || (unique_v.F == 1 && unique_v.S != w) || (unique_w.F == 1 && unique_w.S != v)){ // to avoid linear chains
-                if(find_unique_excluding_selfloop(v, w) == 1 && find_unique_excluding_selfloop(w, v) == 1){
-                    printArgs("Found the contributing canonical pair:", v, st[key]);
-                    canonical_sese.pb({v, w});
-                }
-            }
-            st[key] = u; // will happen regardless you found something or not
-        }
-        if(bl1->start){
-            printArgs(u, "child", v);
-            printBracketList(bl); printBracketList(bl1);
-            if(bl1->d1 < depth[u] && depth[v] > depth[u])cnt_back++; // an edge from u to its ancestor won't contribute to capping backedge
-            // printArgs(bl1->d1, depth[u], depth[v], "count of back edges:", cnt_back);
-            merge(bl, bl1); // merging brackets from the child nodes <- should come in the end since bl1 will be deleted after this operation
-            printBracketList(bl);
-        }
+            h0 = min(h0, depth[v]);
+        }else sese(v, u);
     }
 
-    // won't contribute to bracket list after you leave node u
-    if(bl->d1 == depth[u])bl->d1 = maxd;
-    else if(bl->d2 == depth[u])bl->d2 = maxd;
+    bl[u] = new bracketlist(); 
 
-    // removing brackets from respective lists after computing the value for the outgoing edges from that node
+    for(pii child : g[u]){
+        int v = child.F;
+        if(depth[v] <= depth[u])continue;
+        if(bl[v]->d < h1){
+            h2 = h1;
+            h1 = bl[v]->d;
+        }else{
+            h2 = min(h2, bl[v]->d);
+        }
+
+        merge(bl[u], bl[v]);
+    }
+    
+    // removing brackets from respective lists
     for(edge* ed : remove_brackets[u]){
-        printArgs("remove", eid[ed->id].F, eid[ed->id].S);
-        // int min_depth = min(depth[eid[ed->id].F], depth[eid[ed->id].S]);
-        // assert(min_depth == depth[u]);
         if(ed->front){
             if(ed->back){
                 ed->back->front = ed->front;
                 ed->front->back = ed->back;
             }else{// is the first bracket
-                bl->start = ed->front;
+                bl[u]->start = ed->front;
                 ed->front->back = nullptr;
             }
         }else{// is the last bracket
-            bl->end = ed->back;
+            bl[u]->end = ed->back;
             if(ed->back)ed->back->front = nullptr;
             else{
-                bl->start = nullptr;
+                bl[u]->start = nullptr;
                 // bl->end = nullptr; // not required
             }
         }
-        delete(ed);
-        bl->sz--; // The current bracket list will only contain the edges that are being removed
-        printBracketList(bl);
+        // delete(ed);
+        bl[u]->sz--; // The current bracket list will only contain the edges that are being removed
     }
-   
-    // only left with the brackets that go up the node u
-    // adding capping backedge
-    // edge to be added u -> stack_trace[bl->d2]
-    if(cnt_back >= 2 && bl->d2 < maxd){// at least two childs should have backedges with depth lower than node u and with a value not equal to 'maxd' in order to add a capping backedge
-    // if(bl->d2 < maxd){
-        int w = stack_trace[bl->d2]; // stack_trace is 0-indexed and so are bl->d1 and bl->d2
-        // edge need not be added to graph g
-        // check if the edge already exists
-        bool req = true;
-        bool exists = false;
-        for(pii child : g[u]){
-            if(child.F == w){
-                exists = true; break;
-            }
-            if(child.F ^ u == 1){
-                req = false; break;
-            }
-        }
-        if(!exists && req){
-            printArgs("Adding capping back-edge", u, "-", w);
-            edge* ed = new edge(tot_grey); tot_grey++; // need not modify g
-            eid.pb({min(w, u), max(w, u)});
-            bracketlist* bl1 = new bracketlist(1, depth[w], maxd, ed, ed);
-            remove_brackets[w].pb(ed);
-            merge(bl, bl1);
-        }
+    remove_brackets[u].clear();
+    if(bl[u]->d == depth[u])bl[u]->d = maxd;
+
+    // pushing back edges from node u
+    for(pii child : g[u]){
+        int v = child.F;
+        if(depth[v] >= depth[u])continue;
+        edge* ed = new edge(child.S); // tot_grey count starts from 0
+        remove_brackets[v].pb(ed);
+        merge(bl[u], new bracketlist(1, depth[v], ed, ed));
+    }
+    
+    // capping back edge
+    if(h2 < h0){
+        int w = stack_trace[h2];
+        edge* ed = new edge(tot_grey); tot_grey++; // need not modify g
+        eid.pb({min(w, u), max(w, u)});
+        remove_brackets[w].pb(ed);
+        merge(bl[u], new bracketlist(1, depth[w], ed, ed));
     }
 
-    // printArgs(u, parent, stack_trace.size(), bl->sz);
+    // finding cycle equivalence
+    if(parent != -1 && ((parent ^ u) == 1)){
+        ll key;
+        if(bl[u]->sz > 0){
+            int br = bl[u]->end->id;
+            assert(br != -1); // not a black edge
+            key = get_key(br, bl[u]->sz);
+        }else{
+            key = 0;
+        }
+
+        if(st.find(key) != st.end()){
+            int w = st[key];
+            if(find_unique_excluding_selfloop(u, w) == 1 && find_unique_excluding_selfloop(w, u) == 1){
+                canonical_sese.pb({u, w});
+            }
+        }
+        st[key] = parent; // will happen regardless you found something or not
+    }
+
     stack_trace.rb();
-    return bl;
 }
 
 void upd_node(int u, int id){
@@ -472,7 +445,8 @@ void upd_node(int u, int id){
 }
 
 void mark_bb_nodes(int u, int end, int id){
-    // printArgs("u, end, id:", u, end, id);
+    // if(id <= 5)printArgs("u, end, id:", u, end, id);
+
     upd_node(u, id);
     if(u == end){
         upd_node(u^1, id);
@@ -480,9 +454,9 @@ void mark_bb_nodes(int u, int end, int id){
     for(pii child : g[u]){
         int v = child.F;
         if(child.S >= tip_start[bi_cc_comp[end]])continue; // don't consider the edges added because of tips
-        // printArgs("u, v:", u, v, mark[u], mark[v]);
+        // if(id <= 5)printArgs("u, v:", u, v, mark[u], mark[v]);
         if(mark[v]){
-            if(bb_comp[v] != bb_comp[u])bb_nodes[id].pb(v); // if the two bibubbles are adjacent, then too start and end points of the bibubble will be added, however the complete gene maynot be added
+            if(bb_comp[v] != bb_comp[u])bb_nodes[id].pb(v); // if the two bibubbles are adjacent, then too start and end points of the bibubble will be added, however the complete set maynot be added
             continue;
         }
         mark_bb_nodes(v, end, id);
@@ -547,7 +521,8 @@ int main(int argc, char* argv[])
     get_n();
     maxd = 2 * n + 100;
 
-    // printArgs(lmap["BENKGBHG_01759"], lmap["Rv1676"]);
+    // printArgs(lmap["CPBJDHFA_04047"], lmap["JDNMFAPF_00079"]);
+    // return 0;
     // deg.resize(2 * n);
 
     // for a node x (0-indexed) in pangene graph - two nodes 2 * x (tail of arrow), 2 * x + 1 (head of arrow) are created in the bi-edged graph 
@@ -576,6 +551,8 @@ int main(int argc, char* argv[])
         first_node.pb(i);
         comp_cnt++;
     }
+    // printArgs(bi_cc_comp[lmap["CPBJDHFA_04047"]], bi_cc_comp[lmap["JDNMFAPF_00079"]]);
+    
     // printArgs("Number of components:", comp_cnt);
 
     // Graph compression - removing unitigs --- Not implementing currently -> does not seem that useful
@@ -640,6 +617,7 @@ int main(int argc, char* argv[])
     // An important observation is that bibubble ends won't turn as backedges
         
     remove_brackets.resize(2 * n);
+    bl.resize(2 * n);
     fill(mark.begin(), mark.end(), false);
     for(int it = 0; it < comp_cnt; it++){
         multiplier = 1;
@@ -653,14 +631,15 @@ int main(int argc, char* argv[])
         assert(stack_trace.size() == 0); 
     }
     
+    // return 0;
+
     possible_pairs = canonical_sese.size();
     cout << "Total possible canonical cycle equivalent pairs found: " << possible_pairs << endl;
 
     fill(mark.begin(), mark.end(), false);
     bb_comp.resize(2 * n, -1);
     bb_nodes.resize(possible_pairs);
-    valid.resize(possible_pairs);
-
+   
     for(int i = 0; i < possible_pairs; i++){ // space requirement is linear since the inner-most nested bubbles will appear on the top
         pii rs = canonical_sese[i];
         cout << get_label(rs.F, rs.S) << endl;
@@ -673,6 +652,7 @@ int main(int argc, char* argv[])
     // *** Finding Valid Bibubble Pairs ***
     // ************************************
     
+    valid.resize(possible_pairs);
     if(possible_pairs != 0){
         fill(valid.begin(), valid.end(), true);
         aux_cc_comp.resize(2 * n, -1);
@@ -692,7 +672,11 @@ int main(int argc, char* argv[])
             //     }
             // }
             // if(!valid[i])continue;
+            // if(i <= 5)printArgs(">", rs.F, rs.S);
             for(int u : bb_nodes[i]){
+                // if(i <= 5){
+                //     cout << u << " ";
+                // }
                 assert(bb_comp[u] != -1);
                 // printArgs(rs.F, "-", aux_cc_comp[rs.F], rs.F^1, "-", aux_cc_comp[rs.F^1], u, "-", aux_cc_comp[u]);
                 if(u != rs.F && u != (rs.F ^ 1) && u != rs.S && u != (rs.S ^ 1)){ // check only for internal nodes
@@ -703,6 +687,7 @@ int main(int argc, char* argv[])
                     }
                 }
             }
+            // if(i <= 5)cout << endl;
         }
     }
 

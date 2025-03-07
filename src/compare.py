@@ -1,7 +1,9 @@
 import os
 
 data = 'human100'
-# data = 'Mtb152m-p1a2'
+# data = 'Mtb152m-p0a1' 
+# data = 'Mtb152p'
+
 billi_path = f'/home/daanish/projects/Pangene/results/Billi/{data}/summary.txt'
 pangene_path = f'/home/daanish/projects/Pangene/results/Pangene/{data}.txt'
 out_path = f'/home/daanish/projects/Pangene/results/Billi/{data}/compare.txt'
