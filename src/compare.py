@@ -1,5 +1,6 @@
 import os
 
+# data = 'Ecoli'
 data = 'human100'
 # data = 'Mtb152m-p0a1' 
 # data = 'Mtb152p'

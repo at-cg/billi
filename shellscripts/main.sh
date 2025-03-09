@@ -33,25 +33,25 @@ ulimit -s unlimited
 ## Others
 
 # C4-90
-# time ./main /scratch/projects/daanish/data/Bubbles/Data/C4/C4-90.gfa /home/daanish/projects/Pangene/results/Billi/C4-90
+time ./main /scratch/projects/daanish/data/Bubbles/Data/C4/C4-90.gfa /home/daanish/projects/Pangene/results/Billi/C4-90
 
 # MHC
-# time ./main /scratch/projects/daanish/data/Bubbles/Data/MHC/MHC.gfa /home/daanish/projects/Pangene/results/Billi/MHC
+time ./main /scratch/projects/daanish/data/Bubbles/Data/MHC/MHC.gfa /home/daanish/projects/Pangene/results/Billi/MHC
 
 # E-coli
-# time ./main /scratch/projects/daanish/data/Bubbles/Data/Ecoli/Ecoli.gfa /home/daanish/projects/Pangene/results/Billi/Ecoli
+time ./main /scratch/projects/daanish/data/Bubbles/Data/Ecoli/Ecoli.gfa /home/daanish/projects/Pangene/results/Billi/Ecoli
 
 # Human100
-# time ./main /scratch/projects/daanish/data/Bubbles/Data/Human/human100.gfa /home/daanish/projects/Pangene/results/Billi/human100
+time ./main /scratch/projects/daanish/data/Bubbles/Data/Human/human100.gfa /home/daanish/projects/Pangene/results/Billi/human100
 
 # Human100p10
-# time ./main /scratch/projects/daanish/data/Bubbles/Data/Human/human100p10.gfa /home/daanish/projects/Pangene/results/Billi/human100p10
+time ./main /scratch/projects/daanish/data/Bubbles/Data/Human/human100p10.gfa /home/daanish/projects/Pangene/results/Billi/human100p10
 
 # Mtb152m-p0a1
-# time ./main /scratch/projects/daanish/data/Bubbles/Data/Human/Mtb152m-p0a1.gfa /home/daanish/projects/Pangene/results/Billi/Mtb152m-p0a1
+time ./main /scratch/projects/daanish/data/Bubbles/Data/Human/Mtb152m-p0a1.gfa /home/daanish/projects/Pangene/results/Billi/Mtb152m-p0a1
 
 # Mtb152m-p1a2
-# time ./main /scratch/projects/daanish/data/Bubbles/Data/Human/Mtb152m-p1a2.gfa /home/daanish/projects/Pangene/results/Billi/Mtb152m-p1a2
+time ./main /scratch/projects/daanish/data/Bubbles/Data/Human/Mtb152m-p1a2.gfa /home/daanish/projects/Pangene/results/Billi/Mtb152m-p1a2
 
 # Mtb152p
 time ./main /scratch/projects/daanish/data/Bubbles/Data/Human/Mtb152p.gfa /home/daanish/projects/Pangene/results/Billi/Mtb152p
@@ -59,7 +59,7 @@ time ./main /scratch/projects/daanish/data/Bubbles/Data/Human/Mtb152p.gfa /home/
 ## Testing 
 
 # time ./main ../test/data/gfa_files/worst_case\(100000\).gfa ../test/data/results/worst_case\(100000\)
-# time ./main ../test/data/gfa_files/EC17.gfa ../test/data/results/EC17
+# time ./main ../test/data/gfa_files/t2-0.gfa ../test/data/results/t2-0
 
 
 # DIR=../test/data/

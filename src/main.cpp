@@ -1,4 +1,4 @@
-// Remove vector eid, scnt, free unused memory, has_self_loop
+// Remove vector eid, scnt, free unused memory, has_self_loop, clear bl vector
 
 #include<iostream>
 #include<fstream>
@@ -49,6 +49,7 @@ struct bracketlist{
     int sz, d; // d -> minimum depth
     edge* start;
     edge* end; // will need the end as well for merging and finding the topmost bracket
+    bool merged = false;
     bracketlist(): sz(0), d(maxd), start(nullptr), end(nullptr){}
     bracketlist(int lsz, int depth, edge* pstart, edge* pend): sz(lsz), d(depth), start(pstart), end(pend){}
 };
@@ -86,7 +87,7 @@ void printArgs(Args... args){
 }
 
 void printBracketList(bracketlist* bl){
-    return;
+    // return;
     // printArgs("d1:", bl->d1, "d2:", bl->d2);
     cout << "Bracket List: ";
     edge* it = bl->start;
@@ -268,7 +269,7 @@ void make_auxillary_graph(){
 }
 
 void merge(bracketlist* bl1, bracketlist* bl2){
-    if(!bl2)return;
+    if(!bl2->start)return;
 
     if(!bl1->start){
         bl1->start = bl2->start;
@@ -292,7 +293,10 @@ void merge(bracketlist* bl1, bracketlist* bl2){
     }
     bl1->end = bl2->end;
     bl1->sz += bl2->sz;
-    delete(bl2);
+    // printArgs("y3");
+    // delete(bl2);
+    bl2->merged = true;
+    // printArgs("y4");
 }
 
 void dfs_comp(int u){
@@ -343,6 +347,8 @@ int find_unique_including_selfloop(int u){
 }
 
 void sese(int u, int parent){
+    // printArgs(u, parent, "in");
+
     stack_trace.pb(u);
     mark[u] = true;
 
@@ -358,22 +364,38 @@ void sese(int u, int parent){
         }else sese(v, u);
     }
 
+    // printArgs(u, parent, "out");
+
     bl[u] = new bracketlist(); 
 
+    // printArgs(u, parent, "h01");
     for(pii child : g[u]){
         int v = child.F;
-        if(depth[v] <= depth[u])continue;
-        if(bl[v]->d < h1){
-            h2 = h1;
-            h1 = bl[v]->d;
-        }else{
-            h2 = min(h2, bl[v]->d);
+        if(depth[v] != depth[u] + 1)continue;
+        if(bl[v]){
+            if(bl[v]->d < h1){
+                h2 = h1;
+                h1 = bl[v]->d;
+            }else{
+                h2 = min(h2, bl[v]->d);
+            }
+            bl[v]->d = maxd; // not to be used again
         }
-
-        merge(bl[u], bl[v]);
+        // printArgs("y1", u, v);
+        if(!bl[v] -> merged){
+            // printBracketList(bl[u]); printBracketList(bl[v]);
+            merge(bl[u], bl[v]);
+            // printBracketList(bl[u]);
+        }
+        // printArgs("y2");
     }
-    
+    // printArgs(u, parent, "h02");
+    bl[u]->d = min(h0, h1);
+
+    // printArgs(h0, h1, h2);
+
     // removing brackets from respective lists
+    // printArgs(u, parent, "h11");
     for(edge* ed : remove_brackets[u]){
         if(ed->front){
             if(ed->back){
@@ -391,32 +413,41 @@ void sese(int u, int parent){
                 // bl->end = nullptr; // not required
             }
         }
-        // delete(ed);
+        delete(ed);
         bl[u]->sz--; // The current bracket list will only contain the edges that are being removed
     }
     remove_brackets[u].clear();
     if(bl[u]->d == depth[u])bl[u]->d = maxd;
+    // printArgs(u, parent, "h12");
 
     // pushing back edges from node u
+    // printArgs(u, parent, "h21");
     for(pii child : g[u]){
         int v = child.F;
-        if(depth[v] >= depth[u])continue;
+        if(depth[v] >= depth[u] - 1)continue;
         edge* ed = new edge(child.S); // tot_grey count starts from 0
         remove_brackets[v].pb(ed);
         merge(bl[u], new bracketlist(1, depth[v], ed, ed));
     }
-    
+    // printArgs(u, parent, "h22");
+
     // capping back edge
+    // printArgs(u, parent, "h31");
     if(h2 < h0){
+        // printArgs("finding capping backedge");
         int w = stack_trace[h2];
         edge* ed = new edge(tot_grey); tot_grey++; // need not modify g
         eid.pb({min(w, u), max(w, u)});
         remove_brackets[w].pb(ed);
         merge(bl[u], new bracketlist(1, depth[w], ed, ed));
+        // printArgs("capping back edge:", u, w);
     }
+    // printArgs(u, parent, "h32");
 
     // finding cycle equivalence
+    // printArgs(u, parent, "h41");
     if(parent != -1 && ((parent ^ u) == 1)){
+        // printArgs("finding cycle equivalence:", u, parent);
         ll key;
         if(bl[u]->sz > 0){
             int br = bl[u]->end->id;
@@ -429,11 +460,13 @@ void sese(int u, int parent){
         if(st.find(key) != st.end()){
             int w = st[key];
             if(find_unique_excluding_selfloop(u, w) == 1 && find_unique_excluding_selfloop(w, u) == 1){
+                // printArgs("cycle equivalent pair:", u, w);
                 canonical_sese.pb({u, w});
             }
         }
         st[key] = parent; // will happen regardless you found something or not
     }
+    // printArgs(u, parent, "h42");
 
     stack_trace.rb();
 }
