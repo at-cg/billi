@@ -9,6 +9,7 @@
 #include<unordered_map>
 #include<algorithm>
 #include<stack>
+#include<queue>
 #include<regex>
 #include<cassert>
 #define ll long long int
@@ -29,14 +30,52 @@ namespace fs = std::filesystem;
 fstream f;
 string inputpath, outputdir;
 
-int n; // no of nodes (genes)
-int comp_cnt = 0; // no of connected components in the input graph
-int nodes = 0; // no of nodes in a given componenet in the input graph
+// **** Generic ****
+vector<bool> mark; // for marking the vertices that are have been visited
+// *************************
+
+// **** Input ****
+int n, edges; // no of nodes (genes), no of edges
+int before_initialisation_comp_cnt = 0; // no of connected components in the input graph before initialisation
+vector<vector<pii>> g; // (node_id, grey_edge_id)
+// ************************* 
+
+// **** Processed Graph ****
+int after_initialisation_comp_cnt = 0; // no of connected components in the input graph after initialisation
+int n_processed; // no of nodes in the processed graph (at most {n + 2 * edges})
+map<int, int> id_in_original_graph; // used to find the id in original graph, in order to use the property of black edges map[u] ^ map[v] = 1
+vector<vector<pii>> g_processed; // (node_id, grey_edge_id)
+// ************************* 
+
+
+int nodes = 0; // no of nodes in a given component in the input graph
 ll multiplier = 1; // for computing the hash
 int maxd; // max depth possible = total number of nodes
 int possible_pairs = 0, valid_pairs = 0; // storing the number of valid bibubble pairs
 // int End = -1; // for connecting the tips
 int tot_grey = 0; // for storing total number of grey edges, will help in accessing the brackets
+
+// **** Finding bridges ****
+int timer = 0; // for finding bridges in the uninitialised graph
+vector<int> tin, low;
+vector<bool> mark_bridge;
+
+void dfs_bridge(int u, int parent){
+    mark[u] = true;
+    tin[u] = low[u] = timer++;
+
+    for(pii child : g[u]){
+        int v = child.F;
+        if(v == parent)continue; // a multiedge b/w 2 nodes can also result in a bridge
+        if(mark[v])low[u] = min(low[u], tin[v]);
+        else{
+            dfs_bridge(v, u);
+            low[u] = min(low[u], low[v]);
+            if(low[v] > tin[u] && (u ^ v == 1))mark_bridge[u >> 1] = true; // strictly greater sign (>) -- loop case
+        }
+    }
+}
+// *************************
 
 struct edge{
     int id; // a bracket can uniquely be identified by the lower and higher vertices it connects to : low -> lower height, assigning a unique to each
@@ -54,19 +93,21 @@ struct bracketlist{
     bracketlist(int lsz, int depth, edge* pstart, edge* pend): sz(lsz), d(depth), start(pstart), end(pend){}
 };
 
-vector<bool> has_self_loop; // whether the node has a self loop <- can't be cycle equivalent with any other node
-vector<bool> mark; // for marking back edges
+// vector<bool> has_self_loop; // not required since an extra edge between a node to its parent will not lead to a cycle
+
+vector<bool> brute_valid; // checking whether a visited node belongs to a valid bibubble during the brute check
 vector<bool> valid; // for marking whether a potential bi-bubble is valid
+vector<short> brute_visit; // checking whether a node is visit during the brute check for valid bibubbles
 vector<int> stack_trace; // for storing the vertices in the stack during dfs traversal
 vector<int> depth; // for storing the depth of the vertices in the spanning tree
 vector<int> first_node; // for storing a node in every connected-component in the biedged graph
-vector<int> bi_cc_comp; // connected-component in the biedged graph to which a node belongs to 
+vector<int> biedged_connected_comp; // connected-component in the biedged graph to which a node belongs to 
 vector<int> aux_cc_comp; // connected-component in the auxiliary graph to which a node belongs to
 vector<int> bb_comp; // bibubble-component to which a node belongs to
 vector<int> order; // will be a sorted list of G's vertices by exit time
 vector<int> backedge_cnt; // upper bound on number of back edges
 vector<int> Start; // starting point of search for each component in original graph
-vector<ll> tip_start; // will store the id from which extra edges because of tips are added for each bi_cc_comp
+vector<ll> tip_start; // will store the id from which extra edges because of tips are added for each biedged_connected_comp
 vector<string> ilmap; // for storing the gene for a particular label
 vector<pii> eid; // stores the edges
 vector<pii> canonical_sese; // for storing the canonical sese pairs
@@ -74,11 +115,11 @@ vector<vector<int>> bb_nodes; // storing the nodes for different bibubbles
 vector<vector<int>> ag; // directed graph
 vector<vector<int>> ag_rev; // create adjacency list of G^T   
 vector<vector<int>> tips; // vector for storing the vertices that represent the tip
-vector<vector<pii>> g; // (node_id, grey_edge_id)
 vector<vector<edge*>> remove_brackets;
 unordered_map<ll, int> st; // (edge, size) -> hashed into a ll key
 map<string, int> lmap; // for storing the label for a particular gene
-vector<bracketlist*> bl;
+vector<bracketlist*> bl; // vector storing the bracket list for different nodes
+queue<int> q; // queue for checking the found bibubbles using brute force
 
 template <typename... Args>
 void printArgs(Args... args){
@@ -143,6 +184,30 @@ void get_n(){
             }else if(tokens[0] == "L"){
                 f.close();
                 return;
+            }
+        }
+        f.close();
+    }
+}
+
+void get_e(){
+    f.open(inputpath, ios::in);
+    string line;
+    regex strip("^\\s+|\\s+$"), split("\\t");
+    vector<string> tokens;
+    edges = 0; 
+    if(f.is_open()){
+        while(getline(f, line)){
+            tokens.clear();
+            line = regex_replace(line, strip, "");        
+            sregex_token_iterator it(line.begin(), line.end(), split, -1), end;
+            while(it != end){
+                tokens.pb(*it);
+                it++;
+            }
+            if(tokens[0] == "L"){
+                assert(tokens.size() >= 5);
+                edges++;
             }
         }
         f.close();
@@ -299,9 +364,9 @@ void merge(bracketlist* bl1, bracketlist* bl2){
     // printArgs("y4");
 }
 
-void dfs_comp(int u){
+void dfs_comp(int u){ // Finding connected components in the biedged graph
     mark[u] = true;
-    bi_cc_comp[u] = comp_cnt;
+    biedged_connected_comp[u] = before_initialisation_comp_cnt;
     for(pii child : g[u]){
         int v = child.F;
         if(mark[v])continue;
@@ -486,7 +551,7 @@ void mark_bb_nodes(int u, int end, int id){
     }
     for(pii child : g[u]){
         int v = child.F;
-        if(child.S >= tip_start[bi_cc_comp[end]])continue; // don't consider the edges added because of tips
+        if(child.S >= tip_start[biedged_connected_comp[end]])continue; // don't consider the edges added because of tips
         // if(id <= 5)printArgs("u, v:", u, v, mark[u], mark[v]);
         if(mark[v]){
             if(bb_comp[v] != bb_comp[u])bb_nodes[id].pb(v); // if the two bibubbles are adjacent, then too start and end points of the bibubble will be added, however the complete set maynot be added
@@ -535,6 +600,35 @@ void scc(){
         }
 }
 
+bool end_gene(int u, pii rs){
+    return u == rs.F || u == (rs.F ^ 1) || u == rs.S || u == (rs.S ^ 1);
+}
+
+bool brute(pii rs, int type){
+    q.push(rs.F);
+
+    while(!q.empty()){
+        int u = q.front(); q.pop();
+        for(pii child : g[u]){
+            int v = child.F;
+            if(end_gene(v, rs))continue;
+            if(brute_valid[bb_comp[v]]){
+                if(type == 0){
+                    if(brute_visit[v] == 0){
+                        q.push(v^1); brute_visit[v] = 1; brute_visit[v^1] = 1;
+                    }
+                }else{
+                    if(brute_visit[v] == 0)return false;
+                    else if(brute_visit[v] == 1){
+                        q.push(v^1); brute_visit[v] = 2; brute_visit[v^1] = 2;
+                    }
+                }
+            }else return false;
+        }
+    }
+    return true;
+}
+
 int main(int argc, char* argv[])
 {   
     // ************************************
@@ -548,19 +642,23 @@ int main(int argc, char* argv[])
     inputpath = argv[1];
     outputdir = argv[2];
     if(!fs::exists(outputdir))fs::create_directories(outputdir);
-    string summarypath = outputdir + "/summary.txt";
+    
+    string summarypath = outputdir + "/input_summary.txt";
     freopen(summarypath.c_str(), "w", stdout);
 
     get_n();
-    maxd = 2 * n + 100;
 
-    // printArgs(lmap["CPBJDHFA_04047"], lmap["JDNMFAPF_00079"]);
-    // return 0;
-    // deg.resize(2 * n);
+    cout << "Number of vertices: " << n << endl;
+
+    get_e();
+
+    cout << "Number of edges: " << edges << endl;
+
+    maxd = 2 * n + 100;
 
     // for a node x (0-indexed) in pangene graph - two nodes 2 * x (tail of arrow), 2 * x + 1 (head of arrow) are created in the bi-edged graph 
     // using vectors will be good coz we will have to add capping backedges as well
-    g.resize(2 * n); // // +delta is for S if required -> not needed
+    g.resize(2 * n); // +delta is for S if required -> not needed (choose S as one of the tip ends)
     // has_self_loop.resize(2 * n);
     // adding black edges first <- important since don't want black edge to appear as a back or front edge
     for(int i = 0; i < n; i++){
@@ -570,39 +668,84 @@ int main(int argc, char* argv[])
     make_graph(); // adding grey edges
 
     // ************************************
-    // *** Finding number of connected components ***    
+    // *** Initialisation ***    
     // ************************************
-    mark.resize(2 * n);
-    bi_cc_comp.resize(2 * n);
 
-    for(int i = 0; i < 2 * n; i += 2){
-        if(mark[i]){
-            assert(mark[i + 1]);
-            continue;
-        }
-        dfs_comp(i);
-        first_node.pb(i);
-        comp_cnt++;
-    }
-    // printArgs(bi_cc_comp[lmap["CPBJDHFA_04047"]], bi_cc_comp[lmap["JDNMFAPF_00079"]]);
+        // Graph compression - removing unitigs --- Not implementing currently -> can get done without this
     
-    // printArgs("Number of components:", comp_cnt);
+        // ************************************
+        // *** Using Tarjan's algorithm to find bridge edges ***  // could have used sese but this is much faster in practice 
+        // Implementation adapted from : https://cp-algorithms.com/graph/bridge-searching.html
+        // ************************************
+        {   
+            // ** Initialise **
+            mark.resize(2 * n);
+            mark_bridge.resize(n);
+            tin.resize(2 * n, -1); low.resize(2 * n, -1);
 
-    // Graph compression - removing unitigs --- Not implementing currently -> does not seem that useful
+            for(int i = 0; i < 2 * n; i++){
+                if(mark[i]){
+                    assert(mark[i + 1]);
+                    continue;
+                }
+                dfs_bridge(i, -1);
+            }
+
+            // ** Clearing the memory **
+            tin.clear(); low.clear();
+            vector<int>().swap(tin); vector<int>().swap(low);
+        }
+
+        // ************************************
+        // *** Splitting the graph from the bridge point ***  // done carefully such that unitig compression is not required
+        // ************************************
+        {   
+            // ** Finding new n **
+            n_processed = n;
+
+            for(int i = 0; i < n; i++){ // iterate over all the black edges
+                if(mark_bridge[i]){
+                    int u = 2 * i, v = u + 1;
+
+                }
+            }
+            
+            // ** Clearing the memory **
+            mark_bridge.clear(); 
+            vector<bool>().swap(mark_bridge);
+        }
+        
+        // ************************************
+        // *** Finding number of connected components ***    
+        // ************************************
+        {
+            fill(mark.begin(), mark.end(), false);
+            biedged_connected_comp.resize(2 * n);
+
+            for(int i = 0; i < 2 * n; i += 2){
+                if(mark[i]){
+                    assert(mark[i + 1]);
+                    continue;
+                }
+                dfs_comp(i);
+                first_node.pb(i);
+                before_initialisation_comp_cnt++;
+            }
+        }
 
     // ************************************
     // *** Identifying tips ***
     // ************************************
-    tips.resize(comp_cnt);
+    tips.resize(before_initialisation_comp_cnt);
     for(int i = 0; i < 2 * n; i++){
         // only connected via a black edge
         if(find_unique_including_selfloop(i) == 0){ // much stricter condition than below
         // if(g[i].size() == 1){
-            tips[bi_cc_comp[i]].pb(i);
+            tips[biedged_connected_comp[i]].pb(i);
             // assert((g[i][0].F ^ i) == 1); // checking whether the node is connected via a black edge
         }
     }
-    // for(int i = 0; i < comp_cnt; i++){
+    // for(int i = 0; i < before_initialisation_comp_cnt; i++){
     //     printArgs("Tips", i);
     //     printVector(tips[i]);
     // }
@@ -611,13 +754,15 @@ int main(int argc, char* argv[])
     // ************************************
     // *** Finding depth and number of backedges for individual components ***
     // ************************************
-    tip_start.resize(comp_cnt, -1);
-    backedge_cnt.resize(comp_cnt);
-    Start.resize(comp_cnt, -1);
+    tip_start.resize(before_initialisation_comp_cnt, -1);
+    backedge_cnt.resize(before_initialisation_comp_cnt);
+    Start.resize(before_initialisation_comp_cnt, -1);
     fill(mark.begin(), mark.end(), false);
     depth.resize(2 * n);
-      
-    for(int it = 0; it < comp_cnt; it++){   
+    
+    cout << "Tips size: ";
+    for(int it = 0; it < before_initialisation_comp_cnt; it++){   
+        cout << tips[it].size() << " ";
         if(tips[it].size() == 0){ // there can be multiple components here, need to take care of in the dfs 
             Start[it] = first_node[it]; // no extra edges required
             tip_start[it] = __LONG_LONG_MAX__;
@@ -639,6 +784,8 @@ int main(int argc, char* argv[])
         backedge_cnt[it] += nodes; // capping backedges
     }
 
+    cout << endl;
+
     // for(int i = 0; i < eid.size(); i++){
     //     printArgs(i, eid[i].F, eid[i].S);
     // }
@@ -652,7 +799,7 @@ int main(int argc, char* argv[])
     remove_brackets.resize(2 * n);
     bl.resize(2 * n);
     fill(mark.begin(), mark.end(), false);
-    for(int it = 0; it < comp_cnt; it++){
+    for(int it = 0; it < before_initialisation_comp_cnt; it++){
         multiplier = 1;
         while(multiplier <= backedge_cnt[it]){
             multiplier *= 10;
@@ -712,7 +859,7 @@ int main(int argc, char* argv[])
                 // }
                 assert(bb_comp[u] != -1);
                 // printArgs(rs.F, "-", aux_cc_comp[rs.F], rs.F^1, "-", aux_cc_comp[rs.F^1], u, "-", aux_cc_comp[u]);
-                if(u != rs.F && u != (rs.F ^ 1) && u != rs.S && u != (rs.S ^ 1)){ // check only for internal nodes
+                if(!end_gene(u, rs)){ // check only for internal nodes
                     if(!((aux_cc_comp[u] == aux_cc_comp[rs.F] || aux_cc_comp[u] == aux_cc_comp[rs.F^1]) && valid[bb_comp[u]])){
                         valid[i] = false;
                         valid_pairs--;
@@ -730,4 +877,25 @@ int main(int argc, char* argv[])
         pii rs = canonical_sese[i];
         cout << get_label(rs.F, rs.S) << endl;
     }
+
+    // ************************************
+    // *** Checking for FP using brute  ***
+    // ************************************
+    brute_visit.resize(2 * n);
+    brute_valid.resize(possible_pairs, true);
+    
+    cout << "FP bibubbles found: " << endl;
+    for(int i = 0; i < possible_pairs; i++){
+        if(!valid[i])continue;
+        while(!q.empty())q.pop();
+        pii rs = canonical_sese[i];
+
+        brute_valid[i] = brute(rs, 0);
+        if(brute_valid[i])brute_valid[i] = brute_valid[i] & brute(rs, 1);
+        if(!brute_valid[i]){
+            cout << get_label(rs.F, rs.S) << endl;
+        }
+    }
 } 
+
+// todo - chk for vector initialisations
