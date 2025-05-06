@@ -1,0 +1,62 @@
+S	1	*	LN:i:100
+S	2	*	LN:i:100
+S	3	*	LN:i:100
+S	4	*	LN:i:100
+S	5	*	LN:i:100
+S	6	*	LN:i:100
+S	7	*	LN:i:100
+S	8	*	LN:i:100
+S	9	*	LN:i:100
+S	10	*	LN:i:100
+S	11	*	LN:i:100
+S	12	*	LN:i:100
+S	P	*	LN:i:100
+S	Q	*	LN:i:100
+S	R	*	LN:i:100
+S	T	*	LN:i:100
+S	N	*	LN:i:100
+S	M	*	LN:i:100
+L	1	-	2	-	0M
+L	1	-	3	-	0M
+L	2	-	4	+	0M
+L	3	-	4	+	0M
+L	4	+	5	-	0M
+L	5	-	6	-	0M
+L	5	-	9	-	0M
+L	6	-	7	+	0M
+L	6	-	11	-	0M
+L	11	-	12	-	0M
+L	11	-	12	+	0M
+L	9	-	10	+	0M
+L	7	+	8	+	0M
+L	10	+	8	+	0M
+L	P	-	Q	-	0M
+L	P	-	R	-	0M
+L	Q	-	T	+	0M
+L	R	-	T	+	0M
+L	T	+	M	+	0M
+L	T	+	N	+	0M
+L	M	+	P	-	0M
+L	N	+	P	-	0M
+L	2	+	1	+	0M
+L	3	+	1	+	0M
+L	4	-	2	+	0M
+L	4	-	3	+	0M
+L	5	+	4	-	0M
+L	6	+	5	+	0M
+L	9	+	5	+	0M
+L	7	-	6	+	0M
+L	11	+	6	+	0M
+L	12	+	11	+	0M
+L	12	-	11	+	0M
+L	10	-	9	+	0M
+L	8	-	7	-	0M
+L	8	-	10	-	0M
+L	Q	+	P	+	0M
+L	R	+	P	+	0M
+L	T	-	Q	+	0M
+L	T	-	R	+	0M
+L	M	-	T	-	0M
+L	N	-	T	-	0M
+L	P	+	M	-	0M
+L	P	+	N	-	0M
