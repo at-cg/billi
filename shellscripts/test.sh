@@ -20,7 +20,7 @@ make
 ulimit -s unlimited
 
 # /usr/bin/time -v ./main ../test/data/gfa_files/worst_case\(100000\).gfa ../test/data/results/worst_case\(100000\)
-/usr/bin/time -v ./main ../test/data/gfa_files/t2-0.gfa ../test/data/results/t2-0
+# /usr/bin/time -v ./main ../test/data/gfa_files/t2-0.gfa ../test/data/results/t2-0
 
 
 # DIR=../test/data/
