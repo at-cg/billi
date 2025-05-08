@@ -1,0 +1,47 @@
+Total possible canonical cycle equivalent pairs found: 3
+E - B -
+M + O +
+DMRTC1B - FAM236A +
+bb_nodes 0 : 
+7 
+bb_nodes 1 : 
+12 17 
+bb_nodes 2 : 
+22 
+Overlapping edge: 9 30 
+Overlapping edge: 10 15 
+Overlapping edge: 19 31 
+Auxiliary graph: 
+0: 
+1: 
+2: 
+3: 9 
+4: 7 7 
+5: 3 3 
+6: 5 5 8 8 
+7: 3 3 
+8: 30 
+9: 7 7 
+10: 12 12 
+11: 15 
+12: 17 14 17 14 
+13: 11 11 16 16 
+14: 10 
+15: 13 13 
+16: 13 13 
+17: 12 12 
+18: 31 
+19: 22 20 22 20 
+20: 19 
+21: 
+22: 20 20 
+23: 18 18 
+24: 26 26 
+25: 
+26: 
+27: 21 21 25 25 
+28: 
+29: 21 21 
+30: 4 6 4 6 
+31: 18 18 23 23 
+32: 26 28 26 28 

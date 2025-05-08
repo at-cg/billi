@@ -1,5 +1,5 @@
-// Remove vector eid, scnt, free unused memory, clear bl vector
-// comment all asserts
+// Remove vector eid, free unused memory, clear bl vector
+// comment all asserts, printStatements
 
 #include<iostream>
 #include<fstream>
@@ -84,7 +84,29 @@ void printVector(vector<int>& v){
     cout << endl;
 }
 
+void printVector(vector<pii>& v){
+    for(pii x : v){
+        cout << "(" << x.F << ", " << x.S << ") ";
+    }
+    cout << endl;
+}
+
+void printVector(vector<char>& v){
+    for(char x : v){
+        cout << x << " ";
+    }
+    cout << endl;
+}
+
 void printGraph(vector<vector<int>>& g){
+    int sz = g.size();
+    for(int i = 0; i < sz; i++){
+        cout << i << ": ";
+        printVector(g[i]);
+    }
+}
+
+void printGraph(vector<vector<pii>>& g){
     int sz = g.size();
     for(int i = 0; i < sz; i++){
         cout << i << ": ";
@@ -105,12 +127,12 @@ vector<vector<pii>> g; // (node_id, grey_edge_id)
 map<string, int> lmap; // for storing the label for a particular gene
 vector<string> ilmap; // for storing the gene for a particular label
 
-void get_n(){
+void get_ne(){
     f.open(inputpath, ios::in);
     string line;
     regex strip("^\\s+|\\s+$"), split("\\t");
     vector<string> tokens;
-    n = 0; 
+    n = 0; edges = 0;
     if(f.is_open()){
         while(getline(f, line)){
             tokens.clear();
@@ -126,30 +148,6 @@ void get_n(){
                 ilmap.pb(tokens[1]);
                 n++;
             }else if(tokens[0] == "L"){
-                f.close();
-                return;
-            }
-        }
-        f.close();
-    }
-}
-
-void get_e(){
-    f.open(inputpath, ios::in);
-    string line;
-    regex strip("^\\s+|\\s+$"), split("\\t");
-    vector<string> tokens;
-    edges = 0; 
-    if(f.is_open()){
-        while(getline(f, line)){
-            tokens.clear();
-            line = regex_replace(line, strip, "");        
-            sregex_token_iterator it(line.begin(), line.end(), split, -1), end;
-            while(it != end){
-                tokens.pb(*it);
-                it++;
-            }
-            if(tokens[0] == "L"){
                 assert(tokens.size() >= 5);
                 edges++;
             }
@@ -158,8 +156,9 @@ void get_e(){
     }
 }
 
-void add_edge(int& id1, int& id2){
-    g[id1].pb({id2, tot_grey}); g[id2].pb({id1, tot_grey}); // 0-indexed
+void add_edge(vector<vector<pii>>& g, int& id1, int& id2){
+    g[id1].pb({id2, tot_grey}); 
+    if(id1 != id2) g[id2].pb({id1, tot_grey}); // 0-indexed
     eid.pb({min(id1, id2), max(id1, id2)});
     tot_grey++;
 }
@@ -205,7 +204,7 @@ void make_graph(){
                 int id1 = n1 << 1, id2 = n2 << 1;
                 if(s1 == "+")id1++;
                 if(s2 == "-")id2++;
-                add_edge(id1, id2);
+                add_edge(g, id1, id2);
                 // printArgs(id1, id2, tot_grey);
 
                 // if(n1 == n2 && s1 == s2){
@@ -298,6 +297,7 @@ vector<int> tin, low;
 vector<bool> mark_bridge;
 
 void dfs_bridge(int u, int parent){
+    // printArgs("dfs_bridge:", u, parent);
     mark[u] = true;
     tin[u] = low[u] = timer++;
 
@@ -308,7 +308,11 @@ void dfs_bridge(int u, int parent){
         else{
             dfs_bridge(v, u);
             low[u] = min(low[u], low[v]);
-            if(low[v] > tin[u] && (u ^ v == 1))mark_bridge[u >> 1] = true; // strictly greater sign (>) -- loop case
+            printArgs(u, v, low[v], tin[u]);
+            if(low[v] > tin[u] && ((u ^ v) == 1)){
+                // printArgs("Bridge found:", u, v);
+                mark_bridge[u >> 1] = true;
+            } // strictly greater sign (>) -- loop case
         }
     }
 }
@@ -334,7 +338,7 @@ ll get_key(int id, int size){
 
 int find_unique_excluding_selfloop(int u, int v){// exclude nodes u, u ^ 1, v
     set<int> s;
-    for(pii child : g[u]){
+    for(pii child : g_processed[u]){
         if((id_in_original_graph[child.F] ^ id_in_original_graph[u]) <= 1 || child.F == v)continue;
         s.insert(child.F);
         break;
@@ -406,7 +410,7 @@ void sese_minbracket(int u, int parent, int& x, int& val){
         int v = child.F;
         if(depth[v] != depth[u] + 1)continue;
         if(bl[v] && !bl[v] -> merged){
-            if(id_in_original_graph[u] ^ id_in_original_graph[v] == 1){
+            if((id_in_original_graph[u] ^ id_in_original_graph[v]) == 1){
                 int bridge_cnt = bl[v]->sz;
                 if(bridge_cnt < val){
                     val = bridge_cnt;
@@ -514,7 +518,6 @@ void sese(int u, int parent){
         merge(bl[u], new bracketlist(1, depth[w], ed, ed));
         // printArgs("capping back edge:", u, w);
     }
-    // printArgs(u, parent, "h32");
 
     // finding cycle equivalence
     if(parent != -1 && ((id_in_original_graph[parent] ^ id_in_original_graph[u]) == 1)){
@@ -531,7 +534,7 @@ void sese(int u, int parent){
         if(st.find(key) != st.end()){
             int w = st[key];
             if(find_unique_excluding_selfloop(u, w) == 1 && find_unique_excluding_selfloop(w, u) == 1){
-                // printArgs("cycle equivalent pair:", u, w);
+                printArgs("cycle equivalent pair:", u, w);
                 canonical_sese.pb({u, w});
             }
         }
@@ -584,38 +587,27 @@ void add_directed_edges_from_gene_names(int& id1, int& id2, string s1, string s2
 }
 
 void add_directed_edges_from_gene_endpoints(int& id1, int& id2){
-    int id1_original = id_in_original_graph[id1], id2_original = id_in_original_graph[id2];
-    bool tip1 = id1_original & 1, tip2 = id2_original & 1;
-    if(tip1){
-        if(!tip2){ // + + 
-            ag[id1].pb(id2); ag[dual[id2]].pb(dual[id1]);
-        }else{ // + -
-            ag[id1].pb(dual[id2]); ag[id2].pb(dual[id1]);
-        }
-    }else{
-        if(!tip2){ // - + 
-            ag[dual[id1]].pb(id2); ag[dual[id2]].pb(id1);
-        }else{ // - -
-            ag[id2].pb(id1); ag[dual[id1]].pb(dual[id2]);
-        }
-    }
+    ag[dual[id1]].pb(id2); ag[dual[id2]].pb(id1);
 }
 
 void upd_node(int u, int& id, bool upd_comp){
-    mark[u] = true;
-    bb_nodes[id].pb(u);
+    if(!mark[u]){
+        mark[u] = true;
+        bb_nodes[id].pb(u);
+    }
     if(upd_comp)bb_comp[u] = id;
 }
 
 void mark_bb_nodes(int u, pii& rs, int& id){
+    if(u == rs.S || u == dual[rs.S])return;
     if(!end_gene(u, rs)){// only the directed genes \in \tilde{U} set
-        upd_node(u, id, true);
+        upd_node(dual[u], id, true);
     }
     for(pii child : g_processed[u]){
         int v = child.F;
         if(child.S >= tip_start[biedged_connected_comp[rs.F]] || child.S == -1)continue; // don't consider the edges added because of tips and the black edges
         if(mark[v]){
-            if(bb_comp[v] != bb_comp[u])upd_node(v, id, false); // if the two bibubbles are adjacent, then too start and end points of the bibubble will be added, however the complete set maynot be added
+            if(bb_comp[v] != bb_comp[dual[u]])upd_node(v, id, false); // if the two bibubbles are adjacent, then too start and end points of the bibubble will be added, however the complete set maynot be added
             continue;
         }
         mark_bb_nodes(dual[v], rs, id); // need to traverse the black edge
@@ -675,12 +667,13 @@ void make_auxillary_graph_from_biedged_graph(){
     for(int i = 0; i < n_processed; i++){
         for(pii child : g_processed[i]){
             if(child.S >= tip_start[biedged_connected_comp[child.F]] || child.S == -1)continue; // don't consider the edges added because of tips and the black edges
-            if(i < child.F)add_directed_edges_from_gene_endpoints(i, child.F); // making sure edges are added only in one direction
+            if(i <= child.F)add_directed_edges_from_gene_endpoints(i, child.F); // making sure edges are added only in one direction
         }
     }
 
     // using the extra added edges
     for(pii rs : canonical_sese){
+        printArgs("Overlapping edge:", dual[rs.F], dual[rs.S]);
         add_directed_edges_from_gene_endpoints(dual[rs.F], dual[rs.S]);
     }
 }
@@ -729,7 +722,7 @@ bool brute(pii rs, int type){
 
     while(!q.empty()){
         int u = q.front(); q.pop();
-        for(pii child : g[u]){
+        for(pii child : g_processed[u]){
             int v = child.F;
             if(end_gene(v, rs))continue;
             if(brute_valid[bb_comp[v]]){
@@ -767,12 +760,9 @@ int main(int argc, char* argv[])
         summarypath = outputdir + "/input_summary.txt";
         freopen(summarypath.c_str(), "w", stdout);
 
-        get_n();
+        get_ne();
 
-        cout << "Number of vertices in the input: " << n << endl;
-
-        get_e();
-
+        cout << "Number of genes in the input: " << n << endl;
         cout << "Number of edges in the input: " << edges << endl;
 
         // for a node x (0-indexed) in pangene graph - two nodes 2 * x (tail of arrow), 2 * x + 1 (head of arrow) are created in the bi-edged graph 
@@ -786,7 +776,7 @@ int main(int argc, char* argv[])
         }
         make_graph(); // adding grey edges
     }
-    
+
     // ************************************
     // *** Initialisation ***    
     // ************************************
@@ -805,11 +795,16 @@ int main(int argc, char* argv[])
 
             for(int i = 0; i < 2 * n; i++){
                 if(mark[i]){
-                    assert(mark[i + 1]);
                     continue;
                 }
                 dfs_bridge(i, -1);
             }
+            
+            printArgs("Bridges Found:");
+            for(int i = 0; i < n; i++){
+                if(mark_bridge[i])cout << i << " ";
+            }
+            cout << endl;
 
             // ** Clearing the memory **
             tin.clear(); low.clear();
@@ -852,16 +847,29 @@ int main(int argc, char* argv[])
                             n_processed += 2;
                             type_edge[i] = '3';
                         }else if(splitfrom_u){
-                            n_processed++;
-                            type_edge[i] = '1';
+                            if(cnt_vu == 0){ // tip case
+                                type_edge[i] = '0';
+                            }else{
+                                n_processed++;
+                                type_edge[i] = '1';
+                            }
                         }else if(splitfrom_v){
-                            n_processed++;
-                            type_edge[i] = '2';
+                            if(cnt_uv == 0){
+                                type_edge[i] = '0';
+                            }else{
+                                n_processed++;
+                                type_edge[i] = '2';
+                            }                        
                         }else{
                             type_edge[i] = '4';
                         }
                     }else type_edge[i] = '0';
                 }
+
+                cout << "Number of genes after initialisation: " << (n_processed / 2) << endl;
+
+                printArgs("Type of edges in the original graph");
+                printVector(type_edge);
                 
                 // ** Clearing the memory **
                 mark_bridge.clear(); 
@@ -875,6 +883,7 @@ int main(int argc, char* argv[])
                 // ** Initialise **
                 id_ptr = 2 * n;
                 edges = 0;
+                dual.resize(n_processed);
                 g_processed.resize(n_processed);
                 for(int i = 0; i < n; i++){ // copying data from graph g
                     int u = i << 1, v = u + 1;
@@ -895,8 +904,9 @@ int main(int argc, char* argv[])
                 assert(id_ptr == n_processed);
                 assert(edges % 2 == 0);
                 edges /= 2;
-                cout << "Number of vertices after initialisation: " << n_processed << endl;
                 cout << "Number of edges after initialisation: " << edges << endl;
+
+                printGraph(g_processed);
 
                 // ** Clearing the memory **
                 g.clear(); type_edge.clear();
@@ -911,7 +921,8 @@ int main(int argc, char* argv[])
         // ************************************
         {
             // ** Initialise **
-            mark.resize(n_processed, false);
+            mark.resize(n_processed);
+            fill(mark.begin(), mark.end(), false);
             biedged_connected_comp.resize(n_processed);
 
             for(int i = 0; i < n_processed; i++){
@@ -974,13 +985,18 @@ int main(int argc, char* argv[])
                     // if(tips.size() > 1){// else no need to add an extra edge
                         for(int i = 1; i < tips[it].size(); i++){
                             if(tip_start[it] == -1)tip_start[it] = tot_grey; // marking the starting id for the edges added because of tips
-                            add_edge(Start[it], tips[it][i]);
+                            add_edge(g_processed, Start[it], tips[it][i]);
                         }
                     // }
                 }
             }
+
+            printArgs("S nodes:");
+            printVector(Start);
+
+            printGraph(g_processed);
         }
-        
+    
         // ************************************
         // *** Finding depth and number of backedges for individual components ***
         // ************************************
@@ -1024,8 +1040,8 @@ int main(int argc, char* argv[])
             }
 
             // ** Clearing the memory **
-            bl.clear(); remove_brackets.clear();
-            vector<bracketlist*>().swap(bl); vector<vector<edge*>>().swap(remove_brackets);
+            bl.clear(); remove_brackets.clear(); Start.clear(); depth.clear();
+            vector<bracketlist*>().swap(bl); vector<vector<edge*>>().swap(remove_brackets); vector<int>().swap(Start); vector<int>().swap(depth);
 
             summarypath = outputdir + "/possible_bibubble.txt";
             freopen(summarypath.c_str(), "w", stdout);
@@ -1050,9 +1066,13 @@ int main(int argc, char* argv[])
             for(int i = 0; i < possible_pairs; i++){ // space requirement is linear since the inner-most nested bubbles will appear on the top
                 pii rs = canonical_sese[i];
                 cout << get_label(rs.F, rs.S) << endl;
-                // upd_node(rs.F ^ 1, i); // will create issues when two bibubbles are adjacent
+                // upd_node(id_in_original_graph[rs.F] ^ 1, i); // will create issues when two bibubbles are adjacent
                 mark_bb_nodes(rs.F, rs, i); // do not add the end points, checking only in one direction
-                // printVector(bb_nodes[i]);
+            }
+
+            for(int i = 0; i < possible_pairs; i++){
+                printArgs("bb_nodes", i, ":");
+                printVector(bb_nodes[i]);
             }
         }
 
@@ -1067,7 +1087,8 @@ int main(int argc, char* argv[])
                 valid_pairs = possible_pairs;
                 // need not connect tips here
                 make_auxillary_graph_from_biedged_graph(); // need not read the file again
-                // printGraph(ag);
+                printArgs("Auxiliary graph:");
+                printGraph(ag);
                 scc(); 
                 for(int i = 0; i < possible_pairs; i++){
                     pii rs = canonical_sese[i];
@@ -1076,7 +1097,7 @@ int main(int argc, char* argv[])
                         assert(!end_gene(u, rs));
                         // if(!end_gene(u, rs)){ // check only for internal nodes
                             // if(!((aux_cc_comp[u] == aux_cc_comp[rs.F] || aux_cc_comp[u] == aux_cc_comp[dual[rs.F]]) && valid[bb_comp[u]])){
-                            if((aux_cc_comp[u] != aux_cc_comp[rs.F]) || !valid[bb_comp[u]]){
+                            if((aux_cc_comp[u] != aux_cc_comp[dual[rs.F]]) || !valid[bb_comp[u]]){
                                 valid[i] = false;
                                 valid_pairs--;
                                 break;
@@ -1085,6 +1106,10 @@ int main(int argc, char* argv[])
                     }
                 }
             }
+            
+            // ** Clearing the memory **
+            tip_start.clear(); 
+            vector<ll>().swap(tip_start);
 
             summarypath = outputdir + "/valid_bibubble_GO.txt";
             freopen(summarypath.c_str(), "w", stdout);

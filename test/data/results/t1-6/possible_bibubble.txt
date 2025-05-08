@@ -1,0 +1,17 @@
+Total possible canonical cycle equivalent pairs found: 1
+RIC8A - RIC8A +
+bb_nodes 0 : 
+
+Overlapping edge: 10 10 
+Auxiliary graph: 
+0: 
+1: 
+2: 
+3: 
+4: 
+5: 
+6: 10 10 
+7: 
+8: 
+9: 
+10: 

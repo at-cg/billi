@@ -1,0 +1,26 @@
+Total possible canonical cycle equivalent pairs found: 2
+RSPH10B - RSPH10B2 +
+CCZ1B + CCZ1B -
+bb_nodes 0 : 
+
+bb_nodes 1 : 
+
+Overlapping edge: 9 11 
+Overlapping edge: 15 15 
+Auxiliary graph: 
+0: 
+1: 2 2 
+2: 
+3: 15 15 
+4: 2 2 
+5: 
+6: 
+7: 
+8: 11 
+9: 
+10: 9 
+11: 
+12: 
+13: 
+14: 0 0 5 5 
+15: 

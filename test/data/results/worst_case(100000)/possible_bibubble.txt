@@ -1,0 +1,2 @@
+Total possible canonical cycle equivalent pairs found: 100000
+NSTW - MSTW -

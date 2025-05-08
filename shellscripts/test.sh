@@ -12,7 +12,7 @@ else
     cd "$(dirname "$0")" || exit 1
 fi
 
-set -e
+# set -e
 
 cd ../src
 make clean
@@ -20,7 +20,7 @@ make
 ulimit -s unlimited
 
 # /usr/bin/time -v ./main ../test/data/gfa_files/worst_case\(100000\).gfa ../test/data/results/worst_case\(100000\)
-# /usr/bin/time -v ./main ../test/data/gfa_files/t2-0.gfa ../test/data/results/t2-0
+./main ../test/data/gfa_files/EC3.gfa ../test/data/results/EC3
 
 
 # DIR=../test/data/

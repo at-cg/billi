@@ -1,0 +1,28 @@
+Total possible canonical cycle equivalent pairs found: 1
+H + H -
+bb_nodes 0 : 
+
+Overlapping edge: 21 21 
+Auxiliary graph: 
+0: 2 4 2 4 
+1: 
+2: 6 6 
+3: 1 1 
+4: 12 8 12 8 
+5: 1 1 
+6: 11 11 
+7: 3 3 
+8: 11 11 
+9: 5 5 
+10: 7 7 9 9 
+11: 
+12: 
+13: 
+14: 
+15: 21 21 
+16: 
+17: 
+18: 
+19: 
+20: 5 5 
+21: 

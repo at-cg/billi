@@ -1,0 +1,2 @@
+Total valid canonical cycle equivalent pairs found: 1
+H + H -
