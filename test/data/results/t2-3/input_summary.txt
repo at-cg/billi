@@ -1,37 +1,6 @@
 Number of genes in the input: 3
 Number of edges in the input: 4
-dfs_bridge: 0 -1 
-dfs_bridge: 1 0 
-dfs_bridge: 2 1 
-dfs_bridge: 3 2 
-2 3 3 2 
-Bridge found: 2 3 
-1 2 2 1 
-0 1 1 0 
-Bridge found: 0 1 
-dfs_bridge: 5 0 
-dfs_bridge: 4 5 
-5 4 5 4 
-Bridge found: 5 4 
-0 5 4 0 
-Bridges Found: 
 0 1 2 
 Number of genes after initialisation: 3
-Type of edges in the original graph 
-4 4 4 
 Number of edges after initialisation: 0
-0: 
-1: 
-2: 
-3: 
-4: 
-5: 
 Number of components in the processed graph: 0
-S nodes: 
-
-0: 
-1: 
-2: 
-3: 
-4: 
-5: 

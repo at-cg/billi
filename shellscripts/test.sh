@@ -19,8 +19,8 @@ make clean
 make
 ulimit -s unlimited
 
-# /usr/bin/time -v ./main ../test/data/gfa_files/worst_case\(100000\).gfa ../test/data/results/worst_case\(100000\)
-./main ../test/data/gfa_files/EC3.gfa ../test/data/results/EC3
+/usr/bin/time -v ./main ../test/data/gfa_files/worst_case\(100000\).gfa ../test/data/results/worst_case\(100000\)
+# ./main ../test/data/gfa_files/t1-1.gfa ../test/data/results/t1-1
 
 
 # DIR=../test/data/
@@ -37,9 +37,9 @@ ulimit -s unlimited
 #         # echo "$FILENAME"
 #         IFS='.' read -ra PARTS <<< "$FILENAME"
 #         TAG="${PARTS[0]}"
-#         # if [[ "$TAG" = "EC1" ]] || [[ "$TAG" = "EC2" ]]; then
-#         #     continue
-#         # fi
+#         if [[ "$TAG" = "worst_case(100000)" ]]; then
+#             continue
+#         fi
 #         echo "$TAG"
 #         ./main $DDIR/$FILENAME $RDIR/$TAG
 #     fi

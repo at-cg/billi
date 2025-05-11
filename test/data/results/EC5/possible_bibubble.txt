@@ -2,37 +2,3 @@ Total possible canonical cycle equivalent pairs found: 3
 H - F -
 L - I -
 A + E +
-bb_nodes 0 : 
-13 8 12 
-bb_nodes 1 : 
-19 21 
-bb_nodes 2 : 
-2 4 6 10 16 18 22 20 
-Overlapping edge: 15 10 
-Overlapping edge: 23 16 
-Overlapping edge: 0 9 
-Auxiliary graph: 
-0: 2 10 16 2 10 16 
-1: 9 
-2: 4 4 
-3: 1 1 
-4: 6 6 
-5: 3 3 
-6: 8 8 
-7: 5 5 
-8: 0 
-9: 7 7 15 23 15 23 
-10: 12 13 12 13 
-11: 1 1 15 
-12: 11 11 14 14 
-13: 11 11 14 14 
-14: 8 8 10 
-15: 12 12 13 13 
-16: 18 20 18 20 
-17: 1 1 23 
-18: 22 22 
-19: 17 17 
-20: 22 22 
-21: 17 17 
-22: 8 8 16 
-23: 19 19 21 21 

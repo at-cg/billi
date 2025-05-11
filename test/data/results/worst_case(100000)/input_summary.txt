@@ -1,0 +1,6 @@
+Number of genes in the input: 400000
+Number of edges in the input: 1199996
+0 1 
+Number of genes after initialisation: 400000
+Number of edges after initialisation: 1599996
+Number of components in the processed graph: 1

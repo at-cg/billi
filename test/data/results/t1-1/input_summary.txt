@@ -1,61 +1,6 @@
 Number of genes in the input: 5
 Number of edges in the input: 10
-dfs_bridge: 0 -1 
-dfs_bridge: 1 0 
-dfs_bridge: 8 1 
-dfs_bridge: 9 8 
-dfs_bridge: 2 9 
-dfs_bridge: 3 2 
-2 3 3 4 
-dfs_bridge: 5 2 
-dfs_bridge: 4 5 
-dfs_bridge: 6 4 
-dfs_bridge: 7 6 
-6 7 9 8 
-Bridge found: 6 7 
-4 6 8 7 
-5 4 7 6 
-Bridge found: 5 4 
-2 5 6 4 
-9 2 3 3 
-8 9 3 2 
-Bridge found: 8 9 
-1 8 2 1 
-0 1 1 0 
-Bridge found: 0 1 
-Bridges Found: 
 0 2 3 4 
 Number of genes after initialisation: 6
-Type of edges in the original graph 
-4 0 2 4 2 
-Number of edges after initialisation: 9
-0: 
-1: 
-2: (3, -1) (5, 2) (5, 3) (9, 6) (9, 7) 
-3: (2, -1) (9, 8) (9, 9) 
-4: 
-5: (10, -1) (2, 2) (2, 3) 
-6: 
-7: 
-8: 
-9: (11, -1) (2, 6) (2, 7) (3, 8) (3, 9) 
-10: (5, -1) 
-11: (9, -1) 
+Number of edges after initialisation: 7
 Number of components in the processed graph: 1
-Tips 0 
-10 11 
-S nodes: 
-10 
-0: 
-1: 
-2: (3, -1) (5, 2) (5, 3) (9, 6) (9, 7) 
-3: (2, -1) (9, 8) (9, 9) 
-4: 
-5: (10, -1) (2, 2) (2, 3) 
-6: 
-7: 
-8: 
-9: (11, -1) (2, 6) (2, 7) (3, 8) (3, 9) 
-10: (5, -1) (11, 10) 
-11: (9, -1) (10, 10) 
-cycle equivalent pair: 5 9 

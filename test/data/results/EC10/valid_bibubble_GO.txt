@@ -1,4 +1,3 @@
-Total valid canonical cycle equivalent pairs found: 3
+Total valid canonical cycle equivalent pairs found: 2
 A + D -
-P + I -
 X + U -

@@ -3,25 +3,13 @@ S	B	*	LN:i:100
 S	C	*	LN:i:100
 S	D	*	LN:i:100
 S	E	*	LN:i:100
-S	M	*	LN:i:100
-S	N	*	LN:i:100
-S	O	*	LN:i:100
-S	P	*	LN:i:100
 L	A	+	B	+	0M
 L	B	+	C	+	0M
 L	B	+	D	+	0M
 L	D	+	C	-	0M
 L	D	+	E	+	0M
-L	M	+	N	+	0M
-L	N	+	P	-	0M
-L	P	-	N	+	0M
-L	N	+	O	+	0M
 L	B	-	A	-	0M
 L	C	-	B	-	0M
 L	D	-	B	-	0M
 L	C	+	D	-	0M
 L	E	-	D	-	0M
-L	N	-	M	-	0M
-L	P	+	N	-	0M
-L	N	-	P	+	0M
-L	O	-	N	-	0M

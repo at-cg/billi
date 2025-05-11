@@ -1,2 +1,1 @@
-Total valid canonical cycle equivalent pairs found: 1
-RIC8A - RIC8A +
+Total valid canonical cycle equivalent pairs found: 0

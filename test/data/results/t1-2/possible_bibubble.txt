@@ -1,12 +1,2 @@
 Total possible canonical cycle equivalent pairs found: 1
 CES5A + SLC6A2 -
-bb_nodes 0 : 
-0 
-Overlapping edge: 2 4 
-Auxiliary graph: 
-0: 5 5 
-1: 3 3 5 5 
-2: 0 0 
-3: 4 
-4: 0 0 1 1 
-5: 2 

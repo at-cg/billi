@@ -1,14 +1,2 @@
 Total possible canonical cycle equivalent pairs found: 1
 FAM102B - SLC25A24 +
-bb_nodes 0 : 
-5 2 
-Overlapping edge: 1 7 
-Auxiliary graph: 
-0: 7 
-1: 5 5 
-2: 6 6 
-3: 4 4 
-4: 0 0 6 6 
-5: 2 2 
-6: 1 
-7: 3 3 5 5 

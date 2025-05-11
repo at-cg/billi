@@ -1,14 +1,2 @@
 Total possible canonical cycle equivalent pairs found: 1
 s1 + s4 +
-bb_nodes 0 : 
-2 4 
-Overlapping edge: 0 7 
-Auxiliary graph: 
-0: 2 4 2 4 
-1: 7 
-2: 6 6 
-3: 1 1 
-4: 6 6 
-5: 1 1 
-6: 0 
-7: 3 3 5 5 
