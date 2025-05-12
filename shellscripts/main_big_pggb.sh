@@ -1,10 +1,10 @@
 #!/bin/bash
-#PBS -N Main-big
+#PBS -N Main-PGGB
 #PBS -l nodes=1:ppn=48
 #PBS -q largemem
-#PBS -l walltime=24:00:00
-#PBS -o op.log_big_pggb
-#PBS -e op.err_big_pggb
+#PBS -l walltime=192:00:00
+#PBS -o op.log_big_pggb1
+#PBS -e op.err_big_pggb1
  
 if [ -n "$PBS_JOBID" ] || [ -n "$PBS_O_WORKDIR" ]; then
     cd "$PBS_O_WORKDIR"

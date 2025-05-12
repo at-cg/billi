@@ -6,7 +6,7 @@ SOURCES := main.cpp # Assumes your source files have a .cpp extension
 
 all: $(TARGETS)
 
-main: $(SOURCES)
+main1: $(SOURCES)
 		$(CXX) $(CXXFLAGS) -o $@ $^
 
 clean:

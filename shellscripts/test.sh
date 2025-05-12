@@ -19,28 +19,28 @@ make clean
 make
 ulimit -s unlimited
 
-/usr/bin/time -v ./main ../test/data/gfa_files/worst_case\(100000\).gfa ../test/data/results/worst_case\(100000\)
+# /usr/bin/time -v ./main ../test/data/gfa_files/worst_case\(100000\).gfa ../test/data/results/worst_case\(100000\)
 # ./main ../test/data/gfa_files/t1-1.gfa ../test/data/results/t1-1
 
 
-# DIR=../test/data/
-# DDIR=$DIR/gfa_files
-# RDIR=$DIR/results
+DIR=../test/data/
+DDIR=$DIR/gfa_files
+RDIR=$DIR/results
 
-# if [ ! -d "$RDIR" ]; then
-#     mkdir -p $RDIR
-# fi
+if [ ! -d "$RDIR" ]; then
+    mkdir -p $RDIR
+fi
 
-# for FILE in "$DDIR"/*; do
-#     if [ -f "$FILE" ]; then
-#         FILENAME=$(basename "$FILE")
-#         # echo "$FILENAME"
-#         IFS='.' read -ra PARTS <<< "$FILENAME"
-#         TAG="${PARTS[0]}"
-#         if [[ "$TAG" = "worst_case(100000)" ]]; then
-#             continue
-#         fi
-#         echo "$TAG"
-#         ./main $DDIR/$FILENAME $RDIR/$TAG
-#     fi
-# done
+for FILE in "$DDIR"/*; do
+    if [ -f "$FILE" ]; then
+        FILENAME=$(basename "$FILE")
+        # echo "$FILENAME"
+        IFS='.' read -ra PARTS <<< "$FILENAME"
+        TAG="${PARTS[0]}"
+        if [[ "$TAG" = "worst_case(100000)" ]]; then
+            continue
+        fi
+        echo "$TAG"
+        ./main $DDIR/$FILENAME $RDIR/$TAG
+    fi
+done

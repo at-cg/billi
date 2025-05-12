@@ -1,6 +1,5 @@
-Number of genes in the input: 22
+Number of nodes in the input: 22
 Number of edges in the input: 58
-0 3 4 6 7 8 15 16 18 19 21 
-Number of genes after initialisation: 27
-Number of edges after initialisation: 72
+Number of nodes after initialisation: 27
 Number of components in the processed graph: 6
+Number of components with zero tips: 0

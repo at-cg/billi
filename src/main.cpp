@@ -1,6 +1,3 @@
-// Remove vector eid, free unused memory
-// comment all asserts, printStatements
-
 #include<iostream>
 #include<fstream>
 #include<filesystem>
@@ -130,7 +127,7 @@ int n, edges; // no of nodes (genes), no of edges
 // int before_initialisation_comp_cnt = 0; // no of connected components in the input graph before initialisation
 vector<string> ilmap; // for storing the gene for a particular label
 vector<bool> has_self_loop; // whether the node has a self loop <- can't be cycle equivalent with any other node
-vector<pii> eid; // stores the edges
+// vector<pii> eid; // stores the edges
 vector<vector<pii>> g; // (node_id, grey_edge_id)
 map<string, int> lmap; // for storing the label for a particular gene
 
@@ -150,12 +147,12 @@ void get_ne(){
                 it++;
             }
             if(tokens[0] == "S"){
-                assert(tokens.size() >= 3);
+                // assert(tokens.size() >= 3);
                 lmap[tokens[1]] = n; // 0-indexed
                 ilmap.pb(tokens[1]);
                 n++;
             }else if(tokens[0] == "L"){
-                assert(tokens.size() >= 5);
+                // assert(tokens.size() >= 5);
                 edges++;
             }
         }
@@ -163,18 +160,18 @@ void get_ne(){
     }
 }
 
-void add_edge(vector<vector<pii>>& g, int& id1, int& id2){
+void add_edge(vector<vector<pii>>& g, int id1, int id2){
     g[id1].pb({id2, tot_grey}); 
     if(id1 != id2) g[id2].pb({id1, tot_grey}); // 0-indexed
-    eid.pb({min(id1, id2), max(id1, id2)});
+    // eid.pb({min(id1, id2), max(id1, id2)});
     tot_grey++;
 }
 
-void printEdges(){
-    for(int i = 0; i < eid.size(); i++){
-        printArgs(i, eid[i].F, eid[i].S);
-    }
-}
+// void printEdges(){
+//     for(int i = 0; i < eid.size(); i++){
+//         printArgs(i, eid[i].F, eid[i].S);
+//     }
+// }
 
 void make_graph(){
     f.open(inputpath, ios::in);
@@ -191,7 +188,7 @@ void make_graph(){
                 it++;
             }
             if(tokens[0] == "L"){
-                assert(tokens.size() >= 5);
+                // assert(tokens.size() >= 5);
                 int n1 = lmap[tokens[1]]; string s1 = tokens[2]; 
                 int n2 = lmap[tokens[3]]; string s2 = tokens[4]; 
                 // if(n1 == n2 && s1 == s2)continue; // won't use this edge for traversal
@@ -215,7 +212,7 @@ void make_graph(){
                 // printArgs(id1, id2, tot_grey);
 
                 if(n1 == n2 && s1 != s2){
-                    assert(id1 == id2);
+                    // assert(id1 == id2);
                     has_self_loop[id1] = true;
                 }
             }
@@ -384,7 +381,7 @@ void merge(bracketlist* bl1, bracketlist* bl2){
 }
 
 void dfs_depth(int u, int parent, int comp){
-    assert(!mark[u]);
+    // assert(!mark[u]);
     if(parent != -1)depth[u] = depth[parent] + 1;
     nodes++;
     mark[u] = true;
@@ -399,8 +396,8 @@ void dfs_depth(int u, int parent, int comp){
 }
 
 void sese_minbracket(int u, int parent, int& x, int& val){
-    printArgs(u, parent, x, val);
-    assert(!mark[u]);
+    // printArgs(u, parent, x, val);
+    // assert(!mark[u]);
     mark[u] = true;
     if(parent != -1)depth[u] = depth[parent] + 1;
 
@@ -409,7 +406,7 @@ void sese_minbracket(int u, int parent, int& x, int& val){
         if(v == parent || v == u)continue; // v = u won't contribute anything and v == parent won't contribute to backedge
         if(mark[v]){// back-edge -> will come first in the dfs traversal for the node at greater depth
             if(depth[v] > depth[u])continue; // front-edge -- multi edges will be taken care of here
-            assert(child.S != -1); // black edges can't be backedges
+            // assert(child.S != -1); // black edges can't be backedges
         }else sese_minbracket(v, u, x, val);
     }
 
@@ -419,7 +416,7 @@ void sese_minbracket(int u, int parent, int& x, int& val){
         int v = child.F;
         if(depth[v] != depth[u] + 1)continue;
         if(bl[v] && !bl[v] -> merged){
-            printArgs(u, v, bl[v]->sz);
+            // printArgs(u, v, bl[v]->sz);
             if((id_in_original_graph[u] ^ id_in_original_graph[v]) == 1){
                 int bridge_cnt = bl[v]->sz;
                 if(bridge_cnt < val){
@@ -456,7 +453,7 @@ void sese(int u, int parent){
         if(v == parent || v == u)continue; // v = u won't contribute anything and v == parent won't contribute to backedge
         if(mark[v]){// back-edge -> will come first in the dfs traversal for the node at greater depth
             if(depth[v] > depth[u])continue; // front-edge -- multi edges will be taken care of here
-            assert(child.S != -1); // black edges can't be backedges
+            // assert(child.S != -1); // black edges can't be backedges
             h0 = min(h0, depth[v]);
         }else sese(v, u);
     }
@@ -523,7 +520,7 @@ void sese(int u, int parent){
         // printArgs("finding capping backedge");
         int w = stack_trace[h2];
         edge* ed = new edge(tot_grey); tot_grey++; // need not modify g
-        eid.pb({min(w, u), max(w, u)});
+        // eid.pb({min(w, u), max(w, u)});
         remove_brackets[w].pb(ed);
         merge(bl[u], new bracketlist(1, depth[w], ed, ed));
         // printArgs("capping back edge:", u, w);
@@ -535,7 +532,7 @@ void sese(int u, int parent){
         ll key;
         if(bl[u]->sz > 0){
             int br = bl[u]->end->id;
-            assert(br != -1); // not a black edge
+            // assert(br != -1); // not a black edge
             key = get_key(br, bl[u]->sz);
         }else{
             key = 0;
@@ -544,7 +541,7 @@ void sese(int u, int parent){
         if(st.find(key) != st.end()){
             int w = st[key];
             if(find_unique_excluding_selfloop(u, w) == 1 && find_unique_excluding_selfloop(w, u) == 1){
-                printArgs("cycle equivalent pair:", u, w);
+                // printArgs("cycle equivalent pair:", u, w);
                 canonical_sese.pb({u, w});
             }
         }
@@ -561,9 +558,9 @@ void sese(int u, int parent){
 // ******************************************************************************************************************************************************  
 vector<int> bb_comp; // bibubble-component to which a node belongs to
 vector<vector<int>> bb_nodes; // storing the nodes for different bibubbles
-vector<bool> brute_valid; // checking whether a visited node belongs to a valid bibubble during the brute check
+// vector<bool> brute_valid; // checking whether a visited node belongs to a valid bibubble during the brute check
 vector<bool> valid; // for marking whether a potential bi-bubble is valid
-vector<short> brute_visit; // checking whether a node is visit during the brute check for valid bibubbles
+// vector<short> brute_visit; // checking whether a node is visit during the brute check for valid bibubbles
 vector<int> aux_cc_comp; // connected-component in the auxiliary graph to which a node belongs to
 vector<int> order; // will be a sorted list of G's vertices by exit time
 vector<vector<int>> ag; // directed graph
@@ -579,7 +576,7 @@ bool end_gene(int& u, pii& rs){
     return u == rs.F || u == dual[rs.F] || u == rs.S || u == dual[rs.S];
 }
 
-void add_directed_edges_from_gene_endpoints(int& id1, int& id2){
+void add_directed_edges_from_gene_endpoints(int id1, int id2){
     ag[dual[id1]].pb(id2); ag[dual[id2]].pb(id1);
 }
 
@@ -616,7 +613,7 @@ void make_auxillary_graph_from_biedged_graph(){
 
     // using the extra added edges
     for(pii rs : canonical_sese){
-        printArgs("Overlapping edge:", dual[rs.F], dual[rs.S]);
+        // printArgs("Overlapping edge:", dual[rs.F], dual[rs.S]);
         add_directed_edges_from_gene_endpoints(dual[rs.F], dual[rs.S]);
     }
 }
@@ -658,32 +655,35 @@ void scc(){
             for (int u : component)
                 aux_cc_comp[u] = root;
         }
+    
+    ag_rev.clear(); 
+    // vector<vector<int>>().swap(ag_rev);
 }
 
-bool brute(pii rs, int type){
-    q.push(type == 0 ? rs.F : rs.S);
+// bool brute(pii rs, int type){
+//     q.push(type == 0 ? rs.F : rs.S);
 
-    while(!q.empty()){
-        int u = q.front(); q.pop();
-        for(pii child : g_processed[u]){
-            int v = child.F;
-            if(end_gene(v, rs))continue;
-            if(brute_valid[bb_comp[v]]){
-                if(type == 0){
-                    if(brute_visit[v] == 0){
-                        q.push(dual[v]); brute_visit[v] = 1; brute_visit[dual[v]] = 1;
-                    }
-                }else{
-                    if(brute_visit[v] == 0)return false;
-                    else if(brute_visit[v] == 1){
-                        q.push(dual[v]); brute_visit[v] = 2; brute_visit[dual[v]] = 2;
-                    }
-                }
-            }else return false;
-        }
-    }
-    return true;
-}
+//     while(!q.empty()){
+//         int u = q.front(); q.pop();
+//         for(pii child : g_processed[u]){
+//             int v = child.F;
+//             if(end_gene(v, rs))continue;
+//             if(brute_valid[bb_comp[v]]){
+//                 if(type == 0){
+//                     if(brute_visit[v] == 0){
+//                         q.push(dual[v]); brute_visit[v] = 1; brute_visit[dual[v]] = 1;
+//                     }
+//                 }else{
+//                     if(brute_visit[v] == 0)return false;
+//                     else if(brute_visit[v] == 1){
+//                         q.push(dual[v]); brute_visit[v] = 2; brute_visit[dual[v]] = 2;
+//                     }
+//                 }
+//             }else return false;
+//         }
+//     }
+//     return true;
+// }
 // ****************************************************************************************************************************************************** 
 
 int main(int argc, char* argv[])
@@ -705,7 +705,7 @@ int main(int argc, char* argv[])
 
         get_ne();
 
-        cout << "Number of genes in the input: " << n << endl;
+        cout << "Number of nodes in the input: " << n << endl;
         cout << "Number of edges in the input: " << edges << endl;
 
         // for a node x (0-indexed) in pangene graph - two nodes 2 * x (tail of arrow), 2 * x + 1 (head of arrow) are created in the bi-edged graph 
@@ -751,7 +751,7 @@ int main(int argc, char* argv[])
 
             // ** Clearing the memory **
             tin.clear(); low.clear();
-            vector<int>().swap(tin); vector<int>().swap(low);
+            // vector<int>().swap(tin); vector<int>().swap(low);
         }
 
         // ************************************
@@ -809,14 +809,14 @@ int main(int argc, char* argv[])
                     }else type_edge[i] = '0';
                 }
 
-                cout << "Number of genes after initialisation: " << (n_processed / 2) << endl;
+                cout << "Number of nodes after initialisation: " << (n_processed / 2) << endl;
 
-                printArgs("Type of edges in the original graph");
-                printVector(type_edge);
+                // printArgs("Type of edges in the original graph");
+                // printVector(type_edge);
                 
                 // ** Clearing the memory **
                 mark_bridge.clear(); has_self_loop.clear();
-                vector<bool>().swap(mark_bridge); vector<bool>().swap(has_self_loop);
+                // vector<bool>().swap(mark_bridge); vector<bool>().swap(has_self_loop);
             }
 
             // ************************************
@@ -846,15 +846,15 @@ int main(int argc, char* argv[])
                             break;
                     }
                 }
-                assert(id_ptr == n_processed);
+                // assert(id_ptr == n_processed);
                 // edges /= 2;
                 // cout << "Number of edges after initialisation: " << edges << endl;
 
-                printGraph(g_processed);
+                // printGraph(g_processed);
 
                 // ** Clearing the memory **
                 g.clear(); type_edge.clear();
-                vector<vector<pii>>().swap(g); vector<char>().swap(type_edge);
+                // vector<vector<pii>>().swap(g); vector<char>().swap(type_edge);
             }
         }
         
@@ -893,14 +893,14 @@ int main(int argc, char* argv[])
                 if(find_unique_including_selfloop(i) == 0){ // much stricter condition than below
                 // if(g_processed[i].size() == 1){
                     tips[biedged_connected_comp[i]].pb(i);
-                    assert((id_in_original_graph[g_processed[i][0].F] ^ id_in_original_graph[i]) == 1); // checking whether the node is connected via a black edge
+                    // assert((id_in_original_graph[g_processed[i][0].F] ^ id_in_original_graph[i]) == 1); // checking whether the node is connected via a black edge
                 }
             }
 
             int cnt_zero = 0;
             for(int i = 0; i < after_initialisation_comp_cnt; i++){
-                printArgs("Tips", i);
-                printVector(tips[i]);
+                // printArgs("Tips", i);
+                // printVector(tips[i]);
                 if(tips[i].size() == 0)cnt_zero++;
             }
             cout << "Number of components with zero tips: " << cnt_zero << endl;
@@ -927,7 +927,7 @@ int main(int argc, char* argv[])
                 if(tips[it].size() == 0){ 
                     int val = edges;
                     sese_minbracket(first_node[it], -1, Start[it], val); // node belonging to the edge with minimum bracket set size
-                    printArgs("Cyclic component Starting point", ilmap[id_in_original_graph[Start[it]] >> 1]);
+                    // printArgs("Cyclic component Starting point", ilmap[id_in_original_graph[Start[it]] >> 1]);
                     // no extra edges required
                 }else{
                     Start[it] = tips[it][0]; 
@@ -941,14 +941,14 @@ int main(int argc, char* argv[])
                 if(tips[it].size() <= 1)tip_start[it] = __LONG_LONG_MAX__; 
             }
 
-            printArgs("S nodes:");
-            printVector(Start);
+            // printArgs("S nodes:");
+            // printVector(Start);
 
-            printGraph(g_processed);
+            // printGraph(g_processed);
 
             // ** Clearing the memory **
-            rm_cnt.clear(); 
-            vector<int>().swap(rm_cnt);
+            rm_cnt.clear(); first_node.clear();
+            // vector<int>().swap(rm_cnt); vector<int>().swap(first_node);
         }
     
         // ************************************
@@ -984,7 +984,7 @@ int main(int argc, char* argv[])
                 }
                 st.clear();
                 sese(Start[it], -1); // graph g is not changed
-                assert(stack_trace.size() == 0); 
+                // assert(stack_trace.size() == 0); 
 
                 // corner case
                 if(tips[it].size() == 1){
@@ -993,8 +993,10 @@ int main(int argc, char* argv[])
             }
 
             // ** Clearing the memory **
-            bl.clear(); remove_brackets.clear(); Start.clear(); depth.clear();
-            vector<bracketlist*>().swap(bl); vector<vector<edge*>>().swap(remove_brackets); vector<int>().swap(Start); vector<int>().swap(depth);    
+            bl.clear(); remove_brackets.clear(); Start.clear(); depth.clear(); 
+            backedge_cnt.clear(); tips.clear();
+            // vector<bracketlist*>().swap(bl); vector<vector<edge*>>().swap(remove_brackets); vector<int>().swap(Start); vector<int>().swap(depth);  
+            // vector<int>().swap(backedge_cnt);  vector<vector<int>>().swap(tips);
         }
         
         // ************************************
@@ -1027,8 +1029,8 @@ int main(int argc, char* argv[])
                 ag.resize(n_processed);
                 // need not connect tips here
                 make_auxillary_graph_from_biedged_graph(); // need not read the file again
-                printArgs("Auxiliary graph:");
-                printGraph(ag);
+                // printArgs("Auxiliary graph:");
+                // printGraph(ag);
                 scc();
             }
 
@@ -1046,10 +1048,10 @@ int main(int argc, char* argv[])
                     mark_bb_nodes(rs.F, rs, i); // do not add the end points, checking only in one direction
                 }
 
-                for(int i = 0; i < possible_pairs; i++){
-                    printArgs("bb_nodes", i, ":");
-                    printVector(bb_nodes[i]);
-                }
+                // for(int i = 0; i < possible_pairs; i++){
+                //     printArgs("bb_nodes", i, ":");
+                //     printVector(bb_nodes[i]);
+                // }
             }
         }
 
@@ -1062,8 +1064,8 @@ int main(int argc, char* argv[])
         for(int i = 0; i < possible_pairs; i++){
             pii rs = canonical_sese[i];
             for(int u : bb_nodes[i]){
-                assert(bb_comp[u] != -1);
-                assert(!end_gene(u, rs));
+                // assert(bb_comp[u] != -1);
+                // assert(!end_gene(u, rs));
                 // if(!end_gene(u, rs)){ // check only for internal nodes
                     if(!((aux_cc_comp[u] == aux_cc_comp[rs.F] || aux_cc_comp[u] == aux_cc_comp[dual[rs.F]]) && valid[bb_comp[u]])){
                         valid[i] = false;
@@ -1084,7 +1086,7 @@ int main(int argc, char* argv[])
         {
             // ** Clearing the memory **
             tip_start.clear(); 
-            vector<ll>().swap(tip_start);
+            // vector<ll>().swap(tip_start);
 
             summarypath = outputdir + "/valid_bibubble_GO.txt";
             freopen(summarypath.c_str(), "w", stdout);
