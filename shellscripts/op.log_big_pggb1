@@ -1,2 +1,0 @@
-rm -f main_debug 
-g++  -std=c++17 -O3     main_debug.cpp   -o main_debug

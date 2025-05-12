@@ -1,10 +1,10 @@
 #!/bin/bash
 #PBS -N Main-PGGB-D
 #PBS -l nodes=1:ppn=48
-#PBS -q largemem
-#PBS -l walltime=192:00:00
-#PBS -o op.log_big_pggb1
-#PBS -e op.err_big_pggb1
+#PBS -q regular
+#PBS -l walltime=24:00:00
+#PBS -o op.log_big_pggb2
+#PBS -e op.err_big_pggb2
  
 if [ -n "$PBS_JOBID" ] || [ -n "$PBS_O_WORKDIR" ]; then
     cd "$PBS_O_WORKDIR"
@@ -22,4 +22,5 @@ ulimit -s unlimited
 ## HPRC
 
 # PGGB
-/usr/bin/time -v ./main_debug /scratch/projects/daanish/data/Bubbles/Data/PGGB/hprc-v1.0-pggb.gfa /home/daanish/projects/Pangene/results/Billi/PGGB
+/usr/bin/time -v ./main_debug /home/daanish/projects/Pangene/Data/PGGB/hprc-v1.0-pggb.gfa /home/daanish/projects/Pangene/results/Billi/PGGB
+

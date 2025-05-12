@@ -681,7 +681,7 @@ bool brute(int start, pii& rs, int id){
         for(pii child : g_processed[u]){
             int v = child.F;
             if(end_gene(v, rs) || child.S == -1)continue;
-            if(brute_valid[bb_comp[v]]){
+            if(bb_comp[v] == -1 || brute_valid[bb_comp[v]]){
                 if(brute_visit[dual[v]] >= 1)continue;
                 upd_node_brute(dual[v], id, 1);
             }else return false;
@@ -691,6 +691,8 @@ bool brute(int start, pii& rs, int id){
 }
 
 bool can_reach(int start, pii& rs){
+    // printArgs("start", start);
+
     while(!q.empty())q.pop();
     q.push(start);
 
@@ -698,10 +700,11 @@ bool can_reach(int start, pii& rs){
         int u = q.front(); q.pop();
         for(pii child : g_processed[u]){
             int v = child.F;
-            if(v == rs.F)return true;
+            if(v == rs.S)return true;
             if(end_gene(v, rs) || child.S == -1)continue;
-            if(brute_valid[bb_comp[v]]){
-                if(brute_visit[dual[v]] == 2)continue;
+            if(bb_comp[v] == -1 || brute_valid[bb_comp[v]]){
+                if(brute_visit[dual[v]] == 0)return false;
+                if(brute_visit[dual[v]] == 2)return true;
                 upd_node_brute(dual[v], -1, 2);
             }else return false;
         }
@@ -1143,6 +1146,8 @@ int main(int argc, char* argv[])
 
                 brute_valid[i] = brute(rs.F, rs, i);
 
+                // printVector(brute_nodes[i]);
+
                 for(int j = 0; j < brute_nodes[i].size(); j++){
                     int oid = id_in_original_graph[brute_nodes[i][j]];
                     int gid = oid >> 1;
@@ -1161,12 +1166,21 @@ int main(int argc, char* argv[])
                     if(to_chk[x] >= 2){
                         vd |= can_reach(id_in_present_graph[(x << 1) + 1], rs);
                     }
+                    
+                    // printArgs(x, vd);
+                    
                     brute_valid[i] = brute_valid[i] & vd;
+                    if(!brute_valid[i])break;
                 }
 
                 if(!brute_valid[i]){
                     cout << get_label(rs.F, rs.S) << endl;
                 }
+
+                // for(int j = 0; j < brute_nodes[i].size(); j++){
+                //     brute_visit[brute_nodes[i][j]] = 0;
+                // }
+                fill(brute_visit.begin(), brute_visit.end(), 0);
             }
         }
     }

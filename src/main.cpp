@@ -160,6 +160,46 @@ void get_ne(){
     }
 }
 
+void get_ne_fast() {
+    ifstream f(inputpath);
+    string line;
+    n = 0;
+    edges = 0;
+
+    if (f.is_open()) {
+        while (getline(f, line)) {
+            // Trim leading and trailing whitespace manually
+            size_t start = line.find_first_not_of(" \t\r\n");
+            size_t end = line.find_last_not_of(" \t\r\n");
+
+            if (start == string::npos || end == string::npos)
+                continue; // Skip empty or all-whitespace lines
+
+            line = line.substr(start, end - start + 1);
+
+            // Tokenize manually using '\t' as delimiter
+            vector<string> tokens;
+            size_t pos = 0, prev = 0;
+            while ((pos = line.find('\t', prev)) != string::npos) {
+                tokens.emplace_back(line.substr(prev, pos - prev));
+                prev = pos + 1;
+            }
+            tokens.emplace_back(line.substr(prev)); // Last token
+
+            if (!tokens.empty()) {
+                if (tokens[0] == "S") {
+                    lmap[tokens[1]] = n; // 0-indexed
+                    ilmap.push_back(tokens[1]);
+                    ++n;
+                } else if (tokens[0] == "L") {
+                    ++edges;
+                }
+            }
+        }
+        f.close();
+    }
+}
+
 void add_edge(vector<vector<pii>>& g, int id1, int id2){
     g[id1].pb({id2, tot_grey}); 
     if(id1 != id2) g[id2].pb({id1, tot_grey}); // 0-indexed
@@ -220,6 +260,60 @@ void make_graph(){
         f.close();
     }
 }
+
+void make_graph_fast() {
+    ifstream f(inputpath);
+    string line;
+
+    if (f.is_open()) {
+        while (getline(f, line)) {
+            // Manual trim (faster than regex)
+            size_t start = line.find_first_not_of(" \t\r\n");
+            size_t end = line.find_last_not_of(" \t\r\n");
+            if (start == string::npos || end == string::npos)
+                continue;
+            line = line.substr(start, end - start + 1);
+
+            // Manual tab-based tokenization
+            vector<string> tokens;
+            size_t prev = 0, pos;
+            while ((pos = line.find('\t', prev)) != string::npos) {
+                tokens.emplace_back(line.substr(prev, pos - prev));
+                prev = pos + 1;
+            }
+            tokens.emplace_back(line.substr(prev));  // Last token
+
+            // Process only 'L' lines
+            if (!tokens.empty() && tokens[0] == "L") {
+                int n1 = lmap[tokens[1]];
+                string s1 = tokens[2];
+                int n2 = lmap[tokens[3]];
+                string s2 = tokens[4];
+
+                // Consistency of edge direction
+                if (n1 > n2) {
+                    swap(n1, n2);
+                    s1 = (s1 == "+") ? "-" : "+";
+                    s2 = (s2 == "+") ? "-" : "+";
+                    swap(s1, s2);
+                }
+
+                int id1 = n1 << 1;
+                int id2 = n2 << 1;
+                if (s1 == "+") id1++;
+                if (s2 == "-") id2++;
+
+                add_edge(g, id1, id2);
+
+                if (n1 == n2 && s1 != s2) {
+                    has_self_loop[id1] = true;
+                }
+            }
+        }
+        f.close();
+    }
+}
+
 // ****************************************************************************************************************************************************** 
 
 // ****************************************************************************************************************************************************** 
@@ -703,7 +797,7 @@ int main(int argc, char* argv[])
         summarypath = outputdir + "/input_summary.txt";
         freopen(summarypath.c_str(), "w", stdout);
 
-        get_ne();
+        get_ne_fast();
 
         cout << "Number of nodes in the input: " << n << endl;
         cout << "Number of edges in the input: " << edges << endl;
@@ -717,7 +811,7 @@ int main(int argc, char* argv[])
             int n1 = i << 1, n2 = n1 + 1;
             g[n1].pb({n2, -1}); g[n2].pb({n1, -1});
         }
-        make_graph(); // adding grey edges
+        make_graph_fast(); // adding grey edges
     }
 
     // ************************************
