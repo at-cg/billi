@@ -1,12 +1,12 @@
 import os
 
 # data = ['Ecoli']
-data = ['human100p10']
-# data = 'human100'
+# data = ['human100p10']
+data = ['human100']
 # data = ['MHC', 'C4-90', 'Mtb152m-p0a1', 'Mtb152m-p1a2', 'Mtb152p']
 
 for i in range(len(data)):
-    billi_path = f'/home/daanish/projects/Pangene/results/Billi/{data[i]}/summary.txt'
+    billi_path = f'/home/daanish/projects/Pangene/results/Billi/{data[i]}/valid_bibubble_GO.txt'
     pangene_path = f'/home/daanish/projects/Pangene/results/Pangene/{data[i]}.txt'
     out_path = f'/home/daanish/projects/Pangene/results/Billi/{data[i]}/compare.txt'
 

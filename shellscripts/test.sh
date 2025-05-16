@@ -22,7 +22,6 @@ ulimit -s unlimited
 # /usr/bin/time -v ./main ../test/data/gfa_files/worst_case\(100000\).gfa ../test/data/results/worst_case\(100000\)
 # ./main ../test/data/gfa_files/t1-1.gfa ../test/data/results/t1-1
 
-
 DIR=../test/data/
 DDIR=$DIR/gfa_files
 RDIR=$DIR/results
@@ -41,6 +40,6 @@ for FILE in "$DDIR"/*; do
             continue
         fi
         echo "$TAG"
-        ./main $DDIR/$FILENAME $RDIR/$TAG
+        ./main_opt $DDIR/$FILENAME $RDIR/$TAG
     fi
 done

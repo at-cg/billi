@@ -1,0 +1,46 @@
+	Command being timed: "./main_opt /home/daanish/projects/Pangene/Data/HG38/hprc-v1.1-mc-grch38.gfa /home/daanish/projects/Pangene/results/Billi/HG38"
+	User time (seconds): 573.27
+	System time (seconds): 102.91
+	Percent of CPU this job got: 51%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 21:48.55
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 84703720
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 5
+	Minor (reclaiming a frame) page faults: 26547685
+	Voluntary context switches: 362847
+	Involuntary context switches: 955
+	Swaps: 0
+	File system inputs: 93983328
+	File system outputs: 2181056
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+	Command being timed: "./main_opt /home/daanish/projects/Pangene/Data/CHM13/hprc-v1.1-mc-chm13.gfa /home/daanish/projects/Pangene/results/Billi/CHM13"
+	User time (seconds): 638.81
+	System time (seconds): 91.35
+	Percent of CPU this job got: 69%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 17:38.07
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 96349496
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 2
+	Minor (reclaiming a frame) page faults: 20603354
+	Voluntary context switches: 371929
+	Involuntary context switches: 671
+	Swaps: 0
+	File system inputs: 99148640
+	File system outputs: 2492912
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

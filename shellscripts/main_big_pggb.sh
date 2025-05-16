@@ -1,10 +1,10 @@
 #!/bin/bash
-#PBS -N Fast-PGGB
+#PBS -N OPT-PGGB
 #PBS -l nodes=1:ppn=48
 #PBS -q largemem
 #PBS -l walltime=192:00:00
-#PBS -o log_pggb
-#PBS -e err_pggb
+#PBS -o log_pggb_map
+#PBS -e err_pggb_map
  
 if [ -n "$PBS_JOBID" ] || [ -n "$PBS_O_WORKDIR" ]; then
     cd "$PBS_O_WORKDIR"
@@ -15,11 +15,11 @@ fi
 set -e
 
 cd ../src
-make clean
-make
+# make clean
+# make
 ulimit -s unlimited
 
 ## HPRC
 
 # PGGB
-/usr/bin/time -v ./main /home/daanish/projects/Pangene/Data/PGGB/hprc-v1.0-pggb.gfa /home/daanish/projects/Pangene/results/Billi/PGGB
+/usr/bin/time -v ./main_opt /home/daanish/projects/Pangene/Data/PGGB/hprc-v1.0-pggb.gfa /home/daanish/projects/Pangene/results/Billi/PGGB
