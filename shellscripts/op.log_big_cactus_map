@@ -1,2 +1,0 @@
-rm -f main_opt 
-g++  -std=c++17 -O3     main_opt.cpp   -o main_opt

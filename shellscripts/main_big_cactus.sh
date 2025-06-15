@@ -22,7 +22,10 @@ ulimit -s unlimited
 ## HPRC
 
 # HG38
-/usr/bin/time -v ./main_opt /home/daanish/projects/Pangene/Data/HG38/hprc-v1.1-mc-grch38.gfa /home/daanish/projects/Pangene/results/Billi/HG38
+# /usr/bin/time -v ./main_opt /home/daanish/projects/Pangene/Data/HG38/hprc-v1.1-mc-grch38.gfa /home/daanish/projects/Pangene/results/Billi/HG38
 
-# CHM13
+# CHM13-V1
+# /usr/bin/time -v ./main_opt /home/daanish/projects/Pangene/Data/CHM13/hprc-v1.1-mc-chm13.gfa /home/daanish/projects/Pangene/results/Billi/CHM13
+
+# CHM13-V2
 /usr/bin/time -v ./main_opt /home/daanish/projects/Pangene/Data/CHM13/hprc-v1.1-mc-chm13.gfa /home/daanish/projects/Pangene/results/Billi/CHM13

@@ -735,6 +735,8 @@ int main(int argc, char* argv[])
         cout << "Number of nodes in the input: " << n << endl;
         cout << "Number of edges in the input: " << edges << endl;
 
+        return;
+        
         // for a node x (0-indexed) in pangene graph - two nodes 2 * x (tail of arrow), 2 * x + 1 (head of arrow) are created in the bi-edged graph 
         // using vectors will be good coz we will have to add capping backedges as well
         g.resize(2 * n); // +delta is for S if required -> not needed (choose S as one of the tip ends)
@@ -994,8 +996,6 @@ int main(int argc, char* argv[])
                 backedge_cnt[it] += nodes; // capping backedges (for every node at most one capping back edge)
             }
         }
-        
-        // cout << "HI\n";
 
         // ************************************
         // *** Reinitialising edge ids ***
