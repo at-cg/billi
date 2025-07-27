@@ -1,0 +1,97 @@
+make: Entering directory '/home/daanish/projects/Billi/src'
+rm -f main 
+make: Leaving directory '/home/daanish/projects/Billi/src'
+make: Entering directory '/home/daanish/projects/Billi/src'
+g++  -std=c++17 -O3     main.cpp   -o main
+make: Leaving directory '/home/daanish/projects/Billi/src'
+The number of Simple Bubbles is 0
+The number of Superbubbles is 0
+The number of insertions is 0
+The number of Simple Bubbles is 1
+The number of Superbubbles is 0
+The number of insertions is 0
+Sequence coverage of the bubble chains is 18.181818181818183%
+Node coverage of the bubble chains is 18.181818181818183%
+The longest chain seq-wise has 4 bp
+The longest chain bubble_wise has 1 bubbles
+The number of Simple Bubbles is 0
+The number of Superbubbles is 1
+The number of insertions is 0
+Sequence coverage of the bubble chains is 100.0%
+Node coverage of the bubble chains is 100.0%
+The longest chain seq-wise has 7 bp
+The longest chain bubble_wise has 1 bubbles
+The number of Simple Bubbles is 0
+The number of Superbubbles is 0
+The number of insertions is 1
+Sequence coverage of the bubble chains is 20.0%
+Node coverage of the bubble chains is 20.0%
+The longest chain seq-wise has 3 bp
+The longest chain bubble_wise has 1 bubbles
+The number of Simple Bubbles is 0
+The number of Superbubbles is 0
+The number of insertions is 0
+The number of Simple Bubbles is 0
+The number of Superbubbles is 0
+The number of insertions is 0
+The number of Simple Bubbles is 3
+The number of Superbubbles is 1
+The number of insertions is 0
+Sequence coverage of the bubble chains is 100.0%
+Node coverage of the bubble chains is 100.0%
+The longest chain seq-wise has 13 bp
+The longest chain bubble_wise has 2 bubbles
+The number of Simple Bubbles is 2
+The number of Superbubbles is 1
+The number of insertions is 0
+Sequence coverage of the bubble chains is 100.0%
+Node coverage of the bubble chains is 100.0%
+The longest chain seq-wise has 10 bp
+The longest chain bubble_wise has 2 bubbles
+The number of Simple Bubbles is 0
+The number of Superbubbles is 1
+The number of insertions is 0
+Sequence coverage of the bubble chains is 100.0%
+Node coverage of the bubble chains is 100.0%
+The longest chain seq-wise has 6 bp
+The longest chain bubble_wise has 1 bubbles
+The number of Simple Bubbles is 2
+The number of Superbubbles is 0
+The number of insertions is 0
+Sequence coverage of the bubble chains is 44.44444444444444%
+Node coverage of the bubble chains is 44.44444444444444%
+The longest chain seq-wise has 4 bp
+The longest chain bubble_wise has 1 bubbles
+The number of Simple Bubbles is 1
+The number of Superbubbles is 0
+The number of insertions is 0
+Sequence coverage of the bubble chains is 40.0%
+Node coverage of the bubble chains is 40.0%
+The longest chain seq-wise has 4 bp
+The longest chain bubble_wise has 1 bubbles
+The number of Simple Bubbles is 0
+The number of Superbubbles is 0
+The number of insertions is 0
+The number of Simple Bubbles is 0
+The number of Superbubbles is 0
+The number of insertions is 0
+The number of Simple Bubbles is 0
+The number of Superbubbles is 0
+The number of insertions is 0
+The number of Simple Bubbles is 1
+The number of Superbubbles is 0
+The number of insertions is 0
+Sequence coverage of the bubble chains is 33.333333333333336%
+Node coverage of the bubble chains is 33.333333333333336%
+The longest chain seq-wise has 4 bp
+The longest chain bubble_wise has 1 bubbles
+The number of Simple Bubbles is 0
+The number of Superbubbles is 0
+The number of insertions is 0
+The number of Simple Bubbles is 1
+The number of Superbubbles is 0
+The number of insertions is 0
+Sequence coverage of the bubble chains is 33.333333333333336%
+Node coverage of the bubble chains is 33.333333333333336%
+The longest chain seq-wise has 4 bp
+The longest chain bubble_wise has 1 bubbles

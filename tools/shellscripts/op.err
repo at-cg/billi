@@ -1,0 +1,462 @@
+CLI parameters: 
+	verbosity: 2
+	thread count: 48
+	print hairpins: yes
+	print dot: yes
+	task: deconstruct
+	input gfa: /home/daanish/projects/Billi/test/data/gfa_files/C4.gfa
+	forest dir: "."
+	output dir: "../../../Billi_data/results/test/povu/C4"
+	chrom: 
+	Generate undefined vcf: false
+	Reference paths (0): 
+Error: Invalid self loop: 0 - and 0 +
+Error: Invalid self loop: 0 - and 0 +
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 + and 0 -
+[povu::deconstruct::get_vg] INFO Time spent by read_gfa: 0.00 sec
+[povu::deconstruct::do_deconstruct] Finding components
+[povu::deconstruct::do_deconstruct] Found 7 components
+[povu::deconstruct::do_deconstruct] Handling component: 1
+[povu::deconstruct::do_deconstruct] Handling component: 2
+[povu::deconstruct::do_deconstruct] Handling component: 3
+[povu::deconstruct::do_deconstruct] Handling component: 4
+[povu::deconstruct::do_deconstruct] Handling component: 5
+[povu::deconstruct::do_deconstruct] Handling component: 6
+[povu::deconstruct::do_deconstruct] Handling component: 7
+CLI parameters: 
+	verbosity: 2
+	thread count: 48
+	print hairpins: yes
+	print dot: yes
+	task: deconstruct
+	input gfa: /home/daanish/projects/Billi/test/data/gfa_files/EC10.gfa
+	forest dir: "."
+	output dir: "../../../Billi_data/results/test/povu/EC10"
+	chrom: 
+	Generate undefined vcf: false
+	Reference paths (0): 
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 - and 0 +
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 - and 0 +
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 - and 0 +
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 - and 0 +
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 - and 0 +
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 - and 0 +
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 + and 0 -
+[povu::deconstruct::get_vg] INFO Time spent by read_gfa: 0.00 sec
+[povu::deconstruct::do_deconstruct] Finding components
+[povu::deconstruct::do_deconstruct] Found 22 components
+[povu::deconstruct::do_deconstruct] Handling component: 1
+[povu::deconstruct::do_deconstruct] Handling component: 2
+[povu::deconstruct::do_deconstruct] Handling component: 3
+[povu::deconstruct::do_deconstruct] Handling component: 4
+[povu::deconstruct::do_deconstruct] Handling component: 5
+[povu::deconstruct::do_deconstruct] Handling component: 6
+[povu::deconstruct::do_deconstruct] Handling component: 7
+[povu::deconstruct::do_deconstruct] Handling component: 8
+[povu::deconstruct::do_deconstruct] Handling component: 9
+[povu::deconstruct::do_deconstruct] Handling component: 10
+[povu::deconstruct::do_deconstruct] Handling component: 11
+[povu::deconstruct::do_deconstruct] Handling component: 12
+[povu::deconstruct::do_deconstruct] Handling component: 13
+[povu::deconstruct::do_deconstruct] Handling component: 14
+[povu::deconstruct::do_deconstruct] Handling component: 15
+[povu::deconstruct::do_deconstruct] Handling component: 16
+[povu::deconstruct::do_deconstruct] Handling component: 17
+[povu::deconstruct::do_deconstruct] Handling component: 18
+[povu::deconstruct::do_deconstruct] Handling component: 19
+[povu::deconstruct::do_deconstruct] Handling component: 20
+[povu::deconstruct::do_deconstruct] Handling component: 21
+[povu::deconstruct::do_deconstruct] Handling component: 22
+CLI parameters: 
+	verbosity: 2
+	thread count: 48
+	print hairpins: yes
+	print dot: yes
+	task: deconstruct
+	input gfa: /home/daanish/projects/Billi/test/data/gfa_files/EC11.gfa
+	forest dir: "."
+	output dir: "../../../Billi_data/results/test/povu/EC11"
+	chrom: 
+	Generate undefined vcf: false
+	Reference paths (0): 
+[povu::deconstruct::get_vg] INFO Time spent by read_gfa: 0.00 sec
+[povu::deconstruct::do_deconstruct] Finding components
+[povu::deconstruct::do_deconstruct] Found 1 components
+[povu::deconstruct::do_deconstruct] Handling component: 1
+CLI parameters: 
+	verbosity: 2
+	thread count: 48
+	print hairpins: yes
+	print dot: yes
+	task: deconstruct
+	input gfa: /home/daanish/projects/Billi/test/data/gfa_files/EC12.gfa
+	forest dir: "."
+	output dir: "../../../Billi_data/results/test/povu/EC12"
+	chrom: 
+	Generate undefined vcf: false
+	Reference paths (0): 
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 - and 0 +
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 - and 0 +
+Error: Invalid self loop: 0 - and 0 +
+Error: Invalid self loop: 0 - and 0 +
+Error: Invalid self loop: 0 - and 0 +
+Error: Invalid self loop: 0 - and 0 +
+[povu::deconstruct::get_vg] INFO Time spent by read_gfa: 0.00 sec
+[povu::deconstruct::do_deconstruct] Finding components
+[povu::deconstruct::do_deconstruct] Found 15 components
+[povu::deconstruct::do_deconstruct] Handling component: 1
+[povu::deconstruct::do_deconstruct] Handling component: 2
+[povu::deconstruct::do_deconstruct] Handling component: 3
+[povu::deconstruct::do_deconstruct] Handling component: 4
+[povu::deconstruct::do_deconstruct] Handling component: 5
+[povu::deconstruct::do_deconstruct] Handling component: 6
+[povu::deconstruct::do_deconstruct] Handling component: 7
+[povu::deconstruct::do_deconstruct] Handling component: 8
+[povu::deconstruct::do_deconstruct] Handling component: 9
+[povu::deconstruct::do_deconstruct] Handling component: 10
+[povu::deconstruct::do_deconstruct] Handling component: 11
+[povu::deconstruct::do_deconstruct] Handling component: 12
+[povu::deconstruct::do_deconstruct] Handling component: 13
+[povu::deconstruct::do_deconstruct] Handling component: 14
+[povu::deconstruct::do_deconstruct] Handling component: 15
+CLI parameters: 
+	verbosity: 2
+	thread count: 48
+	print hairpins: yes
+	print dot: yes
+	task: deconstruct
+	input gfa: /home/daanish/projects/Billi/test/data/gfa_files/EC13.gfa
+	forest dir: "."
+	output dir: "../../../Billi_data/results/test/povu/EC13"
+	chrom: 
+	Generate undefined vcf: false
+	Reference paths (0): 
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 - and 0 +
+Error: Invalid self loop: 0 - and 0 +
+Error: Invalid self loop: 0 - and 0 +
+Error: Invalid self loop: 0 - and 0 +
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 + and 0 -
+[povu::deconstruct::get_vg] INFO Time spent by read_gfa: 0.00 sec
+[povu::deconstruct::do_deconstruct] Finding components
+[povu::deconstruct::do_deconstruct] Found 5 components
+[povu::deconstruct::do_deconstruct] Handling component: 1
+[povu::deconstruct::do_deconstruct] Handling component: 2
+[povu::deconstruct::do_deconstruct] Handling component: 3
+[povu::deconstruct::do_deconstruct] Handling component: 4
+[povu::deconstruct::do_deconstruct] Handling component: 5
+CLI parameters: 
+	verbosity: 2
+	thread count: 48
+	print hairpins: yes
+	print dot: yes
+	task: deconstruct
+	input gfa: /home/daanish/projects/Billi/test/data/gfa_files/EC14.gfa
+	forest dir: "."
+	output dir: "../../../Billi_data/results/test/povu/EC14"
+	chrom: 
+	Generate undefined vcf: false
+	Reference paths (0): 
+Error: Invalid self loop: 0 - and 0 +
+Error: Invalid self loop: 0 - and 0 +
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 - and 0 +
+Error: Invalid self loop: 0 - and 0 +
+Error: Invalid self loop: 0 - and 0 +
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 - and 0 +
+[povu::deconstruct::get_vg] INFO Time spent by read_gfa: 0.00 sec
+[povu::deconstruct::do_deconstruct] Finding components
+[povu::deconstruct::do_deconstruct] Found 5 components
+[povu::deconstruct::do_deconstruct] Handling component: 1
+[povu::deconstruct::do_deconstruct] Handling component: 2
+[povu::deconstruct::do_deconstruct] Handling component: 3
+[povu::deconstruct::do_deconstruct] Handling component: 4
+[povu::deconstruct::do_deconstruct] Handling component: 5
+CLI parameters: 
+	verbosity: 2
+	thread count: 48
+	print hairpins: yes
+	print dot: yes
+	task: deconstruct
+	input gfa: /home/daanish/projects/Billi/test/data/gfa_files/EC15.gfa
+	forest dir: "."
+	output dir: "../../../Billi_data/results/test/povu/EC15"
+	chrom: 
+	Generate undefined vcf: false
+	Reference paths (0): 
+[povu::deconstruct::get_vg] INFO Time spent by read_gfa: 0.00 sec
+[povu::deconstruct::do_deconstruct] Finding components
+[povu::deconstruct::do_deconstruct] Found 1 components
+[povu::deconstruct::do_deconstruct] Handling component: 1
+CLI parameters: 
+	verbosity: 2
+	thread count: 48
+	print hairpins: yes
+	print dot: yes
+	task: deconstruct
+	input gfa: /home/daanish/projects/Billi/test/data/gfa_files/EC16.gfa
+	forest dir: "."
+	output dir: "../../../Billi_data/results/test/povu/EC16"
+	chrom: 
+	Generate undefined vcf: false
+	Reference paths (0): 
+[povu::deconstruct::get_vg] INFO Time spent by read_gfa: 0.00 sec
+[povu::deconstruct::do_deconstruct] Finding components
+[povu::deconstruct::do_deconstruct] Found 1 components
+[povu::deconstruct::do_deconstruct] Handling component: 1
+CLI parameters: 
+	verbosity: 2
+	thread count: 48
+	print hairpins: yes
+	print dot: yes
+	task: deconstruct
+	input gfa: /home/daanish/projects/Billi/test/data/gfa_files/EC17.gfa
+	forest dir: "."
+	output dir: "../../../Billi_data/results/test/povu/EC17"
+	chrom: 
+	Generate undefined vcf: false
+	Reference paths (0): 
+[povu::deconstruct::get_vg] INFO Time spent by read_gfa: 0.00 sec
+[povu::deconstruct::do_deconstruct] Finding components
+[povu::deconstruct::do_deconstruct] Found 1 components
+[povu::deconstruct::do_deconstruct] Handling component: 1
+CLI parameters: 
+	verbosity: 2
+	thread count: 48
+	print hairpins: yes
+	print dot: yes
+	task: deconstruct
+	input gfa: /home/daanish/projects/Billi/test/data/gfa_files/EC18.gfa
+	forest dir: "."
+	output dir: "../../../Billi_data/results/test/povu/EC18"
+	chrom: 
+	Generate undefined vcf: false
+	Reference paths (0): 
+Error: Invalid self loop: 0 - and 0 +
+Error: Invalid self loop: 0 - and 0 +
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 - and 0 +
+Error: Invalid self loop: 0 - and 0 +
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 + and 0 -
+[povu::deconstruct::get_vg] INFO Time spent by read_gfa: 0.00 sec
+[povu::deconstruct::do_deconstruct] Finding components
+[povu::deconstruct::do_deconstruct] Found 7 components
+[povu::deconstruct::do_deconstruct] Handling component: 1
+Boundary: 11 11
+[povu::deconstruct::do_deconstruct] Handling component: 2
+[povu::deconstruct::do_deconstruct] Handling component: 3
+[povu::deconstruct::do_deconstruct] Handling component: 4
+[povu::deconstruct::do_deconstruct] Handling component: 5
+[povu::deconstruct::do_deconstruct] Handling component: 6
+[povu::deconstruct::do_deconstruct] Handling component: 7
+CLI parameters: 
+	verbosity: 2
+	thread count: 48
+	print hairpins: yes
+	print dot: yes
+	task: deconstruct
+	input gfa: /home/daanish/projects/Billi/test/data/gfa_files/EC1.gfa
+	forest dir: "."
+	output dir: "../../../Billi_data/results/test/povu/EC1"
+	chrom: 
+	Generate undefined vcf: false
+	Reference paths (0): 
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 - and 0 +
+Error: Invalid self loop: 0 - and 0 +
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 - and 0 +
+Error: Invalid self loop: 0 - and 0 +
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 - and 0 +
+Error: Invalid self loop: 0 - and 0 +
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 - and 0 +
+Error: Invalid self loop: 0 - and 0 +
+[povu::deconstruct::get_vg] INFO Time spent by read_gfa: 0.00 sec
+[povu::deconstruct::do_deconstruct] Finding components
+[povu::deconstruct::do_deconstruct] Found 10 components
+[povu::deconstruct::do_deconstruct] Handling component: 1
+[povu::deconstruct::do_deconstruct] Handling component: 2
+[povu::deconstruct::do_deconstruct] Handling component: 3
+[povu::deconstruct::do_deconstruct] Handling component: 4
+[povu::deconstruct::do_deconstruct] Handling component: 5
+[povu::deconstruct::do_deconstruct] Handling component: 6
+[povu::deconstruct::do_deconstruct] Handling component: 7
+[povu::deconstruct::do_deconstruct] Handling component: 8
+[povu::deconstruct::do_deconstruct] Handling component: 9
+[povu::deconstruct::do_deconstruct] Handling component: 10
+CLI parameters: 
+	verbosity: 2
+	thread count: 48
+	print hairpins: yes
+	print dot: yes
+	task: deconstruct
+	input gfa: /home/daanish/projects/Billi/test/data/gfa_files/EC2.gfa
+	forest dir: "."
+	output dir: "../../../Billi_data/results/test/povu/EC2"
+	chrom: 
+	Generate undefined vcf: false
+	Reference paths (0): 
+[povu::deconstruct::get_vg] INFO Time spent by read_gfa: 0.00 sec
+[povu::deconstruct::do_deconstruct] Finding components
+[povu::deconstruct::do_deconstruct] Found 7 components
+[povu::deconstruct::do_deconstruct] Handling component: 1
+[povu::deconstruct::do_deconstruct] Handling component: 2
+[povu::deconstruct::do_deconstruct] Handling component: 3
+[povu::deconstruct::do_deconstruct] Handling component: 4
+[povu::deconstruct::do_deconstruct] Handling component: 5
+[povu::deconstruct::do_deconstruct] Handling component: 6
+[povu::deconstruct::do_deconstruct] Handling component: 7
+CLI parameters: 
+	verbosity: 2
+	thread count: 48
+	print hairpins: yes
+	print dot: yes
+	task: deconstruct
+	input gfa: /home/daanish/projects/Billi/test/data/gfa_files/EC3.gfa
+	forest dir: "."
+	output dir: "../../../Billi_data/results/test/povu/EC3"
+	chrom: 
+	Generate undefined vcf: false
+	Reference paths (0): 
+[povu::deconstruct::get_vg] INFO Time spent by read_gfa: 0.00 sec
+[povu::deconstruct::do_deconstruct] Finding components
+[povu::deconstruct::do_deconstruct] Found 5 components
+[povu::deconstruct::do_deconstruct] Handling component: 1
+[povu::deconstruct::do_deconstruct] Handling component: 2
+[povu::deconstruct::do_deconstruct] Handling component: 3
+[povu::deconstruct::do_deconstruct] Handling component: 4
+[povu::deconstruct::do_deconstruct] Handling component: 5
+CLI parameters: 
+	verbosity: 2
+	thread count: 48
+	print hairpins: yes
+	print dot: yes
+	task: deconstruct
+	input gfa: /home/daanish/projects/Billi/test/data/gfa_files/EC4.gfa
+	forest dir: "."
+	output dir: "../../../Billi_data/results/test/povu/EC4"
+	chrom: 
+	Generate undefined vcf: false
+	Reference paths (0): 
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 + and 0 -
+[povu::deconstruct::get_vg] INFO Time spent by read_gfa: 0.00 sec
+[povu::deconstruct::do_deconstruct] Finding components
+[povu::deconstruct::do_deconstruct] Found 5 components
+[povu::deconstruct::do_deconstruct] Handling component: 1
+[povu::deconstruct::do_deconstruct] Handling component: 2
+[povu::deconstruct::do_deconstruct] Handling component: 3
+[povu::deconstruct::do_deconstruct] Handling component: 4
+[povu::deconstruct::do_deconstruct] Handling component: 5
+CLI parameters: 
+	verbosity: 2
+	thread count: 48
+	print hairpins: yes
+	print dot: yes
+	task: deconstruct
+	input gfa: /home/daanish/projects/Billi/test/data/gfa_files/EC5.gfa
+	forest dir: "."
+	output dir: "../../../Billi_data/results/test/povu/EC5"
+	chrom: 
+	Generate undefined vcf: false
+	Reference paths (0): 
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 - and 0 +
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 - and 0 +
+[povu::deconstruct::get_vg] INFO Time spent by read_gfa: 0.00 sec
+[povu::deconstruct::do_deconstruct] Finding components
+[povu::deconstruct::do_deconstruct] Found 12 components
+[povu::deconstruct::do_deconstruct] Handling component: 1
+[povu::deconstruct::do_deconstruct] Handling component: 2
+[povu::deconstruct::do_deconstruct] Handling component: 3
+[povu::deconstruct::do_deconstruct] Handling component: 4
+[povu::deconstruct::do_deconstruct] Handling component: 5
+[povu::deconstruct::do_deconstruct] Handling component: 6
+[povu::deconstruct::do_deconstruct] Handling component: 7
+[povu::deconstruct::do_deconstruct] Handling component: 8
+[povu::deconstruct::do_deconstruct] Handling component: 9
+[povu::deconstruct::do_deconstruct] Handling component: 10
+[povu::deconstruct::do_deconstruct] Handling component: 11
+[povu::deconstruct::do_deconstruct] Handling component: 12
+CLI parameters: 
+	verbosity: 2
+	thread count: 48
+	print hairpins: yes
+	print dot: yes
+	task: deconstruct
+	input gfa: /home/daanish/projects/Billi/test/data/gfa_files/EC6.gfa
+	forest dir: "."
+	output dir: "../../../Billi_data/results/test/povu/EC6"
+	chrom: 
+	Generate undefined vcf: false
+	Reference paths (0): 
+Error: Invalid self loop: 0 + and 0 -
+Error: Invalid self loop: 0 + and 0 -
+[povu::deconstruct::get_vg] INFO Time spent by read_gfa: 0.00 sec
+[povu::deconstruct::do_deconstruct] Finding components
+[povu::deconstruct::do_deconstruct] Found 5 components
+[povu::deconstruct::do_deconstruct] Handling component: 1
+[povu::deconstruct::do_deconstruct] Handling component: 2
+[povu::deconstruct::do_deconstruct] Handling component: 3
+[povu::deconstruct::do_deconstruct] Handling component: 4
+[povu::deconstruct::do_deconstruct] Handling component: 5
+CLI parameters: 
+	verbosity: 2
+	thread count: 48
+	print hairpins: yes
+	print dot: yes
+	task: deconstruct
+	input gfa: /home/daanish/projects/Billi/test/data/gfa_files/EC7.gfa
+	forest dir: "."
+	output dir: "../../../Billi_data/results/test/povu/EC7"
+	chrom: 
+	Generate undefined vcf: false
+	Reference paths (0): 
+[liteseq::gfa] Unsupported line type: [
+] on line: [31]
+Error: Failed to count lines in GFA file
+run.sh: line 65: 3171804 Segmentation fault      (core dumped) povu deconstruct -v 2 -h -t 48 -i $FULL_PATH -o $OUT_DIR3

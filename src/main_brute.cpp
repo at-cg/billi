@@ -21,7 +21,7 @@
 #define mt make_tuple
 #define F first
 #define S second
-#define PRINT true
+#define PRINT false
 
 using namespace std;
 namespace fs = std::filesystem;

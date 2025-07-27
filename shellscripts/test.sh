@@ -1,10 +1,10 @@
 #!/bin/bash
-#PBS -N Testing
+#PBS -N Test-Small
 #PBS -l nodes=1:ppn=48
 #PBS -q regular
 #PBS -l walltime=24:00:00
-#PBS -o op.log_test
-#PBS -e op.err_test
+#PBS -o op.log
+#PBS -e op.err
  
 if [ -n "$PBS_JOBID" ] || [ -n "$PBS_O_WORKDIR" ]; then
     cd "$PBS_O_WORKDIR"
@@ -40,6 +40,6 @@ for FILE in "$DDIR"/*; do
             continue
         fi
         echo "$TAG"
-        ./main_opt $DDIR/$FILENAME $RDIR/$TAG
+        ./main $DDIR/$FILENAME $RDIR/$TAG
     fi
 done

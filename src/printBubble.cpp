@@ -35,6 +35,7 @@ vector<vector<string>> to_print = {
     {"QLV04263.1", "-", "QLW53069.1", "+"},
     {"QLW52970.1", "+", "QLW52970.1", "-"} 
 };
+
 set<string> subgraph;
 const ll maxv = __LONG_LONG_MAX__;
 int tot_grey = 0; // for storing total number of grey edges, will help in accessing the brackets
