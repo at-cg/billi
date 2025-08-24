@@ -86,7 +86,7 @@ if [ ! -f "$OUT_DIR5/$FILE_NAME.txt" ]; then
     touch "$OUT_DIR5/$FILE_NAME.txt"
 fi
 
-cd ../../../Billi_data/pangene
-k8 pangene.js call $FULL_PATH > "../results/test/pangene/$FILE_NAME.txt"
+# cd ../../../Billi_data/pangene
+# k8 pangene.js call $FULL_PATH > "../results/test/pangene/$FILE_NAME.txt"
 
-echo "Done running pangene for input $FILE_NAME" >> $LOG
+# echo "Done running pangene for input $FILE_NAME" >> $LOG
