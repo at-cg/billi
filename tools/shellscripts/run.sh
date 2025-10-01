@@ -29,15 +29,15 @@ if [ ! -d "$OUT_DIR" ]; then
 fi
 
 ## BubbleGun
-OUT_DIR1=$OUT_DIR/BubbleGun
-if [ ! -d "$OUT_DIR1" ]; then
-    mkdir -p $OUT_DIR1
-fi
+# OUT_DIR1=$OUT_DIR/BubbleGun
+# if [ ! -d "$OUT_DIR1" ]; then
+#     mkdir -p $OUT_DIR1
+# fi
 
-BubbleGun -g $FULL_PATH bchains --bubble_json "$OUT_DIR1/$FILE_NAME.json"
-rm -rf "BubbleGun.${FILE_NAME}.log"
+# BubbleGun -g $FULL_PATH bchains --bubble_json "$OUT_DIR1/$FILE_NAME.json"
+# rm -rf "BubbleGun.${FILE_NAME}.log"
 
-echo "Done running BubbleGun for input $FILE_NAME" >> $LOG
+# echo "Done running BubbleGun for input $FILE_NAME" >> $LOG
 
 
 ## vg
@@ -48,7 +48,10 @@ fi
 
 vg convert -g $FULL_PATH > "$FILE_NAME.vg"
 vg index -x "$FILE_NAME.xg" "$FILE_NAME.vg"
-vg snarls "$FILE_NAME.xg" > "$OUT_DIR2/$FILE_NAME.snarls"
+
+## Choose the right method and output before running
+vg snarls -A cactus -a "$FILE_NAME.xg" > "$OUT_DIR2/$FILE_NAME.snarls"
+
 vg view -j -R "$OUT_DIR2/$FILE_NAME.snarls" > "$OUT_DIR2/${FILE_NAME}_snarls.json"
 
 rm -rf "$FILE_NAME.vg" "$FILE_NAME.xg" "$OUT_DIR2/$FILE_NAME.snarls"
@@ -57,14 +60,14 @@ echo "Done running vg for input $FILE_NAME" >> $LOG
 
 
 ## povu
-OUT_DIR3="$OUT_DIR/povu/$FILE_NAME"
-if [ ! -d "$OUT_DIR3" ]; then
-    mkdir -p $OUT_DIR3
-fi
+# OUT_DIR3="$OUT_DIR/povu/$FILE_NAME"
+# if [ ! -d "$OUT_DIR3" ]; then
+#     mkdir -p $OUT_DIR3
+# fi
 
-povu deconstruct -v 2 -h -t 48 -i $FULL_PATH -o $OUT_DIR3
+# povu deconstruct -v 2 -h -t 48 -i $FULL_PATH -o $OUT_DIR3
 
-echo "Done running povu for input $FILE_NAME" >> $LOG
+# echo "Done running povu for input $FILE_NAME" >> $LOG
 
 
 ## Billi
@@ -80,11 +83,11 @@ echo "Done running Billi for input $FILE_NAME" >> $LOG
 
 
 ## pangene
-OUT_DIR5="$OUT_DIR/pangene"
-if [ ! -f "$OUT_DIR5/$FILE_NAME.txt" ]; then
-    mkdir -p $OUT_DIR5
-    touch "$OUT_DIR5/$FILE_NAME.txt"
-fi
+# OUT_DIR5="$OUT_DIR/pangene"
+# if [ ! -f "$OUT_DIR5/$FILE_NAME.txt" ]; then
+#     mkdir -p $OUT_DIR5
+#     touch "$OUT_DIR5/$FILE_NAME.txt"
+# fi
 
 # cd ../../../Billi_data/pangene
 # k8 pangene.js call $FULL_PATH > "../results/test/pangene/$FILE_NAME.txt"

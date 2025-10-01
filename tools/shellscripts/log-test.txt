@@ -1,0 +1,3 @@
+Starting Driver-Test Script
+Done running vg for input EC19
+Done running Billi for input EC19

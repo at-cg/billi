@@ -1,3 +1,4 @@
+#include<CLI11.hpp>
 #include<iostream>
 #include<fstream>
 #include<filesystem>
@@ -8,6 +9,7 @@
 #include<algorithm>
 #include<stack>
 #include<queue>
+#include<deque>
 #include<regex>
 #include<cassert>
 #define ll long long int
@@ -21,7 +23,7 @@
 #define mt make_tuple
 #define F first
 #define S second
-#define PRINT false
+#define PRINT true
 
 using namespace std;
 namespace fs = std::filesystem;
@@ -41,9 +43,11 @@ vector<bool> mark; // for marking the vertices that are have been visited
 // ****************************************************************************************************************************************************** 
 struct edge{
     int id; // a bracket can uniquely be identified by the lower and higher vertices it connects to : low -> lower height, assigning a unique to each
+    int node; // required node corresponding to the black edge when edge 'id' is the top in the bracketlist
+    int sz; // required size of bracketlist corresponding to the black edge when edge 'id' is the top in the bracketlist
     edge* front;
     edge* back; // for doubly linked list implementation -> helps in O(1) deletion
-    edge(int eid):id(eid), front(nullptr), back(nullptr){}
+    edge(int eid):id(eid), node(-1), sz(-1), front(nullptr), back(nullptr){}
 };
 
 struct bracketlist{
@@ -124,6 +128,8 @@ void printGraph(vector<vector<pii>>& g){
 // ****************************************************************************************************************************************************** 
 fstream f;
 string inputpath, outputdir;
+bool print_equivalent = false, print_hairpin = false, print_panbubble_tree = false; // whether to report the cycle equivalent pairs and hairpins
+int maxdepth = 1; // max depth to which the panbubbles are to be reported
 int n, edges; // no of nodes (genes), no of edges
 // int before_initialisation_comp_cnt = 0; // no of connected components in the input graph before initialisation
 vector<string> ilmap; // for storing the gene for a particular label
@@ -164,7 +170,7 @@ void get_ne() {
                     ++n;
                 } else if (tokens[0] == "L") {
                     ++edges;
-                }
+                } else break;
             }
         }
         f.close();
@@ -338,20 +344,29 @@ void dfs_bridge(int u, int parent){
 // **** Single Entry Single Exit Algorithm (Johnson et al., 1994) ****
 // ******************************************************************************************************************************************************  
 int nodes = 0; // no of nodes in a given component in the input graph
-ll multiplier = 1; // for computing the hash
-int possible_pairs = 0, valid_pairs = 0; // storing the number of valid bibubble pairs
+int st0 = 0; // top node when the bracketlist is empty
+// int time = 0;
+// ll multiplier = 1; // for computing the hash
+int possible_pairs = 0, valid_pairs = 0, hairpins = 0; // storing the number of valid panbubble pairs
 
 vector<int> stack_trace; // for storing the vertices in the stack during dfs traversal
+vector<int> bubble_depth; // depth of the bubbles in the bubble tree
 vector<int> rm_cnt; // vector storing the number of brackets ending at that node
+// vector<int> bracket_seq; // for storing the id of the bracket sequences so as to make the bubble tree
+// vector<int> visit_time; // for storing the visit time of the vertices during the dfs traversal
+vector<bool> root_bg; // root bubble id's in the bubble tree
+vector<bool> inb; // whether the node has been added in the bubble tree
 vector<pii> canonical_sese; // for storing the canonical sese pairs
+vector<vector<int>> bg; // vector for storing the adjacency matrix for the bubble graph
 // unordered_map<ll, int> st; // (edge, size) -> hashed into a ll key ** Takes a lot of time **
-map<ll, int> st; // (edge, size) -> hashed into a ll key
+// map<ll, int> st; // (edge, size) -> hashed into a ll key
 vector<bracketlist*> bl; // vector storing the bracket list for different nodes
-vector<vector<edge*>> remove_brackets;
+vector<vector<edge*>> remove_brackets; // vector that stores the brackets to be removed while exiting a particular vertex during SESE algorithm
+deque<int> qbg; // queue maintained while doing bfs on the bubble tree
 
-ll get_key(int id, int size){
-    return id * multiplier + size;
-}
+// ll get_key(int id, int size){
+//     return id * multiplier + size;
+// }
 
 int find_unique_excluding_selfloop(int u, int v){// exclude nodes u, u ^ 1, v
     set<int> s;
@@ -473,6 +488,7 @@ void sese_minbracket(int u, int parent, int& x, int& val){
 void sese(int u, int parent){
     stack_trace.pb(u);
     mark[u] = true;
+    // visit_time[u] = time++;
 
     int h0 = maxd, h1 = maxd, h2 = maxd;
 
@@ -556,23 +572,41 @@ void sese(int u, int parent){
     // finding cycle equivalence
     if(parent != -1 && ((id_in_original_graph[parent] ^ id_in_original_graph[u]) == 1)){
         // printArgs("finding cycle equivalence:", u, parent);
-        ll key;
+        int w = -1;
         if(bl[u]->sz > 0){
-            int br = bl[u]->end->id;
-            // assert(br != -1); // not a black edge
-            key = get_key(br, bl[u]->sz);
+            if(bl[u]->end->sz == bl[u]->sz){
+                w = bl[u]->end->node;
+            }else{
+                bl[u]->end->sz = bl[u]->sz;
+            }
         }else{
-            key = 0;
+            w = st0;
         }
 
-        if(st.find(key) != st.end()){
-            int w = st[key];
+        if(w != -1){
             if(find_unique_excluding_selfloop(u, w) == 1 && find_unique_excluding_selfloop(w, u) == 1){
+                // int psz = canonical_sese.size();
                 // printArgs("cycle equivalent pair:", u, w);
+                
+                // Using it in mark_bb_nodes
+                // while(!bracket_seq.empty()){
+                //     int id = bracket_seq.back();
+                //     pii rs = canonical_sese[id];
+                //     if(visit_time[rs.S] > visit_time[w]){
+                //         bg[psz].pb(id);
+                //         bracket_seq.rb();
+                //     }else break;
+                // }
+                // bracket_seq.pb(psz);
                 canonical_sese.pb({u, w});
             }
         }
-        st[key] = parent; // will happen regardless you found something or not
+
+        if(bl[u]->sz == 0){
+            st0 = parent;
+        }else{
+            bl[u]->end->node = parent;
+        }
     }
 
     stack_trace.rb();
@@ -583,17 +617,29 @@ void sese(int u, int parent){
 // **** SCC **** 
 // ref - https://cp-algorithms.com/graph/strongly-connected-components.html extended to multigraph
 // ******************************************************************************************************************************************************  
-vector<int> bb_comp; // bibubble-component to which a node belongs to
-vector<vector<int>> bb_nodes; // storing the nodes for different bibubbles
+vector<bool> considered; // for saving which vertices have been considered twice while computing bb_comp
 vector<bool> valid; // for marking whether a potential bi-bubble is valid
+vector<int> bb_comp; // panbubble-component to which a node belongs to
+vector<vector<int>> bb_nodes; // storing the nodes for different panbubbles
+vector<int> opp_entrance; // for saving the other end of the panbubble
 vector<int> aux_cc_comp; // connected-component in the auxiliary graph to which a node belongs to
 vector<int> order; // will be a sorted list of G's vertices by exit time
 vector<vector<int>> ag; // directed graph
 vector<vector<int>> ag_rev; // create adjacency list of G^T   
 
+string get_label(int x){
+    x = id_in_original_graph[x];
+    return (ilmap[x >> 1] + " " + (x & 1 ? "+" : "-"));
+}
+
 string get_label(int x, int y){
-    x = id_in_original_graph[x]; y = id_in_original_graph[y];
-    return (ilmap[x >> 1] + " " + (x & 1 ? "+" : "-") + " " + ilmap[y >> 1] + " " + (y & 1 ? "-" : "+"));
+    return (get_label(x) + " " + get_label(y));
+}
+
+string get_label_from_id(int id){
+    int x = id_in_original_graph[canonical_sese[id].F];
+    int y = id_in_original_graph[canonical_sese[id].S];
+    return "(" + ilmap[x >> 1] + ", " + ilmap[y >> 1] + ")";
 }
 
 bool end_gene(int& u, pii& rs){
@@ -606,11 +652,23 @@ void add_directed_edges_from_gene_endpoints(int id1, int id2){
 
 void upd_node(int u, int id){
     mark[u] = true;
-    bb_nodes[id].pb(u);
-    bb_comp[u] = id;
+    if(bb_comp[u] != id) bb_nodes[id].pb(u);
+    if(bb_comp[u] == -1)bb_comp[u] = id;
 }
 
 void mark_bb_nodes(int u, pii& rs, int id){
+    int w = opp_entrance[u];
+                
+    if(w != -1){
+        int v = dual[w];
+        considered[w] = true;
+
+        if(!end_gene(v, rs)){
+            mark_bb_nodes(v, rs, id);
+        }
+        return;
+    }
+
     // if((u == rs.S || u == dual[rs.S]) && bb_nodes[id].size() != 0)return; // u == dual[rs.S] -> can go to y complement but then the pair is not cycle equivalent, if size = 0 implies hairpin loop
     if(u != rs.F){// only the directed genes \in \tilde{U} set
         upd_node(u, id);
@@ -618,9 +676,21 @@ void mark_bb_nodes(int u, pii& rs, int id){
 
     for(pii child : g_processed[u]){
         int v = child.F;
+     
         if(child.S >= tip_start[biedged_connected_comp[rs.S]] || end_gene(v, rs))continue; // don't consider the edges added because of tips
         if(mark[v]){
-            if(bb_comp[v] != bb_comp[u])bb_nodes[id].pb(v); // if the two bibubbles are adjacent, then too start and end points of the bibubble will be added, however the complete set need not be added
+            if(!considered[v]){    
+                w = opp_entrance[v];
+                if(w != -1){
+                    v = dual[w];
+                    considered[w] = true;
+                }
+                // if(bb_comp[v] != bb_comp[rs.F])bb_nodes[id].pb(v); // if the two panbubbles are adjacent, then too start and end points of the panbubble will be added, however the complete set need not be added                          
+                if(!end_gene(v, rs)){
+                    considered[v] = true;
+                    mark_bb_nodes(v, rs, id);
+                }
+            }
             continue;
         }
         mark_bb_nodes(v, rs, id);
@@ -693,11 +763,24 @@ int main(int argc, char* argv[])
     // ************************************
     {
         ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0); // Fast IO
-        if(argc != 3){
-            return 1;
-        }
-        inputpath = argv[1];
-        outputdir = argv[2];
+
+        CLI::App app{"panbubble"};
+        auto decomp = app.add_subcommand("decompose", "Decompose GFA file into panbubbbles");
+        // if(argc != 3){
+        //     return 1;
+        // }
+        // inputpath = argv[1];
+        // outputdir = argv[2];
+        
+        decomp->add_option("-i, --input", inputpath, "Input GFA")->required();
+        decomp->add_option("-o, --output", outputdir, "Directory for saving the output files")->required();
+        decomp->add_option("-d, --depth", maxdepth, "Maximum depth up to which the panbubbles are to be reported (1 means outermost)")->default_val(1);
+        decomp->add_option("-c, --cycle-equivalent", print_equivalent, "Whether cycle equivalent pairs are to be reported")->default_val(false);
+        decomp->add_option("-r, --report-hairpins", print_hairpin, "Whether hairpins are to be reported")->default_val(false);
+        decomp->add_option("-p, --print-panbubble-tree", print_panbubble_tree, "Whether the panbubble tree is to be printed")->default_val(false);
+        
+        CLI11_PARSE(app, argc, argv);
+
         if(!fs::exists(outputdir))fs::create_directories(outputdir);
         
         summarypath = outputdir + "/input_summary.txt";
@@ -793,20 +876,24 @@ int main(int argc, char* argv[])
                             if(cnt_vu == 0 && !has_self_loop[v]){ // tip case
                                 type_edge[i] = '0';
                             }else{
-                                n_processed++;
+                                // n_processed++;
+                                n_processed += 2;
                                 type_edge[i] = '1';
                             }
                         }else if(splitfrom_v){
                             if(cnt_uv == 0 && !has_self_loop[u]){
                                 type_edge[i] = '0';
                             }else{
-                                n_processed++;
+                                // n_processed++;
+                                n_processed += 2;
                                 type_edge[i] = '2';
                             }                        
                         }else{
                             type_edge[i] = '4';
                         }
                     }else type_edge[i] = '0';
+
+                    // cout << i << " " << type_edge[i] << endl;
                 }
 
                 cout << "Number of nodes after initialisation: " << (n_processed / 2) << endl;
@@ -837,9 +924,9 @@ int main(int argc, char* argv[])
                         case '0':
                             neigh_copy(u, -1); neigh_copy(v, -1); break;
                         case '1':
-                            neigh_copy(u, v); break;
+                            // neigh_copy(u, v); break;
                         case '2':
-                            neigh_copy(v, u); break;
+                            // neigh_copy(v, u); break;
                         case '3':
                             neigh_copy(u, v); neigh_copy(v, u); break;
                         default:
@@ -850,6 +937,7 @@ int main(int argc, char* argv[])
                 // edges /= 2;
                 // cout << "Number of edges after initialisation: " << edges << endl;
 
+                // printGraph(g);
                 // printGraph(g_processed);
 
                 // ** Clearing the memory **
@@ -991,14 +1079,16 @@ int main(int argc, char* argv[])
         // ************************************
         {
             remove_brackets.resize(n_processed);
+            // visit_time.resize(n_processed, -1);
             bl.clear();
             fill(mark.begin(), mark.end(), false);
             for(int it = 0; it < after_initialisation_comp_cnt; it++){
-                multiplier = 1;
-                while(multiplier <= backedge_cnt[it]){
-                    multiplier *= 10;
-                }
-                st.clear();
+                // multiplier = 1;
+                // while(multiplier <= backedge_cnt[it]){
+                //     multiplier *= 10;
+                // }
+                // st.clear(); 
+                st0 = -1;
                 sese(Start[it], -1); // graph g is not changed
                 // assert(stack_trace.size() == 0); 
 
@@ -1007,9 +1097,10 @@ int main(int argc, char* argv[])
                     canonical_sese.pb({dual[tips[it][0]], dual[tips[it][0]]});
                 }
             }
-
+    
             // ** Clearing the memory **
-            bl.clear(); remove_brackets.clear(); Start.clear(); depth.clear(); 
+            bl.clear(); remove_brackets.clear(); // visit_time.clear(); 
+            Start.clear(); depth.clear(); 
             backedge_cnt.clear(); tips.clear();
             // vector<bracketlist*>().swap(bl); vector<vector<edge*>>().swap(remove_brackets); vector<int>().swap(Start); vector<int>().swap(depth);  
             // vector<int>().swap(backedge_cnt);  vector<vector<int>>().swap(tips);
@@ -1019,15 +1110,17 @@ int main(int argc, char* argv[])
         // *** Printing result ***
         // ************************************
         {
-            summarypath = outputdir + "/possible_bibubble.txt";
-            freopen(summarypath.c_str(), "w", stdout);
+            if(print_equivalent){
+                summarypath = outputdir + "/cycle_equivalent.txt";
+                freopen(summarypath.c_str(), "w", stdout);
 
-            possible_pairs = canonical_sese.size();
-            cout << "Total possible canonical cycle equivalent pairs found: " << possible_pairs << endl;
-            
-            for(int i = 0; i < possible_pairs; i++){
-                pii rs = canonical_sese[i];
-                cout << get_label(rs.F, rs.S) << endl;                  
+                possible_pairs = canonical_sese.size();
+                cout << "Total cycle equivalent pairs found: " << possible_pairs << endl;
+                
+                for(int i = 0; i < possible_pairs; i++){
+                    pii rs = canonical_sese[i];
+                    cout << get_label(rs.F, rs.S) << endl;                  
+                }
             }
         }
     }
@@ -1057,21 +1150,31 @@ int main(int argc, char* argv[])
                 fill(mark.begin(), mark.end(), false);
                 bb_comp.resize(n_processed, -1);
                 bb_nodes.resize(possible_pairs);
+                considered.resize(n_processed, false);
+                opp_entrance.resize(n_processed, -1);
                 
                 for(int i = 0; i < possible_pairs; i++){ // space requirement is linear since the inner-most nested bubbles will appear on the top
                     pii rs = canonical_sese[i];
-                    // upd_node(id_in_original_graph[rs.F] ^ 1, i); // will create issues when two bibubbles are adjacent
+                    // upd_node(id_in_original_graph[rs.F] ^ 1, i); // will create issues when two panbubbles are adjacent
                     mark_bb_nodes(rs.F, rs, i); // do not add the end points, checking only in one direction
+                    mark[rs.F] = mark[rs.S] = mark[dual[rs.F]] = mark[dual[rs.S]] = true;
+                    bb_comp[rs.F] = bb_comp[rs.S] = bb_comp[dual[rs.F]] = bb_comp[dual[rs.S]] = i;
+                    opp_entrance[rs.F] = rs.S; opp_entrance[rs.S] = rs.F;
                 }
 
                 // for(int i = 0; i < possible_pairs; i++){
                 //     printArgs("bb_nodes", i, ":");
                 //     printVector(bb_nodes[i]);
                 // }
+
+                considered.clear(); opp_entrance.clear();
             }
         }
 
         valid.resize(possible_pairs, true);
+        bg.resize(possible_pairs);
+        root_bg.resize(possible_pairs, true);
+        inb.resize(possible_pairs, false);
         valid_pairs = possible_pairs;
 
         // ************************************
@@ -1083,6 +1186,14 @@ int main(int argc, char* argv[])
                 // assert(bb_comp[u] != -1);
                 // assert(!end_gene(u, rs));
                 // if(!end_gene(u, rs)){ // check only for internal nodes
+                    if(valid[bb_comp[u]] && !inb[bb_comp[u]]){
+                        // cout << i << " " << u << " " << get_label(u) << endl;
+                        if(end_gene(u, canonical_sese[bb_comp[u]])){
+                            root_bg[bb_comp[u]] = false;
+                            bg[i].pb(bb_comp[u]);
+                            inb[bb_comp[u]] = true;
+                        }
+                    }
                     if(!((aux_cc_comp[u] == aux_cc_comp[rs.F] || aux_cc_comp[u] == aux_cc_comp[dual[rs.F]]) && valid[bb_comp[u]])){
                         valid[i] = false;
                         valid_pairs--;
@@ -1090,11 +1201,17 @@ int main(int argc, char* argv[])
                     }
                 // }
             }
+
+            // Can contain hairpins with size = 0 (edge with a loop in the end)
             if(bb_nodes[i].size() == 0){
-                valid[i] = false;
-                valid_pairs--;
+                // valid[i] = false;
+                // valid_pairs--;
             }
+
+            if(rs.F == rs.S)hairpins += valid[i];
         }
+
+        bb_nodes.clear(); bb_comp.clear(); inb.clear();
 
         // ************************************
         // *** Printing the result ***
@@ -1104,14 +1221,72 @@ int main(int argc, char* argv[])
             tip_start.clear(); 
             // vector<ll>().swap(tip_start);
 
-            summarypath = outputdir + "/valid_bibubble_GO.txt";
+            if(print_panbubble_tree){
+                summarypath = outputdir + "/panbubble_tree.txt";
+                freopen(summarypath.c_str(), "w", stdout);
+                for(int i = 0; i < possible_pairs; i++){
+                    pii rs = canonical_sese[i];
+                    // if(valid[i] && rs.F != rs.S){
+                    if(valid[i]){
+                        if(root_bg[i]){
+                            cout << "_, " << get_label_from_id(i) << endl;
+                        }
+                        for(int v : bg[i]){
+                            cout << get_label_from_id(i) << ", " << get_label_from_id(v) << endl;
+                        }
+                    }
+                }
+            }
+
+            // ** Removing the bubbles with depth > maxdepth **
+            bubble_depth.resize(possible_pairs, -1);
+            for(int i = 0; i < possible_pairs; i++){
+                pii rs = canonical_sese[i];
+                if(valid[i] && rs.F != rs.S && root_bg[i]){
+                    qbg.push_back(i);
+                    bubble_depth[i] = 1;
+                }
+            }
+
+            while(!qbg.empty()){
+                int u = qbg.front();
+                qbg.pop_front();
+                for(int v : bg[u]){
+                    if(bubble_depth[v] != -1 || !valid[v]){
+                        continue;
+                    }
+                    bubble_depth[v] = bubble_depth[u] + 1;
+                    qbg.push_back(v);
+                }
+            }
+
+            for(int i = 0; i < possible_pairs; i++){
+                if(bubble_depth[i] > maxdepth){
+                    valid[i] = false;
+                    valid_pairs--;
+                }
+            }
+
+            summarypath = outputdir + "/panbubble.txt";
             freopen(summarypath.c_str(), "w", stdout);
 
-            cout << "Total valid canonical cycle equivalent pairs found: " << valid_pairs << endl;
+            cout << "Total panbubbles found till the input depth: " << (valid_pairs - hairpins) << endl;
             for(int i = 0; i < possible_pairs; i++){
-                if(!valid[i])continue;
                 pii rs = canonical_sese[i];
+                if(!valid[i] || rs.F == rs.S) continue;
                 cout << get_label(rs.F, rs.S) << endl;
+            }
+
+            if(print_hairpin){
+                summarypath = outputdir + "/hairpins.txt";
+                freopen(summarypath.c_str(), "w", stdout);
+
+                cout << "Total hairpins found: " << hairpins << endl;
+                for(int i = 0; i < possible_pairs; i++){
+                    pii rs = canonical_sese[i];
+                    if(!valid[i] || rs.F != rs.S) continue;
+                    cout << get_label(rs.F, rs.S) << endl;
+                }
             }
         }
     }
@@ -1119,4 +1294,3 @@ int main(int argc, char* argv[])
 
 // TODO:
 // cyclic cases
-// don't read the file completely in the first pass

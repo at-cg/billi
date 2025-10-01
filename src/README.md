@@ -8,4 +8,4 @@ Main driver file // remove map dependency
 Also checks the validity of the output using a brute force check
 
 #### 4. printBubble.cpp
-Print the bubble b/w the input end points // add suport for manual input
+Print the bubble b/w the input end points // add support for manual input

@@ -1,4 +1,4 @@
-# Billi
+# Panbubble
 
 ## **Dependencies**
 > [pangene](https://github.com/lh3/pangene/tree/main) (For generating gfa file from the paf files)
@@ -12,14 +12,14 @@ make
 
 ## **Test run:**
 
-### Enumerating generalised bibubbles
+### Enumerating panbubbles
 ```
 Assuming that you are in the src directory
 
-./main <PATH_TO_GFA_FILE> <PATH_TO_THE_DIRECTORY_THAT_WILL_SAVE_THE_RESULTS> 
+./main decompose -i <PATH_TO_GFA_FILE> -o <PATH_TO_THE_DIRECTORY_THAT_WILL_SAVE_THE_RESULTS> 
 ```
 
 ## **Example:**
 ```
-./main ../test/data/gfa_files/EC7.gfa ../test/data/results/EC7
+./main decompose -i ../test/data/gfa_files/EC7.gfa -d 1 -c true -r true -p true -o ../test/data/results/EC7
 ```

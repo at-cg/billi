@@ -36,7 +36,10 @@ for FILE in "$DATA_DIR"/*; do
         FILENAME=$(basename "$FILE")
         IFS='.' read -ra PARTS <<< "$FILENAME"
         TAG="${PARTS[0]}"
-        if [[ "$TAG" = "worst_case(100000)" ]]; then
+        # if [[ "$TAG" = "worst_case(100000)" ]]; then
+        #     continue
+        # fi
+        if [[ "$TAG" != "EC19" ]]; then
             continue
         fi
         # echo "$TAG"

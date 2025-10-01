@@ -1,0 +1,2 @@
+rm -f main 
+g++  -std=c++17 -O3 -I ~/include    main.cpp   -o main
