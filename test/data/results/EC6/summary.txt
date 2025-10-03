@@ -1,5 +1,0 @@
-Total possible canonical cycle equivalent pairs found: 2
-B + E +
-M + O +
-Total valid canonical cycle equivalent pairs found: 1
-M + O +

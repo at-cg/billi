@@ -1,6 +1,0 @@
-Total possible canonical cycle equivalent pairs found: 2
-SMIM10L2B - ETDB -
-RTL8A - INTS6L +
-Total valid canonical cycle equivalent pairs found: 2
-SMIM10L2B - ETDB -
-RTL8A - INTS6L +

@@ -1,3 +1,0 @@
-Total possible canonical cycle equivalent pairs found: 2
-s1 + s4 +
-s7 - s4 -

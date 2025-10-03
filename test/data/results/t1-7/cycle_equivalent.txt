@@ -1,0 +1,3 @@
+Total cycle equivalent pairs found: 2
+RSPH10B - RSPH10B2 -
+CCZ1B + CCZ1B +

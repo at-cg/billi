@@ -1,0 +1,3 @@
+Total cycle equivalent pairs found: 2
+A + E +
+E - E -

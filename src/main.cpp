@@ -61,69 +61,6 @@ struct bracketlist{
 // ****************************************************************************************************************************************************** 
 
 // ****************************************************************************************************************************************************** 
-// **** Helper functions ****
-// ****************************************************************************************************************************************************** 
-template <typename... Args>
-void printArgs(Args... args){
-    if(!PRINT)return;
-    ((cout << args << " "), ...) << endl; // Fold expression
-}
-
-void printBracketList(bracketlist* bl){
-    if(!PRINT)return;
-    // printArgs("d1:", bl->d1, "d2:", bl->d2);
-    cout << "Bracket List: ";
-    edge* it = bl->start;
-    while(it){
-        cout << it->id << " ";
-        it = it->front;
-    }cout << endl;
-}
-
-void printVector(vector<int>& v){
-    if(!PRINT)return;
-    for(int x : v){
-        cout << x << " ";
-    }
-    cout << endl;
-}
-
-void printVector(vector<pii>& v){
-    if(!PRINT)return;
-    for(pii x : v){
-        cout << "(" << x.F << ", " << x.S << ") ";
-    }
-    cout << endl;
-}
-
-void printVector(vector<char>& v){
-    if(!PRINT)return;
-    for(char x : v){
-        cout << x << " ";
-    }
-    cout << endl;
-}
-
-void printGraph(vector<vector<int>>& g){
-    if(!PRINT)return;
-    int sz = g.size();
-    for(int i = 0; i < sz; i++){
-        cout << i << ": ";
-        printVector(g[i]);
-    }
-}
-
-void printGraph(vector<vector<pii>>& g){
-    if(!PRINT)return;
-    int sz = g.size();
-    for(int i = 0; i < sz; i++){
-        cout << i << ": ";
-        printVector(g[i]);
-    }
-}
-// ****************************************************************************************************************************************************** 
-
-// ****************************************************************************************************************************************************** 
 // **** Input ****
 // ****************************************************************************************************************************************************** 
 fstream f;
@@ -136,6 +73,7 @@ vector<string> ilmap; // for storing the gene for a particular label
 vector<bool> has_self_loop; // whether the node has a self loop <- can't be cycle equivalent with any other node
 vector<vector<pii>> g; // (node_id, grey_edge_id)
 map<string, int> lmap; // for storing the label for a particular gene
+map<int, int> id_in_original_graph; // used to find the id in original graph, in order to use the property of black edges map[u] ^ map[v] = 1
 
 void get_ne() {
     ifstream f(inputpath);
@@ -255,7 +193,6 @@ vector<ll> tip_start; // will store the id from which extra edges because of tip
 vector<vector<int>> tips; // vector for storing the vertices that represent the tip
 vector<int> tot_grey_comp; // count of grey edges in the processed graph for individual components
 vector<vector<pii>> g_processed; // (node_id, grey_edge_id)
-map<int, int> id_in_original_graph; // used to find the id in original graph, in order to use the property of black edges map[u] ^ map[v] = 1
 
 set<int> find_unique_excluding_node(int u, int v){// exclude node u and v
     set<int> s;
@@ -756,6 +693,69 @@ void scc(){
 
 // ****************************************************************************************************************************************************** 
 
+// ****************************************************************************************************************************************************** 
+// **** Helper functions ****
+// ****************************************************************************************************************************************************** 
+template <typename... Args>
+void printArgs(Args... args){
+    if(!PRINT)return;
+    ((cout << args << " "), ...) << endl; // Fold expression
+}
+
+void printBracketList(bracketlist* bl){
+    if(!PRINT)return;
+    // printArgs("d1:", bl->d1, "d2:", bl->d2);
+    cout << "Bracket List: ";
+    edge* it = bl->start;
+    while(it){
+        cout << it->id << " ";
+        it = it->front;
+    }cout << endl;
+}
+
+void printVector(vector<int>& v){
+    if(!PRINT)return;
+    for(int x : v){
+        cout << x << " ";
+    }
+    cout << endl;
+}
+
+void printVector(vector<pii>& v, int ty = 0){
+    if(!PRINT)return;
+    for(pii x : v){
+        cout << "(" << (ty == 0 ? to_string(x.F) : get_label(x.F)) << ", " << x.S << ") ";
+    }
+    cout << endl;
+}
+
+void printVector(vector<char>& v){
+    if(!PRINT)return;
+    for(char x : v){
+        cout << x << " ";
+    }
+    cout << endl;
+}
+
+void printGraph(vector<vector<int>>& g){
+    if(!PRINT)return;
+    int sz = g.size();
+    for(int i = 0; i < sz; i++){
+        cout << i << ": ";
+        printVector(g[i]);
+    }
+}
+
+void printGraph(vector<vector<pii>>& g){
+    if(!PRINT)return;
+    int sz = g.size();
+    for(int i = 0; i < sz; i++){
+        cout << get_label(i) << ": ";
+        printVector(g[i], 1);
+    }
+}
+// ****************************************************************************************************************************************************** 
+
 int main(int argc, char* argv[])
 {   
     // ************************************
@@ -873,19 +873,27 @@ int main(int argc, char* argv[])
                             n_processed += 2;
                             type_edge[i] = '3';
                         }else if(splitfrom_u){
-                            if(cnt_vu == 0 && !has_self_loop[v]){ // tip case
-                                type_edge[i] = '0';
+                            if(cnt_vu == 0){ // tip case
+                                if(!has_self_loop[v]){
+                                    type_edge[i] = '0';
+                                }else{
+                                    n_processed += 2;
+                                    type_edge[i] = '3';
+                                }
                             }else{
-                                // n_processed++;
-                                n_processed += 2;
+                                n_processed++;
                                 type_edge[i] = '1';
                             }
                         }else if(splitfrom_v){
-                            if(cnt_uv == 0 && !has_self_loop[u]){
-                                type_edge[i] = '0';
+                            if(cnt_uv == 0){
+                                if(!has_self_loop[u]){
+                                    type_edge[i] = '0';
+                                }else{
+                                    n_processed += 2;
+                                    type_edge[i] = '3';
+                                }
                             }else{
-                                // n_processed++;
-                                n_processed += 2;
+                                n_processed++;
                                 type_edge[i] = '2';
                             }                        
                         }else{
@@ -893,7 +901,7 @@ int main(int argc, char* argv[])
                         }
                     }else type_edge[i] = '0';
 
-                    // cout << i << " " << type_edge[i] << endl;
+                    cout << i << " " << type_edge[i] << endl;
                 }
 
                 cout << "Number of nodes after initialisation: " << (n_processed / 2) << endl;
@@ -924,9 +932,9 @@ int main(int argc, char* argv[])
                         case '0':
                             neigh_copy(u, -1); neigh_copy(v, -1); break;
                         case '1':
-                            // neigh_copy(u, v); break;
+                            neigh_copy(u, v); break;
                         case '2':
-                            // neigh_copy(v, u); break;
+                            neigh_copy(v, u); break;
                         case '3':
                             neigh_copy(u, v); neigh_copy(v, u); break;
                         default:
@@ -938,7 +946,7 @@ int main(int argc, char* argv[])
                 // cout << "Number of edges after initialisation: " << edges << endl;
 
                 // printGraph(g);
-                // printGraph(g_processed);
+                printGraph(g_processed);
 
                 // ** Clearing the memory **
                 g.clear(); type_edge.clear();
@@ -1110,11 +1118,11 @@ int main(int argc, char* argv[])
         // *** Printing result ***
         // ************************************
         {
+            possible_pairs = canonical_sese.size();
             if(print_equivalent){
                 summarypath = outputdir + "/cycle_equivalent.txt";
                 freopen(summarypath.c_str(), "w", stdout);
 
-                possible_pairs = canonical_sese.size();
                 cout << "Total cycle equivalent pairs found: " << possible_pairs << endl;
                 
                 for(int i = 0; i < possible_pairs; i++){

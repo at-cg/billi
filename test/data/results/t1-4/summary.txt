@@ -1,4 +1,0 @@
-Total possible canonical cycle equivalent pairs found: 1
-FAM102B - SLC25A24 +
-Total valid canonical cycle equivalent pairs found: 1
-FAM102B - SLC25A24 +

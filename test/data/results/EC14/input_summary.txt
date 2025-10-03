@@ -1,5 +1,22 @@
 Number of nodes in the input: 5
 Number of edges in the input: 14
-Number of nodes after initialisation: 5
-Number of components in the processed graph: 1
+0 0
+1 0
+2 3
+3 0
+4 0
+Number of nodes after initialisation: 6
+KRCC1 -: (KRCC1 +, -1) 
+KRCC1 +: (KRCC1 -, -1) (RGPD1 -, 0) (RGPD2 -, 2) (RGPD1 -, 7) (RGPD2 -, 9) 
+RGPD1 -: (RGPD1 +, -1) (KRCC1 +, 0) (CD8B -, 1) (KRCC1 +, 7) (CD8B -, 8) 
+RGPD1 +: (RGPD1 -, -1) (PLGLB2 +, 4) (PLGLB2 +, 11) 
+PLGLB2 -: (PLGLB2 +, -1) (PLGLB2 -, 6) (PLGLB2 -, 13) 
+PLGLB2 +: (PLGLB2 -, -1) (RGPD1 +, 4) (RGPD2 +, 5) (RGPD1 +, 11) (RGPD2 +, 12) 
+RGPD2 -: (RGPD2 +, -1) (KRCC1 +, 2) (CD8B -, 3) (KRCC1 +, 9) (CD8B -, 10) 
+RGPD2 +: (RGPD2 -, -1) (PLGLB2 +, 5) (PLGLB2 +, 12) 
+CD8B -: (CD8B +, -1) (RGPD1 -, 1) (RGPD2 -, 3) (RGPD1 -, 8) (RGPD2 -, 10) 
+CD8B +: (CD8B -, -1) 
+PLGLB2 +: (PLGLB2 -, -1) 
+PLGLB2 -: (PLGLB2 +, -1) 
+Number of components in the processed graph: 2
 Number of components with zero tips: 0

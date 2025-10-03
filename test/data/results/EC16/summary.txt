@@ -1,8 +1,0 @@
-Total possible canonical cycle equivalent pairs found: 3
-5 + 8 +
-4 + 10 +
-1 + 4 +
-Total valid canonical cycle equivalent pairs found: 3
-5 + 8 +
-4 + 10 +
-1 + 4 +

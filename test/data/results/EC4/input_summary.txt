@@ -1,5 +1,20 @@
 Number of nodes in the input: 5
 Number of edges in the input: 10
+0 0
+1 0
+2 0
+3 0
+4 0
 Number of nodes after initialisation: 5
+A -: (A +, -1) 
+A +: (A -, -1) (D +, 0) (C +, 1) (D +, 5) (C +, 6) 
+B -: (B +, -1) 
+B +: (B -, -1) (D +, 2) (E +, 3) (D +, 7) (E +, 8) 
+C -: (C +, -1) 
+C +: (C -, -1) (A +, 1) (E +, 4) (A +, 6) (E +, 9) 
+D -: (D +, -1) 
+D +: (D -, -1) (A +, 0) (B +, 2) (A +, 5) (B +, 7) 
+E -: (E +, -1) 
+E +: (E -, -1) (B +, 3) (C +, 4) (B +, 8) (C +, 9) 
 Number of components in the processed graph: 1
 Number of components with zero tips: 0

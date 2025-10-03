@@ -1,5 +1,22 @@
 Number of nodes in the input: 5
 Number of edges in the input: 11
+0 1
+1 0
+2 4
+3 1
+4 4
 Number of nodes after initialisation: 6
+ARMCX1 -: (ARMCX1 +, -1) (ARMCX4 +, 3) (ARMCX4 +, 4) (GLA -, 5) (GLA -, 6) 
+ARMCX1 -: 
+ARMCX4 -: (ARMCX4 +, -1) (GLA -, 7) (GLA -, 8) 
+ARMCX4 +: (ARMCX4 -, -1) (ARMCX1 -, 3) (ARMCX1 -, 4) 
+ARMCX1 -: 
+ARMCX1 -: 
+GLA -: (GLA +, -1) (ARMCX1 -, 5) (ARMCX1 -, 6) (ARMCX4 -, 7) (ARMCX4 -, 8) 
+ARMCX1 -: 
+ARMCX1 -: 
+ARMCX1 -: 
+ARMCX1 +: (ARMCX1 -, -1) 
+GLA +: (GLA -, -1) 
 Number of components in the processed graph: 1
 Number of components with zero tips: 0

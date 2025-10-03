@@ -1,6 +1,0 @@
-Total possible canonical cycle equivalent pairs found: 2
-RSPH10B - RSPH10B2 +
-C1GALT1 - OCM -
-Total valid canonical cycle equivalent pairs found: 2
-RSPH10B - RSPH10B2 +
-C1GALT1 - OCM -

@@ -22,7 +22,7 @@ ulimit -s unlimited
 # /usr/bin/time -v ./main ../test/data/gfa_files/worst_case\(100000\).gfa ../test/data/results/worst_case\(100000\)
 # ./main ../test/data/gfa_files/t1-1.gfa ../test/data/results/t1-1
 
-DIR=../test/data/
+DIR=../test/data
 DDIR=$DIR/gfa_files
 RDIR=$DIR/results
 
@@ -36,10 +36,11 @@ for FILE in "$DDIR"/*; do
         # echo "$FILENAME"
         IFS='.' read -ra PARTS <<< "$FILENAME"
         TAG="${PARTS[0]}"
-        if [[ "$TAG" = "worst_case(100000)" ]]; then
-            continue
-        fi
+        # if [[ "$TAG" != "EC7" ]]; then
+        #     continue
+        # fi
         echo "$TAG"
-        ./main $DDIR/$FILENAME $RDIR/$TAG
+        ./main decompose -i $DDIR/$FILENAME -d 10 -c true -r true -p true -o $RDIR/$TAG
+        # ./main decompose -i $DDIR/$FILENAME -o $RDIR/$TAG
     fi
 done

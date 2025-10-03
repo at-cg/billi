@@ -1,4 +1,0 @@
-Total possible canonical cycle equivalent pairs found: 1
-L - I -
-Total valid canonical cycle equivalent pairs found: 1
-L - I -

@@ -1,6 +1,0 @@
-Total possible canonical cycle equivalent pairs found: 2
-C - G -
-A + C -
-Total valid canonical cycle equivalent pairs found: 2
-C - G -
-A + C -

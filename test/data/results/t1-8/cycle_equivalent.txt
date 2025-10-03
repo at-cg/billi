@@ -1,0 +1,3 @@
+Total cycle equivalent pairs found: 2
+ETDB - ETDB -
+ETDB + SMIM10L2B -

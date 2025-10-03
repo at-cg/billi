@@ -26,3 +26,4 @@ ulimit -s unlimited
 
 # CHM13-V1
 /usr/bin/time -v ./main decompose -i /home/daanish/projects/Billi_data/Data/CHM13/CHM13.gfa -d 10 -c true -r true -p true -o /home/daanish/projects/Pangene/results/Billi/CHM13
+

@@ -1,1 +1,0 @@
-Total valid canonical cycle equivalent pairs found: 0
