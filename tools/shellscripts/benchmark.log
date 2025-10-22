@@ -1,7 +1,6 @@
 make: Entering directory '/home/daanish/projects/panbubble/src'
-rm -f main 
+rm -f main_brute 
 make: Leaving directory '/home/daanish/projects/panbubble/src'
 make: Entering directory '/home/daanish/projects/panbubble/src'
-g++  -std=c++17 -O3 -I ~/include    main.cpp   -o main
+g++  -std=c++17 -O3 -I ~/include    main_brute.cpp   -o main_brute
 make: Leaving directory '/home/daanish/projects/panbubble/src'
-EC5

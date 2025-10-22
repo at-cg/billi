@@ -36,10 +36,14 @@ BUBBLE_PATH="$DIR_PATH/$TOOL/hprc/bubble.txt"
 
 ## vg find -x $DATA_IDX -p "chr7" | vg view -a - | grep '"type":"Variant"' > "$DIR_PATH/log.txt"
 
-vg deconstruct $DATA_IDX -P "HG04199#2#JBHDTI010000083.1#0[0-15992]" -a > $DATA_VCF
-gzip $DATA_VCF # https://github.com/pangenome/vcfbub/issues/4
+# vg deconstruct $DATA_IDX -P "HG04199#2#JBHDTI010000083.1#0[0-15992]" -a > $DATA_VCF
+# gzip $DATA_VCF # https://github.com/pangenome/vcfbub/issues/4
 
 # vg deconstruct $DATA -P chr15 -a > $DATA_VCF
 # -H "#" -P S288C -e -a -t 8
 
-vcfbub -l 0 -r 10000000 -i "$DATA_VCF.gz" > $FILT_VCF
+# vcfbub -l 0 -r 10000000 -i "$DATA_VCF.gz" > $FILT_VCF
+
+
+
+

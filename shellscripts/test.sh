@@ -40,7 +40,7 @@ for FILE in "$DDIR"/*; do
         #     continue
         # fi
         echo "$TAG"
-        ./main decompose -i $DDIR/$FILENAME -d 10 -c true -r true -p true -o $RDIR/$TAG
+        ./main decompose -i $DDIR/$FILENAME -o $RDIR/$TAG -c -d 100000
         # ./main decompose -i $DDIR/$FILENAME -o $RDIR/$TAG
     fi
 done

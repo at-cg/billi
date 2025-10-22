@@ -554,19 +554,17 @@ void sese(int u, int parent){
 // **** SCC **** 
 // ref - https://cp-algorithms.com/graph/strongly-connected-components.html extended to multigraph
 // ******************************************************************************************************************************************************  
-int counter = 0; // counter used in the brute force checking
 vector<bool> considered; // for saving which vertices have been considered twice while computing bb_comp
 vector<bool> valid; // for marking whether a potential bi-bubble is valid
 vector<int> bb_comp; // panbubble-component to which a node belongs to
-// vector<vector<int>> bb_nodes; // storing the nodes for different panbubbles
+vector<vector<int>> bb_nodes; // storing the nodes for different panbubbles
 vector<int> opp_entrance; // for saving the other end of the panbubble
-// vector<int> order; // will be a sorted list of G's vertices by exit time
-vector<short> to_chk; // which side of gene to check during second pass of brute (-1 -> initialisation, 0 -> 2 * i, 1 -> 2 * i + 1, 2 -> both)
-vector<short> visit_order; // from which side the gene has been visited (-1 -> not visited, 0 -> rs.F, 1 -> rs.S, 2 -> both)
+vector<int> aux_cc_comp; // connected-component in the auxiliary graph to which a node belongs to
+vector<int> order; // will be a sorted list of G's vertices by exit time
 vector<vector<int>> ag; // directed graph
 vector<vector<int>> ag_rev; // create adjacency list of G^T   
 
-string get_single_label(int x, int ty = 0){
+string get_single_label(int x, int ty){
     x = id_in_original_graph[x];
     return ((ty == 0 ? (x & 1 ? ">" : "<") : (x & 1 ? "<" : ">")) + ilmap[x >> 1]);
 }
@@ -587,81 +585,108 @@ void add_directed_edges_from_gene_endpoints(int id1, int id2){
     ag[dual[id1]].pb(id2); ag[dual[id2]].pb(id1);
 }
 
-void upd_node(int u, int id, int ty){
-    // cout << "upd_node " << get_single_label(u, 0) << " " << id << " " << ty << endl;
-    if(visit_order[u] != 2)visit_order[u] = ty;
-
-    int u1 = id_in_original_graph[u];
-    int gene = u1 >> 1;    
-    if(ty == 0){
-        if(to_chk[gene] == -1){
-            to_chk[gene] = u1 & 1;
-            counter++;
-        }
-        else{
-            if((u1 & 1) != to_chk[gene])to_chk[gene] = 2;
-        }
-    }else{
-        if(to_chk[gene] == 2){
-            counter--;
-            to_chk[gene] = -2; // -2 -> same gene does not reduce the counter multiple times
-        }else{
-            short required = 1 - (u1 & 1);
-            if(to_chk[gene] == required || to_chk[gene] == -1){
-                counter--;
-                to_chk[gene] = -2;
-            }
-        }
-    }
-
+void upd_node(int u, int id){
+    mark[u] = true;
+    if(bb_comp[u] != id) bb_nodes[id].pb(u);
     if(bb_comp[u] == -1)bb_comp[u] = id;
-
-    // cout << "upd_node " << get_single_label(u, 0) << " " << id << " " << ty << endl;
 }
 
-bool mark_bb_nodes(int u, pii& rs, int id, int ty){
-    // if(id == 1)
-    // cout << get_single_label(u, 0) << " " << id << " " << ty << endl;
-
-    if(!end_gene(u, rs)){// only the directed genes \in \tilde{U} set
-        upd_node(u, id, ty);
-    }
-
-    if(opp_entrance[u] == -2){
-        if(!valid[bb_comp[u]])return false;
-
-        int w = opp_entrance[dual[u]];
-        assert(w != -1);
-
-        if(!end_gene(w, rs)){
-            mark_bb_nodes(w, rs, id, ty);
-        }
-        return true;
-    }
-
-    for(pii child : g_processed[dual[u]]){
-        int v = child.F;
-
-        if(child.S >= tip_start[biedged_connected_comp[rs.S]] || child.S == -1 || end_gene(v, rs))continue; // don't consider the edges added because of tips
-        if(visit_order[v] == ty || visit_order[v] == 2){
-            if(!valid[bb_comp[v]])return false;
-
-            int w = opp_entrance[dual[v]];
-            if(w != -1){
-                // cout << "before upd " << get_single_label(u, 0) << " child " << get_single_label(v, 0) << " " << id << " " << ty << endl;
-
-                upd_node(v, id, ty);
+void mark_bb_nodes(int u, pii& rs, int id){
+    int w = opp_entrance[u];
                 
-                // cout << "after upd " << get_single_label(u, 0) << " child " << get_single_label(v, 0) << " " << id << " " << ty << endl;
+    if(w != -1){
+        int v = dual[w];
+        considered[w] = true;
 
-                mark_bb_nodes(w, rs, id, ty);
+        if(!end_gene(v, rs)){
+            mark_bb_nodes(v, rs, id);
+        }
+        return;
+    }
+
+    // if((u == rs.S || u == dual[rs.S]) && bb_nodes[id].size() != 0)return; // u == dual[rs.S] -> can go to y complement but then the pair is not cycle equivalent, if size = 0 implies hairpin loop
+    if(u != rs.F){// only the directed genes \in \tilde{U} set
+        upd_node(u, id);
+    }
+
+    for(pii child : g_processed[u]){
+        int v = child.F;
+     
+        if(child.S >= tip_start[biedged_connected_comp[rs.S]] || end_gene(v, rs))continue; // don't consider the edges added because of tips
+        if(mark[v]){
+            if(!considered[v]){    
+                w = opp_entrance[v];
+                if(w != -1){
+                    v = dual[w];
+                    considered[w] = true;
+                }
+                // if(bb_comp[v] != bb_comp[rs.F])bb_nodes[id].pb(v); // if the two panbubbles are adjacent, then too start and end points of the panbubble will be added, however the complete set need not be added                          
+                if(!end_gene(v, rs)){
+                    considered[v] = true;
+                    mark_bb_nodes(v, rs, id);
+                }
             }
             continue;
         }
-        mark_bb_nodes(v, rs, id, ty);
+        mark_bb_nodes(v, rs, id);
+    }
+}
+
+void make_auxillary_graph_from_biedged_graph(){
+    for(int i = 0; i < n_processed; i++){
+        for(pii child : g_processed[i]){
+            if(child.S >= tip_start[biedged_connected_comp[child.F]] || child.S == -1)continue; // don't consider the edges added because of tips and the black edges
+            if(i <= child.F)add_directed_edges_from_gene_endpoints(i, child.F); // making sure edges are added only in one direction
+        }
     }
 
-    return true;
+    // using the extra added edges
+    for(pii rs : canonical_sese){
+        // printArgs("Overlapping edge:", dual[rs.F], dual[rs.S]);
+        add_directed_edges_from_gene_endpoints(dual[rs.F], dual[rs.S]);
+    }
+}
+
+// runs depth first search starting at vertex v.
+// each visited vertex is appended to the output vector when dfs leaves it.
+void scc_dfs(int v, vector<vector<int>> const& adj, vector<int>& output) {
+    mark[v] = true;
+    for (auto u : adj[v])
+        if (!mark[u])
+            scc_dfs(u, adj, output);
+    output.push_back(v);
+}
+
+void scc(){
+    fill(mark.begin(), mark.end(), false);
+
+    // first series of depth first searches
+    for (int i = 0; i < n_processed; i++)
+        if (!mark[i])
+            scc_dfs(i, ag, order);
+
+    ag_rev.resize(n_processed);
+    
+    for (int v = 0; v < n_processed; v++)
+        for (int u : ag[v])
+            ag_rev[u].push_back(v);
+
+    fill(mark.begin(), mark.end(), false);
+    reverse(order.begin(), order.end());
+
+    // second series of depth first searches
+    for (int v : order)
+        if (!mark[v]) {
+            vector<int> component;
+            scc_dfs(v, ag_rev, component);
+            // printVector(component);
+            int root = *min_element(begin(component), end(component));
+            for (int u : component)
+                aux_cc_comp[u] = root;
+        }
+    
+    ag_rev.clear(); 
+    // vector<vector<int>>().swap(ag_rev);
 }
 
 // ****************************************************************************************************************************************************** 
@@ -697,7 +722,7 @@ void printVector(vector<int>& v){
 void printVector(vector<pii>& v, int ty = 0){
     if(!PRINT)return;
     for(pii x : v){
-        cout << "(" << (ty == 0 ? to_string(x.F) : get_single_label(x.F, 1)) << ", " << x.S << ") ";
+        cout << "(" << (ty == 0 ? to_string(x.F) : get_single_label(x.F, 0)) << ", " << x.S << ") ";
     }
     cout << endl;
 }
@@ -753,7 +778,7 @@ int main(int argc, char* argv[])
         decomp->add_flag("-c, --cycle-equivalent", print_equivalent, "Whether cycle equivalent pairs are to be reported");
         decomp->add_flag("-r, --report-hairpins", print_hairpin, "Whether hairpins are to be reported");
         decomp->add_flag("-p, --print-panbubble-tree", print_panbubble_tree, "Whether the panbubble tree is to be printed");
-        
+         
         CLI11_PARSE(app, argc, argv);
 
         if(!fs::exists(outputdir))fs::create_directories(outputdir);
@@ -979,7 +1004,7 @@ int main(int argc, char* argv[])
     }
 
     // ************************************
-    // *** Finding Possible Panbubble Pairs ***
+    // *** Finding Possible Bibubble Pairs ***
     // ************************************
     {
         // ************************************
@@ -1109,56 +1134,180 @@ int main(int argc, char* argv[])
     }
 
     // ************************************
-    // *** Finding Valid Panbubble Pairs in G_O using Brute force ***
+    // *** Finding Valid Bibubble Pairs in G_O ***
     // ************************************
     {   
         if(possible_pairs != 0){
-            fill(mark.begin(), mark.end(), false);
-            considered.resize(n_processed, false);
-            valid.resize(possible_pairs, true);
-            visit_order.resize(n_processed, -1);
-            opp_entrance.resize(n_processed, -1);
-            bb_comp.resize(n_processed, -1);
-            to_chk.resize(n, -1);
-
-            for(int i = 0; i < possible_pairs; i++){
-                pii rs = canonical_sese[i];
-                counter = 0;
-                
-                valid[i] = mark_bb_nodes(dual[rs.F], rs, i, 0); // do not add the end points, checking only in one direction
-
-                // cout << "1 " << counter << endl;
-
-                valid[i] = valid[i] & mark_bb_nodes(dual[rs.S], rs, i, 1);
-
-                // cout << "2 " << counter << endl;
-
-                valid[i] = valid[i] & (counter == 0);
-
-                visit_order[rs.F] = visit_order[rs.S] = visit_order[dual[rs.F]] = visit_order[dual[rs.S]] = 2;
-                bb_comp[rs.F] = bb_comp[rs.S] = bb_comp[dual[rs.F]] = bb_comp[dual[rs.S]] = i;
-                opp_entrance[rs.F] = rs.S; opp_entrance[rs.S] = rs.F;
-              
-                if(valid[i])valid_pairs++;
+            // ************************************
+            // *** SCC ***
+            // ************************************
+            {   
+                aux_cc_comp.resize(n_processed, -1);
+                ag.resize(n_processed);
+                // need not connect tips here
+                make_auxillary_graph_from_biedged_graph(); // need not read the file again
+                // printArgs("Auxiliary graph:");
+                // printGraph(ag);
+                scc();
             }
 
-            considered.clear(); opp_entrance.clear(); to_chk.clear(); bb_comp.clear(); visit_order.clear();
+            // ************************************
+            // *** Finding U set  (Using biedged graph representation for the same) ***
+            // ************************************
+            {
+                fill(mark.begin(), mark.end(), false);
+                bb_comp.resize(n_processed, -1);
+                bb_nodes.resize(possible_pairs);
+                considered.resize(n_processed, false);
+                opp_entrance.resize(n_processed, -1);
+                
+                for(int i = 0; i < possible_pairs; i++){ // space requirement is linear since the inner-most nested bubbles will appear on the top
+                    pii rs = canonical_sese[i];
+                    // upd_node(id_in_original_graph[rs.F] ^ 1, i); // will create issues when two panbubbles are adjacent
+                    mark_bb_nodes(rs.F, rs, i); // do not add the end points, checking only in one direction
+                    mark[rs.F] = mark[rs.S] = mark[dual[rs.F]] = mark[dual[rs.S]] = true;
+                    bb_comp[rs.F] = bb_comp[rs.S] = bb_comp[dual[rs.F]] = bb_comp[dual[rs.S]] = i;
+                    opp_entrance[rs.F] = rs.S; opp_entrance[rs.S] = rs.F;
+                }
+
+                // for(int i = 0; i < possible_pairs; i++){
+                //     printArgs("bb_nodes", i, ":");
+                //     printVector(bb_nodes[i]);
+                // }
+
+                considered.clear(); opp_entrance.clear();
+            }
         }
 
-        summarypath = outputdir + "/summary.txt";
-        freopen(summarypath.c_str(), "a", stdout);
-        cout << "Total panbubbles found till the input depth: " << valid_pairs << endl;
+        valid.resize(possible_pairs, true);
+        bg.resize(possible_pairs);
+        root_bg.resize(possible_pairs, true);
+        inb.resize(possible_pairs, false);
+        valid_pairs = possible_pairs;
 
-        summarypath = outputdir + "/panbubble.txt";
-        freopen(summarypath.c_str(), "w", stdout);
-
-        // string header = "CC	BB  bbID  parID  side1  side2  #alleles  #genes  geneList\nCC   AL  #hap  walk haplotypeList\nCC";
-        // cout << header << endl;
-        
+        // ************************************
+        // *** Validating the Theorem ***
+        // ************************************
         for(int i = 0; i < possible_pairs; i++){
             pii rs = canonical_sese[i];
-            if(!valid[i] || rs.F == rs.S) continue;
-            cout << get_label(rs.F, rs.S) << endl;
+            for(int u : bb_nodes[i]){
+                // assert(bb_comp[u] != -1);
+                // assert(!end_gene(u, rs));
+                // if(!end_gene(u, rs)){ // check only for internal nodes
+                    if(valid[bb_comp[u]] && !inb[bb_comp[u]]){
+                        // cout << i << " " << u << " " << get_label(u) << endl;
+                        if(end_gene(u, canonical_sese[bb_comp[u]])){
+                            root_bg[bb_comp[u]] = false;
+                            bg[i].pb(bb_comp[u]);
+                            inb[bb_comp[u]] = true;
+                        }
+                    }
+                    if(!((aux_cc_comp[u] == aux_cc_comp[rs.F] || aux_cc_comp[u] == aux_cc_comp[dual[rs.F]]) && valid[bb_comp[u]])){
+                        valid[i] = false;
+                        valid_pairs--;
+                        break;
+                    }
+                // }
+            }
+
+            // Can contain hairpins with size = 0 (edge with a loop in the end)
+            if(bb_nodes[i].size() == 0){
+                // valid[i] = false;
+                // valid_pairs--;
+            }
+
+            if(rs.F == rs.S)hairpins += valid[i];
+        }
+
+        bb_nodes.clear(); bb_comp.clear(); inb.clear();
+
+        // ************************************
+        // *** Printing the result ***
+        // ************************************        
+        {
+            // ** Clearing the memory **
+            tip_start.clear(); 
+            // vector<ll>().swap(tip_start);
+
+            if(print_panbubble_tree){
+                summarypath = outputdir + "/panbubble_tree.txt";
+                freopen(summarypath.c_str(), "w", stdout);
+                for(int i = 0; i < possible_pairs; i++){
+                    pii rs = canonical_sese[i];
+                    // if(valid[i] && rs.F != rs.S){
+                    if(valid[i]){
+                        if(root_bg[i]){
+                            cout << "_, " << get_label_from_id(i) << endl;
+                        }
+                        for(int v : bg[i]){
+                            cout << get_label_from_id(i) << ", " << get_label_from_id(v) << endl;
+                        }
+                    }
+                }
+            }
+
+            // ** Removing the bubbles with depth > maxdepth **
+            bubble_depth.resize(possible_pairs, -1);
+            for(int i = 0; i < possible_pairs; i++){
+                pii rs = canonical_sese[i];
+                if(valid[i] && rs.F != rs.S && root_bg[i]){
+                    qbg.push_back(i);
+                    bubble_depth[i] = 1;
+                }
+            }
+
+            while(!qbg.empty()){
+                int u = qbg.front();
+                qbg.pop_front();
+                for(int v : bg[u]){
+                    if(bubble_depth[v] != -1 || !valid[v]){
+                        continue;
+                    }
+                    bubble_depth[v] = bubble_depth[u] + 1;
+                    qbg.push_back(v);
+                }
+            }
+
+            for(int i = 0; i < possible_pairs; i++){
+                if(bubble_depth[i] > maxdepth){
+                    valid[i] = false;
+                    valid_pairs--;
+                }
+            }
+
+            summarypath = outputdir + "/summary.txt";
+            freopen(summarypath.c_str(), "a", stdout);
+            cout << "Total panbubbles found till the input depth: " << (valid_pairs - hairpins) << endl;
+
+            summarypath = outputdir + "/panbubble.txt";
+            freopen(summarypath.c_str(), "w", stdout);
+
+            // string header = "CC	BB  bbID  parID  side1  side2  #alleles  #genes  geneList\nCC   AL  #hap  walk haplotypeList\nCC";
+            // cout << header << endl;
+            
+            for(int i = 0; i < possible_pairs; i++){
+                pii rs = canonical_sese[i];
+                if(!valid[i] || rs.F == rs.S) continue;
+                cout << get_label(rs.F, rs.S) << endl;
+            }
+
+            if(print_hairpin){
+                summarypath = outputdir + "/summary.txt";
+                freopen(summarypath.c_str(), "a", stdout);
+                cout << "Total hairpins found: " << hairpins << endl;
+    
+                summarypath = outputdir + "/hairpins.txt";
+                freopen(summarypath.c_str(), "w", stdout);
+
+                for(int i = 0; i < possible_pairs; i++){
+                    pii rs = canonical_sese[i];
+                    if(!valid[i] || rs.F != rs.S) continue;
+                    cout << get_label(rs.F, rs.S) << endl;
+                }
+            }
         }
     }
-}
+} 
+
+// TODO:
+// cyclic cases

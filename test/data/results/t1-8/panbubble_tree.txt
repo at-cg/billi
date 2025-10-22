@@ -1,2 +1,0 @@
-_, (ETDB, ETDB)
-_, (ETDB, SMIM10L2B)

@@ -36,6 +36,12 @@ int tot_grey = 0; // for storing total number of grey edges, will help in access
 int maxd; // max depth possible = total number of nodes
 string summarypath; // path where the given stats will be written
 vector<bool> mark; // for marking the vertices that are have been visited
+vector<string> ilmap; // for storing the gene for a particular label
+map<int, int> id_in_original_graph; // used to find the id in original graph, in order to use the property of black edges map[u] ^ map[v] = 1
+
+string get_single_label(int x, int ty){
+    return ((ty == 0 ? (x & 1 ? ">" : "<") : (x & 1 ? "<" : ">")) + ilmap[x >> 1]);
+}
 // ****************************************************************************************************************************************************** 
 
 // ****************************************************************************************************************************************************** 
@@ -61,19 +67,80 @@ struct bracketlist{
 // ****************************************************************************************************************************************************** 
 
 // ****************************************************************************************************************************************************** 
+// **** Helper functions ****
+// ****************************************************************************************************************************************************** 
+template <typename... Args>
+void printArgs(Args... args){
+    if(!PRINT)return;
+    ((cout << args << " "), ...) << endl; // Fold expression
+}
+
+void printBracketList(bracketlist* bl){
+    if(!PRINT)return;
+    // printArgs("d1:", bl->d1, "d2:", bl->d2);
+    cout << "Bracket List: ";
+    edge* it = bl->start;
+    while(it){
+        cout << it->id << " ";
+        it = it->front;
+    }cout << endl;
+}
+
+void printVector(vector<int>& v){
+    if(!PRINT)return;
+    for(int x : v){
+        cout << x << " ";
+    }
+    cout << endl;
+}
+
+void printVector(vector<pii>& v, int ty = 0){
+    if(!PRINT)return;
+    for(pii x : v){
+        cout << "(" << (ty == 0 ? to_string(x.F) : get_single_label(x.F, 0)) << ", " << x.S << ") ";
+    }
+    cout << endl;
+}
+
+void printVector(vector<char>& v){
+    if(!PRINT)return;
+    for(char x : v){
+        cout << x << " ";
+    }
+    cout << endl;
+}
+
+void printGraph(vector<vector<int>>& g){
+    if(!PRINT)return;
+    int sz = g.size();
+    for(int i = 0; i < sz; i++){
+        cout << i << ": ";
+        printVector(g[i]);
+    }
+}
+
+void printGraph(vector<vector<pii>>& g){
+    if(!PRINT)return;
+    int sz = g.size();
+    for(int i = 0; i < sz; i++){
+        cout << get_single_label(i, 0) << ": ";
+        printVector(g[i], 1);
+    }
+}
+// ****************************************************************************************************************************************************** 
+
+// ****************************************************************************************************************************************************** 
 // **** Input ****
 // ****************************************************************************************************************************************************** 
 fstream f;
 string inputpath, outputdir;
-bool print_equivalent = false, print_hairpin = false, print_panbubble_tree = false; // whether to report the cycle equivalent pairs and hairpins
-int maxdepth = 1; // max depth to which the panbubbles are to be reported
+bool print_allele = false, print_equivalent = false, print_hairpin = false, print_panbubble_tree = false; // whether to report alleles, cycle equivalent pairs and hairpins
+int maxsize = 1000, maxdepth = 1; // max size of panbubbles whose vertices are also to be printed, max depth to which the panbubbles are to be reported
 int n, edges; // no of nodes (genes), no of edges
 // int before_initialisation_comp_cnt = 0; // no of connected components in the input graph before initialisation
-vector<string> ilmap; // for storing the gene for a particular label
 vector<bool> has_self_loop; // whether the node has a self loop <- can't be cycle equivalent with any other node
-vector<vector<pii>> g; // (node_id, grey_edge_id)
+vector<vector<pii>> g; // (node_id, gray_edge_id)
 map<string, int> lmap; // for storing the label for a particular gene
-map<int, int> id_in_original_graph; // used to find the id in original graph, in order to use the property of black edges map[u] ^ map[v] = 1
 
 void get_ne() {
     ifstream f(inputpath);
@@ -108,7 +175,7 @@ void get_ne() {
                     ++n;
                 } else if (tokens[0] == "L") {
                     ++edges;
-                } else break;
+                } //else if (n != 0) break;
             }
         }
         f.close();
@@ -173,7 +240,30 @@ void make_graph() {
         f.close();
     }
 }
+// ****************************************************************************************************************************************************** 
 
+// ****************************************************************************************************************************************************** 
+// **** Compacted Graph ****
+// ****************************************************************************************************************************************************** 
+int cnt_gray_edge = 0; // count of gray edges in the compacted graph
+vector<vector<pii>> g_compacted; // (node_id, gray_edge_id)
+queue<int> q_compact; // queue used for clustering the edges in a linear chain
+vector<bool> can_compact; // whether a gene has been visited during clustering used for compaction
+vector<bool> upd_vertex; // whether the adjacency list of a vertex has been updated during compaction
+
+bool chk_for_compaction(int id){
+    int n1 = id << 1, n2 = n1 + 1;
+    if(g[n1].size() == 2 && g[n2].size() == 2 && !has_self_loop[n1] && !has_self_loop[n2]){
+        // cout << n1 << " " << n2 << endl;
+        if((g[n1][0].F != g[n1][1].F) && (g[n2][0].F != g[n2][1].F)){
+            int u = g[n1][1].F, v = g[n2][1].F;
+            if(g[u].size() > 2 || g[v].size() > 2)return false;
+            // if(can_compact[u >> 1] || can_compact[v >> 1])return false; // cycle cases
+            can_compact[id] = true;
+            return true;
+        }else return false;
+    }else return false;
+}
 // ****************************************************************************************************************************************************** 
 
 // ****************************************************************************************************************************************************** 
@@ -192,7 +282,7 @@ vector<int> dual; // id of the vertex connected via a black edge to the given ve
 vector<ll> tip_start; // will store the id from which extra edges because of tips are added for each biedged_connected_comp
 vector<vector<int>> tips; // vector for storing the vertices that represent the tip
 vector<int> tot_grey_comp; // count of grey edges in the processed graph for individual components
-vector<vector<pii>> g_processed; // (node_id, grey_edge_id)
+vector<vector<pii>> g_processed; // (node_id, gray_edge_id)
 
 set<int> find_unique_excluding_node(int u, int v){// exclude node u and v
     set<int> s;
@@ -202,29 +292,6 @@ set<int> find_unique_excluding_node(int u, int v){// exclude node u and v
         if(s.size() == 2)break;
     }
     return s;
-}
-
-void neigh_copy(int u, int x){
-    // black edges added in the start
-    if(x != -1){
-        int v = id_ptr++; // new node created
-        id_in_original_graph[v] = x;
-        g_processed[v].pb({u, -1}); // will be a black edge, tot_grey won't be incremented
-        g_processed[u].pb({v, -1}); 
-        // edges += 2; // not to count the black edges
-        dual[u] = v; dual[v] = u;
-    }else{
-        if(u & 1){// done only once for the odd labeled vertex
-            dual[u] = u ^ 1; dual[u ^ 1] = u;
-        }
-    }
-    // no new grey edges added
-    for(pii child : g[u]){
-        if(child.F == x)continue;
-        g_processed[u].pb(child);
-        // edges++;
-    }
-    id_in_original_graph[u] = u;
 }
 
 void dfs_comp(int u){ // Finding connected components in the biedged graph
@@ -245,35 +312,6 @@ int find_unique_including_selfloop(int u){ // skip u ^ 1
         break;
     }
     return s.size();
-}
-// ****************************************************************************************************************************************************** 
-
-// ******************************************************************************************************************************************************  
-// **** Finding bridges ****
-// ******************************************************************************************************************************************************  
-int timer = 0; // for finding bridges in the uninitialised graph
-vector<int> tin, low;
-vector<bool> mark_bridge;
-
-void dfs_bridge(int u, int parent){
-    // printArgs("dfs_bridge:", u, parent);
-    mark[u] = true;
-    tin[u] = low[u] = timer++;
-
-    for(pii child : g[u]){
-        int v = child.F;
-        if(v == parent)continue; // a multiedge b/w 2 nodes can also result in a bridge
-        if(mark[v])low[u] = min(low[u], tin[v]);
-        else{
-            dfs_bridge(v, u);
-            low[u] = min(low[u], low[v]);
-            // printArgs(u, v, low[v], tin[u]);
-            if(low[v] > tin[u] && ((u ^ v) == 1)){
-                // printArgs("Bridge found:", u, v);
-                mark_bridge[u >> 1] = true;
-            } // strictly greater sign (>) -- loop case
-        }
-    }
 }
 // ****************************************************************************************************************************************************** 
 
@@ -550,212 +588,6 @@ void sese(int u, int parent){
 }
 // ******************************************************************************************************************************************************  
 
-// ****************************************************************************************************************************************************** 
-// **** SCC **** 
-// ref - https://cp-algorithms.com/graph/strongly-connected-components.html extended to multigraph
-// ******************************************************************************************************************************************************  
-vector<bool> considered; // for saving which vertices have been considered twice while computing bb_comp
-vector<bool> valid; // for marking whether a potential bi-bubble is valid
-vector<int> bb_comp; // panbubble-component to which a node belongs to
-vector<vector<int>> bb_nodes; // storing the nodes for different panbubbles
-vector<int> opp_entrance; // for saving the other end of the panbubble
-vector<int> aux_cc_comp; // connected-component in the auxiliary graph to which a node belongs to
-vector<int> order; // will be a sorted list of G's vertices by exit time
-vector<vector<int>> ag; // directed graph
-vector<vector<int>> ag_rev; // create adjacency list of G^T   
-
-string get_label(int x){
-    x = id_in_original_graph[x];
-    return (ilmap[x >> 1] + " " + (x & 1 ? "+" : "-"));
-}
-
-string get_label(int x, int y){
-    return (get_label(x) + " " + get_label(y));
-}
-
-string get_label_from_id(int id){
-    int x = id_in_original_graph[canonical_sese[id].F];
-    int y = id_in_original_graph[canonical_sese[id].S];
-    return "(" + ilmap[x >> 1] + ", " + ilmap[y >> 1] + ")";
-}
-
-bool end_gene(int& u, pii& rs){
-    return u == rs.F || u == dual[rs.F] || u == rs.S || u == dual[rs.S];
-}
-
-void add_directed_edges_from_gene_endpoints(int id1, int id2){
-    ag[dual[id1]].pb(id2); ag[dual[id2]].pb(id1);
-}
-
-void upd_node(int u, int id){
-    mark[u] = true;
-    if(bb_comp[u] != id) bb_nodes[id].pb(u);
-    if(bb_comp[u] == -1)bb_comp[u] = id;
-}
-
-void mark_bb_nodes(int u, pii& rs, int id){
-    int w = opp_entrance[u];
-                
-    if(w != -1){
-        int v = dual[w];
-        considered[w] = true;
-
-        if(!end_gene(v, rs)){
-            mark_bb_nodes(v, rs, id);
-        }
-        return;
-    }
-
-    // if((u == rs.S || u == dual[rs.S]) && bb_nodes[id].size() != 0)return; // u == dual[rs.S] -> can go to y complement but then the pair is not cycle equivalent, if size = 0 implies hairpin loop
-    if(u != rs.F){// only the directed genes \in \tilde{U} set
-        upd_node(u, id);
-    }
-
-    for(pii child : g_processed[u]){
-        int v = child.F;
-     
-        if(child.S >= tip_start[biedged_connected_comp[rs.S]] || end_gene(v, rs))continue; // don't consider the edges added because of tips
-        if(mark[v]){
-            if(!considered[v]){    
-                w = opp_entrance[v];
-                if(w != -1){
-                    v = dual[w];
-                    considered[w] = true;
-                }
-                // if(bb_comp[v] != bb_comp[rs.F])bb_nodes[id].pb(v); // if the two panbubbles are adjacent, then too start and end points of the panbubble will be added, however the complete set need not be added                          
-                if(!end_gene(v, rs)){
-                    considered[v] = true;
-                    mark_bb_nodes(v, rs, id);
-                }
-            }
-            continue;
-        }
-        mark_bb_nodes(v, rs, id);
-    }
-}
-
-void make_auxillary_graph_from_biedged_graph(){
-    for(int i = 0; i < n_processed; i++){
-        for(pii child : g_processed[i]){
-            if(child.S >= tip_start[biedged_connected_comp[child.F]] || child.S == -1)continue; // don't consider the edges added because of tips and the black edges
-            if(i <= child.F)add_directed_edges_from_gene_endpoints(i, child.F); // making sure edges are added only in one direction
-        }
-    }
-
-    // using the extra added edges
-    for(pii rs : canonical_sese){
-        // printArgs("Overlapping edge:", dual[rs.F], dual[rs.S]);
-        add_directed_edges_from_gene_endpoints(dual[rs.F], dual[rs.S]);
-    }
-}
-
-// runs depth first search starting at vertex v.
-// each visited vertex is appended to the output vector when dfs leaves it.
-void scc_dfs(int v, vector<vector<int>> const& adj, vector<int>& output) {
-    mark[v] = true;
-    for (auto u : adj[v])
-        if (!mark[u])
-            scc_dfs(u, adj, output);
-    output.push_back(v);
-}
-
-void scc(){
-    fill(mark.begin(), mark.end(), false);
-
-    // first series of depth first searches
-    for (int i = 0; i < n_processed; i++)
-        if (!mark[i])
-            scc_dfs(i, ag, order);
-
-    ag_rev.resize(n_processed);
-    
-    for (int v = 0; v < n_processed; v++)
-        for (int u : ag[v])
-            ag_rev[u].push_back(v);
-
-    fill(mark.begin(), mark.end(), false);
-    reverse(order.begin(), order.end());
-
-    // second series of depth first searches
-    for (int v : order)
-        if (!mark[v]) {
-            vector<int> component;
-            scc_dfs(v, ag_rev, component);
-            // printVector(component);
-            int root = *min_element(begin(component), end(component));
-            for (int u : component)
-                aux_cc_comp[u] = root;
-        }
-    
-    ag_rev.clear(); 
-    // vector<vector<int>>().swap(ag_rev);
-}
-
-// ****************************************************************************************************************************************************** 
-
-// ****************************************************************************************************************************************************** 
-// **** Helper functions ****
-// ****************************************************************************************************************************************************** 
-template <typename... Args>
-void printArgs(Args... args){
-    if(!PRINT)return;
-    ((cout << args << " "), ...) << endl; // Fold expression
-}
-
-void printBracketList(bracketlist* bl){
-    if(!PRINT)return;
-    // printArgs("d1:", bl->d1, "d2:", bl->d2);
-    cout << "Bracket List: ";
-    edge* it = bl->start;
-    while(it){
-        cout << it->id << " ";
-        it = it->front;
-    }cout << endl;
-}
-
-void printVector(vector<int>& v){
-    if(!PRINT)return;
-    for(int x : v){
-        cout << x << " ";
-    }
-    cout << endl;
-}
-
-void printVector(vector<pii>& v, int ty = 0){
-    if(!PRINT)return;
-    for(pii x : v){
-        cout << "(" << (ty == 0 ? to_string(x.F) : get_label(x.F)) << ", " << x.S << ") ";
-    }
-    cout << endl;
-}
-
-void printVector(vector<char>& v){
-    if(!PRINT)return;
-    for(char x : v){
-        cout << x << " ";
-    }
-    cout << endl;
-}
-
-void printGraph(vector<vector<int>>& g){
-    if(!PRINT)return;
-    int sz = g.size();
-    for(int i = 0; i < sz; i++){
-        cout << i << ": ";
-        printVector(g[i]);
-    }
-}
-
-void printGraph(vector<vector<pii>>& g){
-    if(!PRINT)return;
-    int sz = g.size();
-    for(int i = 0; i < sz; i++){
-        cout << get_label(i) << ": ";
-        printVector(g[i], 1);
-    }
-}
-// ****************************************************************************************************************************************************** 
-
 int main(int argc, char* argv[])
 {   
     // ************************************
@@ -775,15 +607,17 @@ int main(int argc, char* argv[])
         decomp->add_option("-i, --input", inputpath, "Input GFA")->required();
         decomp->add_option("-o, --output", outputdir, "Directory for saving the output files")->required();
         decomp->add_option("-d, --depth", maxdepth, "Maximum depth up to which the panbubbles are to be reported (1 means outermost)")->default_val(1);
-        decomp->add_option("-c, --cycle-equivalent", print_equivalent, "Whether cycle equivalent pairs are to be reported")->default_val(false);
-        decomp->add_option("-r, --report-hairpins", print_hairpin, "Whether hairpins are to be reported")->default_val(false);
-        decomp->add_option("-p, --print-panbubble-tree", print_panbubble_tree, "Whether the panbubble tree is to be printed")->default_val(false);
-        
+        decomp->add_option("-m, --maxsize", maxsize, "Output vertices in the panbubble of size atmost [maxsize]")->default_val(1000);
+        decomp->add_flag("-a, --allele", print_allele, "Whether alleles are to be reported for each panbubble");
+        decomp->add_flag("-c, --cycle-equivalent", print_equivalent, "Whether cycle equivalent pairs are to be reported");
+        decomp->add_flag("-r, --report-hairpins", print_hairpin, "Whether hairpins are to be reported");
+        decomp->add_flag("-p, --print-panbubble-tree", print_panbubble_tree, "Whether the panbubble tree is to be printed");
+         
         CLI11_PARSE(app, argc, argv);
 
         if(!fs::exists(outputdir))fs::create_directories(outputdir);
         
-        summarypath = outputdir + "/input_summary.txt";
+        summarypath = outputdir + "/summary.txt";
         freopen(summarypath.c_str(), "w", stdout);
 
         get_ne();
@@ -804,501 +638,178 @@ int main(int argc, char* argv[])
     }
 
     // ************************************
-    // *** Initialisation ***    
+    // *** Graph Cleaning ***    
     // ************************************
     {
-        // Graph compression - removing unitigs --- Not implementing currently -> can get done without this
-    
         // ************************************
-        // *** Using Tarjan's algorithm to find bridge edges ***  // could have used sese but this is much faster in practice 
-        // Implementation adapted from : https://cp-algorithms.com/graph/bridge-searching.html
+        // *** Removing parallel gray edges ***
         // ************************************
-        {   
-            // ** Initialise **
-            mark.resize(2 * n);
-            mark_bridge.resize(n);
-            tin.resize(2 * n, -1); low.resize(2 * n, -1);
-
+        {
             for(int i = 0; i < 2 * n; i++){
-                if(mark[i]){
-                    continue;
-                }
-                dfs_bridge(i, -1);
-            }
-            
-            // printArgs("Bridges Found:");
-            // for(int i = 0; i < n; i++){
-            //     if(mark_bridge[i])cout << i << " ";
-            // }
-            // cout << endl;
+                sort(g[i].begin() + 1, g[i].end());
 
-            // ** Clearing the memory **
-            tin.clear(); low.clear();
-            // vector<int>().swap(tin); vector<int>().swap(low);
+                // case for a black and a gray edge
+                int add = 0;
+                if(g[i].size() >= 2){
+                    if(g[i][0].F == g[i][1].F){
+                        add = 1;
+                    }
+                }
+                g[i].erase(unique(g[i].begin() + add, g[i].end(), [](auto &a, auto &b){return a.first == b.first;}), g[i].end());
+            }
         }
 
         // ************************************
-        // *** Splitting the graph from the bridge point ***  // done carefully such that unitig compression is not required
+        // *** Graph compaction - removing unitigs (removing based on the genes (edges) and not the vertices) ***
         // ************************************
         {   
-            // ************************************
-            // *** Finding new n and marking the type of split ***
-            // ************************************
-            {
-                // ** Initialise **
-                n_processed = 2 * n;
-                type_edge.resize(n);
+            // clustering till the end edges are achieved
+            can_compact.resize(n);
+            upd_vertex.resize(2 * n);
+            g_compacted.resize(2 * n);
 
-                for(int i = 0; i < n; i++){ // iterate over all the black edges
-                    if(mark_bridge[i]){
-                        int u = i << 1, v = u + 1;
-                        set<int> neigh_uv = find_unique_excluding_node(u, v); int cnt_uv = neigh_uv.size();
-                        set<int> neigh_vu = find_unique_excluding_node(v, u); int cnt_vu = neigh_vu.size();
-                        bool splitfrom_u = false, splitfrom_v = false;
-                        if(cnt_uv >= 2){
-                            splitfrom_u = true;
-                        }else if(cnt_uv == 1){
-                            int x = *neigh_uv.begin();
-                            set<int> neigh_xu = find_unique_excluding_node(x, u); int cnt_xu = neigh_xu.size();
-                            if(cnt_xu >= 2)splitfrom_u = true;
+            for(int i = 0; i < n; i++){
+                if(can_compact[i])continue;
+                // cout << "can_compact " << get_single_label(i, 0) << endl;
+
+                if(chk_for_compaction(i)){
+                    // cout << "can_compact " << get_single_label(i, 0) << endl;
+
+                    q_compact.push(i);
+                    int left = i << 1, right = left + 1;
+                    while(!q_compact.empty()){
+                        int gene = q_compact.front(); q_compact.pop();
+
+                        int gene_L = gene << 1, gene_R = gene_L + 1;
+                        int add_L = g[gene_L][1].F >> 1, add_R = g[gene_R][1].F >> 1;
+                        if(!can_compact[add_L]){
+                            left = g[gene_L][1].F;
+                            if(chk_for_compaction(add_L)){
+                                q_compact.push(add_L);
+                            }                            
                         }
-                        if(cnt_vu >= 2){
-                            splitfrom_v = true;
-                        }else if(cnt_vu == 1){
-                            int w = *neigh_vu.begin();
-                            set<int> neigh_wv = find_unique_excluding_node(w, v); int cnt_wv = neigh_wv.size();
-                            if(cnt_wv >= 2)splitfrom_v = true;
-                        }
-                        if(splitfrom_u && splitfrom_v){
-                            n_processed += 2;
-                            type_edge[i] = '3';
-                        }else if(splitfrom_u){
-                            if(cnt_vu == 0){ // tip case
-                                if(!has_self_loop[v]){
-                                    type_edge[i] = '0';
-                                }else{
-                                    n_processed += 2;
-                                    type_edge[i] = '3';
-                                }
-                            }else{
-                                n_processed++;
-                                type_edge[i] = '1';
+                        if(!can_compact[add_R]){
+                            right = g[gene_R][1].F;
+                            if(chk_for_compaction(add_R)){
+                                q_compact.push(add_R);
                             }
-                        }else if(splitfrom_v){
-                            if(cnt_uv == 0){
-                                if(!has_self_loop[u]){
-                                    type_edge[i] = '0';
-                                }else{
-                                    n_processed += 2;
-                                    type_edge[i] = '3';
-                                }
-                            }else{
-                                n_processed++;
-                                type_edge[i] = '2';
-                            }                        
-                        }else{
-                            type_edge[i] = '4';
                         }
-                    }else type_edge[i] = '0';
-
-                    cout << i << " " << type_edge[i] << endl;
-                }
-
-                cout << "Number of nodes after initialisation: " << (n_processed / 2) << endl;
-
-                // printArgs("Type of edges in the original graph");
-                // printVector(type_edge);
-                
-                // ** Clearing the memory **
-                mark_bridge.clear(); has_self_loop.clear();
-                // vector<bool>().swap(mark_bridge); vector<bool>().swap(has_self_loop);
-            }
-
-            // ************************************
-            // *** Initialising the processed graph ***
-            // ************************************
-            {   
-                // ** Initialise **
-                id_ptr = 2 * n;
-                // edges = 0;
-                dual.resize(n_processed);
-                g_processed.resize(n_processed);
-                maxd = n_processed + 100;
-
-                for(int i = 0; i < n; i++){ // copying data from graph g
-                    int u = i << 1, v = u + 1;
-                    switch (type_edge[i])
-                    {
-                        case '0':
-                            neigh_copy(u, -1); neigh_copy(v, -1); break;
-                        case '1':
-                            neigh_copy(u, v); break;
-                        case '2':
-                            neigh_copy(v, u); break;
-                        case '3':
-                            neigh_copy(u, v); neigh_copy(v, u); break;
-                        default:
-                            break;
                     }
+
+                    cout << i << " " << get_single_label(left, 0) << " " << get_single_label(right, 0) << endl;
+
+                    int l1 = left, l2 = left ^ 1;
+                    g_compacted[l1].pb({l2, -1}); g_compacted[l2].pb({l1, -1});
+
+                    int r1 = right, r2 = right ^ 1;
+                    if((l1 ^ r1) != 1){
+                        g_compacted[r1].pb({r2, -1}); g_compacted[r2].pb({r1, -1});
+
+                        g_compacted[l1].pb({r1, cnt_gray_edge}); g_compacted[r1].pb({l1, cnt_gray_edge++});
+                    }
+                    upd_vertex[l1] = upd_vertex[r1] = true;
+
+                    for(int j = 1; j < g[l2].size(); j++){ // have removed parallel gray edges
+                        int u = g[l2][j].F;
+                        // cout << i << " " << get_single_label(u, 0) << endl;
+                        if(upd_vertex[u] || (can_compact[u >> 1] && (u != r2)))continue; // u != r2 -> gray edge (cyclic case)
+                        g_compacted[l2].pb({u, cnt_gray_edge});
+                        g_compacted[u].pb({l2, cnt_gray_edge++}); // 0th edge maynot be the -1 edge
+                    }
+                    for(int j = 1; j < g[r2].size(); j++){
+                        int u = g[r2][j].F;
+                        if(upd_vertex[u] || can_compact[u >> 1])continue;
+                        g_compacted[r2].pb({u, cnt_gray_edge});
+                        g_compacted[u].pb({r2, cnt_gray_edge++});
+                    }
+                    upd_vertex[l2] = upd_vertex[r2] = true;
+
+                    can_compact[l1 >> 1] = can_compact[r1 >> 1] = true;
                 }
-                // assert(id_ptr == n_processed);
-                // edges /= 2;
-                // cout << "Number of edges after initialisation: " << edges << endl;
-
-                // printGraph(g);
-                printGraph(g_processed);
-
-                // ** Clearing the memory **
-                g.clear(); type_edge.clear();
-                // vector<vector<pii>>().swap(g); vector<char>().swap(type_edge);
             }
+
+            for(int i = 0; i < n; i++){
+                if(can_compact[i])continue;
+
+                int left = i << 1, right = left + 1;
+                g_compacted[left].pb({right, -1}); g_compacted[right].pb({left, -1});
+                for(int j = 1; j < g[left].size(); j++){
+                    int u = g[left][j].F;
+                    if(upd_vertex[u] || can_compact[u >> 1])continue;
+                    g_compacted[left].pb({u, cnt_gray_edge}); 
+                    g_compacted[u].pb({left, cnt_gray_edge++}); 
+                }
+                upd_vertex[left] = true;
+
+                for(int j = 1; j < g[right].size(); j++){
+                    int u = g[right][j].F;
+                    if(upd_vertex[u] || can_compact[u >> 1])continue;
+                    g_compacted[right].pb({u, cnt_gray_edge}); 
+                    g_compacted[u].pb({right, cnt_gray_edge++});
+                }
+                upd_vertex[right] = true;
+            }
+
+            cout << "Number of gray edges after compaction: " << cnt_gray_edge << endl;
+
+            printGraph(g);
+            printArgs("------");
+            printGraph(g_compacted);
+
+            // ** Clearing the memory **
+            g.clear();
         }
+    }
         
-        // ************************************
-        // *** Finding number of connected components in the processed graph***    
-        // count of vertices = n_processed
-        // count of edges = n (no of genes)
-        // ************************************
-        {
-            // ** Initialise **
-            mark.resize(n_processed);
-            fill(mark.begin(), mark.end(), false);
-            biedged_connected_comp.resize(n_processed);
+        // // ************************************
+        // // *** Finding number of connected components in the processed graph***    
+        // // count of vertices = n_processed
+        // // count of black edges = n (no of genes)
+        // // ************************************
+        // {
+        //     // ** Initialise **
+        //     mark.resize(n_processed);
+        //     fill(mark.begin(), mark.end(), false);
+        //     biedged_connected_comp.resize(n_processed);
 
-            for(int i = 0; i < n_processed; i++){
-                if(mark[i] || g_processed[i].size() == 0){
-                    continue;
-                }
-                dfs_comp(i);
-                first_node.pb(i);
-                after_initialisation_comp_cnt++;
-            }
-            cout << "Number of components in the processed graph: " << after_initialisation_comp_cnt << endl;
-        }
+        //     for(int i = 0; i < n_processed; i++){
+        //         if(mark[i] || g_processed[i].size() == 0){
+        //             continue;
+        //         }
+        //         dfs_comp(i);
+        //         first_node.pb(i);
+        //         after_initialisation_comp_cnt++;
+        //     }
+        //     cout << "Number of components in the processed graph: " << after_initialisation_comp_cnt << endl;
+        // }
 
-        // ************************************
-        // *** Identifying tips ***
-        // ************************************
-        {
-            // ** Initialise **
-            tips.resize(after_initialisation_comp_cnt);
+        // // ************************************
+        // // *** Identifying tips ***
+        // // ************************************
+        // {
+        //     // ** Initialise **
+        //     tips.resize(after_initialisation_comp_cnt);
             
-            for(int i = 0; i < n_processed; i++){
-                if(g_processed[i].size() == 0)continue;
-                // only connected via a black edge or a grey edge to (i ^ 1)
-                if(find_unique_including_selfloop(i) == 0){ // much stricter condition than below
-                // if(g_processed[i].size() == 1){
-                    tips[biedged_connected_comp[i]].pb(i);
-                    // assert((id_in_original_graph[g_processed[i][0].F] ^ id_in_original_graph[i]) == 1); // checking whether the node is connected via a black edge
-                }
-            }
+        //     for(int i = 0; i < n_processed; i++){
+        //         if(g_processed[i].size() == 0)continue;
+        //         // only connected via a black edge or a grey edge to (i ^ 1)
+        //         if(find_unique_including_selfloop(i) == 0){ // much stricter condition than below
+        //         // if(g_processed[i].size() == 1){
+        //             tips[biedged_connected_comp[i]].pb(i);
+        //             // assert((id_in_original_graph[g_processed[i][0].F] ^ id_in_original_graph[i]) == 1); // checking whether the node is connected via a black edge
+        //         }
+        //     }
 
-            int cnt_zero = 0;
-            for(int i = 0; i < after_initialisation_comp_cnt; i++){
-                // printArgs("Tips", i);
-                // printVector(tips[i]);
-                if(tips[i].size() == 0)cnt_zero++;
-            }
-            cout << "Number of components with zero tips: " << cnt_zero << endl;
-        }
-    }
-
-    // ************************************
-    // *** Finding Possible Bibubble Pairs ***
-    // ************************************
-    {
-        // ************************************
-        // *** Finding node S ***
-        // ************************************        
-        {
-            // ** Initialise **
-            tip_start.resize(after_initialisation_comp_cnt, -1);
-            Start.resize(after_initialisation_comp_cnt, -1);
-            depth.resize(n_processed);
-            bl.resize(n_processed);
-            rm_cnt.resize(n_processed);
-            fill(mark.begin(), mark.end(), false);
-            
-            for(int it = 0; it < after_initialisation_comp_cnt; it++){
-                if(tips[it].size() == 0){ 
-                    int val = edges;
-                    sese_minbracket(first_node[it], -1, Start[it], val); // node belonging to the edge with minimum bracket set size
-                    // printArgs("Cyclic component Starting point", ilmap[id_in_original_graph[Start[it]] >> 1]);
-                    // no extra edges required
-                }else{
-                    Start[it] = tips[it][0]; 
-                    // if(tips.size() > 1){// else no need to add an extra edge
-                        for(int i = 1; i < tips[it].size(); i++){
-                            if(tip_start[it] == -1)tip_start[it] = tot_grey; // marking the starting id for the edges added because of tips
-                            add_edge(g_processed, Start[it], tips[it][i]);
-                        }
-                    // }
-                }
-                if(tips[it].size() <= 1)tip_start[it] = maxv; 
-            }
-
-            // printArgs("S nodes:");
-            // printVector(Start);
-
-            // printGraph(g_processed);
-
-            // ** Clearing the memory **
-            rm_cnt.clear(); first_node.clear();
-            // vector<int>().swap(rm_cnt); vector<int>().swap(first_node);
-        }
-    
-        // ************************************
-        // *** Finding depth and number of backedges for individual components ***
-        // ************************************
-        {
-            // ** Initialise **
-            backedge_cnt.resize(after_initialisation_comp_cnt);
-            fill(depth.begin(), depth.end(), 0);
-            fill(mark.begin(), mark.end(), false);
-
-            for(int it = 0; it < after_initialisation_comp_cnt; it++){   
-                // Finding an upperbound on the number of backedges <- only these will contribute to the brackets
-                nodes = 0;
-                dfs_depth(Start[it], -1, it);
-                backedge_cnt[it] += nodes; // capping backedges (for every node at most one capping back edge)
-            }
-        }
-
-        // ************************************
-        // *** Reinitialising edge ids ***
-        // ************************************
-        {   
-            tot_grey_comp.resize(after_initialisation_comp_cnt);
-
-            for(int pass = 0; pass < 2; pass++){
-                fill(mark.begin(), mark.end(), false);
-
-                for(int it = 0; it < after_initialisation_comp_cnt; it++){
-                    if(pass == 1 && tip_start[it] == maxv)continue; // no change required
-                    reinitialise_edge_ids(Start[it], -1, it, pass);
-                }
-            }
-
-            tot_grey_comp.clear();
-        }
-
-        // ************************************
-        // *** SESE ***
-        // ************************************
-        {
-            remove_brackets.resize(n_processed);
-            // visit_time.resize(n_processed, -1);
-            bl.clear();
-            fill(mark.begin(), mark.end(), false);
-            for(int it = 0; it < after_initialisation_comp_cnt; it++){
-                // multiplier = 1;
-                // while(multiplier <= backedge_cnt[it]){
-                //     multiplier *= 10;
-                // }
-                // st.clear(); 
-                st0 = -1;
-                sese(Start[it], -1); // graph g is not changed
-                // assert(stack_trace.size() == 0); 
-
-                // corner case
-                if(tips[it].size() == 1){
-                    canonical_sese.pb({dual[tips[it][0]], dual[tips[it][0]]});
-                }
-            }
-    
-            // ** Clearing the memory **
-            bl.clear(); remove_brackets.clear(); // visit_time.clear(); 
-            Start.clear(); depth.clear(); 
-            backedge_cnt.clear(); tips.clear();
-            // vector<bracketlist*>().swap(bl); vector<vector<edge*>>().swap(remove_brackets); vector<int>().swap(Start); vector<int>().swap(depth);  
-            // vector<int>().swap(backedge_cnt);  vector<vector<int>>().swap(tips);
-        }
-        
-        // ************************************
-        // *** Printing result ***
-        // ************************************
-        {
-            possible_pairs = canonical_sese.size();
-            if(print_equivalent){
-                summarypath = outputdir + "/cycle_equivalent.txt";
-                freopen(summarypath.c_str(), "w", stdout);
-
-                cout << "Total cycle equivalent pairs found: " << possible_pairs << endl;
-                
-                for(int i = 0; i < possible_pairs; i++){
-                    pii rs = canonical_sese[i];
-                    cout << get_label(rs.F, rs.S) << endl;                  
-                }
-            }
-        }
-    }
-
-    // ************************************
-    // *** Finding Valid Bibubble Pairs in G_O ***
-    // ************************************
-    {   
-        if(possible_pairs != 0){
-            // ************************************
-            // *** SCC ***
-            // ************************************
-            {   
-                aux_cc_comp.resize(n_processed, -1);
-                ag.resize(n_processed);
-                // need not connect tips here
-                make_auxillary_graph_from_biedged_graph(); // need not read the file again
-                // printArgs("Auxiliary graph:");
-                // printGraph(ag);
-                scc();
-            }
-
-            // ************************************
-            // *** Finding U set  (Using biedged graph representation for the same) ***
-            // ************************************
-            {
-                fill(mark.begin(), mark.end(), false);
-                bb_comp.resize(n_processed, -1);
-                bb_nodes.resize(possible_pairs);
-                considered.resize(n_processed, false);
-                opp_entrance.resize(n_processed, -1);
-                
-                for(int i = 0; i < possible_pairs; i++){ // space requirement is linear since the inner-most nested bubbles will appear on the top
-                    pii rs = canonical_sese[i];
-                    // upd_node(id_in_original_graph[rs.F] ^ 1, i); // will create issues when two panbubbles are adjacent
-                    mark_bb_nodes(rs.F, rs, i); // do not add the end points, checking only in one direction
-                    mark[rs.F] = mark[rs.S] = mark[dual[rs.F]] = mark[dual[rs.S]] = true;
-                    bb_comp[rs.F] = bb_comp[rs.S] = bb_comp[dual[rs.F]] = bb_comp[dual[rs.S]] = i;
-                    opp_entrance[rs.F] = rs.S; opp_entrance[rs.S] = rs.F;
-                }
-
-                // for(int i = 0; i < possible_pairs; i++){
-                //     printArgs("bb_nodes", i, ":");
-                //     printVector(bb_nodes[i]);
-                // }
-
-                considered.clear(); opp_entrance.clear();
-            }
-        }
-
-        valid.resize(possible_pairs, true);
-        bg.resize(possible_pairs);
-        root_bg.resize(possible_pairs, true);
-        inb.resize(possible_pairs, false);
-        valid_pairs = possible_pairs;
-
-        // ************************************
-        // *** Validating the Theorem ***
-        // ************************************
-        for(int i = 0; i < possible_pairs; i++){
-            pii rs = canonical_sese[i];
-            for(int u : bb_nodes[i]){
-                // assert(bb_comp[u] != -1);
-                // assert(!end_gene(u, rs));
-                // if(!end_gene(u, rs)){ // check only for internal nodes
-                    if(valid[bb_comp[u]] && !inb[bb_comp[u]]){
-                        // cout << i << " " << u << " " << get_label(u) << endl;
-                        if(end_gene(u, canonical_sese[bb_comp[u]])){
-                            root_bg[bb_comp[u]] = false;
-                            bg[i].pb(bb_comp[u]);
-                            inb[bb_comp[u]] = true;
-                        }
-                    }
-                    if(!((aux_cc_comp[u] == aux_cc_comp[rs.F] || aux_cc_comp[u] == aux_cc_comp[dual[rs.F]]) && valid[bb_comp[u]])){
-                        valid[i] = false;
-                        valid_pairs--;
-                        break;
-                    }
-                // }
-            }
-
-            // Can contain hairpins with size = 0 (edge with a loop in the end)
-            if(bb_nodes[i].size() == 0){
-                // valid[i] = false;
-                // valid_pairs--;
-            }
-
-            if(rs.F == rs.S)hairpins += valid[i];
-        }
-
-        bb_nodes.clear(); bb_comp.clear(); inb.clear();
-
-        // ************************************
-        // *** Printing the result ***
-        // ************************************        
-        {
-            // ** Clearing the memory **
-            tip_start.clear(); 
-            // vector<ll>().swap(tip_start);
-
-            if(print_panbubble_tree){
-                summarypath = outputdir + "/panbubble_tree.txt";
-                freopen(summarypath.c_str(), "w", stdout);
-                for(int i = 0; i < possible_pairs; i++){
-                    pii rs = canonical_sese[i];
-                    // if(valid[i] && rs.F != rs.S){
-                    if(valid[i]){
-                        if(root_bg[i]){
-                            cout << "_, " << get_label_from_id(i) << endl;
-                        }
-                        for(int v : bg[i]){
-                            cout << get_label_from_id(i) << ", " << get_label_from_id(v) << endl;
-                        }
-                    }
-                }
-            }
-
-            // ** Removing the bubbles with depth > maxdepth **
-            bubble_depth.resize(possible_pairs, -1);
-            for(int i = 0; i < possible_pairs; i++){
-                pii rs = canonical_sese[i];
-                if(valid[i] && rs.F != rs.S && root_bg[i]){
-                    qbg.push_back(i);
-                    bubble_depth[i] = 1;
-                }
-            }
-
-            while(!qbg.empty()){
-                int u = qbg.front();
-                qbg.pop_front();
-                for(int v : bg[u]){
-                    if(bubble_depth[v] != -1 || !valid[v]){
-                        continue;
-                    }
-                    bubble_depth[v] = bubble_depth[u] + 1;
-                    qbg.push_back(v);
-                }
-            }
-
-            for(int i = 0; i < possible_pairs; i++){
-                if(bubble_depth[i] > maxdepth){
-                    valid[i] = false;
-                    valid_pairs--;
-                }
-            }
-
-            summarypath = outputdir + "/panbubble.txt";
-            freopen(summarypath.c_str(), "w", stdout);
-
-            cout << "Total panbubbles found till the input depth: " << (valid_pairs - hairpins) << endl;
-            for(int i = 0; i < possible_pairs; i++){
-                pii rs = canonical_sese[i];
-                if(!valid[i] || rs.F == rs.S) continue;
-                cout << get_label(rs.F, rs.S) << endl;
-            }
-
-            if(print_hairpin){
-                summarypath = outputdir + "/hairpins.txt";
-                freopen(summarypath.c_str(), "w", stdout);
-
-                cout << "Total hairpins found: " << hairpins << endl;
-                for(int i = 0; i < possible_pairs; i++){
-                    pii rs = canonical_sese[i];
-                    if(!valid[i] || rs.F != rs.S) continue;
-                    cout << get_label(rs.F, rs.S) << endl;
-                }
-            }
-        }
-    }
+        //     int cnt_zero = 0;
+        //     for(int i = 0; i < after_initialisation_comp_cnt; i++){
+        //         // printArgs("Tips", i);
+        //         // printVector(tips[i]);
+        //         if(tips[i].size() == 0)cnt_zero++;
+        //     }
+        //     cout << "Number of components with zero tips: " << cnt_zero << endl;
+        // }
 } 
 
 // TODO:
 // cyclic cases
+// sending vars by refs

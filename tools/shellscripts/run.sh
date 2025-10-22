@@ -34,29 +34,58 @@ fi
 #     mkdir -p $OUT_DIR1
 # fi
 
+## Compacting the graph
+# if [ ! -d "$(dirname $FULL_PATH)/BubbleGun" ]; then
+#     mkdir -p "$(dirname $FULL_PATH)/BubbleGun"
+# fi
+
+# COMPACT_PATH="$(dirname $FULL_PATH)/BubbleGun/${FILE_NAME}_compact.gfa"
+
+# BubbleGun -g $FULL_PATH compact $COMPACT_PATH
+
 # BubbleGun -g $FULL_PATH bchains --bubble_json "$OUT_DIR1/$FILE_NAME.json"
+# BubbleGun -g $COMPACT_PATH bchains --bubble_json "$OUT_DIR1/${FILE_NAME}_compact.json"
+
 # rm -rf "BubbleGun.${FILE_NAME}.log"
 
 # echo "Done running BubbleGun for input $FILE_NAME" >> $LOG
 
 
 ## vg
-OUT_DIR2="$OUT_DIR/vg"
-if [ ! -d "$OUT_DIR2" ]; then
-    mkdir -p $OUT_DIR2
-fi
+# OUT_DIR2="$OUT_DIR/vg"
+# if [ ! -d "$OUT_DIR2" ]; then
+#     mkdir -p $OUT_DIR2
+# fi
 
-vg convert -g $FULL_PATH > "$FILE_NAME.vg"
-vg index -x "$FILE_NAME.xg" "$FILE_NAME.vg"
+# TYPE=('' '_mod')
+# BTYPE=('' '_ultrabubble')
+# MAXNODES=1000000000
 
-## Choose the right method and output before running
-vg snarls -A cactus -a "$FILE_NAME.xg" > "$OUT_DIR2/$FILE_NAME.snarls"
+# vg convert -g $FULL_PATH > "$FILE_NAME.vg"
+# vg mod -n "$FILE_NAME.vg" > "${FILE_NAME}_mod.vg"
 
-vg view -j -R "$OUT_DIR2/$FILE_NAME.snarls" > "$OUT_DIR2/${FILE_NAME}_snarls.json"
+# for TY in "${TYPE[@]}"; do
 
-rm -rf "$FILE_NAME.vg" "$FILE_NAME.xg" "$OUT_DIR2/$FILE_NAME.snarls"
+#     vg index -x "${FILE_NAME}$TY.xg" "${FILE_NAME}$TY.vg"
 
-echo "Done running vg for input $FILE_NAME" >> $LOG
+#     ## Choose the right method and output before running (-A cactus)
+#     for BTY in "${BTYPE[@]}"; do
+#         if [[ "$BTY" == "_ultrabubble" ]]; then
+#             vg snarls -o -m $MAXNODES "${FILE_NAME}$TY.xg" > "$OUT_DIR2/${FILE_NAME}${TY}${BTY}.snarls"
+#         else
+#             vg snarls -a -m $MAXNODES "${FILE_NAME}$TY.xg" > "$OUT_DIR2/${FILE_NAME}${TY}${BTY}.snarls"
+#         fi
+
+#         vg view -j -R "$OUT_DIR2/${FILE_NAME}${TY}${BTY}.snarls" > "$OUT_DIR2/${FILE_NAME}${TY}${BTY}_snarls.json"
+
+#         rm -rf "$OUT_DIR2/${FILE_NAME}${TY}${BTY}.snarls"
+
+#         echo "Done running vg for input ${FILE_NAME}${TY}${BTY}" >> $LOG
+#     done
+
+#     rm -rf "${FILE_NAME}$TY.vg" "${FILE_NAME}$TY.xg"
+
+# done
 
 
 ## povu
@@ -65,21 +94,21 @@ echo "Done running vg for input $FILE_NAME" >> $LOG
 #     mkdir -p $OUT_DIR3
 # fi
 
-# povu deconstruct -v 2 -h -t 48 -i $FULL_PATH -o $OUT_DIR3
+# povu decompose -h -s -i $FULL_PATH -o $OUT_DIR3
 
 # echo "Done running povu for input $FILE_NAME" >> $LOG
 
 
-## Billi
-OUT_DIR4="$OUT_DIR/Billi/$FILE_NAME"
+## panbubble
+OUT_DIR4="$OUT_DIR/panbubble_stress/$FILE_NAME"
 if [ ! -d "$OUT_DIR4" ]; then
     mkdir -p $OUT_DIR4
 fi
 
 EXE=../../src/main
-$EXE $FULL_PATH $OUT_DIR4
+$EXE decompose -i $FULL_PATH -d 10 -c -r -p -o $OUT_DIR4
 
-echo "Done running Billi for input $FILE_NAME" >> $LOG
+echo "Done running panbubble for input $FILE_NAME" >> $LOG
 
 
 ## pangene
@@ -89,7 +118,7 @@ echo "Done running Billi for input $FILE_NAME" >> $LOG
 #     touch "$OUT_DIR5/$FILE_NAME.txt"
 # fi
 
-# cd ../../../Billi_data/pangene
+# cd ../../../panbubble_data/pangene
 # k8 pangene.js call $FULL_PATH > "../results/test/pangene/$FILE_NAME.txt"
 
 # echo "Done running pangene for input $FILE_NAME" >> $LOG

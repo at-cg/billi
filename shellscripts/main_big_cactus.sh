@@ -19,11 +19,13 @@ make clean
 make
 ulimit -s unlimited
 
+DEPTH=1000000000
+
 ## HPRC
 
 # HG38
-/usr/bin/time -v ./main decompose -i /home/daanish/projects/Billi_data/Data/HG38/HG38.gfa -d 10 -c true -r true -p true -o /home/daanish/projects/Pangene/results/Billi/HG38
+/usr/bin/time -v ./main decompose -i /home/daanish/projects/panbubble_data/Data/HG38/v1/HG38.gfa -d $DEPTH -c true -r true -p true -o /home/daanish/projects/Pangene/results/panbubble/HG38
 
 # CHM13-V1
-/usr/bin/time -v ./main decompose -i /home/daanish/projects/Billi_data/Data/CHM13/CHM13.gfa -d 10 -c true -r true -p true -o /home/daanish/projects/Pangene/results/Billi/CHM13
+/usr/bin/time -v ./main decompose -i /home/daanish/projects/panbubble_data/Data/CHM13/v1/CHM13.gfa -d $DEPTH -c true -r true -p true -o /home/daanish/projects/Pangene/results/panbubble/CHM13
 

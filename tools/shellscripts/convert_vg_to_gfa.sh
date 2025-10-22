@@ -1,8 +1,8 @@
 #!/bin/bash
-#PBS -N Convert
+#PBS -N Convert_HG38
 #PBS -l nodes=1:ppn=48
-#PBS -q regular
-#PBS -l walltime=24:00:00
+#PBS -q long
+#PBS -l walltime=72:00:00
 #PBS -o op.log
 #PBS -e op.err
  
@@ -14,7 +14,24 @@ fi
 
 set -e
 
-DIR='../../../Billi_data/Data/CHM13/chromosomes'
+# REFERENCE=("CHM13" "HG38")
+REFERENCE=("HG38")
 
-vg index "$DIR/chr1.vg" -x "$DIR/chr1.xg"
-vg convert -f "$DIR/chr1.xg" > "$DIR/chr1.gfa"
+for REF in "${REFERENCE[@]}"; do
+
+    DIR="../../../panbubble_data/Data/$REF/v2/chromosomes"
+
+    for FILE in "$DIR"/*.vg; do
+        if [ -f "$FILE" ]; then
+
+            base="${FILE%.*}"
+
+            vg index $FILE -x "$base.xg"
+            vg convert -f "$base.xg" > "$base.gfa"
+
+            rm -rf "$base.xg"
+
+        fi
+    done
+
+done

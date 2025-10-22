@@ -1112,6 +1112,7 @@ int main(int argc, char* argv[])
     // *** Finding Valid Panbubble Pairs in G_O using Brute force ***
     // ************************************
     {   
+
         if(possible_pairs != 0){
             fill(mark.begin(), mark.end(), false);
             considered.resize(n_processed, false);

@@ -21,26 +21,26 @@ ulimit -s unlimited
 
 
 # C4-90
-/usr/bin/time -v ./main_brute /scratch/projects/daanish/data/Bubbles/Data/C4/C4-90.gfa /home/daanish/projects/Pangene/results/Billi/C4-90
+/usr/bin/time -v ./main_brute decompose -i /scratch/projects/daanish/data/Bubbles/Data/C4/C4-90.gfa -o /home/daanish/projects/panbubble/test/data/results_brute/C4-90 -c 
 
 # MHC
-/usr/bin/time -v ./main_brute /scratch/projects/daanish/data/Bubbles/Data/MHC/MHC.gfa /home/daanish/projects/Pangene/results/Billi/MHC
+/usr/bin/time -v ./main_brute decompose -i /scratch/projects/daanish/data/Bubbles/Data/MHC/MHC.gfa -o /home/daanish/projects/panbubble/test/data/results_brute/MHC -c 
 
 # E-coli
-/usr/bin/time -v ./main_brute /scratch/projects/daanish/data/Bubbles/Data/Ecoli/Ecoli.gfa /home/daanish/projects/Pangene/results/Billi/Ecoli
+/usr/bin/time -v ./main_brute decompose -i /scratch/projects/daanish/data/Bubbles/Data/Ecoli/Ecoli.gfa -o /home/daanish/projects/panbubble/test/data/results_brute/Ecoli -c 
 
 # Human100
-/usr/bin/time -v ./main_brute /scratch/projects/daanish/data/Bubbles/Data/Human/human100.gfa /home/daanish/projects/Pangene/results/Billi/human100
+/usr/bin/time -v ./main_brute decompose -i /scratch/projects/daanish/data/Bubbles/Data/Human/human100.gfa -o /home/daanish/projects/panbubble/test/data/results_brute/human100 -c
 
 # Human100p10
-/usr/bin/time -v ./main_brute /scratch/projects/daanish/data/Bubbles/Data/Human/human100p10.gfa /home/daanish/projects/Pangene/results/Billi/human100p10
+/usr/bin/time -v ./main_brute decompose -i /scratch/projects/daanish/data/Bubbles/Data/Human/human100p10.gfa -o /home/daanish/projects/panbubble/test/data/results_brute/human100p10 -c 
 
 # Mtb152m-p0a1
-/usr/bin/time -v ./main_brute /scratch/projects/daanish/data/Bubbles/Data/Human/Mtb152m-p0a1.gfa /home/daanish/projects/Pangene/results/Billi/Mtb152m-p0a1
+/usr/bin/time -v ./main_brute decompose -i /scratch/projects/daanish/data/Bubbles/Data/Human/Mtb152m-p0a1.gfa -o /home/daanish/projects/panbubble/test/data/results_brute/Mtb152m-p0a1 -c 
 
 # Mtb152m-p1a2
-/usr/bin/time -v ./main_brute /scratch/projects/daanish/data/Bubbles/Data/Human/Mtb152m-p1a2.gfa /home/daanish/projects/Pangene/results/Billi/Mtb152m-p1a2
+/usr/bin/time -v ./main_brute decompose -i /scratch/projects/daanish/data/Bubbles/Data/Human/Mtb152m-p1a2.gfa -o /home/daanish/projects/panbubble/test/data/results_brute/Mtb152m-p1a2 -c
 
 # Mtb152p
-/usr/bin/time -v ./main_brute /scratch/projects/daanish/data/Bubbles/Data/Human/Mtb152p.gfa /home/daanish/projects/Pangene/results/Billi/Mtb152p
+/usr/bin/time -v ./main_brute decompose -i /scratch/projects/daanish/data/Bubbles/Data/Human/Mtb152p.gfa -o /home/daanish/projects/panbubble/test/data/results_brute/Mtb152p -c
 

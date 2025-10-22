@@ -14,8 +14,13 @@ fi
 
 set -e
 
-DATA_DIR="../../test/data/gfa_files"
-OUT_DIR="../../../Billi_data/results/test"
+DATA_DIR="../../test/gfa_files"
+OUT_DIR="../../../panbubble_data/results/test"
+
+if [ ! -d "$OUT_DIR" ]; then
+    mkdir -p $OUT_DIR
+fi
+
 LOG=log-test.txt
 
 echo "Starting Driver-Test Script" > $LOG
@@ -39,10 +44,10 @@ for FILE in "$DATA_DIR"/*; do
         # if [[ "$TAG" = "worst_case(100000)" ]]; then
         #     continue
         # fi
-        if [[ "$TAG" != "EC19" ]]; then
-            continue
-        fi
-        # echo "$TAG"
+        # if [[ "$TAG" != "EC3" ]]; then
+        #     continue
+        # fi
+        echo "$TAG"
 
         sh $SHELL_EXE $REAL_PATH $OUT_DIR $TAG $LOG
     fi

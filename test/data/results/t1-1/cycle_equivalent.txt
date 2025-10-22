@@ -1,2 +1,0 @@
-Total cycle equivalent pairs found: 1
-CES5A + SLC6A2 +

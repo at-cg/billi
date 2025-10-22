@@ -1,0 +1,16 @@
+S	s	*	LN:i:100
+S	v	*	LN:i:100
+S	m	*	LN:i:100
+S	t	*	LN:i:100
+L	s	+	v	+	0M
+L	s	+	v	-	0M
+L	s	+	m	+	0M
+L	m	+	t	+	0M
+L	m	-	t	+	0M
+L	t	+	s	+	0M
+L	v	-	s	-	0M
+L	v	+	s	-	0M
+L	m	-	s	-	0M
+L	t	-	m	-	0M
+L	t	-	m	+	0M
+L	s	-	t	-	0M

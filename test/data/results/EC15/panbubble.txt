@@ -1,5 +1,0 @@
-Total panbubbles found till the input depth: 4
-1 + 4 -
-8 - 5 +
-11 - 8 +
-13 - 4 +

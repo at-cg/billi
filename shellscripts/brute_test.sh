@@ -25,7 +25,7 @@ ulimit -s unlimited
 
 DIR=../test/data/
 DDIR=$DIR/gfa_files
-RDIR=$DIR/results
+RDIR=$DIR/results_brute
 
 if [ ! -d "$RDIR" ]; then
     mkdir -p $RDIR
@@ -37,10 +37,15 @@ for FILE in "$DDIR"/*; do
         # echo "$FILENAME"
         IFS='.' read -ra PARTS <<< "$FILENAME"
         TAG="${PARTS[0]}"
-        if [[ "$TAG" = "worst_case(100000)" ]]; then
-            continue
+        # if [[ "$TAG" != "EC15" ]]; then
+        #     continue
+        # fi
+    
+        ./main_brute decompose -i $DDIR/$FILENAME -o $RDIR/$TAG -c
+
+        if ! diff -q "$DIR/results/$TAG/panbubble.txt" "$DIR/results_brute/$TAG/panbubble.txt" > /dev/null; then
+            echo "$TAG"
         fi
-        echo "$TAG"
-        ./main_brute $DDIR/$FILENAME $RDIR/$TAG
+
     fi
 done
