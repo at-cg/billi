@@ -31,16 +31,20 @@ namespace fs = std::filesystem;
 // ****************************************************************************************************************************************************** 
 // **** Generic ****
 // ****************************************************************************************************************************************************** 
-const ll maxv = __LONG_LONG_MAX__;
-int tot_grey = 0; // for storing total number of grey edges, will help in accessing the brackets
+const int maxv = INT32_MAX;
+int tot_gray = 0; // for storing total number of gray edges, will help in accessing the brackets
 int maxd; // max depth possible = total number of nodes
 string summarypath; // path where the given stats will be written
 vector<bool> mark; // for marking the vertices that are have been visited
 vector<string> ilmap; // for storing the gene for a particular label
-map<int, int> id_in_original_graph; // used to find the id in original graph, in order to use the property of black edges map[u] ^ map[v] = 1
+// map<int, int> id_in_original_graph; // used to find the id in original graph, in order to use the property of black edges map[u] ^ map[v] = 1
 
 string get_single_label(int x, int ty){
     return ((ty == 0 ? (x & 1 ? ">" : "<") : (x & 1 ? "<" : ">")) + ilmap[x >> 1]);
+}
+
+string get_label(int x, int y){
+    return (get_single_label(x, 0) + " " + get_single_label(y, 1));
 }
 // ****************************************************************************************************************************************************** 
 
@@ -49,11 +53,12 @@ string get_single_label(int x, int ty){
 // ****************************************************************************************************************************************************** 
 struct edge{
     int id; // a bracket can uniquely be identified by the lower and higher vertices it connects to : low -> lower height, assigning a unique to each
-    int node; // required node corresponding to the black edge when edge 'id' is the top in the bracketlist
-    int sz; // required size of bracketlist corresponding to the black edge when edge 'id' is the top in the bracketlist
+    // int node; // required node corresponding to the black edge when edge 'id' is the top in the bracketlist
+    // int sz; // required size of bracketlist corresponding to the black edge when edge 'id' is the top in the bracketlist
     edge* front;
     edge* back; // for doubly linked list implementation -> helps in O(1) deletion
-    edge(int eid):id(eid), node(-1), sz(-1), front(nullptr), back(nullptr){}
+    // edge(int eid):id(eid), node(-1), sz(-1), front(nullptr), back(nullptr){}
+    edge(int eid):id(eid), front(nullptr), back(nullptr){}
 };
 
 struct bracketlist{
@@ -86,10 +91,10 @@ void printBracketList(bracketlist* bl){
     }cout << endl;
 }
 
-void printVector(vector<int>& v){
+void printVector(vector<int>& v, int ty = 0){
     if(!PRINT)return;
     for(int x : v){
-        cout << x << " ";
+        cout << (ty == 0 ? to_string(x) : get_single_label(x, 0)) << " ";
     }
     cout << endl;
 }
@@ -183,9 +188,9 @@ void get_ne() {
 }
 
 void add_edge(vector<vector<pii>>& g, int id1, int id2){
-    g[id1].pb({id2, tot_grey}); 
-    if(id1 != id2) g[id2].pb({id1, tot_grey}); // 0-indexed
-    tot_grey++;
+    g[id1].pb({id2, tot_gray}); 
+    if(id1 != id2) g[id2].pb({id1, tot_gray}); // 0-indexed
+    tot_gray++;
 }
 
 void make_graph() {
@@ -246,10 +251,18 @@ void make_graph() {
 // **** Compacted Graph ****
 // ****************************************************************************************************************************************************** 
 int cnt_gray_edge = 0; // count of gray edges in the compacted graph
-vector<vector<pii>> g_compacted; // (node_id, gray_edge_id)
-queue<int> q_compact; // queue used for clustering the edges in a linear chain
+int component = 0; // no of connected components in the compacted graph
 vector<bool> can_compact; // whether a gene has been visited during clustering used for compaction
 vector<bool> upd_vertex; // whether the adjacency list of a vertex has been updated during compaction
+vector<int> rm_cnt; // vector storing the number of brackets ending at that node
+vector<int> biedged_connected_comp; // connected-component in the compacted graph to which a node belongs to 
+vector<int> tip_start; // will store the id from which extra edges because of tips are added for each component in the compacted graph
+vector<int> first_node; // for storing a node in every connected-component in the compacted graph
+vector<int> Start; // starting point of search for each component in compacted graph
+vector<int> depth; // for storing the depth of the vertices in the spanning tree
+vector<vector<int>> tips; // vector for storing the vertices that represent the tip
+vector<vector<pii>> g_compacted; // (node_id, gray_edge_id)
+queue<int> q_compact; // queue used for clustering the edges in a linear chain
 
 bool chk_for_compaction(int id){
     int n1 = id << 1, n2 = n1 + 1;
@@ -258,46 +271,16 @@ bool chk_for_compaction(int id){
         if((g[n1][0].F != g[n1][1].F) && (g[n2][0].F != g[n2][1].F)){
             int u = g[n1][1].F, v = g[n2][1].F;
             if(g[u].size() > 2 || g[v].size() > 2)return false;
-            // if(can_compact[u >> 1] || can_compact[v >> 1])return false; // cycle cases
             can_compact[id] = true;
             return true;
         }else return false;
     }else return false;
 }
-// ****************************************************************************************************************************************************** 
 
-// ****************************************************************************************************************************************************** 
-// **** Processed Graph ****
-// ****************************************************************************************************************************************************** 
-int after_initialisation_comp_cnt = 0; // no of connected components in the input graph after initialisation
-int id_ptr; // ptr to the id number from which new nodes will be added
-int n_processed; // no of nodes in the processed graph (at most {n + 2 * edges})
-vector<char> type_edge; // finding the type of edge split at the black edge that is a bridge (0 -> no split, 1 -> split from u, 2 -> split from v, 3 -> split from both, 4 -> edge not of any use)
-vector<int> first_node; // for storing a node in every connected-component in the biedged graph
-vector<int> biedged_connected_comp; // connected-component in the biedged graph to which a node belongs to 
-vector<int> backedge_cnt; // upper bound on number of back edges
-vector<int> Start; // starting point of search for each component in original graph
-vector<int> depth; // for storing the depth of the vertices in the spanning tree
-vector<int> dual; // id of the vertex connected via a black edge to the given vertex
-vector<ll> tip_start; // will store the id from which extra edges because of tips are added for each biedged_connected_comp
-vector<vector<int>> tips; // vector for storing the vertices that represent the tip
-vector<int> tot_grey_comp; // count of grey edges in the processed graph for individual components
-vector<vector<pii>> g_processed; // (node_id, gray_edge_id)
-
-set<int> find_unique_excluding_node(int u, int v){// exclude node u and v
-    set<int> s;
-    for(pii child : g[u]){
-        if(child.F == u || child.F == v)continue;
-        s.insert(child.F);
-        if(s.size() == 2)break;
-    }
-    return s;
-}
-
-void dfs_comp(int u){ // Finding connected components in the biedged graph
+void dfs_comp(int u){ // Finding connected components in the compacted graph
     mark[u] = true;
-    biedged_connected_comp[u] = after_initialisation_comp_cnt;
-    for(pii child : g_processed[u]){
+    biedged_connected_comp[u] = component;
+    for(pii child : g_compacted[u]){
         int v = child.F;
         if(mark[v])continue;
         dfs_comp(v);
@@ -306,51 +289,74 @@ void dfs_comp(int u){ // Finding connected components in the biedged graph
 
 int find_unique_including_selfloop(int u){ // skip u ^ 1
     set<int> s;
-    for(pii child : g_processed[u]){
-        if((id_in_original_graph[child.F] ^ id_in_original_graph[u]) == 1)continue;
+    for(pii child : g_compacted[u]){
+        if((child.F ^ u) == 1)continue;
         s.insert(child.F);
         break;
     }
     return s.size();
+}
+
+set<int> find_unique_excluding_node(int u, int v){// exclude node u and v
+    set<int> s;
+    for(pii child : g_compacted[u]){
+        if(child.F == u || child.F == v)continue;
+        s.insert(child.F);
+        if(s.size() == 2)break;
+    }
+    return s;
 }
 // ****************************************************************************************************************************************************** 
 
 // ****************************************************************************************************************************************************** 
 // **** Single Entry Single Exit Algorithm (Johnson et al., 1994) ****
 // ******************************************************************************************************************************************************  
-int nodes = 0; // no of nodes in a given component in the input graph
-int st0 = 0; // top node when the bracketlist is empty
+// int nodes = 0; // no of nodes in a given component in the input graph
+// int st0 = 0; // top node when the bracketlist is empty
 // int time = 0;
-// ll multiplier = 1; // for computing the hash
+ll multiplier = 1; // for computing the hash
 int possible_pairs = 0, valid_pairs = 0, hairpins = 0; // storing the number of valid panbubble pairs
 
 vector<int> stack_trace; // for storing the vertices in the stack during dfs traversal
-vector<int> bubble_depth; // depth of the bubbles in the bubble tree
-vector<int> rm_cnt; // vector storing the number of brackets ending at that node
+// vector<int> bubble_depth; // depth of the bubbles in the bubble tree
 // vector<int> bracket_seq; // for storing the id of the bracket sequences so as to make the bubble tree
 // vector<int> visit_time; // for storing the visit time of the vertices during the dfs traversal
-vector<bool> root_bg; // root bubble id's in the bubble tree
-vector<bool> inb; // whether the node has been added in the bubble tree
+// vector<bool> root_bg; // root bubble id's in the bubble tree
+// vector<bool> inb; // whether the node has been added in the bubble tree
 vector<pii> canonical_sese; // for storing the canonical sese pairs
-vector<vector<int>> bg; // vector for storing the adjacency matrix for the bubble graph
-// unordered_map<ll, int> st; // (edge, size) -> hashed into a ll key ** Takes a lot of time **
+// vector<vector<int>> bg; // vector for storing the adjacency matrix for the bubble graph
 // map<ll, int> st; // (edge, size) -> hashed into a ll key
+map<pii, int> st; // (id, size) -> as the key
 vector<bracketlist*> bl; // vector storing the bracket list for different nodes
 vector<vector<edge*>> remove_brackets; // vector that stores the brackets to be removed while exiting a particular vertex during SESE algorithm
-deque<int> qbg; // queue maintained while doing bfs on the bubble tree
+// deque<int> qbg; // queue maintained while doing bfs on the bubble tree
 
 // ll get_key(int id, int size){
-//     return id * multiplier + size;
+//     return size * multiplier + id;
 // }
 
 int find_unique_excluding_selfloop(int u, int v){// exclude nodes u, u ^ 1, v
     set<int> s;
-    for(pii child : g_processed[u]){
-        if((id_in_original_graph[child.F] ^ id_in_original_graph[u]) <= 1 || child.F == v)continue;
+    for(pii child : g_compacted[u]){
+        if((child.F ^ u) <= 1 || child.F == v)continue;
         s.insert(child.F);
         break;
     }
     return s.size();
+}
+
+void dfs_depth(int u, int parent){
+    // assert(!mark[u]);
+    if(parent != -1)depth[u] = depth[parent] + 1;
+    mark[u] = true;
+    for(pii child : g_compacted[u]){
+        int v = child.F;
+        if(mark[v]){
+            // if(depth[v] < depth[u] && v != parent)backedge_cnt[comp]++;
+            continue;
+        }
+        dfs_depth(v, u);
+    }
 }
 
 void merge(bracketlist* bl1, bracketlist* bl2){
@@ -382,44 +388,13 @@ void merge(bracketlist* bl1, bracketlist* bl2){
     bl2->merged = true;
 }
 
-void dfs_depth(int u, int parent, int comp){
-    // assert(!mark[u]);
-    if(parent != -1)depth[u] = depth[parent] + 1;
-    nodes++;
-    mark[u] = true;
-    for(pii child : g_processed[u]){
-        int v = child.F;
-        if(mark[v]){
-            if(depth[v] < depth[u] && v != parent)backedge_cnt[comp]++;
-            continue;
-        }
-        dfs_depth(v, u, comp);
-    }
-}
-
-void reinitialise_edge_ids(int u, int parent, int& comp, int& pass){
-    mark[u] = true;
-    for(pii child : g_processed[u]){
-        int v = child.F;
-        if(mark[v])continue;
-        if(child.S != -1){
-            if(pass == 1 || (pass == 0 && child.S < tip_start[comp])){
-                if(pass == 1 && child.S == tip_start[comp]){
-                    tip_start[comp] = child.S = tot_grey_comp[comp]++;
-                }else child.S = tot_grey_comp[comp]++;
-            }
-        }
-        reinitialise_edge_ids(v, u, comp, pass);
-    }
-}
-
 void sese_minbracket(int u, int parent, int& x, int& val){
     // printArgs(u, parent, x, val);
     // assert(!mark[u]);
     mark[u] = true;
     if(parent != -1)depth[u] = depth[parent] + 1;
 
-    for(pii child : g_processed[u]){
+    for(pii child : g_compacted[u]){
         int v = child.F;
         if(v == parent || v == u)continue; // v = u won't contribute anything and v == parent won't contribute to backedge
         if(mark[v]){// back-edge -> will come first in the dfs traversal for the node at greater depth
@@ -430,12 +405,12 @@ void sese_minbracket(int u, int parent, int& x, int& val){
 
     bl[u] = new bracketlist(); 
 
-    for(pii child : g_processed[u]){
+    for(pii child : g_compacted[u]){
         int v = child.F;
         if(depth[v] != depth[u] + 1)continue;
         if(bl[v] && !bl[v] -> merged){
             // printArgs(u, v, bl[v]->sz);
-            if((id_in_original_graph[u] ^ id_in_original_graph[v]) == 1){
+            if((u ^ v) == 1){
                 int bridge_cnt = bl[v]->sz;
                 if(bridge_cnt < val){
                     val = bridge_cnt;
@@ -452,7 +427,7 @@ void sese_minbracket(int u, int parent, int& x, int& val){
     bl[u]->sz -= rm_cnt[u];
     
     // pushing back edges from node u
-    for(pii child : g_processed[u]){
+    for(pii child : g_compacted[u]){
         int v = child.F;
         if(depth[v] >= depth[u] - 1)continue;
         rm_cnt[v]++;
@@ -467,7 +442,7 @@ void sese(int u, int parent){
 
     int h0 = maxd, h1 = maxd, h2 = maxd;
 
-    for(pii child : g_processed[u]){
+    for(pii child : g_compacted[u]){
         int v = child.F;
         if(v == parent || v == u)continue; // v = u won't contribute anything and v == parent won't contribute to backedge
         if(mark[v]){// back-edge -> will come first in the dfs traversal for the node at greater depth
@@ -479,7 +454,7 @@ void sese(int u, int parent){
 
     bl[u] = new bracketlist(); 
 
-    for(pii child : g_processed[u]){
+    for(pii child : g_compacted[u]){
         int v = child.F;
         if(depth[v] != depth[u] + 1)continue;
         if(bl[v]){
@@ -498,8 +473,6 @@ void sese(int u, int parent){
         }
     }
     bl[u]->d = min(h0, h1);
-
-    // printArgs(h0, h1, h2);
 
     // removing brackets from respective lists
     for(edge* ed : remove_brackets[u]){
@@ -526,10 +499,10 @@ void sese(int u, int parent){
     if(bl[u]->d == depth[u])bl[u]->d = maxd;
 
     // pushing back edges from node u
-    for(pii child : g_processed[u]){
+    for(pii child : g_compacted[u]){
         int v = child.F;
         if(depth[v] >= depth[u] - 1)continue;
-        edge* ed = new edge(child.S); // tot_grey count starts from 0
+        edge* ed = new edge(child.S); // tot_gray count starts from 0
         remove_brackets[v].pb(ed);
         merge(bl[u], new bracketlist(1, depth[v], ed, ed));
     }
@@ -538,50 +511,35 @@ void sese(int u, int parent){
     if(h2 < h0){
         // printArgs("finding capping backedge");
         int w = stack_trace[h2];
-        edge* ed = new edge(tot_grey_comp[biedged_connected_comp[u]]); tot_grey_comp[biedged_connected_comp[u]]++; // need not modify g_processed, will not be traversing along this edge
+        edge* ed = new edge(cnt_gray_edge); cnt_gray_edge++; // need not modify g_compacted, will not be traversing along this edge
         remove_brackets[w].pb(ed);
         merge(bl[u], new bracketlist(1, depth[w], ed, ed));
-        // printArgs("capping back edge:", u, w);
+        // printArgs("capping back edge:", get_single_label(u, 0), get_single_label(w, 0));
     }
 
     // finding cycle equivalence
-    if(parent != -1 && ((id_in_original_graph[parent] ^ id_in_original_graph[u]) == 1)){
+    if(parent != -1 && ((parent ^ u) == 1)){
         // printArgs("finding cycle equivalence:", u, parent);
-        int w = -1;
+        // ll key;
+        pii key;
         if(bl[u]->sz > 0){
-            if(bl[u]->end->sz == bl[u]->sz){
-                w = bl[u]->end->node;
-            }else{
-                bl[u]->end->sz = bl[u]->sz;
-            }
+            int br = bl[u]->end->id;
+            // assert(br != -1); // not a black edge
+            // key = get_key(br, bl[u]->sz);
+            key = {br, bl[u]->sz};
         }else{
-            w = st0;
+            // key = 0;
+            key = {0, 0};
         }
 
-        if(w != -1){
+        if(st.find(key) != st.end()){
+            int w = st[key];
             if(find_unique_excluding_selfloop(u, w) == 1 && find_unique_excluding_selfloop(w, u) == 1){
-                // int psz = canonical_sese.size();
                 // printArgs("cycle equivalent pair:", u, w);
-                
-                // Using it in mark_bb_nodes
-                // while(!bracket_seq.empty()){
-                //     int id = bracket_seq.back();
-                //     pii rs = canonical_sese[id];
-                //     if(visit_time[rs.S] > visit_time[w]){
-                //         bg[psz].pb(id);
-                //         bracket_seq.rb();
-                //     }else break;
-                // }
-                // bracket_seq.pb(psz);
                 canonical_sese.pb({u, w});
             }
         }
-
-        if(bl[u]->sz == 0){
-            st0 = parent;
-        }else{
-            bl[u]->end->node = parent;
-        }
+        st[key] = parent; // will happen regardless you found something or not
     }
 
     stack_trace.rb();
@@ -629,12 +587,14 @@ int main(int argc, char* argv[])
         // using vectors will be good coz we will have to add capping backedges as well
         g.resize(2 * n); // +delta is for S if required -> not needed (choose S as one of the tip ends)
         has_self_loop.resize(2 * n);
+        maxd = 2 * n + 100;
+
         // adding black edges first <- important since don't want black edge to appear as a back or front edge
         for(int i = 0; i < n; i++){
             int n1 = i << 1, n2 = n1 + 1;
             g[n1].pb({n2, -1}); g[n2].pb({n1, -1});
         }
-        make_graph(); // adding grey edges
+        make_graph(); // adding gray edges
     }
 
     // ************************************
@@ -670,11 +630,8 @@ int main(int argc, char* argv[])
 
             for(int i = 0; i < n; i++){
                 if(can_compact[i])continue;
-                // cout << "can_compact " << get_single_label(i, 0) << endl;
-
+   
                 if(chk_for_compaction(i)){
-                    // cout << "can_compact " << get_single_label(i, 0) << endl;
-
                     q_compact.push(i);
                     int left = i << 1, right = left + 1;
                     while(!q_compact.empty()){
@@ -696,8 +653,6 @@ int main(int argc, char* argv[])
                         }
                     }
 
-                    cout << i << " " << get_single_label(left, 0) << " " << get_single_label(right, 0) << endl;
-
                     int l1 = left, l2 = left ^ 1;
                     g_compacted[l1].pb({l2, -1}); g_compacted[l2].pb({l1, -1});
 
@@ -711,7 +666,6 @@ int main(int argc, char* argv[])
 
                     for(int j = 1; j < g[l2].size(); j++){ // have removed parallel gray edges
                         int u = g[l2][j].F;
-                        // cout << i << " " << get_single_label(u, 0) << endl;
                         if(upd_vertex[u] || (can_compact[u >> 1] && (u != r2)))continue; // u != r2 -> gray edge (cyclic case)
                         g_compacted[l2].pb({u, cnt_gray_edge});
                         g_compacted[u].pb({l2, cnt_gray_edge++}); // 0th edge maynot be the -1 edge
@@ -752,64 +706,181 @@ int main(int argc, char* argv[])
 
             cout << "Number of gray edges after compaction: " << cnt_gray_edge << endl;
 
-            printGraph(g);
-            printArgs("------");
-            printGraph(g_compacted);
+            // swapping the black edge so that it is the 0-indexed edge
+            for(int i = 0; i < 2 * n; i++){
+                for(pii& child : g_compacted[i]){
+                    if(child.S == -1){
+                        swap(child, g_compacted[i][0]);
+                        break;
+                    }
+                }
+            }
+
+            // printGraph(g);
+            // printArgs("------");
+            // printGraph(g_compacted);
 
             // ** Clearing the memory **
             g.clear();
         }
     }
         
-        // // ************************************
-        // // *** Finding number of connected components in the processed graph***    
-        // // count of vertices = n_processed
-        // // count of black edges = n (no of genes)
-        // // ************************************
-        // {
-        //     // ** Initialise **
-        //     mark.resize(n_processed);
-        //     fill(mark.begin(), mark.end(), false);
-        //     biedged_connected_comp.resize(n_processed);
+    // ************************************
+    // *** Finding number of connected components in the compacted graph ***    
+    // count of vertices = 2 * n (remains the same, although some vertices will have |adj[vertex]| = 0)
+    // ************************************
+    {
+        // ** Initialise **
+        mark.resize(2 * n);
+        fill(mark.begin(), mark.end(), false);
+        biedged_connected_comp.resize(2 * n);
 
-        //     for(int i = 0; i < n_processed; i++){
-        //         if(mark[i] || g_processed[i].size() == 0){
-        //             continue;
-        //         }
-        //         dfs_comp(i);
-        //         first_node.pb(i);
-        //         after_initialisation_comp_cnt++;
-        //     }
-        //     cout << "Number of components in the processed graph: " << after_initialisation_comp_cnt << endl;
-        // }
+        for(int i = 0; i < 2 * n; i++){
+            if(mark[i] || g_compacted[i].size() == 0){
+                continue;
+            }
+            dfs_comp(i);
+            first_node.pb(i);
+            component++;
+        }
+        cout << "Number of components in the compacted graph: " << component << endl;
+    }
 
-        // // ************************************
-        // // *** Identifying tips ***
-        // // ************************************
-        // {
-        //     // ** Initialise **
-        //     tips.resize(after_initialisation_comp_cnt);
+    // ************************************
+    // *** Identifying tips ***
+    // ************************************
+    {
+        // ** Initialise **
+        tips.resize(component);
+        
+        for(int i = 0; i < 2 * n; i++){
+            if(g_compacted[i].size() == 0)continue;
+            // only connected via a black edge or a gray edge to (i ^ 1)
+            if(find_unique_including_selfloop(i) == 0){ // much stricter condition than below
+            // if(g_compacted[i].size() == 1){
+                tips[biedged_connected_comp[i]].pb(i);
+            }
+        }
+
+        int cnt_zero = 0;
+        for(int i = 0; i < component; i++){
+            // printArgs("Tips", i);
+            // printVector(tips[i], 1);
+            if(tips[i].size() == 0)cnt_zero++;
+        }
+        cout << "Number of components with zero tips: " << cnt_zero << endl;
+    }
+
+    // ************************************
+    // *** Finding Possible panbubble ends ***
+    // ************************************
+    {
+        // ************************************
+        // *** Finding node S ***
+        // ************************************        
+        {
+            // ** Initialise **
+            tip_start.resize(component, -1);
+            Start.resize(component, -1);
+            depth.resize(2 * n);
+            bl.resize(2 * n);
+            rm_cnt.resize(2 * n);
+            fill(mark.begin(), mark.end(), false);
             
-        //     for(int i = 0; i < n_processed; i++){
-        //         if(g_processed[i].size() == 0)continue;
-        //         // only connected via a black edge or a grey edge to (i ^ 1)
-        //         if(find_unique_including_selfloop(i) == 0){ // much stricter condition than below
-        //         // if(g_processed[i].size() == 1){
-        //             tips[biedged_connected_comp[i]].pb(i);
-        //             // assert((id_in_original_graph[g_processed[i][0].F] ^ id_in_original_graph[i]) == 1); // checking whether the node is connected via a black edge
-        //         }
-        //     }
+            for(int it = 0; it < component; it++){
+                if(tips[it].size() == 0){ // recheck for EC22
+                    int val = edges;
+                    sese_minbracket(first_node[it], -1, Start[it], val); // node belonging to the edge with minimum bracket set size
+                    // printArgs("Cyclic component Starting point", ilmap[Start[it] >> 1]);
+                    // no extra edges required
+                }else{
+                    Start[it] = tips[it][0]; 
+                    // if(tips.size() > 1){// else no need to add an extra edge
+                        int u = Start[it];
+                        for(int i = 1; i < tips[it].size(); i++){
+                            if(tip_start[it] == -1)tip_start[it] = cnt_gray_edge; // marking the starting id for the edges added because of tips
+                            int v = tips[it][i];
+                            g_compacted[u].pb({v, cnt_gray_edge}); g_compacted[v].pb({u, cnt_gray_edge++});
+                        }
+                    // }
+                }
+                if(tips[it].size() <= 1)tip_start[it] = maxv; 
+            }
 
-        //     int cnt_zero = 0;
-        //     for(int i = 0; i < after_initialisation_comp_cnt; i++){
-        //         // printArgs("Tips", i);
-        //         // printVector(tips[i]);
-        //         if(tips[i].size() == 0)cnt_zero++;
-        //     }
-        //     cout << "Number of components with zero tips: " << cnt_zero << endl;
-        // }
+            // printArgs("S nodes:");
+            // printVector(Start);
+
+            // ** Clearing the memory **
+            rm_cnt.clear(); first_node.clear();
+        }
+    
+        // ************************************
+        // *** Finding depth and number of backedges for individual components ***
+        // ************************************
+        {
+            // ** Initialise **
+            fill(depth.begin(), depth.end(), 0);
+            fill(mark.begin(), mark.end(), false);
+
+            for(int it = 0; it < component; it++){   
+                // Finding an upperbound on the number of backedges <- only these will contribute to the brackets
+                dfs_depth(Start[it], -1);
+            }
+        }
+
+        // ************************************
+        // *** SESE ***
+        // ************************************
+        {
+            remove_brackets.resize(2 * n);
+            // visit_time.resize(n_processed, -1);
+            bl.clear();
+            fill(mark.begin(), mark.end(), false);
+            // int backedge_cnt = cnt_gray_edge + 2 * n; // upper bound
+            
+            // multiplier = 1;
+            // while(multiplier <= backedge_cnt){
+            //     multiplier *= 10;
+            // }
+            
+            for(int it = 0; it < component; it++){
+                st.clear(); 
+                // st0 = -1;
+                sese(Start[it], -1); // graph g is not changed
+                
+                // corner case
+                if(tips[it].size() == 1){
+                    canonical_sese.pb({tips[it][0]^1, tips[it][0]^1});
+                }
+            }
+    
+            // ** Clearing the memory **
+            bl.clear(); remove_brackets.clear(); // visit_time.clear(); 
+            Start.clear(); depth.clear(); 
+            tips.clear();
+        }
+        
+        // ************************************
+        // *** Printing result ***
+        // ************************************
+        {
+            possible_pairs = canonical_sese.size();
+            if(print_equivalent){
+                summarypath = outputdir + "/cycle_equivalent.txt";
+                freopen(summarypath.c_str(), "w", stdout);
+
+                cout << "Total cycle equivalent pairs found: " << possible_pairs << endl;
+                
+                for(int i = 0; i < possible_pairs; i++){
+                    pii rs = canonical_sese[i];
+                    cout << get_label(rs.F, rs.S) << endl;                  
+                }
+            }
+        }
+    }
 } 
 
 // TODO:
 // cyclic cases
 // sending vars by refs
+// clearing the memory

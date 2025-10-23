@@ -44,9 +44,9 @@ for FILE in "$DATA_DIR"/*; do
         # if [[ "$TAG" = "worst_case(100000)" ]]; then
         #     continue
         # fi
-        # if [[ "$TAG" != "EC3" ]]; then
-        #     continue
-        # fi
+        if [[ "$TAG" != "EC22" ]]; then
+            continue
+        fi
         echo "$TAG"
 
         sh $SHELL_EXE $REAL_PATH $OUT_DIR $TAG $LOG
