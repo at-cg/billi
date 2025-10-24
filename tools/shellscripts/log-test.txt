@@ -1,2 +1,0 @@
-Starting Driver-Test Script
-Done running panbubble for input EC22

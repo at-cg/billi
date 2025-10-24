@@ -44,7 +44,7 @@ string get_single_label(int x, int ty){
 }
 
 string get_label(int x, int y){
-    return (get_single_label(x, 0) + " " + get_single_label(y, 1));
+    return "( " + (get_single_label(x, 0) + " " + get_single_label(y, 1)) + " )"; 
 }
 // ****************************************************************************************************************************************************** 
 
@@ -313,17 +313,20 @@ set<int> find_unique_excluding_node(int u, int v){// exclude node u and v
 // ******************************************************************************************************************************************************  
 // int nodes = 0; // no of nodes in a given component in the input graph
 // int st0 = 0; // top node when the bracketlist is empty
-// int time = 0;
+int time = 0;
 ll multiplier = 1; // for computing the hash
-int possible_pairs = 0, valid_pairs = 0, hairpins = 0; // storing the number of valid panbubble pairs
+int number_of_classes = 0; // storing the number of valid panbubble pairs
 
+vector<int> entry_time, exit_time; // for storing the entry and exit time of vertices during dfs
 vector<int> stack_trace; // for storing the vertices in the stack during dfs traversal
+vector<pii> possible_hairpins; // for storing possible hairpin's entrance vertex
 // vector<int> bubble_depth; // depth of the bubbles in the bubble tree
 // vector<int> bracket_seq; // for storing the id of the bracket sequences so as to make the bubble tree
 // vector<int> visit_time; // for storing the visit time of the vertices during the dfs traversal
 // vector<bool> root_bg; // root bubble id's in the bubble tree
 // vector<bool> inb; // whether the node has been added in the bubble tree
-vector<pii> canonical_sese; // for storing the canonical sese pairs
+vector<bool> is_bridge; // whether the edge is a bridge in G_U
+map<pii, vector<pii>> canonical_sese; // for storing the canonical sese pairs in a given class
 // vector<vector<int>> bg; // vector for storing the adjacency matrix for the bubble graph
 // map<ll, int> st; // (edge, size) -> hashed into a ll key
 map<pii, int> st; // (id, size) -> as the key
@@ -438,9 +441,18 @@ void sese_minbracket(int u, int parent, int& x, int& val){
 void sese(int u, int parent){
     stack_trace.pb(u);
     mark[u] = true;
-    // visit_time[u] = time++;
+    entry_time[u] = time++;
 
+    bool can_end = true;
     int h0 = maxd, h1 = maxd, h2 = maxd;
+
+    for(pii child : g_compacted[u]){
+        int v = child.F;
+        if((v ^ u) == 1 && child.S != -1){ // a parallel gray edge <- can not be the panbubble end
+            can_end = false;
+            break;
+        }
+    }
 
     for(pii child : g_compacted[u]){
         int v = child.F;
@@ -518,7 +530,7 @@ void sese(int u, int parent){
     }
 
     // finding cycle equivalence
-    if(parent != -1 && ((parent ^ u) == 1)){
+    if(parent != -1 && ((parent ^ u) == 1) && can_end){
         // printArgs("finding cycle equivalence:", u, parent);
         // ll key;
         pii key;
@@ -536,15 +548,92 @@ void sese(int u, int parent){
             int w = st[key];
             if(find_unique_excluding_selfloop(u, w) == 1 && find_unique_excluding_selfloop(w, u) == 1){
                 // printArgs("cycle equivalent pair:", u, w);
-                canonical_sese.pb({u, w});
+                canonical_sese[key].pb({u, w});
             }
         }
         st[key] = parent; // will happen regardless you found something or not
     }
 
+    if(bl[u]-> sz == 0){
+        is_bridge[u >> 1] = true;
+    }
+
+    exit_time[u] = time++;
     stack_trace.rb();
 }
 // ******************************************************************************************************************************************************  
+
+// ****************************************************************************************************************************************************** 
+// **** Brute force ****
+// ******************************************************************************************************************************************************  
+int counter = 0; // counter used in the brute force checking
+vector<int> considered; // for saving the vertices visited during the brute force check for a panbubble
+vector<short> to_chk; // which side of gene to check during second pass of brute (-1 -> initialisation, 0 -> 2 * i, 1 -> 2 * i + 1, 2 -> both)
+vector<short> visit_order; // from which side the gene has been visited (-1 -> not visited, 0 -> rs.F, 1 -> rs.S, 2 -> both)
+
+bool end_gene(int& u, pii& rs){
+    return u == rs.F || u == (rs.F ^ 1) || u == rs.S || u == (rs.S ^ 1);
+}
+
+bool root_leaf_path(int u, int v){
+    return entry_time[u] <= entry_time[v] && exit_time[u] >= exit_time[v];
+}
+
+void upd_node(int u, int id, int ty){
+    visit_order[u] = ty;
+
+    int gene = u >> 1;    
+    if(ty == 0){
+        if(to_chk[gene] == -1){
+            counter++;
+            to_chk[gene] = u & 1;
+            considered.pb(u);
+        }else{
+            if((u & 1) != to_chk[gene]){
+                to_chk[gene] = 2;
+            }
+        }
+    }else{
+        if(to_chk[gene] == 2){
+            counter--;
+            to_chk[gene] = -2; // -2 -> same gene does not reduce the counter multiple times
+        }else{
+            short required = 1 - (u & 1);
+            if(to_chk[gene] == required || to_chk[gene] == -1){
+                counter--;
+                to_chk[gene] = -2;
+                if(to_chk[gene] == -1)
+                    considered.pb(u);
+            }
+        }
+    }
+}
+
+bool mark_nodes(int u, pii& rs, int id, int ty){
+    if(is_bridge[u >> 1] && (!root_leaf_path(rs.F, u) || !root_leaf_path(u, rs.S)))return false;
+
+    if(!end_gene(u, rs)){
+        upd_node(u, id, ty);
+    }
+
+    for(pii child : g_compacted[u ^ 1]){
+        int v = child.F;
+
+        if(child.S >= tip_start[biedged_connected_comp[rs.S]] || child.S == -1 || end_gene(v, rs))continue; // don't consider the edges added because of tips
+        if(visit_order[v] == ty || (ty == 1 && visit_order[v] == 0)){ // second case to take care of the hairpins
+            continue;
+        }
+        if(!mark_nodes(v, rs, id, ty))return false;
+    }
+    return true;
+}
+// ****************************************************************************************************************************************************** 
+
+// ****************************************************************************************************************************************************** 
+// **** Output ****
+// ****************************************************************************************************************************************************** 
+vector<pii> valid_panbubbles, valid_hairpins; // for storing valid panbubbles and hairpins
+// ****************************************************************************************************************************************************** 
 
 int main(int argc, char* argv[])
 {   
@@ -567,7 +656,7 @@ int main(int argc, char* argv[])
         decomp->add_option("-d, --depth", maxdepth, "Maximum depth up to which the panbubbles are to be reported (1 means outermost)")->default_val(1);
         decomp->add_option("-m, --maxsize", maxsize, "Output vertices in the panbubble of size atmost [maxsize]")->default_val(1000);
         decomp->add_flag("-a, --allele", print_allele, "Whether alleles are to be reported for each panbubble");
-        decomp->add_flag("-c, --cycle-equivalent", print_equivalent, "Whether cycle equivalent pairs are to be reported");
+        decomp->add_flag("-c, --cycle-equivalent", print_equivalent, "Whether cycle equivalent classes are to be reported");
         decomp->add_flag("-r, --report-hairpins", print_hairpin, "Whether hairpins are to be reported");
         decomp->add_flag("-p, --print-panbubble-tree", print_panbubble_tree, "Whether the panbubble tree is to be printed");
          
@@ -772,11 +861,11 @@ int main(int argc, char* argv[])
     }
 
     // ************************************
-    // *** Finding Possible panbubble ends ***
+    // *** Finding edges belonging to individual cycle equivalent classes ***
     // ************************************
     {
         // ************************************
-        // *** Finding node S ***
+        // *** Finding node S and adding extra gray edges ***
         // ************************************        
         {
             // ** Initialise **
@@ -815,12 +904,13 @@ int main(int argc, char* argv[])
         }
     
         // ************************************
-        // *** Finding depth and number of backedges for individual components ***
+        // *** Finding depth for individual components ***
         // ************************************
         {
             // ** Initialise **
             fill(depth.begin(), depth.end(), 0);
             fill(mark.begin(), mark.end(), false);
+            entry_time.resize(2 * n); exit_time.resize(2 * n);
 
             for(int it = 0; it < component; it++){   
                 // Finding an upperbound on the number of backedges <- only these will contribute to the brackets
@@ -833,6 +923,7 @@ int main(int argc, char* argv[])
         // ************************************
         {
             remove_brackets.resize(2 * n);
+            is_bridge.resize(n);
             // visit_time.resize(n_processed, -1);
             bl.clear();
             fill(mark.begin(), mark.end(), false);
@@ -850,10 +941,12 @@ int main(int argc, char* argv[])
                 
                 // corner case
                 if(tips[it].size() == 1){
-                    canonical_sese.pb({tips[it][0]^1, tips[it][0]^1});
+                    possible_hairpins.pb({tips[it][0]^1, tips[it][0]^1});
                 }
             }
-    
+            
+            // printVector(entry_time); printVector(exit_time); printVector(is_bridge);
+
             // ** Clearing the memory **
             bl.clear(); remove_brackets.clear(); // visit_time.clear(); 
             Start.clear(); depth.clear(); 
@@ -864,19 +957,67 @@ int main(int argc, char* argv[])
         // *** Printing result ***
         // ************************************
         {
-            possible_pairs = canonical_sese.size();
+            number_of_classes = canonical_sese.size();
             if(print_equivalent){
-                summarypath = outputdir + "/cycle_equivalent.txt";
+                summarypath = outputdir + "/cycle_equivalent_classes.txt";
                 freopen(summarypath.c_str(), "w", stdout);
 
-                cout << "Total cycle equivalent pairs found: " << possible_pairs << endl;
+                cout << "Total cycle equivalent classes found: " << number_of_classes << endl;
                 
-                for(int i = 0; i < possible_pairs; i++){
-                    pii rs = canonical_sese[i];
-                    cout << get_label(rs.F, rs.S) << endl;                  
+                for(const auto &[key, vec] : canonical_sese){
+                    for(const pii &rs : vec){
+                        cout << get_label(rs.F, rs.S) << " "; 
+                    }
+                    cout << endl;
                 }
             }
         }
+    }
+
+    // ************************************
+    // *** Finding valid panbubbles ***
+    // ************************************
+    {   
+        fill(mark.begin(), mark.end(), false);
+        visit_order.resize(2 * n, -1);
+        to_chk.resize(n, -1);
+
+        for(const auto &[key, vec] : canonical_sese){
+            int sz = vec.size();
+            for(int i = 0; i < sz; ){
+                bool is_valid = true;
+                int j;
+                considered.clear();
+
+                for(j = i; j < sz; j++){
+                    pii rs = {vec[j].F, vec[i].S};
+
+                    if(!root_leaf_path(rs.F, rs.S))continue;
+                    
+                    counter = 0;
+                    
+                    is_valid = mark_nodes(rs.F ^ 1, rs, i, 0); // do not add the end points, checking only in one direction
+                    is_valid &= mark_nodes(rs.S ^ 1, rs, i, 1);
+                    is_valid &= (counter == 0);
+
+                    if(is_valid){
+                        valid_panbubbles.pb(rs);
+                        i = j + (j == i ? 1 : 0); 
+                        break;
+                    }
+                }
+                if(!is_valid || j == sz)i++;
+
+                // ** Reinitialisation **
+                for(int u : considered){
+                    visit_order[u] = visit_order[u ^ 1] = -1;
+                    to_chk[u >> 1] = -1;
+                }
+            }
+        }
+
+        // ** Clearing the memory **
+        considered.clear(); visit_order.clear(); to_chk.clear(); 
     }
 } 
 
