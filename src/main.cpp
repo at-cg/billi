@@ -37,6 +37,7 @@ int maxd; // max depth possible
 string summarypath; // path where the given stats will be written
 vector<bool> mark; // for marking the vertices that have been visited
 vector<string> ilmap; // for storing the gene for a particular label
+vector<pii> edge_label; // edge vertex labels for the given edge id in the compacted graph
 bool DEBUG = false;
 
 string get_single_label(int& x, int ty){
@@ -86,7 +87,7 @@ void printBracketList(bracketlist* bl){
     cout << "Bracket List: ";
     edge* it = bl->start;
     while(it){
-        cout << it->id << " ";
+        cout << it->id << " (" << get_single_label(edge_label[it->id].F, 0) << " " << get_single_label(edge_label[it->id].S, 0) << ") ";
         it = it->front;
     }cout << endl;
 }
@@ -447,7 +448,10 @@ void sese(int u, int parent){
 
     for(pii child : g_compacted[u]){
         int v = child.F;
-        if(v == parent || v == u)continue; // v = u won't contribute anything and v == parent won't contribute to backedge
+        if(v == parent || v == u){ // v = u won't contribute anything and v == parent won't contribute to backedge
+            h0 = min(h0, depth[v]);
+            continue;
+        } 
         if(parent == -1 && child.S != -1)continue; // when at the start node of the dfs, do not pass through the gray edge
         if(mark[v]){// back-edge -> will come first in the dfs traversal for the node at greater depth
             if(depth[v] > depth[u])continue; // front-edge -- multi edges will be taken care of here
@@ -520,10 +524,11 @@ void sese(int u, int parent){
         edge* ed = new edge(cnt_gray_edge); cnt_gray_edge++; // need not modify g_compacted, will not be traversing along this edge
         remove_brackets[w].pb(ed);
         merge(bl[u], new bracketlist(1, depth[w], ed, ed));
+        edge_label.pb({u, w});
     }
 
     // finding cycle equivalence
-    if(parent != -1 && (parent == dual[u]) && can_end){
+    if(parent != -1 && parent == dual[u] && can_end){
         // printArgs("finding cycle equivalence:", u, parent);
         // ll key;
         pii key;
@@ -536,7 +541,7 @@ void sese(int u, int parent){
             // key = 0;
             key = {0, 0};
         }
-
+ 
         if(st.find(key) != st.end()){
             int w = st[key];
             if(find_unique_excluding_selfloop(u, w) == 1 && find_unique_excluding_selfloop(w, u) == 1){
@@ -759,12 +764,14 @@ int main(int argc, char* argv[])
                         if(mark[u] && u != r)continue; // u != r -> cyclic case
                         if(l != u) g_compacted[l].pb({u, cnt_gray_edge}); // self loop added only once
                         g_compacted[u].pb({l, cnt_gray_edge++}); // 0th edge maynot be the -1 edge
+                        edge_label.pb({l, u});
                     }
                     for(int j = 1; j < g[r].size(); j++){
                         int u = g[r][j].F;
                         if(mark[u])continue;
                         if(r != u) g_compacted[r].pb({u, cnt_gray_edge});
                         g_compacted[u].pb({r, cnt_gray_edge++});
+                        edge_label.pb({r, u});
                     }
                     mark[l] = mark[r] = true; // done in the end so that self loops and parallel gray edges are not missed
                 }
@@ -784,6 +791,7 @@ int main(int argc, char* argv[])
                     if(mark[u])continue;
                     if(i != u) g_compacted[i].pb({u, cnt_gray_edge}); 
                     g_compacted[u].pb({i, cnt_gray_edge++}); 
+                    edge_label.pb({i, u});
                 }
                 mark[i] = true;
             }
@@ -893,6 +901,7 @@ int main(int argc, char* argv[])
                             if(tip_start[it] == -1)tip_start[it] = cnt_gray_edge; // marking the starting id for the edges added because of tips
                             int v = tips[it][i];
                             g_compacted[u].pb({v, cnt_gray_edge}); g_compacted[v].pb({u, cnt_gray_edge++});
+                            edge_label.pb({u, v});
                         }
                     // }
                 }
