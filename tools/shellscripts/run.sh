@@ -105,8 +105,8 @@ if [ ! -d "$OUT_DIR4" ]; then
     mkdir -p $OUT_DIR4
 fi
 
-EXE=../../src/main1
-$EXE decompose -i $FULL_PATH -c -r -o $OUT_DIR4
+EXE=../../src/main
+$EXE decompose -i $FULL_PATH -c -r -f 1 -o $OUT_DIR4
 
 echo "Done running panbubble for input $FILE_NAME" >> $LOG
 

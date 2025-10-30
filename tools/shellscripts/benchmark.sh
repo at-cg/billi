@@ -15,7 +15,7 @@ fi
 set -e
 
 DATA_DIR="../../test/data/gfa_files"
-OUT_DIR="../../../panbubble_data/results/benchmark"
+OUT_DIR="../../../panbubble_data/results/benchmark_final"
 
 if [ ! -d "$OUT_DIR" ]; then
     mkdir -p $OUT_DIR
@@ -36,14 +36,17 @@ echo "Starting Driver-Benchmark Script" >> $LOG
 #       "/home/daanish/projects/panbubble_data/Data/HG38/v1/HG38.gfa"
 #       "/home/daanish/projects/panbubble_data/Data/CHM13/v2/hprc-v2.0-mc-chm13.gfa"
 #       "/home/daanish/projects/panbubble_data/Data/HG38/v2/hprc-v2.0-mc-grch38.gfa")
-    #   ""
-    #   )
+  
 DATA=("/home/daanish/projects/panbubble_data/Data/CHM13/v1/CHM13.gfa"
-      "/home/daanish/projects/panbubble_data/Data/HG38/v1/HG38.gfa")
+      "/home/daanish/projects/panbubble_data/Data/HG38/v1/HG38.gfa"
+      "/home/daanish/projects/panbubble_data/Data/CHM13/v2/hprc-v2.0-mc-chm13.gfa"
+      "/home/daanish/projects/panbubble_data/Data/HG38/v2/hprc-v2.0-mc-grch38.gfa")
 
 # TAG=("Test")
 # TAG=("C4-90" "MHC" "human100" "human100p10" "Mtb152m-p0a1" "Mtb152m-p1a2" "Mtb152p" "CHM13_v1" "HG38_v1" "CHM13_v2" "HG38_v2")
-TAG=("CHM13_v1" "HG38_v1")
+TAG=("CHM13_v1" "HG38_v1" "CHM13_v2" "HG38_v2")
+# TAG=("CHM13_v1")
+# TAG=("Ecoli")
     #     "" ""
     #     "" ""
     # )
@@ -63,9 +66,11 @@ sz=${#DATA[@]}
 
 ## panbubble
 for ((i=0; i<=$((sz-1)); i++)); do
-    
-    sh $SHELL_EXE1 ${DATA[$i]} $OUT_DIR ${TAG[$i]} $LOG
+    # for ((j=1; j<=10; j++)); do
+     
+        sh $SHELL_EXE1 ${DATA[$i]} $OUT_DIR ${TAG[$i]} 100000000 $LOG
 
+    # done
 done
 
 ## vg

@@ -14,28 +14,28 @@ fi
 
 set -e
 
-if [ $# -ne 4 ]; then
-    echo "full_file_path, out_dir, file_name, log"
+if [ $# -ne 5 ]; then
+    echo "full_file_path, out_dir, file_name, offset, log"
     exit 1
 fi
 
 FULL_PATH=$1
 OUT_DIR=$2
 FILE_NAME=$3
-LOG=$4
+OFFSET=$4
+LOG=$5
 
 if [ ! -d "$OUT_DIR" ]; then
     mkdir -p $OUT_DIR
 fi
 
 ## panbubble
-OUT_DIR4="$OUT_DIR/panbubble_stress/$FILE_NAME"
+OUT_DIR4="$OUT_DIR/panbubble_debug/$FILE_NAME-$OFFSET"
 if [ ! -d "$OUT_DIR4" ]; then
     mkdir -p $OUT_DIR4
 fi
 
-MAXDEPTH=1000000000
-EXE=../../src/main
-/usr/bin/time -v $EXE decompose -i $FULL_PATH -d $MAXDEPTH -f 1 -c -r -p -o $OUT_DIR4
+EXE=../../src/main1
+/usr/bin/time -v $EXE decompose -i $FULL_PATH -f $OFFSET -c -r -o $OUT_DIR4
 
-echo "Done running panbubble for input $FILE_NAME" >> $LOG
+echo "Done running panbubble for input $FILE_NAME-$OFFSET" >> $LOG

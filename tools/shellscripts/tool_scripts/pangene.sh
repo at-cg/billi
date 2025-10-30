@@ -38,6 +38,6 @@ if [ ! -f "$OUT_DIR5/$FILE_NAME.txt" ]; then
 fi
 
 cd ../../../panbubble_data/pangene
-/usr/bin/time -v k8 pangene.js call $FULL_PATH > "../results/benchmark/pangene/$FILE_NAME.txt"
+/usr/bin/time -v k8 pangene.js call $FULL_PATH > "../results/benchmark_final/pangene/$FILE_NAME.txt"
 
 echo "Done running pangene for input $FILE_NAME" >> $LOG

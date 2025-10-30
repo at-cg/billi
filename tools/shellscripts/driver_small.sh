@@ -29,25 +29,28 @@ make -C $MAKE_FILE
 ulimit -s unlimited
 
 # C4-90
-sh $SHELL_EXE "$DATA_DIR/C4/C4-90-modified.gfa" $OUT_DIR "C4-90" $LOG
+# sh $SHELL_EXE "$DATA_DIR/C4/C4-90-modified.gfa" $OUT_DIR "C4-90" $LOG
 
 # # # MHC
-sh $SHELL_EXE "$DATA_DIR/MHC/MHC-modified.gfa" $OUT_DIR "MHC" $LOG
+# sh $SHELL_EXE "$DATA_DIR/MHC/MHC-modified.gfa" $OUT_DIR "MHC" $LOG
 
 # # # E-coli
-sh $SHELL_EXE "$DATA_DIR/Ecoli/Ecoli.gfa" $OUT_DIR "Ecoli" $LOG
+# sh $SHELL_EXE "$DATA_DIR/Ecoli/Ecoli.gfa" $OUT_DIR "Ecoli" $LOG
 
 # # # Human100
-sh $SHELL_EXE "$DATA_DIR/Human/human100.gfa" $OUT_DIR "human100" $LOG
+# sh $SHELL_EXE "$DATA_DIR/Human/human100.gfa" $OUT_DIR "human100" $LOG
 
 # # # Human100p10
-sh $SHELL_EXE "$DATA_DIR/Human/human100p10.gfa" $OUT_DIR "human100p10" $LOG
+# sh $SHELL_EXE "$DATA_DIR/Human/human100p10.gfa" $OUT_DIR "human100p10" $LOG
 
 # # # Mtb152m-p0a1
-sh $SHELL_EXE "$DATA_DIR/Human/Mtb152m-p0a1.gfa" $OUT_DIR "Mtb152m-p0a1" $LOG
+# sh $SHELL_EXE "$DATA_DIR/Human/Mtb152m-p0a1.gfa" $OUT_DIR "Mtb152m-p0a1" $LOG
 
 # # # Mtb152m-p1a2
-sh $SHELL_EXE "$DATA_DIR/Human/Mtb152m-p1a2.gfa" $OUT_DIR "Mtb152m-p1a2" $LOG
+# sh $SHELL_EXE "$DATA_DIR/Human/Mtb152m-p1a2.gfa" $OUT_DIR "Mtb152m-p1a2" $LOG
 
 # # # Mtb152p
-sh $SHELL_EXE "$DATA_DIR/Human/Mtb152p.gfa" $OUT_DIR "Mtb152p" $LOG
+# sh $SHELL_EXE "$DATA_DIR/Human/Mtb152p.gfa" $OUT_DIR "Mtb152p" $LOG
+
+## CHM13_v2 (chrX)
+sh $SHELL_EXE "/home/daanish/projects/panbubble_data/Data/CHM13/v2/chromosomes/chrX.gfa" $OUT_DIR "CHM13_v2_X" $LOG

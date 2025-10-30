@@ -863,11 +863,15 @@ int main(int argc, char* argv[])
         }
 
         int cnt_zero = 0;
+
+        cout << "Tip count: ";
         for(int i = 0; i < component; i++){
             // printArgs("Tips", i);
             // printVector(tips[i], 1);
             if(tips[i].size() == 0)cnt_zero++;
+            cout << tips[i].size() << " ";
         }
+        cout << endl;
         cout << "Number of components with zero tips: " << cnt_zero << endl;
     }
 
@@ -1003,6 +1007,9 @@ int main(int argc, char* argv[])
     // *** Finding valid panbubbles ***
     // ************************************
     {   
+        summarypath = outputdir + "/debug.txt";
+        freopen(summarypath.c_str(), "w", stdout);
+            
         // ************************************
         // *** Brute force ***
         // ************************************
@@ -1018,6 +1025,8 @@ int main(int argc, char* argv[])
                     
                     int j = -1, end = min(i + offset, sz);
                     for(j = i; j < end; j++){
+                        printArgs(key.F, key.S, i, j);
+                        
                         pii rs = {vec[j].F, vec[i].S};
 
                         if(j != i && dual[vec[j].S] != vec[j - 1].F){
@@ -1035,7 +1044,7 @@ int main(int argc, char* argv[])
                         considered.clear();
 
                         if(!root_leaf_path(rs.F, rs.S))continue;
-                        
+
                         counter = 0;
                         
                         is_valid = mark_nodes(dual[rs.F], rs, 0); // do not add the end points, checking only in one direction
@@ -1052,7 +1061,7 @@ int main(int argc, char* argv[])
                             break;
                         }
                     }
-                    if(!is_valid || j == sz)i++;
+                    if(!is_valid || j == end)i++;
                 }
             }
 
@@ -1145,4 +1154,4 @@ int main(int argc, char* argv[])
 
 // TODO:
 // cyclic cases
-// clearing the memory
+// no tips

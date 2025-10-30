@@ -40,8 +40,13 @@ TYPE=('')
 BTYPE=('')
 MAXNODES=1000000000
 
+sz=${#TYPE[@]}
+
 vg convert -g $FULL_PATH > "$FILE_NAME.vg"
-vg mod -n "$FILE_NAME.vg" > "${FILE_NAME}_mod.vg"
+
+if (( sz == 2 )); then
+    vg mod -n "$FILE_NAME.vg" > "${FILE_NAME}_mod.vg"
+fi
 
 for TY in "${TYPE[@]}"; do
 
