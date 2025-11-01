@@ -1,2 +1,0 @@
-Starting Driver-Small Script
-Done running panbubble for input CHM13_v2_X
