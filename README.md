@@ -8,7 +8,7 @@
 ## **Installation**
 ```
 git clone https://github.com/at-cg/billi.git
-cd src
+cd billi/src
 make
 ```
 
