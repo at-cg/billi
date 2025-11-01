@@ -1,9 +1,10 @@
 # Panbubble
 
 ## **Dependencies**
-> [pangene](https://github.com/lh3/pangene/tree/main) (For generating gfa file from the paf files)
-
-> [CLI11.hpp](https://github.com/CLIUtils/CLI11/releases/latest/download/CLI11.hpp) (copy in the ~/include directory)
+```
+[pangene](https://github.com/lh3/pangene/tree/main) (For generating gfa file from the paf files)
+[CLI11.hpp](https://github.com/CLIUtils/CLI11/releases/latest/download/CLI11.hpp) (copy in the ~/include directory)
+```
 
 ## **Installation**
 ```
