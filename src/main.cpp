@@ -12,6 +12,7 @@
 #include<deque>
 #include<regex>
 #include<cassert>
+#include<stdexcept>
 #define ll long long int
 #define pb push_back
 #define rb pop_back
@@ -873,6 +874,10 @@ int main(int argc, char* argv[])
         }
         cout << endl;
         cout << "Number of components with zero tips: " << cnt_zero << endl;
+
+        if(cnt_zero != 0){
+            throw runtime_error("Input graph has a component with zero tips!");
+        }
     }
 
     // ************************************
@@ -1007,8 +1012,8 @@ int main(int argc, char* argv[])
     // *** Finding valid panbubbles ***
     // ************************************
     {   
-        summarypath = outputdir + "/debug.txt";
-        freopen(summarypath.c_str(), "w", stdout);
+        // summarypath = outputdir + "/debug.txt";
+        // freopen(summarypath.c_str(), "w", stdout);
             
         // ************************************
         // *** Brute force ***
@@ -1018,19 +1023,43 @@ int main(int argc, char* argv[])
             visit_order.resize(2 * n, -1);
             to_chk.resize(n, -1);
 
+            // int maxsz = -1, eff_maxsz = -1;
+            // for(const auto &[key, vec] : canonical_sese){
+            //     int sz = vec.size(), cnt = 2;
+            //     for(int i = 1; i < sz; i++){
+            //         if(dual[vec[i].S] != vec[i - 1].F){
+            //             cnt = 2;
+            //         }else cnt++;
+            //     }
+            //     maxsz = max(maxsz, sz);
+            //     eff_maxsz = max(eff_maxsz, cnt);
+            // }
+            // cout << maxsz << " " << eff_maxsz << endl;
+
+            // return 0;
+            
             for(const auto &[key, vec] : canonical_sese){
                 int sz = vec.size();
+
                 for(int i = 0; i < sz; ){
                     bool is_valid = true;
                     
-                    int j = -1, end = min(i + offset, sz);
-                    for(j = i; j < end; j++){
-                        printArgs(key.F, key.S, i, j);
+                    int j = -1, cnt = 0;//, end = min(i + offset, sz);
+                    for(j = i; j < sz; j++){
+                        // printArgs(key.F, key.S, i, j);
                         
                         pii rs = {vec[j].F, vec[i].S};
 
                         if(j != i && dual[vec[j].S] != vec[j - 1].F){
                             is_valid = false;
+                            break;
+                        }
+
+                        if(!root_leaf_path(rs.F, rs.S))continue;
+
+                        cnt++;
+                        if(cnt > offset){
+                            is_valid = false; 
                             break;
                         }
 
@@ -1042,8 +1071,6 @@ int main(int argc, char* argv[])
                             to_chk[black_edge_id[u]] = -1;
                         }
                         considered.clear();
-
-                        if(!root_leaf_path(rs.F, rs.S))continue;
 
                         counter = 0;
                         
@@ -1061,7 +1088,7 @@ int main(int argc, char* argv[])
                             break;
                         }
                     }
-                    if(!is_valid || j == end)i++;
+                    if(!is_valid || j == sz)i++;
                 }
             }
 
