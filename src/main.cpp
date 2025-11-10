@@ -542,10 +542,13 @@ void sese(int u, int parent){
             // key = 0;
             key = {0, 0};
         }
- 
+        
+        // printArgs(key.F, key.S);
+        // printBracketList(bl[u]);
+
         if(st.find(key) != st.end()){
             int w = st[key];
-            if(find_unique_excluding_selfloop(u, w) == 1 && find_unique_excluding_selfloop(w, u) == 1){
+            if(find_unique_excluding_selfloop(u, w) == 1 || find_unique_excluding_selfloop(w, u) == 1){// important
                 // printArgs("cycle equivalent pair:", u, w);
                 canonical_sese[key].pb({u, w});
             }
@@ -564,12 +567,15 @@ void sese(int u, int parent){
 bool hairp(int u, int parent){
     mark[u] = true;
     bool child_bridge = false;
+    int cnt = 0;
     for(pii child : g_compacted[u]){
-        if(child.F == parent || mark[child.F])continue;
+        if(child.F == parent)continue;
+        cnt++;
+        if(mark[child.F])continue;
         child_bridge |= hairp(child.F, u);
     }
 
-    if(!child_bridge && is_bridge[black_edge_id[u]]){
+    if(!child_bridge && is_bridge[black_edge_id[u]] && cnt != 0){
         possible_hairpins.pb({u, u});
     }
 
@@ -797,8 +803,8 @@ int main(int argc, char* argv[])
                 mark[i] = true;
             }
 
-            cout << "Number of black edges after compaction: " << cnt_black_edge << endl;
-            cout << "Number of gray edges after compaction: " << cnt_gray_edge << endl;
+            cout << "Number of nodes after compaction: " << cnt_black_edge << endl;
+            cout << "Number of edges after compaction: " << cnt_gray_edge << endl;
 
             // swapping the black edge so that it is the 0-indexed edge
             for(int i = 0; i < 2 * n; i++){
@@ -865,19 +871,19 @@ int main(int argc, char* argv[])
 
         int cnt_zero = 0;
 
-        cout << "Tip count: ";
+        // cout << "Tip count: ";
         for(int i = 0; i < component; i++){
             // printArgs("Tips", i);
             // printVector(tips[i], 1);
             if(tips[i].size() == 0)cnt_zero++;
-            cout << tips[i].size() << " ";
+            // cout << tips[i].size() << " ";
         }
-        cout << endl;
+        // cout << endl;
         cout << "Number of components with zero tips: " << cnt_zero << endl;
 
-        if(cnt_zero != 0){
-            throw runtime_error("Input graph has a component with zero tips!");
-        }
+        // if(cnt_zero != 0){
+        //     throw runtime_error("Input graph has a component with zero tips!");
+        // }
     }
 
     // ************************************
@@ -995,7 +1001,7 @@ int main(int argc, char* argv[])
                 
                 int cnt_pair = 0;
                 for(const auto &[key, vec] : canonical_sese){
-                    printArgs(key.F, key.S);
+                    // printArgs(key.F, key.S);
                     for(const pii &rs : vec){
                         cout << "(" << get_label(rs.F, rs.S) << ") "; 
                         cnt_pair++;
