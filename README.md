@@ -21,6 +21,7 @@ make (This will download CLI11.hpp file in your ~/include directory if missing)
 ```
 billi decompose -i <PATH_TO_GFA_FILE> -o <PATH_TO_THE_DIRECTORY_THAT_WILL_SAVE_THE_RESULTS> 
 ```
+Check [here](docs/commands.md/#decompose) for the options.
 
 ### Example
 ```
