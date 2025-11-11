@@ -12,7 +12,8 @@ The binary will be saved in the bin folder.
 ```
 git clone https://github.com/at-cg/billi.git
 cd billi/src
-make (This will download CLI11.hpp file in your ~/include directory if missing)
+make 
+# This will download CLI11.hpp file in your ~/include directory if missing
 ```
 
 ## **Test run:**
