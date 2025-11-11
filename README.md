@@ -1,4 +1,4 @@
-# Panbubble
+# Billi
 
 <!-- ## **Dependencies**
 > [pangene](https://github.com/lh3/pangene/tree/main) (For generating gfa file from the paf files)
