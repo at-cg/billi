@@ -548,10 +548,10 @@ void sese(int u, int parent){
 
         if(st.find(key) != st.end()){
             int w = st[key];
-            if(find_unique_excluding_selfloop(u, w) == 1 || find_unique_excluding_selfloop(w, u) == 1){// important
+            // if(find_unique_excluding_selfloop(u, w) == 1 || find_unique_excluding_selfloop(w, u) == 1){// important
                 // printArgs("cycle equivalent pair:", u, w);
                 canonical_sese[key].pb({u, w});
-            }
+            // }
         }
         st[key] = parent; // will happen regardless you found something or not
     }
@@ -673,7 +673,7 @@ int main(int argc, char* argv[])
         
         decomp->add_option("-i, --input", inputpath, "Input GFA")->required();
         decomp->add_option("-o, --output", outputdir, "Directory for saving the output files")->required();
-        decomp->add_option("-f, --offset", offset, "Checking for the panbubbles b/w the pairs of edges (i, [i, i + offset))")->default_val(maxv / 10);
+        decomp->add_option("-f, --offset", offset, "Checking for the panbubbles b/w [offset] nearest neighbors which satisfy the partial order")->default_val(maxv / 10);
         decomp->add_flag("-c, --cycle-equivalent", print_equivalent, "Whether cycle equivalent classes are to be reported");
         decomp->add_flag("-r, --report-hairpins", print_hairpin, "Whether hairpins are to be reported");
          
@@ -881,9 +881,9 @@ int main(int argc, char* argv[])
         // cout << endl;
         cout << "Number of components with zero tips: " << cnt_zero << endl;
 
-        // if(cnt_zero != 0){
-        //     throw runtime_error("Input graph has a component with zero tips!");
-        // }
+        if(cnt_zero != 0){
+            throw runtime_error("Input graph has a component with zero tips!");
+        }
     }
 
     // ************************************
