@@ -26,5 +26,16 @@ Check [here](docs/commands.md/#decompose) for the options.
 
 ### Example
 ```
-billi decompose -i ../test/gfa_files/EC7.gfa -c -r -o ../test/results/EC7
+billi decompose -i ../test/gfa_files/t2-1.gfa -c -r -o ../test/results/t2-1
+```
+<p align="center">
+  <img src="docs/figures/t2-1.png" width="400">
+  <br>
+  <em>Figure 1: Bandage visualisation</em>
+</p>
+
+#### Billi output
+```
+<s6 <s4
+>s1 >s3
 ```
