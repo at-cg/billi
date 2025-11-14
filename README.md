@@ -18,7 +18,7 @@ make
 
 ## **Test run:**
 
-### Enumerating panbubbles
+### Enumerating panbubbles and hairpins
 ```
 billi decompose -i <PATH_TO_GFA_FILE> -o <PATH_TO_THE_DIRECTORY_THAT_WILL_SAVE_THE_RESULTS> 
 ```

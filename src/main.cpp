@@ -141,7 +141,7 @@ void printGraph(vector<vector<pii>>& g){
 // ****************************************************************************************************************************************************** 
 fstream f;
 string inputpath, outputdir;
-bool print_equivalent = false, print_hairpin = false; // whether to report alleles, cycle equivalent pairs and hairpins
+bool use_exact = false, print_equivalent = false, print_hairpin = false; // whether to report alleles, cycle equivalent pairs and hairpins
 int maxsize = 1000, maxdepth = 1, offset = maxv; // max size of panbubbles whose vertices are also to be printed, max depth to which the panbubbles are to be reported
 int n, edges; // no of nodes (genes), no of edges
 vector<bool> has_self_loop; // whether the node has a self loop
@@ -673,10 +673,13 @@ int main(int argc, char* argv[])
         
         decomp->add_option("-i, --input", inputpath, "Input GFA")->required();
         decomp->add_option("-o, --output", outputdir, "Directory for saving the output files")->required();
-        decomp->add_option("-f, --offset", offset, "Checking for the panbubbles b/w [offset] nearest neighbors which satisfy the partial order")->default_val(maxv / 10);
+        // decomp->add_option("-f, --offset", offset, "Checking for the panbubbles b/w [offset] nearest neighbors which satisfy the partial order")->default_val(maxv / 10);
+        decomp->add_flag("-e, --exact", use_exact, "Use the exact implementation to compute panbubbles");
         decomp->add_flag("-c, --cycle-equivalent", print_equivalent, "Whether cycle equivalent classes are to be reported");
         decomp->add_flag("-r, --report-hairpins", print_hairpin, "Whether hairpins are to be reported");
-         
+        
+        if(use_exact)offset = maxv / 10;
+
         CLI11_PARSE(app, argc, argv);
 
         if(!fs::exists(outputdir))fs::create_directories(outputdir);
