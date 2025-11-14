@@ -29,9 +29,9 @@ Check [here](docs/commands.md/#decompose) for the options.
 billi decompose -i ../test/gfa_files/t2-1.gfa -c -r -o ../test/results/t2-1
 ```
 <p align="center">
-  <img src="docs/figures/t2-1.png" width="400">
+  <img src="docs/figures/t2-1.png" width="200">
   <br>
-  <em>Figure 1: Bandage visualisation</em>
+  <em>Figure 1: Bandage visualisation of t2-1 graph</em>
 </p>
 
 #### Billi output
