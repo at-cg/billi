@@ -15,8 +15,8 @@ billi decompose [OPTIONS] -i EC7.gfa -o EC7
    The input GFA file.
 *  `-o, --output FILE`:<br/>
    The output directory where the results will be saved.
-*  `-f, --offset INT [214748364]`:<br/>
-   (optional) Checking for the panbubbles b/w offset nearest neighbors which satisfy the partial order.
+*  `-e, --exact [heuristic]`:<br/>
+   (optional) Use the exact implementation to compute panbubbles.
 *  `-c, --cycle-equivalent FLAG`:<br/>
    (optional) Whether cycle equivalent classes are to be reported?
 *  `-r, --report-hairpins FLAG`:<br/>
