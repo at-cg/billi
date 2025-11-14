@@ -22,7 +22,7 @@ make
 ```
 billi decompose -i <PATH_TO_GFA_FILE> -o <PATH_TO_THE_DIRECTORY_THAT_WILL_SAVE_THE_RESULTS> 
 ```
-Check [here](docs/commands.md/#decompose) for the options.
+Check [here](docs/commands.md/#decompose) for the options. The output format is similar to [pangene](https://github.com/lh3/pangene/tree/main) but we only report the entrance edges along with the direction of traversal. 
 
 ### Example
 ```
