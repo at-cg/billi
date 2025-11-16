@@ -24,10 +24,11 @@ billi decompose -i <PATH_TO_GFA_FILE> -o <PATH_TO_THE_DIRECTORY_THAT_WILL_SAVE_T
 ```
 Check [here](docs/commands.md/#decompose) for the options. The output format is similar to [pangene](https://github.com/lh3/pangene/tree/main) but we only report the entrance edges along with the direction of traversal. 
 
-There will be two files saved in the output directory:
+The following files will be saved in the output directory:
 ```
 summary.txt - This will list the summary of the input graph
 panbubble.txt - This will list the panbubbles
+hairpin.txt - This will list the hairpins. The user needs to use -r flag.
 ```
 
 ### Example

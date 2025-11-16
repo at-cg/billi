@@ -14,7 +14,7 @@ billi decompose [OPTIONS] -i EC7.gfa -o EC7
 *  `-i, --input FILE`:<br/>
    The input GFA file.
 *  `-o, --output FILE`:<br/>
-   The output directory where the results will be saved ().
+   The output directory where the results will be saved.
 *  `-e, --exact FLAG`:<br/>
    (optional) Use the exact implementation to compute panbubbles (default: heuristic).
 *  `-c, --cycle-equivalent FLAG`:<br/>
