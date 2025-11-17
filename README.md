@@ -43,5 +43,5 @@ The graph contains two nested bubbles. Expect the following output:
 
 See the [test folder](test/gfa_files) for other test cases.
 
-## <a name="pub"></a>Publications
+## <a name="pub"></a>Preprint
 - **Shreeharsha G Bhat, Daanish Mahajan and Chirag Jain**. Billi: Provably Accurate and Scalable Bubble Detection in Pangenome Graphs. *BioRxiv*
