@@ -142,7 +142,7 @@ void printGraph(vector<vector<pii>>& g){
 fstream f;
 string inputpath, outputdir;
 bool use_exact = false, print_equivalent = false, print_hairpin = false; // whether to report alleles, cycle equivalent pairs and hairpins
-int maxsize = 1000, maxdepth = 1, offset = maxv; // max size of panbubbles whose vertices are also to be printed, max depth to which the panbubbles are to be reported
+int maxsize = 1000, maxdepth = 1, offset = 1; // max size of panbubbles whose vertices are also to be printed, max depth to which the panbubbles are to be reported
 int n, edges; // no of nodes (genes), no of edges
 vector<bool> has_self_loop; // whether the node has a self loop
 vector<vector<pii>> g; // (node_id, gray_edge_id)

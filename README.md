@@ -26,8 +26,8 @@ Check [here](docs/commands.md/#decompose) for the options. The output format is 
 
 The following files will be saved in the output directory:
 ```
-summary.txt - This will list the summary of the input graph
-panbubble.txt - This will list the panbubbles
+summary.txt - This will list the summary of the input graph.
+panbubble.txt - This will list the panbubbles.
 hairpin.txt - This will list the hairpins. The user needs to use -r flag.
 ```
 
