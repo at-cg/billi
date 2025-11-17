@@ -27,7 +27,7 @@ hairpin.txt - This will list the hairpins. The user needs to use -r flag.
 
 ## Try Billi on small graph
 ```
-billi decompose -i test/gfa_files/t2-1.gfa -c -r -o output_directory
+billi decompose -i test/gfa_files/t2-1.gfa -r -o output_directory
 ```
 <p align="center">
   <img src="docs/figures/t2-1.png" width="200">
