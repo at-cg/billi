@@ -1,4 +1,4 @@
-#include<CLI11.hpp>
+#include<include/CLI11.hpp>
 #include<iostream>
 #include<fstream>
 #include<filesystem>
@@ -675,7 +675,7 @@ int main(int argc, char* argv[])
         decomp->add_option("-o, --output", outputdir, "Directory for saving the output files")->required();
         // decomp->add_option("-f, --offset", offset, "Checking for the panbubbles b/w [offset] nearest neighbors which satisfy the partial order")->default_val(maxv / 10);
         decomp->add_flag("-e, --exact", use_exact, "Use the exact implementation to compute panbubbles");
-        decomp->add_flag("-c, --cycle-equivalent", print_equivalent, "Whether cycle equivalent classes are to be reported");
+        // decomp->add_flag("-c, --cycle-equivalent", print_equivalent, "Whether cycle equivalent classes are to be reported");
         decomp->add_flag("-r, --report-hairpins", print_hairpin, "Whether hairpins are to be reported");
         
         if(use_exact)offset = maxv / 10;
