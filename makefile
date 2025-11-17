@@ -1,9 +1,9 @@
 CXX := g++ # Compiler
-CXXFLAGS := -std=c++17 -O3 -I ~/include # Compiler flags
+CXXFLAGS := -std=c++17 -O3 -I src/include # Compiler flags
 
 # TARGET_DIR := ..
 TARGET := billi 
-INCLUDE_DIR := ~/include
+# INCLUDE_DIR := ~/include
 
 SOURCES := src/main.cpp
 
