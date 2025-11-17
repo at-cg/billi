@@ -1,6 +1,6 @@
 # Billi
 
-Billi is a tool developed to identify bubbles in pangenome graphs or assembly graphs that are represented using bidirected graph model. Users can refer to our [preprint](#pub) for algorithmic details. 
+Billi is a tool developed to identify bubbles in pangenome graphs or assembly graphs that use the *bidirected graph* representation. Refer to our [preprint](#pub) for details. 
 
 ## **Installation**
 
