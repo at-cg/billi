@@ -8,7 +8,7 @@
 ### decompose
 
 ```
-billi decompose [OPTIONS] -i EC7.gfa -o output_directory
+./billi decompose [OPTIONS] -i EC7.gfa -o output_directory
 ```
 
 *  `-i, --input FILE`:<br/>
