@@ -853,7 +853,7 @@ int main(int argc, char* argv[])
             first_node.pb(i);
             component++;
         }
-        cout << "Number of components in the compacted graph: " << component << endl;
+        cout << "Number of components in the graph: " << component << endl;
     }
 
     // ************************************
