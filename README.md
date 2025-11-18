@@ -6,7 +6,7 @@ Billi is a tool developed to identify bubbles in pangenome graphs or assembly gr
 
 ```
 git clone https://github.com/at-cg/billi.git
-cd billi/src
+cd billi
 make 
 ```
 <!-- The binary will be saved in the bin folder. -->
@@ -19,8 +19,10 @@ Check [here](docs/commands.md/#decompose) to see the command-line options. The o
 
 The following files will be saved in the output directory:
 
-summary.txt - This will list the [summary](docs/commands.md/#summary) of the input graph.
+summary.txt - This will list the [summary](docs/summary.md) of the input graph.
+
 panbubble.txt - This will list the panbubbles.
+
 hairpin.txt - This will list the hairpins. The user needs to use -r flag.
 
 
