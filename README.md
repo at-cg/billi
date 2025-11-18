@@ -3,7 +3,6 @@
 Billi is a tool developed to identify bubbles in pangenome graphs or assembly graphs that use the [bidirected graph](https://en.wikipedia.org/wiki/Bidirected_graph) or [GFA](https://gfa-spec.github.io/GFA-spec/GFA1.html) representation. Refer to our [preprint](#pub) for details. 
 
 ## **Installation**
-
 ```
 git clone https://github.com/at-cg/billi.git
 cd billi
@@ -18,13 +17,12 @@ billi decompose -i <PATH_TO_GFA_FILE> -o <PATH_TO_THE_DIRECTORY_THAT_WILL_SAVE_T
 Check [here](docs/commands.md/#decompose) to see the command-line options. The output format is similar to [pangene](https://github.com/lh3/pangene/tree/main), but we only report the entrance edges along with the direction of traversal. 
 
 The following files will be saved in the output directory:
-
-summary.txt - This will list the [summary](docs/summary.md) of the input graph.
-
+```
+summary.txt - This will list the summary of the input graph.
 panbubble.txt - This will list the panbubbles.
-
 hairpin.txt - This will list the hairpins. The user needs to use -r flag.
-
+```
+Check [here](docs/summary.md) for the summary statistics.
 
 ## Try Billi on small graph
 ```
