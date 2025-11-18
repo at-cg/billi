@@ -15,14 +15,14 @@ make
 ```
 billi decompose -i <PATH_TO_GFA_FILE> -o <PATH_TO_THE_DIRECTORY_THAT_WILL_SAVE_THE_RESULTS> 
 ```
-Check [here](docs/commands.md/#decompose) to see the command-line options. The output format is similar to [pangene](https://github.com/lh3/pangene/tree/main) but we only report the entrance edges along with the direction of traversal. 
+Check [here](docs/commands.md/#decompose) to see the command-line options. The output format is similar to [pangene](https://github.com/lh3/pangene/tree/main), but we only report the entrance edges along with the direction of traversal. 
 
 The following files will be saved in the output directory:
-```
+
 summary.txt - This will list the [summary](docs/commands.md/#summary) of the input graph.
 panbubble.txt - This will list the panbubbles.
 hairpin.txt - This will list the hairpins. The user needs to use -r flag.
-```
+
 
 ## Try Billi on small graph
 ```
