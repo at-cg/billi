@@ -1,4 +1,5 @@
 #include<CLI11.hpp>
+#include<sys/resource.h>
 #include<iostream>
 #include<fstream>
 #include<filesystem>
@@ -46,7 +47,28 @@ string get_single_label(int& x, int ty){
 }
 
 string get_label(int x, int y){
-    return (get_single_label(x, 0) + " " + get_single_label(y, 1)); 
+    return (get_single_label(x, 0) + "\t" + get_single_label(y, 1)); 
+}
+
+void increase_stack() {
+    const rlim_t kStackSize = RLIM_INFINITY;
+    struct rlimit rl;
+
+    if (getrlimit(RLIMIT_STACK, &rl) == 0) {
+        rl.rlim_cur = kStackSize;
+        if (setrlimit(RLIMIT_STACK, &rl) != 0) {
+            std::cerr << "setrlimit failed\n";
+        }
+    }
+}
+
+string get_cmdline(int argc, char** argv){
+    ostringstream oss;
+    for(int i = 0; i < argc; i++){
+        if(i)oss << " ";
+        oss << argv[i];
+    }
+    return oss.str();
 }
 // ****************************************************************************************************************************************************** 
 
@@ -661,36 +683,49 @@ int main(int argc, char* argv[])
     // *** IO + data preparation ***
     // ************************************
     {
+        increase_stack(); // For setting the stack size to max_value
         ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0); // Fast IO
 
-        CLI::App app{"panbubble"};
-        auto decomp = app.add_subcommand("decompose", "Decompose GFA file into panbubbbles");
+        string full_cmd = get_cmdline(argc, argv);
+
+        CLI::App app{"Billi is a tool developed to identify bubbles in pangenome graphs or assembly graphs that use the bidirected graph or GFA representation."};
+
+        if(argc == 1){
+            cout << app.help() << endl;
+            return 0;    
+        }
+
+        auto decomp = app.add_subcommand("decompose", "Decompose the input graph (in GFA format) into panbubbles");
         // if(argc != 3){
         //     return 1;
         // }
-        // inputpath = argv[1];
         // outputdir = argv[2];
         
         decomp->add_option("-i, --input", inputpath, "Input GFA")->required();
-        decomp->add_option("-o, --output", outputdir, "Directory for saving the output files")->required();
+        // decomp->add_option("-o, --output", outputdir, "Directory for saving the output files")->required();
         // decomp->add_option("-f, --offset", offset, "Checking for the panbubbles b/w [offset] nearest neighbors which satisfy the partial order")->default_val(maxv / 10);
         decomp->add_flag("-e, --exact", use_exact, "Use the exact implementation to compute panbubbles");
         // decomp->add_flag("-c, --cycle-equivalent", print_equivalent, "Whether cycle equivalent classes are to be reported");
-        decomp->add_flag("-r, --report-hairpins", print_hairpin, "Whether hairpins are to be reported");
+        // decomp->add_flag("-r, --report-hairpins", print_hairpin, "Whether hairpins are to be reported");
         
         if(use_exact)offset = maxv / 10;
 
-        CLI11_PARSE(app, argc, argv);
+        app.require_subcommand(1);
 
-        if(!fs::exists(outputdir))fs::create_directories(outputdir);
+        CLI11_PARSE(app, argc, argv);
+        cerr << "Command line options:" << full_cmd << endl;
+
+        // if(!fs::exists(outputdir))fs::create_directories(outputdir);
         
-        summarypath = outputdir + "/summary.txt";
-        freopen(summarypath.c_str(), "w", stdout);
+        // summarypath = outputdir + "/summary.txt";
+        // freopen(summarypath.c_str(), "w", stdout);
+
+        // inputpath = argv[2];
 
         get_ne();
 
-        cout << "Number of nodes in the input: " << n << endl;
-        cout << "Number of edges in the input: " << edges << endl;
+        cerr << "Number of nodes in the input: " << n << endl;
+        cerr << "Number of edges in the input: " << edges << endl;
 
         // for a node x (0-indexed) in pangene graph - two nodes 2 * x (tail of arrow), 2 * x + 1 (head of arrow) are created in the bi-edged graph 
         // using vectors will be good coz we will have to add capping backedges as well
@@ -705,7 +740,8 @@ int main(int argc, char* argv[])
         }
         make_graph(); // adding gray edges
     }
-
+    cerr << "Done reading input" << endl;
+ 
     // ************************************
     // *** Graph Cleaning ***    
     // ************************************
@@ -806,8 +842,8 @@ int main(int argc, char* argv[])
                 mark[i] = true;
             }
 
-            cout << "Number of nodes after compaction: " << cnt_black_edge << endl;
-            cout << "Number of edges after compaction: " << cnt_gray_edge << endl;
+            cerr << "Number of nodes after compaction: " << cnt_black_edge << endl;
+            cerr << "Number of edges after compaction: " << cnt_gray_edge << endl;
 
             // swapping the black edge so that it is the 0-indexed edge
             for(int i = 0; i < 2 * n; i++){
@@ -835,7 +871,8 @@ int main(int argc, char* argv[])
             g.clear();
         }
     }
-    
+    cerr << "Done graph cleaning" << endl;
+
     // ************************************
     // *** Finding number of connected components in the compacted graph ***    
     // count of vertices = 2 * n (remains the same, although some vertices will have |adj[vertex]| = 0)
@@ -853,7 +890,7 @@ int main(int argc, char* argv[])
             first_node.pb(i);
             component++;
         }
-        cout << "Number of components in the graph: " << component << endl;
+        cerr << "Number of components in the graph: " << component << endl;
     }
 
     // ************************************
@@ -882,12 +919,13 @@ int main(int argc, char* argv[])
             // cout << tips[i].size() << " ";
         }
         // cout << endl;
-        cout << "Number of components with zero tips: " << cnt_zero << endl;
+        cerr << "Number of components with zero tips: " << cnt_zero << endl;
 
         if(cnt_zero != 0){
             throw runtime_error("Input graph has a component with zero tips!");
         }
     }
+    cerr << "Done finding tips" << endl;
 
     // ************************************
     // *** Finding edges belonging to individual cycle equivalent classes ***
@@ -997,25 +1035,26 @@ int main(int argc, char* argv[])
         {
             number_of_classes = canonical_sese.size();
             if(print_equivalent){
-                summarypath = outputdir + "/cycle_equivalent_classes.txt";
-                freopen(summarypath.c_str(), "w", stdout);
+                // summarypath = outputdir + "/cycle_equivalent_classes.txt";
+                // freopen(summarypath.c_str(), "w", stdout);
 
-                cout << "Total cycle equivalent classes found: " << number_of_classes << endl;
+                cerr << "Total cycle equivalent classes found: " << number_of_classes << endl;
                 
                 int cnt_pair = 0;
                 for(const auto &[key, vec] : canonical_sese){
                     // printArgs(key.F, key.S);
                     for(const pii &rs : vec){
-                        cout << "(" << get_label(rs.F, rs.S) << ") "; 
+                        // cout << "(" << get_label(rs.F, rs.S) << ") "; 
                         cnt_pair++;
                     }
-                    cout << endl;
+                    // cout << endl;
                 }
 
-                cout << "Total canonical cycle equivalent pairs found: " << cnt_pair << endl;
+                cerr << "Total canonical cycle equivalent pairs found: " << cnt_pair << endl;
             }
         }
     }
+    cerr << "Done finding cycle equivalent classes" << endl;
 
     // ************************************
     // *** Finding valid panbubbles ***
@@ -1109,20 +1148,21 @@ int main(int argc, char* argv[])
         // *** Printing result ***
         // ************************************
         {
-            summarypath = outputdir + "/summary.txt";
-            freopen(summarypath.c_str(), "a", stdout);
+            // summarypath = outputdir + "/summary.txt";
+            // freopen(summarypath.c_str(), "a", stdout);
             int sz = valid_panbubbles.size();
-            cout << "Total panbubbles found: " << sz << endl;
+            cerr << "Total panbubbles found: " << sz << endl;
             
-            summarypath = outputdir + "/panbubble.txt";
-            freopen(summarypath.c_str(), "w", stdout);
+            // summarypath = outputdir + "/panbubble.txt";
+            // freopen(summarypath.c_str(), "w", stdout);
 
             for(int i = 0; i < sz; i++){
                 pii rs = valid_panbubbles[i];
-                cout << get_label(rs.F, rs.S) << endl;
+                cout << "P\t" << get_label(rs.F, rs.S) << endl;
             }
         }
     }
+    cerr << "Done finding panbubbles" << endl;
 
     // ************************************
     // *** Finding valid hairpins ***
@@ -1172,20 +1212,21 @@ int main(int argc, char* argv[])
         // *** Printing result ***
         // ************************************
         {
-            summarypath = outputdir + "/summary.txt";
-            freopen(summarypath.c_str(), "a", stdout);
+            // summarypath = outputdir + "/summary.txt";
+            // freopen(summarypath.c_str(), "a", stdout);
             int sz = valid_hairpins.size();
-            cout << "Total hairpins found: " << sz << endl;
+            cerr << "Total hairpins found: " << sz << endl;
             
-            summarypath = outputdir + "/hairpin.txt";
-            freopen(summarypath.c_str(), "w", stdout);
+            // summarypath = outputdir + "/hairpin.txt";
+            // freopen(summarypath.c_str(), "w", stdout);
 
             for(int i = 0; i < sz; i++){
                 pii rs = valid_hairpins[i];
-                cout << get_label(rs.F, rs.S) << endl;
+                cout << "H\t" << get_label(rs.F, rs.S) << endl;
             }
         }
     }
+    cerr << "Done finding hairpins" << endl;
 } 
 
 // TODO:

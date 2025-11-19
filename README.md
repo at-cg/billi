@@ -12,21 +12,21 @@ make
 
 ## Usage
 ```
-./billi decompose -i <PATH_TO_GFA_FILE> -o <PATH_TO_THE_DIRECTORY_THAT_WILL_SAVE_THE_RESULTS> 
+./billi decompose -i <PATH_TO_GFA_FILE> > out.txt 
 ```
-Check [here](docs/commands.md/#decompose) to see the command-line options. The output format is similar to [pangene](https://github.com/lh3/pangene/tree/main), but we only report the entrance edges along with the direction of traversal. 
+Check [here](docs/commands.md/#decompose) to see the command-line options. The output format is similar to [pangene](https://github.com/lh3/pangene/tree/main), but we only report the entrance edges along with the direction of traversal. The lines beginning with `P` denote panbubbles and the ones beginning with `H` denote hairpins.
 
-The following files will be saved in the output directory:
+<!-- The following files will be saved in the output directory:
 ```
 summary.txt - This will list the summary of the input graph.
 panbubble.txt - This will list the panbubbles.
 hairpin.txt - This will list the hairpins. The user needs to use -r flag.
-```
-Check [here](docs/summary.md) for the summary statistics.
+``` -->
+<!-- Check [here](docs/summary.md) for the summary statistics. -->
 
 ## Try Billi on small graph
 ```
-./billi decompose -i test/gfa_files/t2-1.gfa -r -o output_directory
+./billi decompose -i test/gfa_files/t2-1.gfa > out.txt
 ```
 <p align="center">
   <img src="docs/figures/t2-1.png" width="200">
@@ -36,8 +36,8 @@ Check [here](docs/summary.md) for the summary statistics.
 
 The graph contains two nested bubbles. Expect the following output:
 ```
-<s6 <s4
->s1 >s3
+P <s6 <s4
+P >s1 >s3
 ```
 
 See the [test folder](test/gfa_files) for other test cases.
