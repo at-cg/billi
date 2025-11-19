@@ -701,7 +701,7 @@ int main(int argc, char* argv[])
         // }
         // outputdir = argv[2];
         
-        decomp->add_option("-i, --input", inputpath, "Input GFA")->required();
+        decomp->add_option("-i, --input", inputpath, "Input file in GFA format")->required();
         // decomp->add_option("-o, --output", outputdir, "Directory for saving the output files")->required();
         // decomp->add_option("-f, --offset", offset, "Checking for the panbubbles b/w [offset] nearest neighbors which satisfy the partial order")->default_val(maxv / 10);
         decomp->add_flag("-e, --exact", use_exact, "Use exact (slow) algorithm (default: heuristic)");
