@@ -2,6 +2,10 @@
 
 Billi is a tool developed to identify bubbles in pangenome graphs or assembly graphs that use the [bidirected graph](https://en.wikipedia.org/wiki/Bidirected_graph) or [GFA](https://gfa-spec.github.io/GFA-spec/GFA1.html) representation. Refer to our [preprint](#pub) for details. 
 
+<p align="center">
+  <img src="docs/figures/bubble_nesting.png" width="300">
+</p>
+
 ## **Installation**
 ```
 git clone https://github.com/at-cg/billi.git
@@ -29,7 +33,7 @@ hairpin.txt - This will list the hairpins. The user needs to use -r flag.
 ./billi decompose -i test/gfa_files/t2-1.gfa > out.txt
 ```
 <p align="center">
-  <img src="docs/figures/t2-1.png" width="200">
+  <img src="docs/figures/t2-1.png" width="300">
   <br>
   <em>Bandage visualisation of t2-1 test graph</em>
 </p>
