@@ -12,7 +12,7 @@ make
 
 ## Usage
 ```
-./billi decompose -i <PATH_TO_GFA_FILE> > out.txt 
+./billi decompose -i inputgraph.gfa > out.txt 
 ```
 Check [here](docs/commands.md/#decompose) to see the command-line options. The output format is similar to [pangene](https://github.com/lh3/pangene/tree/main), but we only report the entrance edges along with the direction of traversal. The lines beginning with `P` denote panbubbles and the ones beginning with `H` denote hairpins.
 
