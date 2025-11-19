@@ -688,7 +688,7 @@ int main(int argc, char* argv[])
 
         string full_cmd = get_cmdline(argc, argv);
 
-        CLI::App app{"Billi is a tool developed to identify bubbles in pangenome graphs or assembly graphs that use the bidirected graph or GFA representation."};
+        CLI::App app{"Billi is a bubble-detection tool for pangenome graphs"};
 
         if(argc == 1){
             cout << app.help() << endl;
@@ -704,7 +704,7 @@ int main(int argc, char* argv[])
         decomp->add_option("-i, --input", inputpath, "Input GFA")->required();
         // decomp->add_option("-o, --output", outputdir, "Directory for saving the output files")->required();
         // decomp->add_option("-f, --offset", offset, "Checking for the panbubbles b/w [offset] nearest neighbors which satisfy the partial order")->default_val(maxv / 10);
-        decomp->add_flag("-e, --exact", use_exact, "Use the exact implementation to compute panbubbles");
+        decomp->add_flag("-e, --exact", use_exact, "Use exact (slow) algorithm (default: heuristic)");
         // decomp->add_flag("-c, --cycle-equivalent", print_equivalent, "Whether cycle equivalent classes are to be reported");
         // decomp->add_flag("-r, --report-hairpins", print_hairpin, "Whether hairpins are to be reported");
         
