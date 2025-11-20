@@ -724,8 +724,8 @@ int main(int argc, char* argv[])
 
         get_ne();
 
-        cerr << "Number of nodes in the input: " << n << endl;
-        cerr << "Number of edges in the input: " << edges << endl;
+        cerr << "Number of vertices in the input bidirected graph: " << n << endl;
+        cerr << "Number of edges in the input bidirected graph: " << edges << endl;
 
         // for a node x (0-indexed) in pangene graph - two nodes 2 * x (tail of arrow), 2 * x + 1 (head of arrow) are created in the bi-edged graph 
         // using vectors will be good coz we will have to add capping backedges as well
@@ -842,8 +842,8 @@ int main(int argc, char* argv[])
                 mark[i] = true;
             }
 
-            cerr << "Number of nodes after compaction: " << cnt_black_edge << endl;
-            cerr << "Number of edges after compaction: " << cnt_gray_edge << endl;
+            cerr << "Number of vertices in the bidirected graph after compaction: " << cnt_black_edge << endl;
+            cerr << "Number of edges in the bidirected graph after compaction: " << cnt_gray_edge << endl;
 
             // swapping the black edge so that it is the 0-indexed edge
             for(int i = 0; i < 2 * n; i++){
