@@ -1,30 +1,19 @@
 CXX := g++ # Compiler
-CXXFLAGS := -std=c++17 -O3 -I src/include # Compiler flags
+# CXXFLAGS := -std=c++17 -g -O0 -O3 -I ~/include # GDB Compiler flags
+CXXFLAGS := -std=c++17 -O3 -I ~/include # Compiler flags
 
-# TARGET_DIR := ..
-TARGET := billi 
-# INCLUDE_DIR := ~/include
+TARGET := billi
 
-SOURCES := src/main.cpp
+SOURCES := src/main.cpp src/subcommand/decompose.cpp src/subcommand/compact.cpp src/include/commons.cpp
+OBJECTS := $(SOURCES:.cpp=.o)
 
-# CLI11_URL := https://github.com/CLIUtils/CLI11/releases/latest/download/CLI11.hpp
-# CLI11_HEADER := $(INCLUDE_DIR)/CLI11.hpp
+all: $(TARGET)
 
-# all: install_cli11 $(TARGET)
-
-# install_cli11:
-# 	@mkdir -p $(INCLUDE_DIR)
-# 	@if [ ! -f $(CLI11_HEADER) ]; then \
-# 	  echo "Downloading CLI11.hpp …"; \
-# 	  curl -L $(CLI11_URL) -o $(CLI11_HEADER); \
-# 	  echo "Saved to $(CLI11_HEADER)"; \
-# 	else \
-# 	  echo "CLI11.hpp already present"; \
-# 	fi
-
-$(TARGET): $(SOURCES)
-# 		@mkdir -p $(TARGET_DIR)
+$(TARGET): $(OBJECTS)
 		$(CXX) $(CXXFLAGS) -o $@ $^
 
+%.o: %.cpp 
+		$(CXX) $(CXXFLAGS) -c $< -o $@
+
 clean:
-		rm -f $(TARGET)
+		rm -f $(TARGET) $(OBJECTS)
