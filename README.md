@@ -15,6 +15,13 @@ make
 <!-- The binary will be saved in the bin folder. -->
 
 ## Usage
+
+### Compact
+```
+./billi compact -i inputgraph.gfa -o compactgraph.gfa 
+```
+
+### Decompose
 ```
 ./billi decompose -i inputgraph.gfa > out.txt 
 ```
