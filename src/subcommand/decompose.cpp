@@ -300,10 +300,10 @@ void sese(int u, int parent){
 
         if(st.find(key) != st.end()){
             int w = st[key];
-            if(find_unique_excluding_selfloop(u, w) == 1 || find_unique_excluding_selfloop(w, u) == 1){// important
+            // if(find_unique_excluding_selfloop(u, w) == 1 || find_unique_excluding_selfloop(w, u) == 1){// important
                 // printArgs("cycle equivalent pair:", u, w);
                 canonical_sese[key].pb({u, w});
-            }
+            // }
         }
         st[key] = parent; // will happen regardless you found something or not
     }

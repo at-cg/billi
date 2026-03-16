@@ -121,6 +121,8 @@ void print_compacted_graph(string inputpath, string outputpath) {
                     }
 
                     tokens[6] = compact_walk;
+                    if(tokens[6].length() == 0)continue;
+                    
                     for(int i = 0; i < tokens.size(); i++){
                         cout << tokens[i] << (i == tokens.size() - 1 ? '\n' : '\t');
                     }
