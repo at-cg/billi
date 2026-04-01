@@ -271,7 +271,7 @@ void sese(int u, int parent){
     }
 
     // capping back edge
-    if(h2 < h0){
+    if(h2 <= h0 && h0 != maxd){ // = important -> corner case in primates14 and ecoli50 graphs
         // printArgs("finding capping backedge");
         int w = stack_trace[h2];
         edge* ed = new edge(cnt_gray_edge); cnt_gray_edge++; // need not modify g_compacted, will not be traversing along this edge
@@ -300,6 +300,7 @@ void sese(int u, int parent){
 
         if(st.find(key) != st.end()){
             int w = st[key];
+
             // if(find_unique_excluding_selfloop(u, w) == 1 || find_unique_excluding_selfloop(w, u) == 1){// important
                 // printArgs("cycle equivalent pair:", u, w);
                 canonical_sese[key].pb({u, w});

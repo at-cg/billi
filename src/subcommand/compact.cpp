@@ -13,7 +13,7 @@ void print_compacted_graph(string inputpath, string outputpath) {
     string line;
 
     freopen(outputpath.c_str(), "w", stdout);
-
+    int dbg1 = 0, dbg2 = 0;
     if (f.is_open()) {
         while (getline(f, line)) {
             // Manual trim (faster than regex)
@@ -58,8 +58,9 @@ void print_compacted_graph(string inputpath, string outputpath) {
 
                     int min1 = min(id1, dual[id1]);
                     int min2 = min(id2, dual[id2]);
-
+                    
                     if(vertex_compacted.find(id1) != vertex_compacted.end() && vertex_compacted.find(id2) != vertex_compacted.end()){
+                        // dbg1++;
                         tokens[1] = ilmap[min1 >> 1];
                         tokens[3] = ilmap[min2 >> 1];
                         
@@ -68,11 +69,11 @@ void print_compacted_graph(string inputpath, string outputpath) {
                             else tokens[2] = min1 & 1 ? "-" : "+";
                         }else{
                             if(id1 == min1)tokens[2] = min1 & 1 ? "+" : "-";
-                            else tokens[2] = min1 & 1 ? "+" : "-";
+                            else tokens[2] = min1 & 1 ? "-" : "+";
                         }
 
                         if(side[id2] == 1){
-                            if(id2 == min2)tokens[4] = min2 & 1 ? "+" : "-";
+                            if(id2 == min2)tokens[4] = min2 & 1 ? "-" : "+";
                             else tokens[4] = min2 & 1 ? "+" : "-";
                         }else{
                             if(id2 == min2)tokens[4] = min2 & 1 ? "-" : "+";
@@ -90,7 +91,7 @@ void print_compacted_graph(string inputpath, string outputpath) {
                         }else{
                             gray_edges.insert(check);
                         }
-                        
+                        // dbg2++;
                         for(int i = 0; i < tokens.size(); i++){
                             cout << tokens[i] << (i == tokens.size() - 1 ? '\n' : '\t');
                         }
@@ -122,7 +123,7 @@ void print_compacted_graph(string inputpath, string outputpath) {
 
                     tokens[6] = compact_walk;
                     if(tokens[6].length() == 0)continue;
-                    
+
                     for(int i = 0; i < tokens.size(); i++){
                         cout << tokens[i] << (i == tokens.size() - 1 ? '\n' : '\t');
                     }
@@ -131,6 +132,7 @@ void print_compacted_graph(string inputpath, string outputpath) {
         }
         f.close();
     }
+    // cerr << dbg1 << " " << dbg2 << endl;
 }
 // ****************************************************************************************************************************************************** 
 
@@ -227,11 +229,13 @@ void run_compact(string inputpath, string outputpath)
                     for(int j = 1; j < g[l].size(); j++){ // have removed parallel gray edges
                         int u = g[l][j].F;
                         if(mark[u] && u != r)continue; // u != r -> cyclic case
+                        vertex_compacted.insert(u);
                         cnt_gray_edge++;
                     }
                     for(int j = 1; j < g[r].size(); j++){
                         int u = g[r][j].F;
                         if(mark[u])continue;
+                        vertex_compacted.insert(u);
                         cnt_gray_edge++;
                     }
                     mark[l] = mark[r] = true; // done in the end so that self loops and parallel gray edges are not missed
@@ -251,6 +255,7 @@ void run_compact(string inputpath, string outputpath)
                 for(int j = 1; j < g[i].size(); j++){
                     int u = g[i][j].F;
                     if(mark[u])continue;
+                    vertex_compacted.insert(u);
                     cnt_gray_edge++;
                 }
                 mark[i] = true;

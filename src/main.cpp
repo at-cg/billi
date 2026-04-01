@@ -42,7 +42,7 @@ int main(int argc, char* argv[])
     app.require_subcommand(1);
 
     CLI11_PARSE(app, argc, argv);
-    cerr << "Command line options: " << full_cmd << endl;
+    cerr << "Command line options:" << full_cmd << endl;
 
     if(*compact)run_compact(inputpath, outputpath);
     else if(*decompose)run_decompose(inputpath, use_exact);
