@@ -1,0 +1,11 @@
+S	A	*	LN:i:100		
+S	B	*	LN:i:100		
+S	C	*	LN:i:100		
+L	A	+	B	+	0M
+L	A	+	B	-	0M
+L	B	-	C	+	0M
+L	B	+	C	+	0M
+L	B	-	A	-	0M
+L	B	+	A	-	0M
+L	C	-	B	+	0M
+L	C	-	B	-	0M
