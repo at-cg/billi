@@ -92,6 +92,7 @@ void printGraph(vector<vector<pii>>& g){
 // ****************************************************************************************************************************************************** 
 int n, edges; // no of nodes (genes), no of edges
 vector<bool> has_self_loop; // whether the node has a self loop
+vector<pss> hap_walk; // for storing the haplotype walks
 vector<vector<pii>> g; // (node_id, gray_edge_id)
 map<string, int> lmap; // for storing the label for a particular gene
 
@@ -128,6 +129,40 @@ void get_ne(string inputpath) {
                     ++n;
                 } else if (tokens[0] == "L") {
                     ++edges;
+                } //else if (n != 0) break;
+            }
+        }
+        f.close();
+    }
+}
+
+void get_walk(string inputpath) {
+    ifstream f(inputpath);
+    string line;
+
+    if (f.is_open()) {
+        while (getline(f, line)) {
+            // Trim leading and trailing whitespace manually
+            size_t start = line.find_first_not_of(" \t\r\n");
+            size_t end = line.find_last_not_of(" \t\r\n");
+
+            if (start == string::npos || end == string::npos)
+                continue; // Skip empty or all-whitespace lines
+
+            line = line.substr(start, end - start + 1);
+
+            // Tokenize manually using '\t' as delimiter
+            vector<string> tokens;
+            size_t pos = 0, prev = 0;
+            while ((pos = line.find('\t', prev)) != string::npos) {
+                tokens.emplace_back(line.substr(prev, pos - prev));
+                prev = pos + 1;
+            }
+            tokens.emplace_back(line.substr(prev)); // Last token
+
+            if (!tokens.empty()) {
+                if (tokens[0] == "W") {
+                    hap_walk.pb(mp(tokens[1] + "#" + tokens[2], tokens[6]));
                 } //else if (n != 0) break;
             }
         }

@@ -18,6 +18,8 @@ set<int> find_unique_excluding_node(int u, int v);
 // ******************************************************************************************************************************************************  
 // ll get_key(int id, int size);
 
+bool in_subtree(int& v, int& u, int& exit_time_u);
+
 int find_unique_excluding_selfloop(int u, int v);
 
 void dfs_depth(int u, int parent);
@@ -25,6 +27,8 @@ void dfs_depth(int u, int parent);
 void merge(bracketlist* bl1, bracketlist* bl2);
 
 void sese_minbracket(int u, int parent, int& x, int& val);
+
+void dfs_nesting(int u, int parent);
 
 void sese(int u, int parent);
 
@@ -41,6 +45,12 @@ bool root_leaf_path(int& u, int& v);
 void upd_node(int u, int& ty);
 
 bool mark_nodes(int u, pii& rs, int ty);
+// ****************************************************************************************************************************************************** 
+
+// ****************************************************************************************************************************************************** 
+// **** Output ****
+// ****************************************************************************************************************************************************** 
+string get_parent(int& x);
 // ****************************************************************************************************************************************************** 
 
 void run_decompose(string inputpath, bool use_exact);

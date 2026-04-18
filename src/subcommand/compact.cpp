@@ -7,13 +7,14 @@ vector<int> side; // for finding which side the edge belongs to
 set<int> vertex_compacted; // stores the vertex id's in the compacted graph
 set<int> edge_compacted; // stores the edge id's in the compacted graph
 set<string> gray_edges; // for storing the gray edges in the compacted graph
+map<string, int> numeric_id; // numeric id's for the node labels
+int cnt_node = 0;
 
-void print_compacted_graph(string inputpath, string outputpath) {
+void print_compacted_graph(string& inputpath, string& outputpath, bool& print_reverse, bool& use_numeric, bool& self_loop) {
     ifstream f(inputpath);
     string line;
-
+    vector<string> Stokens, Ltokens, Wtokens;
     freopen(outputpath.c_str(), "w", stdout);
-    int dbg1 = 0, dbg2 = 0;
     if (f.is_open()) {
         while (getline(f, line)) {
             // Manual trim (faster than regex)
@@ -35,7 +36,9 @@ void print_compacted_graph(string inputpath, string outputpath) {
             if (!tokens.empty()) {
                 if (tokens[0] == "S") {
                     if(edge_compacted.find(lmap[tokens[1]]) != edge_compacted.end()){
-                        cout << line << endl;
+                        // cout << line << endl;
+                        Stokens.pb(line);
+                        numeric_id[tokens[1]] = cnt_node++;
                     }
                 } else if (tokens[0] == "L") {
                     int n1 = lmap[tokens[1]];
@@ -60,7 +63,6 @@ void print_compacted_graph(string inputpath, string outputpath) {
                     int min2 = min(id2, dual[id2]);
                     
                     if(vertex_compacted.find(id1) != vertex_compacted.end() && vertex_compacted.find(id2) != vertex_compacted.end()){
-                        // dbg1++;
                         tokens[1] = ilmap[min1 >> 1];
                         tokens[3] = ilmap[min2 >> 1];
                         
@@ -80,6 +82,8 @@ void print_compacted_graph(string inputpath, string outputpath) {
                             else tokens[4] = min2 & 1 ? "+" : "-";
                         }
 
+                        if(!self_loop && tokens[1] == tokens[3] && tokens[2] != tokens[4])continue;
+
                         if(tokens[1] == tokens[3]){
                             if(tokens[2] == tokens[4] && tokens[2] == "-"){
                                 tokens[2] = tokens[4] = "+";
@@ -91,9 +95,32 @@ void print_compacted_graph(string inputpath, string outputpath) {
                         }else{
                             gray_edges.insert(check);
                         }
-                        // dbg2++;
+
+                        string to_print = "";
                         for(int i = 0; i < tokens.size(); i++){
-                            cout << tokens[i] << (i == tokens.size() - 1 ? '\n' : '\t');
+                            // cout << tokens[i] << (i == tokens.size() - 1 ? '\n' : '\t');
+                            to_print += tokens[i] + (i == tokens.size() - 1 ? "" : "\t");
+                        }
+                        Ltokens.pb(to_print);
+
+                        if(print_reverse){
+                            if(tokens[1] != tokens[3]){
+                                swap(tokens[1], tokens[3]);
+                                if(tokens[2] == tokens[4]){
+                                    tokens[2] = tokens[4] = tokens[2] == "+" ? "-" : "+";
+                                }
+                            }else{
+                                if(tokens[2] == tokens[4]){
+                                    tokens[2] = tokens[4] = tokens[2] == "+" ? "-" : "+";
+                                }else continue;
+                            }
+
+                            to_print = "";
+                            for(int i = 0; i < tokens.size(); i++){
+                                // cout << tokens[i] << (i == tokens.size() - 1 ? '\n' : '\t');
+                                to_print += tokens[i] + (i == tokens.size() - 1 ? "" : "\t");
+                            }
+                            Ltokens.pb(to_print);
                         }
                     }
                 } else if (tokens[0] == "W"){
@@ -106,7 +133,8 @@ void print_compacted_graph(string inputpath, string outputpath) {
                             if(id.length() > 0){
                                 node_id = lmap[id.substr(1)];
                                 if(edge_compacted.find(node_id) != edge_compacted.end()){
-                                    compact_walk += id;       
+                                    if(use_numeric)compact_walk += id[0] + to_string(numeric_id[id.substr(1)]);       
+                                    else compact_walk += id;
                                 }
                             }
                             id = c;
@@ -117,26 +145,71 @@ void print_compacted_graph(string inputpath, string outputpath) {
                     if(id.length() > 0){
                         node_id = lmap[id.substr(1)];
                         if(edge_compacted.find(node_id) != edge_compacted.end()){
-                            compact_walk += id;       
+                            if(use_numeric)compact_walk += id[0] + to_string(numeric_id[id.substr(1)]);       
+                            else compact_walk += id;       
                         }
                     }
 
                     tokens[6] = compact_walk;
                     if(tokens[6].length() == 0)continue;
 
+                    string to_print = "";
                     for(int i = 0; i < tokens.size(); i++){
-                        cout << tokens[i] << (i == tokens.size() - 1 ? '\n' : '\t');
+                        // cout << tokens[i] << (i == tokens.size() - 1 ? '\n' : '\t');
+                        to_print += tokens[i] + (i == tokens.size() - 1 ? "" : "\t");
                     }
+                    Wtokens.pb(to_print);
                 }
             }
         }
         f.close();
     }
-    // cerr << dbg1 << " " << dbg2 << endl;
+    for(string s : Stokens){
+        if(use_numeric){
+            vector<string> tokens;
+            size_t prev = 0, pos;
+            while ((pos = s.find('\t', prev)) != string::npos) {
+                tokens.emplace_back(s.substr(prev, pos - prev));
+                prev = pos + 1;
+            }
+            tokens.emplace_back(s.substr(prev));  // Last token
+            tokens[1] = to_string(numeric_id[tokens[1]]);
+
+            s = "";
+            for(int i = 0; i < tokens.size(); i++){
+                // cout << tokens[i] << (i == tokens.size() - 1 ? '\n' : '\t');
+                s += tokens[i] + (i == tokens.size() - 1 ? "" : "\t");
+            }
+        }
+        cout << s << endl;
+    }
+    for(string s : Ltokens){
+        if(use_numeric){
+            vector<string> tokens;
+            size_t prev = 0, pos;
+            while ((pos = s.find('\t', prev)) != string::npos) {
+                tokens.emplace_back(s.substr(prev, pos - prev));
+                prev = pos + 1;
+            }
+            tokens.emplace_back(s.substr(prev));  // Last token
+            tokens[1] = to_string(numeric_id[tokens[1]]);
+            tokens[3] = to_string(numeric_id[tokens[3]]);
+            
+            s = "";
+            for(int i = 0; i < tokens.size(); i++){
+                // cout << tokens[i] << (i == tokens.size() - 1 ? '\n' : '\t');
+                s += tokens[i] + (i == tokens.size() - 1 ? "" : "\t");
+            }
+        }
+        cout << s << endl;
+    }
+    for(string s : Wtokens){
+        cout << s << endl;
+    }
 }
 // ****************************************************************************************************************************************************** 
 
-void run_compact(string inputpath, string outputpath)
+void run_compact(string inputpath, string outputpath, bool print_reverse, bool use_numeric, bool self_loop)
 {   
     // ************************************
     // *** IO + data preparation ***
@@ -274,7 +347,7 @@ void run_compact(string inputpath, string outputpath)
     // *** Printing output ***
     // ************************************
     {
-        print_compacted_graph(inputpath, outputpath);
+        print_compacted_graph(inputpath, outputpath, print_reverse, use_numeric, self_loop);
     }
     cerr << "Done printing compacted graph" << endl;
 } 

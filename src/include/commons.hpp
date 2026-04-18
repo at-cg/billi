@@ -25,6 +25,7 @@
 #define pii pair<int, int>
 #define piii pair<int, pii>
 #define piiii pair<int, piii>
+#define pss pair<string, string>
 #define mp make_pair
 #define mt make_tuple
 #define F first
@@ -99,10 +100,13 @@ void printGraph(vector<vector<pii>>& g);
 // ****************************************************************************************************************************************************** 
 extern int n, edges; // no of nodes (genes), no of edges
 extern vector<bool> has_self_loop; // whether the node has a self loop
+extern vector<pss> hap_walk; // for storing the haplotype walks
 extern vector<vector<pii>> g; // (node_id, gray_edge_id)
 extern map<string, int> lmap; // for storing the label for a particular gene
 
 void get_ne(string inputpath);
+
+void get_walk(string inputpath);
 
 void add_edge(vector<vector<pii>>& g, int id1, int id2);
 

@@ -9,4 +9,4 @@
 void print_compacted_graph(string inputpath, string outputpath);
 // ****************************************************************************************************************************************************** 
 
-void run_compact(string inputpath, string outputpath);
+void run_compact(string inputpath, string outputpath, bool print_reverse, bool use_numeric, bool self_loop);
