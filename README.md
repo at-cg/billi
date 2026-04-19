@@ -51,7 +51,7 @@ P <s6 <s4
 P >s1 >s3
 ```
 
-See the [test folder](test/gfa_files) for other test cases.
+See the [test folder](test_files) for other test cases.
 
 ## <a name="pub"></a>Preprint
 - **Shreeharsha G Bhat, Daanish Mahajan and Chirag Jain**. [Billi: Provably Accurate and Scalable Bubble Detection in Pangenome Graphs](https://doi.org/10.1101/2025.11.21.689636). *BioRxiv*
