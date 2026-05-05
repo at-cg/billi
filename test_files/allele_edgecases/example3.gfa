@@ -1,0 +1,20 @@
+S	1	*	LN:i:100		
+S	2	*	LN:i:100		
+S	3	*	LN:i:100		
+S	4	*	LN:i:100		
+S	5	*	LN:i:100		
+L	1	+	2	+	0M
+L	2	+	5	+	0M
+L	2	+	3	+	0M
+L	2	+	3	-	0M
+L	4	+	2	+	0M
+L	4	-	2	+	0M
+L	2	-	1	-	0M
+L	5	-	2	-	0M
+L	3	-	2	-	0M
+L	3	+	2	-	0M
+L	2	-	4	-	0M
+L	2	-	4	+	0M
+W	sample	1	chr1	*	*	>1>2>5
+W	sample	2	chr1	*	*	>1>2<3<2<1
+W	sample	3	chr1	*	*	>1>2<3<2<4>2>5
