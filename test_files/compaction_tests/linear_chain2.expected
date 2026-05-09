@@ -1,0 +1,6 @@
+CC	FB	bbID	parID	side1	side2
+CC	BB	bbID	parID	side1	side2	#alleles
+CC	HP	bbID	side1	side2	#alleles
+CC	AL	#hap	walk	hap_id
+CC
+BB	0	-1	>SLC6A2	<CES5A	-1

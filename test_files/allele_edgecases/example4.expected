@@ -1,0 +1,13 @@
+CC	FB	bbID	parID	side1	side2
+CC	BB	bbID	parID	side1	side2	#alleles
+CC	HP	bbID	side1	side2	#alleles
+CC	AL	#hap	walk	hap_id
+CC
+BB	0	-1	<C	<G	2
+AL	2	<C>D<G	sample#1,sample#4
+AL	1	<C>F<G	sample#2
+//
+BB	1	-1	>A	<C	2
+AL	1	>A<B<C	sample#5
+AL	1	>A>B<C	sample#1
+//

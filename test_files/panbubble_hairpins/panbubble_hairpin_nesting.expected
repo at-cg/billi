@@ -1,0 +1,9 @@
+CC	FB	bbID	parID	side1	side2
+CC	BB	bbID	parID	side1	side2	#alleles
+CC	HP	bbID	side1	side2	#alleles
+CC	AL	#hap	walk	hap_id
+CC
+BB	0	-1	<10	<5	-1
+BB	1	HP:0	<4	<1	-1
+BB	2	BB:0	>6	>8	-1
+HP	0	<5	>5	-1
