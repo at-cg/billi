@@ -1,0 +1,41 @@
+# .github/workflows/test.yml
+name: GFA Tests
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y g++ make
+
+      - name: Build billi
+        run: make
+
+      - name: Run GFA tests
+        run: |
+          python3 src/test_gfa.py \
+            --binary ./billi \
+            --test-dir test_files \
+            --verbose
+
+      # Optional: upload output logs on failure for debugging
+      - name: Upload logs on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-logs
+          path: |
+            test_files/
+          retention-days: 7
