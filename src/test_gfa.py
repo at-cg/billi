@@ -1,4 +1,3 @@
-# src/test_gfa.py
 import re
 import subprocess
 import sys
@@ -123,7 +122,7 @@ def check_invariants(bubbles, errors):
                     f"{btype} bbID={bbID}: declared {declared} alleles but found {actual}"
                 )
 
-        # 5. Check: Each walk must start with side1 or side2, and end with the other
+        # Check: Each walk must start with side1 or side2, and end with the other
         for al in b['alleles']:
             walk = al['walk']
             nodes = parse_walk_nodes(walk)
@@ -145,7 +144,7 @@ def check_invariants(bubbles, errors):
                     f"({b['side1']!r}, {b['side2']!r})"
                 )
 
-    # 6. Check: the same bubble shouldn't be reported twice)
+    # Check: the same bubble shouldn't be reported twice
     seen_pairs = {}
     for b in bubbles:
         if b['type'] in ('BB', 'FB'):
@@ -206,7 +205,7 @@ def test_file(binary: str, gfa_file: str, verbose: bool = False):
         return True
 
 
-    # Check the binary didn't crash
+    # Check: the binary didn't crash
     if result.returncode != 0:
         print(f"    FAIL: billi exited with code {result.returncode}")
         if result.stderr.strip():
