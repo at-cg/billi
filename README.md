@@ -1,3 +1,4 @@
+[![GFA Tests](https://github.com/at-cg/billi/actions/workflows/test.yml/badge.svg)](https://github.com/at-cg/billi/actions/workflows/test.yml)
 # Billi
 
 Billi is a tool developed to identify bubbles in pangenome graphs or assembly graphs that use the [bidirected graph](https://en.wikipedia.org/wiki/Bidirected_graph) or [GFA](https://gfa-spec.github.io/GFA-spec/GFA1.html) representation. Refer to our [preprint](#pub) for details. 
