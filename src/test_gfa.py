@@ -4,6 +4,42 @@ import sys
 import os
 import argparse
 
+################################################################
+'''
+test_gfa.py - testing pipeline script
+For each .gfa file found in the test directory, this script:
+
+1.  Runs: billi decompose -e -i <input.gfa>
+
+2.  Checks for expected errors: 
+If a corresponding .expected file exists and contains "ERROR", the test passes only 
+if billi exits with a non-zero exit code. For example, test_files/edge_cases/snarl_overlap.gfa 
+contains a component with zero tips, hence the expected output is an ERROR.
+
+3.  Structural invariant checks (on successful output)
+- BB lines have exactly 6 fields; HP likes have exactly 5
+- bbIDs are unique across all bubbles in the output
+- BB bubbles have two distinct boundary nodes (side1 != side2)
+- HP hairpins have the same node for both boundaries (eg: >2, <2)
+- For BB and HP: declared #alleles match actual AL line count (skip if #alleles = -1)
+- Ensure each allele walk starts with one boundary and ends with the other (or vice versa)
+- No two BB bubbles share the same unordered boundary pair
+
+4. Expected output comparison
+Parse both actual and expected outputs and compare. The comparison is order-insensitive, i.e.,
+- The order in which bubbles are reported doesn't matter
+- <s,t> and <t,s> are treated as the same bubble
+- The order in which the alleles are reported doesn't matter
+
+For reference, the output format looks like 
+CC   comment/header lines               (ignored)
+BB   bbID parID side1 side2 #alleles    panbubble
+HP   bbID side1 side2 #alleles          hairpin
+AL   #hap walk hap_id                   allele walk for preceding bubble
+//                                      end of bubble block
+
+'''
+
 def parse_walk_nodes(walk: str):
     return re.findall(r'[<>]([^<>]+)', walk)
 
