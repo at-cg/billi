@@ -70,6 +70,7 @@ int vtime = 0;
 int number_of_classes = 0; // for storing the number of cycle equivalence classes
 vector<int> panbubble_end, hairpin_end; // the vertex is an entrance of which rank of panbubble or hairpin resp.
 vector<int> parent_bubble, parent_hairpin; // for storing the parent id's of the canonical cycle equivalent pairs, storing the rank of the panbubble
+vector<int> depth_bubble; // for storing the depth of a bubble at the given id
 vector<int> entry_time, exit_time; // for storing the entry and exit time of vertices during dfs
 vector<int> stack_trace; // for storing the vertices in the stack during dfs traversal
 vector<bool> is_bridge; // whether the edge is a bridge in G_U
@@ -79,6 +80,7 @@ map<pii, vector<pii>> canonical_sese; // for storing the canonical sese pairs in
 // map<ll, int> st; // (edge, size) -> hashed into a ll key
 map<pii, int> st; // (id, size) -> as the key
 vector<bracketlist*> bl; // vector storing the bracket list for different nodes
+vector<vector<int>> panbubble_tree; // for storing the edges in the panbubble tree
 vector<vector<edge*>> remove_brackets; // vector that stores the brackets to be removed while exiting a particular vertex during SESE algorithm
 
 // ll get_key(int id, int size){
@@ -215,16 +217,26 @@ void dfs_nesting(int u, int parent){
                 stack_trace.rb();
 
                 if(sz > 1){
-                    if(panbubble_end[stack_trace[sz - 2]] != -1)
+                    if(panbubble_end[stack_trace[sz - 2]] != -1){
                         parent_bubble[panbubble_end[u]] = panbubble_end[stack_trace[sz - 2]];
-                    else if(hairpin_end[stack_trace[sz - 2]] != -1)
+                        panbubble_tree[panbubble_end[stack_trace[sz - 2]]].pb(panbubble_end[u]);
+                    }
+                    else if(hairpin_end[stack_trace[sz - 2]] != -1){
                         parent_hairpin[panbubble_end[u]] = hairpin_end[stack_trace[sz - 2]];
+                    }
                 }
             }
         }
         if(panbubble_end[parent] != -1){ // can't be a hairpin end simultaneously
             stack_trace.pb(parent);
         }
+    }
+}
+
+void dfs_nesting_depth(int u){
+    for(int v : panbubble_tree[u]){
+        depth_bubble[v] = depth_bubble[u] + 1;
+        dfs_nesting_depth(v);
     }
 }
 
@@ -385,6 +397,7 @@ bool hairp(int u, int parent){
 // **** Brute force ****
 // ******************************************************************************************************************************************************  
 int counter = 0; // counter used in the brute force checking
+vector<int> bubble_size, hairpin_size; // for saving the size of valid panbubbles and hairpins
 vector<int> considered; // for saving the vertices visited during the brute force check for a panbubble
 vector<short> to_chk; // which side of gene to check during second pass of brute (-1 -> initialisation, 0 -> 2 * i, 1 -> 2 * i + 1, 2 -> both)
 vector<short> visit_order; // from which side the gene has been visited (-1 -> not visited, 0 -> rs.F, 1 -> rs.S, 2 -> both)
@@ -451,6 +464,7 @@ bool mark_nodes(int u, pii& rs, int ty){
 // **** Output ****
 // ****************************************************************************************************************************************************** 
 vector<pii> valid_panbubbles, valid_hairpins; // for storing valid panbubbles and hairpins
+vector<pss> zero_walk;
 map<string, vector<string>> out_walk; // for storing the haplotype walks for a corresponding bubble
 
 string get_parent(int& x){
@@ -459,9 +473,24 @@ string get_parent(int& x){
         else return "HP:" + to_string(parent_hairpin[x]);
     }else return "BB:" + to_string(parent_bubble[x]);
 }
+
+string complement_walk(string& s){
+    string out_walk = "";
+    string seq = "";
+    for(int i = s.length() - 1; i >= 0; i--){
+        if(s[i] == '>' || s[i] == '<'){
+            seq = (s[i] == '>' ? '<' : '>') + seq;
+            out_walk += seq;
+            seq = "";
+        }else{
+            seq = s[i] + seq;
+        }
+    }
+    return out_walk;
+}
 // ****************************************************************************************************************************************************** 
 
-void run_decompose(string inputpath, bool use_exact)
+void run_decompose(string inputpath, bool use_exact, int minAlleles)
 {   
     // ************************************
     // *** IO + data preparation ***
@@ -802,6 +831,19 @@ void run_decompose(string inputpath, bool use_exact)
 
                 cerr << "Total canonical cycle equivalent pairs found: " << cnt_pair << endl;
             }
+
+            int maxsz = -1, eff_maxsz = 2;
+            for(const auto &[key, vec] : canonical_sese){
+                int sz = vec.size(), cnt = 2;
+                for(int i = 1; i < sz; i++){
+                    if(dual[vec[i].S] != vec[i - 1].F){
+                        cnt = 2;
+                    }else cnt++;
+                    eff_maxsz = max(eff_maxsz, cnt);
+                }
+                maxsz = max(maxsz, sz);
+            }
+            cerr << "Maximum size of a set of cycle equivalence class to verify: " << eff_maxsz << endl;
         }
     }
     cerr << "Done finding cycle equivalent classes" << endl;
@@ -821,27 +863,13 @@ void run_decompose(string inputpath, bool use_exact)
             visit_order.resize(2 * n, -1);
             to_chk.resize(n, -1);
             panbubble_end.resize(2 * n, -1); 
-
-            // int maxsz = -1, eff_maxsz = -1;
-            // for(const auto &[key, vec] : canonical_sese){
-            //     int sz = vec.size(), cnt = 2;
-            //     for(int i = 1; i < sz; i++){
-            //         if(dual[vec[i].S] != vec[i - 1].F){
-            //             cnt = 2;
-            //         }else cnt++;
-            //     }
-            //     maxsz = max(maxsz, sz);
-            //     eff_maxsz = max(eff_maxsz, cnt);
-            // }
-            // cout << maxsz << " " << eff_maxsz << endl;
-
-            // return 0;
             
             for(const auto &[key, vec] : canonical_sese){
                 int sz = vec.size();
 
                 for(int i = 0; i < sz; ){
                     bool is_valid = true;
+                    int bub_sz = 0;
                     
                     int j = -1, cnt = 0; //, end = min(i + offset, sz);
                     for(j = i; j < sz; j++){
@@ -877,6 +905,8 @@ void run_decompose(string inputpath, bool use_exact)
                     
                         if(!is_valid)continue;
 
+                        bub_sz = 2 * counter + 2;
+
                         is_valid &= mark_nodes(dual[rs.S], rs, 1);
 
                         is_valid &= (counter == 0);
@@ -884,6 +914,7 @@ void run_decompose(string inputpath, bool use_exact)
                         if(is_valid){
                             panbubble_end[rs.F] = panbubble_end[rs.S] = valid_panbubbles.size();
                             valid_panbubbles.pb(rs);
+                            bubble_size.pb(bub_sz);
                             i = j + (j == i ? 1 : 0); 
                             break;
                         }
@@ -915,7 +946,8 @@ void run_decompose(string inputpath, bool use_exact)
                 pii rs = possible_hairpins[i];
                 if((g_compacted[rs.F].size() == 2 && g_compacted[rs.F][1].F == g_compacted[rs.F][0].F) || g_compacted[rs.F].size() <= 1) continue;
 
-                bool is_valid = true;
+                bool is_valid = true; 
+                int hp_sz = 0;
 
                 // ** Reinitialisation **
                 for(int u : considered){
@@ -930,6 +962,8 @@ void run_decompose(string inputpath, bool use_exact)
             
                 if(!is_valid)continue;
 
+                hp_sz = 2 * counter + 1;
+
                 is_valid &= mark_nodes(dual[rs.S], rs, 1);
 
                 is_valid &= (counter == 0);
@@ -937,6 +971,7 @@ void run_decompose(string inputpath, bool use_exact)
                 if(is_valid){
                     hairpin_end[rs.F] = valid_hairpins.size();
                     valid_hairpins.pb(rs);
+                    hairpin_size.pb(hp_sz);
                 }
             }
 
@@ -953,6 +988,8 @@ void run_decompose(string inputpath, bool use_exact)
         fill(mark.begin(), mark.end(), false);
         parent_bubble.resize(valid_panbubbles.size(), -1);
         parent_hairpin.resize(valid_panbubbles.size(), -1); // only panbubbles can be nested within another panbubble or a hairpin
+        depth_bubble.resize(valid_panbubbles.size(), 1);
+        panbubble_tree.resize(valid_panbubbles.size());
 
         // ************************************
         // *** Finding nesting relationship ***
@@ -972,6 +1009,22 @@ void run_decompose(string inputpath, bool use_exact)
                 //     possible_hairpins.pb({dual[tips[it][0]], dual[tips[it][0]]});
                 // }
             }
+            
+            for(int it = 0; it < valid_panbubbles.size(); it++){
+                if(parent_bubble[it] == -1){
+                    if(parent_hairpin[it] == -1)dfs_nesting_depth(it);
+                    else{
+                        depth_bubble[it] = 2;
+                        dfs_nesting_depth(it);
+                    }
+                }
+            }
+
+            int cnt[4] = {0};
+            for(int it = 0; it < depth_bubble.size(); it++){
+                if(depth_bubble[it] < 4)cnt[depth_bubble[it]] += 1;
+            }
+            cerr << "Count of top-level panbubbles: " << cnt[1] << ", Count of second-level panbubbles: " << cnt[2] << ", Count of third-level panbubbles: " << cnt[3] << endl;
         }
 
         // ************************************
@@ -989,6 +1042,12 @@ void run_decompose(string inputpath, bool use_exact)
             // freopen(summarypath.c_str(), "a", stdout);
             int sz = valid_panbubbles.size();
             cerr << "Total panbubbles found: " << sz << endl;
+
+            if(sz > 0){
+                sort(bubble_size.begin(), bubble_size.end());
+                int bub_sz_len = bubble_size.size();
+                cerr << "Size of panbubbles (number of vertices): Min = " << bubble_size[0] << ", Median = " << bubble_size[(bub_sz_len + 1) / 2 - 1] << ", Max = " << bubble_size[bub_sz_len - 1] << endl;    
+            }
             
             // summarypath = outputdir + "/panbubble.txt";
             // freopen(summarypath.c_str(), "w", stdout);
@@ -1003,10 +1062,9 @@ void run_decompose(string inputpath, bool use_exact)
                 out_walk.clear();
                 
                 pii rs = valid_panbubbles[i];
-                cout << "BB\t" << i << "\t" << get_parent(i) << "\t" << get_label(rs.F, rs.S);
-
+                
                 if(hap_walk.size() == 0){
-                    cout << "\t-1" << endl; 
+                    cout << "BB\t" << i << "\t" << get_parent(i) << "\t" << get_label(rs.F, rs.S) << "\t-1" << endl;
                 }else{
                     string s1 = get_single_label(rs.F, 0), s2 = get_single_label(rs.S, 1);
 
@@ -1024,21 +1082,25 @@ void run_decompose(string inputpath, bool use_exact)
                         auto p1 = x.S.find(s1), p2 = x.S.find(s2);
                         if(p1 != string::npos && p2 != string::npos && p1 < p2){
                             string walk_id = x.S.substr(p1, p2 + s2.length() - p1);
-                            out_walk[walk_id].pb(x.F);
+                            out_walk[complement_walk(walk_id)].pb(x.F);
                         } 
                     }
 
-                    cout << "\t" << out_walk.size() << endl;
+                    if(out_walk.size() < minAlleles){
+                        zero_walk.pb({s1, s2});
+                    }else{
+                        cout << "BB\t" << i << "\t" << get_parent(i) << "\t" << get_label(rs.F, rs.S) << "\t" << out_walk.size() << endl;
 
-                    for(const auto& pair : out_walk){
-                        cout << "AL\t" << pair.second.size() << "\t" << pair.first << "\t";
-                        for(int itr = 0; itr < pair.second.size(); itr++){
-                            cout << pair.second[itr] << (itr == pair.second.size() - 1 ? "\n" : ",");
+                        for(const auto& pair : out_walk){
+                            cout << "AL\t" << pair.second.size() << "\t" << pair.first << "\t";
+                            for(int itr = 0; itr < pair.second.size(); itr++){
+                                cout << pair.second[itr] << (itr == pair.second.size() - 1 ? "\n" : ",");
+                            }
                         }
-                    }
 
-                    // if(out_walk.size() !=0)
-                    cout << "//" << endl;
+                        // if(out_walk.size() !=0)
+                        cout << "//" << endl;
+                    }
                 }            
             }
         }
@@ -1052,6 +1114,12 @@ void run_decompose(string inputpath, bool use_exact)
             int sz = valid_hairpins.size();
             cerr << "Total hairpins found: " << sz << endl;
             
+            if(sz > 0){
+                sort(hairpin_size.begin(), hairpin_size.end());
+                int hp_sz_len = hairpin_size.size();
+                cerr << "Size of hairpins (number of vertices): Min = " << hairpin_size[0] << ", Median = " << hairpin_size[(hp_sz_len + 1) / 2 - 1] << ", Max = " << hairpin_size[hp_sz_len - 1] << endl;        
+            }
+            
             // summarypath = outputdir + "/hairpin.txt";
             // freopen(summarypath.c_str(), "w", stdout);
 
@@ -1059,10 +1127,9 @@ void run_decompose(string inputpath, bool use_exact)
                 out_walk.clear();
 
                 pii rs = valid_hairpins[i];
-                cout << "HP\t" << i << "\t" << get_label(rs.F, rs.S);
-
+               
                 if(hap_walk.size() == 0){
-                    cout << "\t-1" << endl; 
+                    cout << "HP\t" << i << "\t" << get_label(rs.F, rs.S) << "\t-1" << endl; 
                 }else{
                     string s1 = get_single_label(rs.F, 0), s2 = get_single_label(rs.S, 1);
 
@@ -1074,20 +1141,29 @@ void run_decompose(string inputpath, bool use_exact)
                         } 
                     }
 
-                    cout << "\t" << out_walk.size() << endl;
+                    if(out_walk.size() < minAlleles){
+                        zero_walk.pb({s1, s2});
+                    }else{
+                        cout << "HP\t" << i << "\t" << get_label(rs.F, rs.S) << "\t" << out_walk.size() << endl;
 
-                    for(const auto& pair : out_walk){
-                        cout << "AL\t" << pair.second.size() << "\t" << pair.first << "\t";
-                        for(int itr = 0; itr < pair.second.size(); itr++){
-                            cout << pair.second[itr] << (itr == pair.second.size() - 1 ? "\n" : ",");
+                        for(const auto& pair : out_walk){
+                            cout << "AL\t" << pair.second.size() << "\t" << pair.first << "\t";
+                            for(int itr = 0; itr < pair.second.size(); itr++){
+                                cout << pair.second[itr] << (itr == pair.second.size() - 1 ? "\n" : ",");
+                            }
                         }
-                    }
 
-                    // if(out_walk.size() !=0)
-                    cout << "//" << endl;
+                        // if(out_walk.size() !=0)
+                        cout << "//" << endl;
+                    }
                 }
             }
         }  
+        
+        cerr << "Bubbles and hairpins having less than " << minAlleles << " allele walks:\n";
+        for(pss x : zero_walk){
+            cerr << x.first << " " << x.second << endl;
+        }
     }
 } 
 

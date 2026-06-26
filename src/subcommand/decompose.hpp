@@ -51,6 +51,8 @@ bool mark_nodes(int u, pii& rs, int ty);
 // **** Output ****
 // ****************************************************************************************************************************************************** 
 string get_parent(int& x);
+
+string complement_walk(string& s);
 // ****************************************************************************************************************************************************** 
 
-void run_decompose(string inputpath, bool use_exact);
+void run_decompose(string inputpath, bool use_exact, int minAlleles);
