@@ -38,10 +38,10 @@ hairpin.txt - This will list the hairpins. The user needs to use -r flag.
 
 ## Try Billi on small graph
 ```
-./billi decompose -i test/gfa_files/t2-1.gfa > out.txt
+./billi decompose -i test/gfa_files/nested.gfa > out.txt
 ```
 <p align="center">
-  <img src="docs/figures/t2-1.png" width="300">
+  <img src="docs/figures/nested.png" width="300">
   <br>
   <em>Bandage visualisation of t2-1 test graph</em>
 </p>
