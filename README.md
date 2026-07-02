@@ -38,7 +38,7 @@ make
 
 ## Usage
 ### Decompose
-Enumerates both panbubbles and hairpins in the input graph. The graph is first compacted internally before bubble detection is performed.
+Enumerates all panbubbles and hairpins in the input graph. The graph is first compacted internally before bubble detection is performed.
 
 ```bash
 ./billi decompose -i inputgraph.gfa > out.txt 
@@ -87,7 +87,7 @@ BB	1	-1	>s1	>s3	-1
 - **`HP`** rows are hairpins: same fields as `BB`, minus `parID`.
 - **`#alleles`** is `-1` when allele walks weren't computed (e.g. the input GFA has no `W`/`P` lines). When alleles are available, each one is listed on its own `AL` row directly under the corresponding `BB`/`HP` row, and the block is terminated with a `//` line.
 
-Many graphs for testing are available in the [test folder](test_files).
+Other test graphs are available in the [test folder](test_files).
 
 ## Running the test suite
 ```bash
