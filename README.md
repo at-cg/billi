@@ -3,16 +3,13 @@
 
 # Billi
 
-Billi is a tool for identifying bubbles in pangenome or assembly graphs, represented as [bidirected graphs](https://en.wikipedia.org/wiki/Bidirected_graph) in [GFA](https://gfa-spec.github.io/GFA-spec/GFA1.html) format. Refer to our [preprint](#citation) for details. 
+Billi is a tool designed to identify bubbles in pangenome graphs, represented in [GFA](https://gfa-spec.github.io/GFA-spec/GFA1.html) format. Billi employs updated definitions of bubbles, termed *panbubbles* and *hairpins*. These definitions apply to both cyclic and acyclic subgraphs, enabling broader coverage of variant classes. Panbubbles and hairpins are guaranteed to be mutually non-overlapping except in cases when they follow a nested structure. By definition, they exclude tip vertices (dead ends). Billi is scalable to large pangenome graphs, including the full human pangenome graphs released by the HPRC. These properties make Billi a useful alternative method for analyzing variation sites and alleles in pangenome graphs. See the [preprint](#citation) for further details.
 
 <p align="center">
   <img src="docs/figures/bubble_nesting.png" width="700">
   <br>
-  <em> Illustration of nested panbubbles and hairpins. The three red boxes and one blue box highlight the three panbubbles and one hairpin, respectively.</em>
+  <em> Illustration of nested panbubbles and hairpins. Three panbubbles (red) and one hairpin (blue) are highlighted. </em>
 </p>
-
-Billi employs an updated definition of bubbles in bidirected graphs compared to existing definitions, such as [bibubbles](https://pubmed.ncbi.nlm.nih.gov/39041615/), [ultrabubbles](https://pubmed.ncbi.nlm.nih.gov/29461862/), etc. Billi can be used to identify both cyclic and acyclic subgraphs. We provide rigorous proofs in our paper and argue that the bubbles reported by Billi cannot overlap except when they follow a nested structure. By definition, the reported bubbles will not contain tip vertices (dead ends). Billi is scalable to large pangenome graphs, including the full human pangenome graphs released by HPRC. These properties make Billi a useful alternative method for unambiguously identifying variation sites and alleles in a pangenome graph.
-
 
 
 ## Table of Contents
@@ -35,20 +32,20 @@ make
 
 ## **Dependencies**
 - **OS:** Linux
-- **Compiler:** A C++ compiler with C++17 support
+- **Compiler:** g++ (GCC) with C++17 support
 - **Build tool:** `make`
 - `python3`: only needed to run the test suite, not for normal builds/usage
 
 ## Usage
 ### Decompose
-Enumerates both panbubbles and hairpins in the input graph. Graph compaction is performed internally on the input before bubble detection:
+Enumerates both panbubbles and hairpins in the input graph. The graph is first compacted internally before bubble detection is performed.
 
 ```bash
 ./billi decompose -i inputgraph.gfa > out.txt 
 ```
 
 ### Compact
-Merges long non-branching paths in the input graph into single vertices, producing a smaller, equivalent GFA:
+Merges long non-branching paths in the input graph into single vertices, producing a smaller, equivalent graph in the GFA format.
 <p align="center">
   <img src="docs/figures/compaction.png" width="500">
   <br>
@@ -90,7 +87,7 @@ BB	1	-1	>s1	>s3	-1
 - **`HP`** rows are hairpins: same fields as `BB`, minus `parID`.
 - **`#alleles`** is `-1` when allele walks weren't computed (e.g. the input GFA has no `W`/`P` lines). When alleles are available, each one is listed on its own `AL` row directly under the corresponding `BB`/`HP` row, and the block is terminated with a `//` line.
 
-See the [test folder](test_files) for other test cases.
+We have uploaded many test graphs in the [test folder](test_files).
 
 ## Running the test suite
 ```bash
