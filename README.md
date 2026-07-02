@@ -5,13 +5,15 @@
 
 Billi is a tool for identifying bubbles in pangenome or assembly graphs, represented as [bidirected graphs](https://en.wikipedia.org/wiki/Bidirected_graph) in [GFA](https://gfa-spec.github.io/GFA-spec/GFA1.html) format. Refer to our [preprint](#citation) for details. 
 
-Billi employs an updated definition of bubbles in bidirected graphs when compared to existing definitions, for example, [bibubbles](https://pubmed.ncbi.nlm.nih.gov/39041615/), [ultrabubbles](https://pubmed.ncbi.nlm.nih.gov/29461862/), etc. Billi can be used to identify both cyclic and acyclic subgraphs. We give rigorous proofs in our paper and argue that the bubbles reported by Billi cannot overlap each other except when they follow a nested structure. By definition, the reported bubbles will not have tip vertices (dead ends). Billi is scalable to large pangenome graphs, including the full human pangenome graphs released by HPRC. These properties make Billi a useful alternative method for unambiguously identifying variation sites and alleles in a pangenome graph.
-
 <p align="center">
   <img src="docs/figures/bubble_nesting.png" width="700">
   <br>
   <em> Illustration of nested panbubbles and hairpins. The three red boxes and one blue box highlight the three panbubbles and one hairpin, respectively.</em>
 </p>
+
+Billi employs an updated definition of bubbles in bidirected graphs compared to existing definitions, such as [bibubbles](https://pubmed.ncbi.nlm.nih.gov/39041615/), [ultrabubbles](https://pubmed.ncbi.nlm.nih.gov/29461862/), etc. Billi can be used to identify both cyclic and acyclic subgraphs. We provide rigorous proofs in our paper and argue that the bubbles reported by Billi cannot overlap except when they follow a nested structure. By definition, the reported bubbles will not contain tip vertices (dead ends). Billi is scalable to large pangenome graphs, including the full human pangenome graphs released by HPRC. These properties make Billi a useful alternative method for unambiguously identifying variation sites and alleles in a pangenome graph.
+
+
 
 ## Table of Contents
 - [Installation](#installation)
@@ -32,10 +34,10 @@ make
 ```
 
 ## **Dependencies**
-- **OS:** Linux.
+- **OS:** Linux
 - **Compiler:** A C++ compiler with C++17 support
 - **Build tool:** `make`
-- `python3` — only needed to run the test suite, not for normal builds / usage
+- `python3`: only needed to run the test suite, not for normal builds/usage
 
 ## Usage
 ### Decompose
