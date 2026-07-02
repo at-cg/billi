@@ -1,4 +1,3 @@
-CC	FB	bbID	parID	side1	side2
 CC	BB	bbID	parID	side1	side2	#alleles
 CC	HP	bbID	side1	side2	#alleles
 CC	AL	#hap	walk	hap_id

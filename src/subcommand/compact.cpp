@@ -14,6 +14,8 @@ void print_compacted_graph(string& inputpath, string& outputpath, bool& print_re
     ifstream f(inputpath);
     string line;
     vector<string> Stokens, Ltokens, Wtokens;
+    filesystem::path p(outputpath);
+    filesystem::create_directories(p.parent_path());
     freopen(outputpath.c_str(), "w", stdout);
     if (f.is_open()) {
         while (getline(f, line)) {

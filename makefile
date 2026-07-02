@@ -1,6 +1,6 @@
 CXX := g++ # Compiler
 # CXXFLAGS := -std=c++17 -g -O0 -O3 -I ~/include # GDB Compiler flags
-CXXFLAGS := -std=c++17 -O3 -I ~/include # Compiler flags
+CXXFLAGS := -std=c++17 -O3 -I src/include # Compiler flags
 
 TARGET := billi
 

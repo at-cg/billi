@@ -19,10 +19,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y g++ make
-          mkdir -p ~/include
-          curl -L https://github.com/CLIUtils/CLI11/releases/download/v2.6.1/CLI11.hpp \
-            -o ~/include/CLI11.hpp
-
+          
       - name: Build billi
         run: make
 
@@ -33,7 +30,6 @@ jobs:
             --test-dir test_files \
             --verbose
 
-      # Optional: upload output logs on failure for debugging
       - name: Upload logs on failure
         if: failure()
         uses: actions/upload-artifact@v4

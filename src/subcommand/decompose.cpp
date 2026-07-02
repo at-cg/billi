@@ -12,7 +12,7 @@ string summarypath; // path where the given stats will be written
 // **** Input ****
 // ****************************************************************************************************************************************************** 
 string outputdir;
-bool print_equivalent = false, print_hairpin = true; // whether to report alleles, cycle equivalent pairs and hairpins
+bool print_equivalent = false, print_hairpin = true; // whether to report alleles, cycle equivalence pairs and hairpins
 int maxsize = 1000, maxdepth = 1, offset = 1; // max size of panbubbles whose vertices are also to be printed, max depth to which the panbubbles are to be reported
 // ****************************************************************************************************************************************************** 
 
@@ -707,7 +707,7 @@ void run_decompose(string inputpath, bool use_exact, int minAlleles)
     cerr << "Done finding tips" << endl;
 
     // ************************************
-    // *** Finding edges belonging to individual cycle equivalent classes ***
+    // *** Finding edges belonging to individual cycle equivalence classes ***
     // ************************************
     {
         // ************************************
@@ -817,7 +817,7 @@ void run_decompose(string inputpath, bool use_exact, int minAlleles)
                 // summarypath = outputdir + "/cycle_equivalent_classes.txt";
                 // freopen(summarypath.c_str(), "w", stdout);
 
-                cerr << "Total cycle equivalent classes found: " << number_of_classes << endl;
+                cerr << "Total cycle equivalence classes found: " << number_of_classes << endl;
                 
                 int cnt_pair = 0;
                 for(const auto &[key, vec] : canonical_sese){
@@ -829,24 +829,29 @@ void run_decompose(string inputpath, bool use_exact, int minAlleles)
                     // cout << endl;
                 }
 
-                cerr << "Total canonical cycle equivalent pairs found: " << cnt_pair << endl;
+                cerr << "Total canonical cycle equivalence pairs found: " << cnt_pair << endl;
             }
 
+            vector<int> eq_size;
             int maxsz = -1, eff_maxsz = 2;
             for(const auto &[key, vec] : canonical_sese){
                 int sz = vec.size(), cnt = 2;
                 for(int i = 1; i < sz; i++){
                     if(dual[vec[i].S] != vec[i - 1].F){
+                        eq_size.pb(cnt);
                         cnt = 2;
                     }else cnt++;
                     eff_maxsz = max(eff_maxsz, cnt);
                 }
+                eq_size.pb(cnt);
                 maxsz = max(maxsz, sz);
             }
-            cerr << "Maximum size of a set of cycle equivalence class to verify: " << eff_maxsz << endl;
+            sort(eq_size.begin(), eq_size.end());
+            int eq_sz = eq_size.size();
+            if(eq_sz > 0)cerr << "Size of cycle equivalence class to verify (number of edges): Min = " << eq_size[0] << ", Median = " << eq_size[(eq_sz + 1) / 2 - 1] << ", Max = " << eq_size[eq_sz - 1] << endl;
         }
     }
-    cerr << "Done finding cycle equivalent classes" << endl;
+    cerr << "Done finding cycle equivalence classes" << endl;
 
     // ************************************
     // *** Finding valid panbubbles ***
@@ -1052,7 +1057,7 @@ void run_decompose(string inputpath, bool use_exact, int minAlleles)
             // summarypath = outputdir + "/panbubble.txt";
             // freopen(summarypath.c_str(), "w", stdout);
 
-            cout << "CC\tFB\tbbID\tparID\tside1\tside2" << endl;
+            // cout << "CC\tFB\tbbID\tparID\tside1\tside2" << endl;
             cout << "CC\tBB\tbbID\tparID\tside1\tside2\t#alleles" << endl;
             cout << "CC\tHP\tbbID\tside1\tside2\t#alleles" << endl;
             cout << "CC\tAL\t#hap\twalk\thap_id" << endl;
@@ -1160,10 +1165,10 @@ void run_decompose(string inputpath, bool use_exact, int minAlleles)
             }
         }  
         
-        cerr << "Bubbles and hairpins having less than " << minAlleles << " allele walks:\n";
-        for(pss x : zero_walk){
-            cerr << x.first << " " << x.second << endl;
-        }
+        // cerr << "Bubbles and hairpins having less than " << minAlleles << " allele walks:\n";
+        // for(pss x : zero_walk){
+        //     cerr << x.first << " " << x.second << endl;
+        // }
     }
 } 
 
