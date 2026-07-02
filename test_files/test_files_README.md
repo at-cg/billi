@@ -1,6 +1,6 @@
 # Test Files
 
-This folder contains GFA test cases used to validate Billi's `decompose` and `compact` subcommands. Each subfolder covers a different category of graph structure. Every subfolder includes a PDF file with the visualisations of the graphs it contains.
+This folder contains GFA test cases used to validate Billi's `decompose` and `compact` subcommands. Each subfolder covers a different category of graph structure and every subfolder includes a PDF file with the visualisations of the graphs it contains.
 Each `.gfa` file is paired with a corresponding `.expected` file containing the correct output against which Billi's output is checked by the test suite (`src/test_gfa.py`).
 
 | Folder | Description | Figures |
