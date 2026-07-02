@@ -15,8 +15,6 @@ Report panbubbles and hairpins in the input pangenome graph.
 *  `-m --minAlleles INT`:<br/>
     Minimum number of alleles required for reporting a panbubble or hairpin (default: 0)
 
-2. [decompose](#decompose)
-
 ### compact
 
 Compute a compacted pangenome graph by collapsing non-branching linear paths.
@@ -33,7 +31,5 @@ Compute a compacted pangenome graph by collapsing non-branching linear paths.
    Print edges in a reverse complement fashion as well (default:false)
 *  `-n --numeric`:<br/>
    Modify node labels to numeric format (default: false)
-*  `-s --self_loop`:<br/>        
+*  `-s --self_loop`:<br/>
    Retain self loops (default: false)
-
-

@@ -3,7 +3,7 @@
 
 # Billi
 
-Billi is a tool designed to identify bubbles in pangenome graphs, represented in [GFA](https://gfa-spec.github.io/GFA-spec/GFA1.html) format. Billi employs updated definitions of bubbles, termed *panbubbles* and *hairpins*. These definitions apply to both cyclic and acyclic subgraphs, enabling broader coverage of variant classes. Panbubbles and hairpins are guaranteed to be mutually non-overlapping except in cases when they follow a nested structure. By definition, they exclude tip vertices (dead ends). Billi is scalable to large pangenome graphs, including the full human pangenome graphs released by the HPRC. These properties make Billi a useful alternative method for analyzing variation sites and alleles in pangenome graphs. See the [preprint](#citation) for further details.
+Billi is a tool designed to identify bubbles in a pangenome graph, represented in [GFA](https://gfa-spec.github.io/GFA-spec/GFA1.html) format. Billi employs updated definitions of bubbles, termed *panbubbles* and *hairpins*. These definitions apply to both cyclic and acyclic subgraphs, enabling broader coverage of variant classes. Panbubbles and hairpins are guaranteed to be mutually non-overlapping except in cases when they follow a nested structure. By definition, they exclude tip vertices (dead ends). Billi is scalable to large pangenome graphs, including the full human pangenome graphs released by the HPRC. These properties make Billi a useful alternative method for analyzing variation sites and alleles in pangenome graphs. See the [preprint](#citation) for further details.
 
 <p align="center">
   <img src="docs/figures/bubble_nesting.png" width="700">
@@ -87,7 +87,7 @@ BB	1	-1	>s1	>s3	-1
 - **`HP`** rows are hairpins: same fields as `BB`, minus `parID`.
 - **`#alleles`** is `-1` when allele walks weren't computed (e.g. the input GFA has no `W`/`P` lines). When alleles are available, each one is listed on its own `AL` row directly under the corresponding `BB`/`HP` row, and the block is terminated with a `//` line.
 
-We have uploaded many test graphs in the [test folder](test_files).
+Many graphs for testing are available in the [test folder](test_files).
 
 ## Running the test suite
 ```bash
