@@ -87,7 +87,7 @@ BB	1	-1	>s1	>s3	-1
 - **`HP`** rows are hairpins: same fields as `BB`, minus `parID`.
 - **`#alleles`** is `-1` when allele walks weren't computed (e.g. the input GFA has no `W`/`P` lines). When alleles are available, each one is listed on its own `AL` row directly under the corresponding `BB`/`HP` row, and the block is terminated with a `//` line.
 
-Other test graphs are available in the [test folder](test_files). Our benchmark datasets are publicly available at: [https://zenodo.org/records/21104720](https://zenodo.org/records/21104720).
+Other test graphs are available in the [test folder](test_files). Our benchmark datasets are publicly available at: [https://zenodo.org/records/21157554](https://zenodo.org/records/21157554).
 
 ## Running the test suite
 ```bash
