@@ -490,7 +490,7 @@ string complement_walk(string& s){
 }
 // ****************************************************************************************************************************************************** 
 
-void run_decompose(string inputpath, bool use_exact, int minAlleles)
+void run_decompose(string inputpath, bool use_exact, int minAlleles, bool iWalk)
 {   
     // ************************************
     // *** IO + data preparation ***
@@ -503,8 +503,8 @@ void run_decompose(string inputpath, bool use_exact, int minAlleles)
 
         get_ne(inputpath);
 
-        cerr << "Number of vertices in the input bidirected graph: " << n << endl;
-        cerr << "Number of edges in the input bidirected graph: " << edges << endl;
+        cerr << "Number of vertices in the input bidirected graph: " << 2 * n << endl;
+        cerr << "Number of edges in the input bidirected graph: " << n + edges << endl;
 
         // for a node x (0-indexed) in pangene graph - two nodes 2 * x (tail of arrow), 2 * x + 1 (head of arrow) are created in the bi-edged graph 
         // using vectors will be good coz we will have to add capping backedges as well
@@ -621,8 +621,8 @@ void run_decompose(string inputpath, bool use_exact, int minAlleles)
                 mark[i] = true;
             }
 
-            cerr << "Number of vertices in the bidirected graph after compaction: " << cnt_black_edge << endl;
-            cerr << "Number of edges in the bidirected graph after compaction: " << cnt_gray_edge << endl;
+            cerr << "Number of vertices in the bidirected graph after compaction: " << 2 * cnt_black_edge << endl;
+            cerr << "Number of edges in the bidirected graph after compaction: " << cnt_black_edge + cnt_gray_edge << endl;
 
             // swapping the black edge so that it is the 0-indexed edge
             for(int i = 0; i < 2 * n; i++){
@@ -1036,7 +1036,7 @@ void run_decompose(string inputpath, bool use_exact, int minAlleles)
         // *** Getting haplotype walks for printing alleles ***
         // ************************************
         {
-            get_walk(inputpath);
+            if(!iWalk)get_walk(inputpath);
         }
 
         // ************************************
@@ -1058,7 +1058,7 @@ void run_decompose(string inputpath, bool use_exact, int minAlleles)
             // freopen(summarypath.c_str(), "w", stdout);
 
             // cout << "CC\tFB\tbbID\tparID\tside1\tside2" << endl;
-            cout << "CC\tBB\tbbID\tparID\tside1\tside2\t#alleles" << endl;
+            cout << "CC\tBB\tbbID\tbbDpt\tparID\tside1\tside2\t#alleles" << endl;
             cout << "CC\tHP\tbbID\tside1\tside2\t#alleles" << endl;
             cout << "CC\tAL\t#hap\twalk\thap_id" << endl;
             cout << "CC" << endl;
@@ -1068,8 +1068,8 @@ void run_decompose(string inputpath, bool use_exact, int minAlleles)
                 
                 pii rs = valid_panbubbles[i];
                 
-                if(hap_walk.size() == 0){
-                    cout << "BB\t" << i << "\t" << get_parent(i) << "\t" << get_label(rs.F, rs.S) << "\t-1" << endl;
+                if(hap_walk.size() == 0 || iWalk){
+                    cout << "BB\t" << i << "\t" << depth_bubble[i] << "\t" << get_parent(i) << "\t" << get_label(rs.F, rs.S) << "\t-1" << endl;
                 }else{
                     string s1 = get_single_label(rs.F, 0), s2 = get_single_label(rs.S, 1);
 
@@ -1094,7 +1094,7 @@ void run_decompose(string inputpath, bool use_exact, int minAlleles)
                     if(out_walk.size() < minAlleles){
                         zero_walk.pb({s1, s2});
                     }else{
-                        cout << "BB\t" << i << "\t" << get_parent(i) << "\t" << get_label(rs.F, rs.S) << "\t" << out_walk.size() << endl;
+                        cout << "BB\t" << i << "\t" << depth_bubble[i] << "\t" << get_parent(i) << "\t" << get_label(rs.F, rs.S) << "\t" << out_walk.size() << endl;
 
                         for(const auto& pair : out_walk){
                             cout << "AL\t" << pair.second.size() << "\t" << pair.first << "\t";
@@ -1133,7 +1133,7 @@ void run_decompose(string inputpath, bool use_exact, int minAlleles)
 
                 pii rs = valid_hairpins[i];
                
-                if(hap_walk.size() == 0){
+                if(hap_walk.size() == 0 || iWalk){
                     cout << "HP\t" << i << "\t" << get_label(rs.F, rs.S) << "\t-1" << endl; 
                 }else{
                     string s1 = get_single_label(rs.F, 0), s2 = get_single_label(rs.S, 1);
