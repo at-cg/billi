@@ -1,8 +1,8 @@
-CC	BB	bbID	parID	side1	side2	#alleles
+CC	BB	bbID	bbDpt	parID	side1	side2	#alleles
 CC	HP	bbID	side1	side2	#alleles
 CC	AL	#hap	walk	hap_id
 CC
-BB	0	-1	>A	>D	2
+BB	0	1	-1	>A	>D	2
 AL	2	>A>B>D	sample#1,sample#2
 AL	1	>A>C>D	sample#3
 //

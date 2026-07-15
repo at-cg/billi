@@ -17,7 +17,7 @@ if billi exits with a non-zero exit code. For example, test_files/edge_cases/sna
 contains a component with zero tips, hence the expected output is an ERROR.
 
 3.  Structural invariant checks (on successful output)
-- BB lines have exactly 6 fields; HP likes have exactly 5
+- BB lines have exactly 7 fields; HP likes have exactly 5
 - bbIDs are unique across all bubbles in the output
 - BB bubbles have two distinct boundary nodes (side1 != side2)
 - HP hairpins have the same node for both boundaries (eg: >2, <2)
@@ -65,16 +65,17 @@ def parse_output(output: str):
         tag = parts[0]
 
         if tag == 'BB':
-            if len(parts) != 6:
+            if len(parts) != 7:
                 errors.append(f"Line {lineno}: malformed BB (expected 6 fields): {line!r}")
                 continue
             current = {
                 'type': 'BB',
                 'bbID': int(parts[1]),
-                'parID': parts[2],
-                'side1': strip_orientation(parts[3]),
-                'side2': strip_orientation(parts[4]),
-                'n_alleles': int(parts[5]),
+                'bbDpt' : int(parts[2]),
+                'parID': parts[3],
+                'side1': strip_orientation(parts[4]),
+                'side2': strip_orientation(parts[5]),
+                'n_alleles': int(parts[6]),
                 'alleles': [],}
 
         elif tag == 'HP':
@@ -89,16 +90,15 @@ def parse_output(output: str):
                 'side2': strip_orientation(parts[3]),
                 'n_alleles': int(parts[4]),
                 'alleles': [],}
-
-        elif tag == 'FB':
-            current = {
-                'type': 'FB',
-                'bbID': int(parts[1]),
-                'parID': parts[2],
-                'side1': strip_orientation(parts[3]),
-                'side2': strip_orientation(parts[4]),
-                'n_alleles': int(parts[5]),
-                'alleles': [],}
+        # elif tag == 'FB':
+        #     current = {
+        #         'type': 'FB',
+        #         'bbID': int(parts[1]),
+        #         'parID': parts[2],
+        #         'side1': strip_orientation(parts[3]),
+        #         'side2': strip_orientation(parts[4]),
+        #         'n_alleles': int(parts[5]),
+        #         'alleles': [],}
 
         elif tag == 'AL':
             if current is None:

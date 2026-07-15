@@ -75,15 +75,15 @@ The graph (nested.gfa) contains two bubbles, one completely nested in another.
 The output format is similar to [pangene](https://github.com/lh3/pangene/tree/main).
 
 ```
-CC	BB	bbID	parID	side1	side2	#alleles
+CC	BB	bbID	bbDpt	parID	side1	side2	#alleles
 CC	HP	bbID	side1	side2	#alleles
 CC	AL	#hap	walk	hap_id
 CC
-BB	0	BB:1	<s6	<s4	-1
-BB	1	-1	>s1	>s3	-1
+BB	0	2	BB:1	<s6	<s4	-1
+BB	1	1	-1	>s1	>s3	-1
 ```
 - Every output starts with `CC` comment lines documenting column layout, followed by one row per panbubble/hairpin found.
-- **`BB`** rows are panbubbles: `bbID` (unique ID), `parID` (`-1` if top-level, or `BB:<id>`/`HP:<id>` if nested inside another panbubble/hairpin), `side1`/`side2` (the two boundary nodes, with `<`/`>` indicating the strand each is entered on), and `#alleles`.
+- **`BB`** rows are panbubbles: `bbID` (unique ID), `bbDpt`: Depth of the bubble (`1` means top-level),`parID` (`-1` if top-level, or `BB:<id>`/`HP:<id>` if nested inside another panbubble/hairpin), `side1`/`side2` (the two boundary nodes, with `<`/`>` indicating the strand each is entered on), and `#alleles`.
 - **`HP`** rows are hairpins: same fields as `BB`, minus `parID`.
 - **`#alleles`** is `-1` when allele walks weren't computed (e.g. the input GFA has no `W`/`P` lines). When alleles are available, each one is listed on its own `AL` row directly under the corresponding `BB`/`HP` row, and the block is terminated with a `//` line.
 

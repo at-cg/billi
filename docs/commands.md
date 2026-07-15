@@ -14,6 +14,8 @@ Report panbubbles and hairpins in the input pangenome graph.
    (optional) Use exact algorithm instead of the fast heuristic approach (default: heuristic)
 *  `-m --minAlleles INT`:<br/>
     Minimum number of alleles required for reporting a panbubble or hairpin (default: 0)
+*  `-w --iWalk`:<br/>
+    Ignore haplotype walks (default: false)
 
 ### compact
 
