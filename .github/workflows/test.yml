@@ -25,7 +25,7 @@ jobs:
 
       - name: Run GFA tests
         run: |
-          python3 src/test_gfa.py \
+          python3 src/test_script.py \
             --binary ./billi \
             --test-dir test_files \
             --verbose

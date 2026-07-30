@@ -1,6 +1,14 @@
 CXX := g++ # Compiler
-# CXXFLAGS := -std=c++17 -g -O0 -O3 -I ~/include # GDB Compiler flags
-CXXFLAGS := -std=c++17 -O3 -I src/include # Compiler flags
+DEBUG ?= 0
+ifeq ($(DEBUG),1)
+    # Use {make DEBUG=1} to enable this
+    CXXFLAGS := -std=c++17 -g -O0 -I src/include
+else
+    # default compiler flags
+    CXXFLAGS := -std=c++17 -O3 -I src/include
+endif
+
+LDFLAGS := -lstdc++fs
 
 TARGET := billi
 
@@ -10,7 +18,7 @@ OBJECTS := $(SOURCES:.cpp=.o)
 all: $(TARGET)
 
 $(TARGET): $(OBJECTS)
-		$(CXX) $(CXXFLAGS) -o $@ $^
+		$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
 
 %.o: %.cpp 
 		$(CXX) $(CXXFLAGS) -c $< -o $@

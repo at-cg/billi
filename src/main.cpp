@@ -42,7 +42,7 @@ int main(int argc, char* argv[])
     
     decompose->add_option("-i, --input", inputpath, "Input file in GFA format")->required();
     decompose->add_option("-m, --minAlleles", minAlleles, "Minimum number of alleles required for reporting a panbubble or hairpin (default: 0)");
-    decompose->add_flag("-w, --iWalk", iWalk, "Ignore haplotype walks (default: false)");
+    decompose->add_flag("-w, --iWalk", iWalk, "disable printing of alleles for faster execution (default: printed)");
     decompose->add_flag("-e, --exact", use_exact, "Use exact algorithm instead of the fast heuristic approach (default: heuristic)");
 
     app.require_subcommand(1);

@@ -9,7 +9,7 @@ import argparse
 test_gfa.py - testing pipeline script
 For each .gfa file found in the test directory, this script:
 
-1.  Runs: billi decompose -e -i <input.gfa>
+1.  Runs: billi decompose -e -i <input.gfa> and billi decompose -i <input.gfa> # Exact and heuristic algorithm
 
 2.  Checks for expected errors: 
 If a corresponding .expected file exists and contains "ERROR", the test passes only 
@@ -26,10 +26,12 @@ contains a component with zero tips, hence the expected output is an ERROR.
 - No two BB bubbles share the same unordered boundary pair
 
 4. Expected output comparison
-Parse both actual and expected outputs and compare. The comparison is order-insensitive, i.e.,
+Parse both actual and expected outputs and compares them. The comparison is order-insensitive, i.e.,
 - The order in which bubbles are reported doesn't matter
 - <s,t> and <t,s> are treated as the same bubble
 - The order in which the alleles are reported doesn't matter
+
+.heuristic.expected files are used if they differ from the .expected files, otherwise .expected files are used.
 
 For reference, the output format looks like 
 CC   comment/header lines               (ignored)
@@ -202,8 +204,16 @@ def bubbles_to_comparable(bubbles):
         result.add((b['type'], boundary, allele_walks))
     return result
 
-def load_expected(gfa_path: str):
-    expected_path = gfa_path.replace('.gfa', '.expected')
+def load_expected(gfa_path: str, exact: bool = True):
+    if exact:
+        expected_path = gfa_path.replace('.gfa', '.expected')
+    else:
+        heuristic_path = gfa_path.replace('.gfa', '.heuristic.expected')  # Consider .expected if no .heuristic.expected exists
+        if os.path.isfile(heuristic_path):
+            expected_path = heuristic_path
+        else:
+            expected_path = gfa_path.replace('.gfa', '.expected')
+
     if not os.path.isfile(expected_path):
         return None
     with open(expected_path, 'r') as f:
@@ -215,22 +225,23 @@ def load_expected(gfa_path: str):
     else:
         return {'type': 'output', 'text': text}
 
-def run_billi(binary: str, gfa_file: str):
-    return subprocess.run(
-        [binary, 'decompose','-e', '-i', gfa_file],
-        capture_output=True,
-        text=True,)
+def run_billi(binary: str, gfa_file: str, exact: bool = True):
+    cmd = [binary, 'decompose', '-i', gfa_file]
+    if exact:
+        cmd.append('-e')
+    return subprocess.run(cmd, capture_output=True, text=True)
 
-def test_file(binary: str, gfa_file: str, verbose: bool = False):
-    print(f"  Testing: {gfa_file}")
-    result = run_billi(binary, gfa_file)
-    expected = load_expected(gfa_file)
+def test_file(binary: str, gfa_file: str, verbose: bool = False, exact: bool = True):
+    mode_label = "exact" if exact else "heuristic"
+
+    print(f"  Testing [{mode_label}]: {gfa_file}")
+    result = run_billi(binary, gfa_file, exact=exact)
+    expected = load_expected(gfa_file, exact=exact)
 
     if expected and expected['type'] == 'error':
         if result.returncode == 0:
             print(f"    FAIL: expected an error but billi exited successfully")
             return False
-        
         if expected['message']:
             combined = (result.stderr + result.stdout).strip()
             if expected['message'].lower() not in combined.lower():
@@ -240,8 +251,6 @@ def test_file(binary: str, gfa_file: str, verbose: bool = False):
         print(f"    PASS  (correctly produced an error, exit code {result.returncode})")
         return True
 
-
-    # Check: the binary didn't crash
     if result.returncode != 0:
         print(f"    FAIL: billi exited with code {result.returncode}")
         if result.stderr.strip():
@@ -253,7 +262,6 @@ def test_file(binary: str, gfa_file: str, verbose: bool = False):
         for line in result.stdout.strip().splitlines():
             print(f"      {line}")
 
-    # Parse output
     bubbles, errors = parse_output(result.stdout)
     errors = check_invariants(bubbles, errors)
 
@@ -262,7 +270,7 @@ def test_file(binary: str, gfa_file: str, verbose: bool = False):
         for e in errors:
             print(f"      - {e}")
         return False
-    
+
     if expected and expected['type'] == 'output':
         expected_bubbles, expected_errors = parse_output(expected['text'])
         if expected_errors:
@@ -279,15 +287,15 @@ def test_file(binary: str, gfa_file: str, verbose: bool = False):
                 if extra:
                     print(f"      Extra bubbles:   {extra}")
                 return False
-            print(f"    Note: matches expected output")
+        print(f"    Note: matches expected output")
     else:
         print(f"    Note: no .expected file, checking invariants only")
 
     n_bb = sum(1 for b in bubbles if b['type'] == 'BB')
     n_hp = sum(1 for b in bubbles if b['type'] == 'HP')
-    n_fb = sum(1 for b in bubbles if b['type'] == 'FB')
-    print(f"    PASS  (BB={n_bb}, HP={n_hp}, FB={n_fb})")
+    print(f"    PASS  (BB={n_bb}, HP={n_hp})")
     return True
+
 
 def main():
     parser = argparse.ArgumentParser(description='Test billi on GFA files')
@@ -304,20 +312,30 @@ def main():
     total = 0
     passed = 0
 
-    for root, dirs, files in os.walk(args.test_dir):
-        dirs.sort()  # deterministic folder order
-        gfa_files = sorted(f for f in files if f.endswith('.gfa'))
-        if not gfa_files:
-            continue
-        print(f"\n[{root}]")
-        for fname in gfa_files:
-            total += 1
-            ok = test_file(args.binary, os.path.join(root, fname), verbose=args.verbose)
-            if ok:
-                passed += 1
-            else:
-                all_passed = False
+    for mode_label, exact in [("EXACT (-e)", True), ("HEURISTIC", False)]:
+        print(f"\n{'='*40}")
+        print(f"Running {mode_label} tests")
+        print('='*40)
 
+        for root, dirs, files in os.walk(args.test_dir):
+            dirs.sort()
+            gfa_files = sorted(f for f in files if f.endswith('.gfa'))
+            if not gfa_files:
+                continue
+            print(f"\n[{root}]")
+            for fname in gfa_files:
+                total += 1
+                ok = test_file(
+                    args.binary,
+                    os.path.join(root, fname),
+                    verbose=args.verbose,
+                    exact=exact
+                )
+                if ok:
+                    passed += 1
+                else:
+                    all_passed = False
+                    
     print(f"\n{'='*40}")
     print(f"Results: {passed}/{total} tests passed")
     print('='*40)
