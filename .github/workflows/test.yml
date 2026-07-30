@@ -1,5 +1,5 @@
 # .github/workflows/test.yml
-name: GFA Tests
+name: Unit Tests
 
 on:
   workflow_dispatch:
