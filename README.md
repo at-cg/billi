@@ -35,7 +35,7 @@ make
 - **OS:** Linux
 - **Compiler:** GCC version 8 or newer
 - **Build tool:** `make`
-- `python3`: only needed to run the test suite, not for normal builds/usage
+- **Python**: Version 3.8 or above; only needed to run the test suite, not for normal software use
 
 ## Usage
 ### Decompose
