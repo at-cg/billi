@@ -102,9 +102,9 @@ This is the same check run on every push/PR (see [.github/workflows/test.yml](.g
 
 - The algorithm assumes that every connected component of the input graph contains at least one tip vertex; otherwise, execution terminates with an error.
 
-- The default heuristic in Billi is significantly faster than the exact algorithm, but it may produce different outputs in certain edge cases.
+- The default heuristic approach for finding bubbles in Billi is significantly faster than the exact algorithm, but it may produce different output in certain edge cases.
 
-- Printing alleles can slow execution on large graphs. Use the `-w` flag to disable this feature.
+- Printing alleles in every bubble can slow execution on large graphs. Use the `-w` flag to disable this feature.
 
 - Code is currently compatible only with Linux OS.
 
