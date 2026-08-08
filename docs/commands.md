@@ -15,7 +15,7 @@ Report panbubbles and hairpins in the input pangenome graph.
 *  `-m --minAlleles INT`:<br/>
     Minimum number of alleles required for reporting a panbubble or hairpin (default: 0)
 *  `-w --iWalk`:<br/>
-    disable printing of alleles for faster execution (default: printed)
+    disable printing of alleles for faster execution (default: printed if GFA has W-lines)
 
 ### compact
 
