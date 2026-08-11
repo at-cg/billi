@@ -1,14 +1,13 @@
-Command line options:./billi decompose -i test_files/allele_edgecases/example3.gfa
-Number of vertices in the input bidirected graph: 10
-Number of edges in the input bidirected graph: 17
+Command line options:./billi decompose -i test_files/compaction_tests/linear_chain1.gfa
+Number of vertices in the input bidirected graph: 6
+Number of edges in the input bidirected graph: 7
 Done reading input
-Number of vertices in the bidirected graph after compaction: 10
-Number of edges in the bidirected graph after compaction: 11
+Number of vertices in the bidirected graph after compaction: 2
+Number of edges in the bidirected graph after compaction: 1
 Done graph cleaning
 Number of components in the graph: 1
 Number of components with zero tips: 0
 Done finding tips
-Size of cycle equivalence class to verify (number of edges): Min = 3, Median = 3, Max = 3
 Done finding cycle equivalence classes
 Done finding panbubbles
 Done finding hairpins

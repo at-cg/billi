@@ -1,0 +1,30 @@
+Command line options:./billi decompose -i test_files/allele_edgecases/example4.gfa
+Number of vertices in the input bidirected graph: 20
+Number of edges in the input bidirected graph: 38
+Done reading input
+Number of vertices in the bidirected graph after compaction: 20
+Number of edges in the bidirected graph after compaction: 24
+Done graph cleaning
+Number of components in the graph: 1
+Number of components with zero tips: 0
+Done finding tips
+Size of cycle equivalence class to verify (number of edges): Min = 3, Median = 3, Max = 3
+Done finding cycle equivalence classes
+Done finding panbubbles
+Done finding hairpins
+Count of panbubbles in increasing order of nesting: 2 
+Total panbubbles found: 2
+Size of panbubbles (number of vertices): Min = 4, Median = 4, Max = 6
+CC	BB	bbID	bbDpt	parID	side1	side2	#alleles
+CC	HP	bbID	side1	side2	#alleles
+CC	AL	#hap	walk	hap_id
+CC
+BB	0	1	-1	<C	<G	2
+AL	2	<C>D<G	sample#1,sample#4
+AL	1	<C>F<G	sample#2
+//
+BB	1	1	-1	>A	<C	2
+AL	1	>A<B<C	sample#5
+AL	1	>A>B<C	sample#1
+//
+Total hairpins found: 0

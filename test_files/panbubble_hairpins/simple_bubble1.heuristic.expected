@@ -1,0 +1,23 @@
+Command line options:./billi decompose -i test_files/panbubble_hairpins/simple_bubble1.gfa
+Number of vertices in the input bidirected graph: 12
+Number of edges in the input bidirected graph: 18
+Done reading input
+Number of vertices in the bidirected graph after compaction: 12
+Number of edges in the bidirected graph after compaction: 12
+Done graph cleaning
+Number of components in the graph: 1
+Number of components with zero tips: 0
+Done finding tips
+Size of cycle equivalence class to verify (number of edges): Min = 2, Median = 2, Max = 2
+Done finding cycle equivalence classes
+Done finding panbubbles
+Done finding hairpins
+Count of panbubbles in increasing order of nesting: 1 
+Total panbubbles found: 1
+Size of panbubbles (number of vertices): Min = 4, Median = 4, Max = 4
+CC	BB	bbID	bbDpt	parID	side1	side2	#alleles
+CC	HP	bbID	side1	side2	#alleles
+CC	AL	#hap	walk	hap_id
+CC
+BB	0	1	-1	<DMRTC1B	>FAM236A	-1
+Total hairpins found: 0
