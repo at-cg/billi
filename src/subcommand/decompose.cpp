@@ -1025,11 +1025,26 @@ void run_decompose(string inputpath, bool use_exact, int minAlleles, bool iWalk)
                 }
             }
 
-            int cnt[4] = {0};
+            // int cnt[4] = {0};
+            int maxdpt = -1;
             for(int it = 0; it < depth_bubble.size(); it++){
-                if(depth_bubble[it] < 4)cnt[depth_bubble[it]] += 1;
+                maxdpt = max(maxdpt, depth_bubble[it]);
+                // if(depth_bubble[it] < 4)cnt[depth_bubble[it]] += 1;
             }
-            cerr << "Count of top-level panbubbles: " << cnt[1] << ", Count of second-level panbubbles: " << cnt[2] << ", Count of third-level panbubbles: " << cnt[3] << endl;
+            // cerr << "Count of top-level panbubbles: " << cnt[1] << ", Count of second-level panbubbles: " << cnt[2] << ", Count of third-level panbubbles: " << cnt[3] << endl;
+
+            vector<int> cntnst;
+            cntnst.resize(maxdpt + 1, 0);
+            for(int it = 0; it < depth_bubble.size(); it++){
+                cntnst[depth_bubble[it]] += 1;
+            }
+            cerr << "Count of panbubbles in increasing order of nesting: "; 
+            int sum = 0;
+            for(int it = 1; it <= maxdpt; it++){
+                cerr << cntnst[it] << " ";
+                sum += cntnst[it];
+            }
+            cerr << endl;
         }
 
         // ************************************
@@ -1142,7 +1157,11 @@ void run_decompose(string inputpath, bool use_exact, int minAlleles, bool iWalk)
                         auto p1 = x.S.find(s1), p2 = x.S.find(s2);
                         if(p1 != string::npos && p2 != string::npos && p1 < p2){
                             string walk_id = x.S.substr(p1, p2 + s2.length() - p1);
-                            out_walk[walk_id].pb(x.F);
+                            if(out_walk.find(complement_walk(walk_id)) == out_walk.end()){
+                                out_walk[walk_id].pb(x.F);
+                            }else{
+                                out_walk[complement_walk(walk_id)].pb(x.F);
+                            }
                         } 
                     }
 

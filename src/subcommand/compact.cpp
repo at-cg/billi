@@ -19,7 +19,6 @@ void print_compacted_graph(string& inputpath, string& outputpath, bool& print_re
     if (filesystem::is_directory(p)) {
         throw std::runtime_error("Output path is a directory, expected a file");
     }
-
     // ensure output directory
     filesystem::path parent = p.parent_path();
     if (!parent.empty() && parent != ".") {
@@ -232,8 +231,8 @@ void run_compact(string inputpath, string outputpath, bool print_reverse, bool u
 
         get_ne(inputpath);
 
-        cerr << "Number of vertices in the input bidirected graph: " << n << endl;
-        cerr << "Number of edges in the input bidirected graph: " << edges << endl;
+        cerr << "Number of vertices in the input bidirected graph: " << 2 * n << endl;
+        cerr << "Number of edges in the input bidirected graph: " << n + edges << endl;
 
         // for a node x (0-indexed) in pangene graph - two nodes 2 * x (tail of arrow), 2 * x + 1 (head of arrow) are created in the bi-edged graph 
         // using vectors will be good coz we will have to add capping backedges as well
@@ -346,8 +345,8 @@ void run_compact(string inputpath, string outputpath, bool print_reverse, bool u
                 mark[i] = true;
             }
 
-            cerr << "Number of vertices in the bidirected graph after compaction: " << cnt_black_edge << endl;
-            cerr << "Number of edges in the bidirected graph after compaction: " << cnt_gray_edge << endl;
+            cerr << "Number of vertices in the bidirected graph after compaction: " << 2 * cnt_black_edge << endl;
+            cerr << "Number of edges in the bidirected graph after compaction: " << cnt_black_edge + cnt_gray_edge << endl;
 
             // ** Clearing the memory **
             g.clear();
