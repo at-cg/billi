@@ -104,6 +104,8 @@ extern vector<pss> hap_walk; // for storing the haplotype walks
 extern vector<vector<pii>> g; // (node_id, gray_edge_id)
 extern map<string, int> lmap; // for storing the label for a particular gene
 
+bool validate_gfa_input(string inputpath);
+
 void get_ne(string inputpath);
 
 void get_walk(string inputpath);

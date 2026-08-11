@@ -50,6 +50,11 @@ int main(int argc, char* argv[])
     CLI11_PARSE(app, argc, argv);
     cerr << "Command line options:" << full_cmd << endl;
 
+    //run a sanity check on the input file provided
+    if (!validate_gfa_input(inputpath)) {
+        return 1;
+    }
+
     if(*compact)run_compact(inputpath, outputpath, print_reverse, use_numeric, self_loop);
     else if(*decompose)run_decompose(inputpath, use_exact, minAlleles, iWalk);
 }

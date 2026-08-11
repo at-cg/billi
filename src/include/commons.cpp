@@ -96,6 +96,63 @@ vector<pss> hap_walk; // for storing the haplotype walks
 vector<vector<pii>> g; // (node_id, gray_edge_id)
 map<string, int> lmap; // for storing the label for a particular gene
 
+bool validate_gfa_input(string inputpath)
+{
+    if (!filesystem::exists(inputpath)) {
+        cerr << "Error: Input file does not exist: "
+            << inputpath << endl;
+        return false;
+    }
+
+    if (!filesystem::is_regular_file(inputpath)) {
+        cerr << "Error: Input path is not a regular file: "
+            << inputpath << endl;
+        return false;
+    }
+
+    // Require uncompressed .gfa
+    if (inputpath.size() < 4 ||
+            inputpath.substr(inputpath.size() - 4) != ".gfa") {
+
+        cerr << "Error: Input must be an uncompressed GFA file (.gfa).\n"
+            << "       Input file checked: " << inputpath << endl;
+        return false;
+    }
+
+    ifstream f(inputpath);
+    if (!f) {
+        cerr << "Error: Cannot open input file: "
+            << inputpath << endl;
+        return false;
+    }
+
+    string line;
+    while (getline(f, line)) {
+
+        // ignore empty lines and comments
+        if (line.empty() || line[0] == '#')
+            continue;
+
+        // GFA record types: H, S, L, J, C, P, W
+        // See https://gfa-spec.github.io/GFA-spec/GFA1.html
+        char type = line[0];
+
+        if ((type == 'H' || type == 'S' || type == 'L' || type == 'J' || type == 'C' || type == 'P' || type == 'W') &&
+                line.find('\t') != string::npos) {
+            return true;
+        }
+
+        // Inspect the first line only
+        break;
+    }
+
+    cerr << "Error: Input does not appear to be a valid GFA file.\n"
+        << "       Please provide a valid uncompressed GFA file (.gfa).\n"
+        << "       Input file checked: " << inputpath << endl;
+
+    return false;
+}
+
 void get_ne(string inputpath) {
     ifstream f(inputpath);
     string line;
