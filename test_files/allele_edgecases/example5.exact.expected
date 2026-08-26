@@ -2,7 +2,6 @@ CC	BB	bbID	bbDpt	parID	side1	side2	#alleles
 CC	HP	bbID	side1	side2	#alleles
 CC	AL	#hap	walk	hap_id
 CC
-HP	0	>2	<2	2
-AL	1	>2<3<2	sample#3
-AL	1	>2>3<2	sample#2
+HP	0	>2	<2	1
+AL	2	>2>3<2	sample#2,sample#3
 //

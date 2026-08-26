@@ -206,13 +206,13 @@ def bubbles_to_comparable(bubbles):
 
 def load_expected(gfa_path: str, exact: bool = True):
     if exact:
-        expected_path = gfa_path.replace('.gfa', '.expected')
+        expected_path = gfa_path.replace('.gfa', '.exact.expected')
     else:
         heuristic_path = gfa_path.replace('.gfa', '.heuristic.expected')  # Consider .expected if no .heuristic.expected exists
         if os.path.isfile(heuristic_path):
             expected_path = heuristic_path
         else:
-            expected_path = gfa_path.replace('.gfa', '.expected')
+            expected_path = gfa_path.replace('.gfa', '.exact.expected')
 
     if not os.path.isfile(expected_path):
         return None
