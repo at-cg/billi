@@ -465,7 +465,10 @@ bool mark_nodes(int u, pii& rs, int ty){
 // ****************************************************************************************************************************************************** 
 vector<pii> valid_panbubbles, valid_hairpins; // for storing valid panbubbles and hairpins
 vector<pss> zero_walk;
-map<string, vector<string>> out_walk; // for storing the haplotype walks for a corresponding bubble
+
+// for storing the alleles of a bubble
+// map from allele (sequence of nodes) to a vector of haplotype IDs supporting it
+map<string, vector<string>> out_walk;
 
 string get_parent(int& x){
     if(parent_bubble[x] == -1){
@@ -474,20 +477,74 @@ string get_parent(int& x){
     }else return "BB:" + to_string(parent_bubble[x]);
 }
 
-string complement_walk(string& s){
-    string out_walk = "";
-    string seq = "";
-    for(int i = s.length() - 1; i >= 0; i--){
-        if(s[i] == '>' || s[i] == '<'){
-            seq = (s[i] == '>' ? '<' : '>') + seq;
-            out_walk += seq;
-            seq = "";
-        }else{
-            seq = s[i] + seq;
+//tokenize haplotype walks to enable node search in them
+struct tok_walk_t {
+    string hap_id;
+    vector<string> tok;
+};
+vector<tok_walk_t> tok_walks;
+
+//A walk ">10>1>3>2" is split once into oriented tokens {">10", ">1", ">3", ">2"}
+vector<string> tokenize_walk(const string& w){
+    vector<string> out;
+    size_t i = w.find_first_of("<>");
+    while(i != string::npos && i < w.size()){
+        size_t j = w.find_first_of("<>", i + 1);
+        if(j == string::npos) j = w.size();
+        out.emplace_back(w, i, j - i);
+        i = j;
+    }
+    return out;
+}
+
+// Flip token: ">9" -> "<9"
+inline string flip_token(const string& t){
+    return (t[0] == '>' ? "<" : ">") + t.substr(1);
+}
+
+// Join consecutive tokens within some input range; t[a..b], inclusive
+string join_tokens(const vector<string>& t, size_t a, size_t b){
+    string s;
+    for(size_t k = a; k <= b; k++) s += t[k];
+    return s;
+}
+
+// reverse complement of t[a..b], inclusive
+string join_tokens_rc(const vector<string>& t, size_t a, size_t b){
+    string s;
+    for(size_t k = b + 1; k-- > a; ) s += flip_token(t[k]);
+    return s;
+}
+
+//compare two tokens, e.g, ">9" with "<9", ignore orientation
+inline bool same_node(const string& tok, const string& label){
+    return tok.size() == label.size() && tok.compare(1, string::npos, label, 1, string::npos) == 0;
+}
+
+// Calls emit(a, b) for every minimal traversal t[a] == s ... t[b] == e in which no token
+// strictly between a and b visits either boundary node (in any orientation).
+template<class F>
+void for_each_traversal(const vector<string>& t, const string& s, const string& e, F emit){
+    long start = -1;
+    for(size_t k = 0; k < t.size(); k++){
+        const string& x = t[k];
+        if(start >= 0 && x == e){
+            emit((size_t)start, k);
+            start = -1;
+        }else if(x == s){
+            start = k;                                  // restart for minimal traversal
+        }else if(same_node(x, s) || same_node(x, e)){
+            start = -1;                                 // passes through a boundary, reject
         }
     }
-    return out_walk;
 }
+
+//add haplotype ID to vector
+//Avoid duplicate entry because a haplotype is listed once per allele
+inline void add_hap(vector<string>& v, const string& hap){
+    if(v.empty() || v.back() != hap) v.pb(hap);
+}
+
 // ****************************************************************************************************************************************************** 
 
 void run_decompose(string inputpath, bool use_exact, int minAlleles, bool iWalk)
@@ -1051,7 +1108,12 @@ void run_decompose(string inputpath, bool use_exact, int minAlleles, bool iWalk)
         // *** Getting haplotype walks for printing alleles ***
         // ************************************
         {
-            if(!iWalk)get_walk(inputpath);
+            if(!iWalk){
+                get_walk(inputpath);
+                tok_walks.reserve(hap_walk.size());
+                for(const pss& x : hap_walk) tok_walks.pb({x.F, tokenize_walk(x.S)});
+                hap_walk.clear(); // raw strings no longer needed
+            }
         }
 
         // ************************************
@@ -1083,29 +1145,23 @@ void run_decompose(string inputpath, bool use_exact, int minAlleles, bool iWalk)
                 
                 pii rs = valid_panbubbles[i];
                 
-                if(hap_walk.size() == 0 || iWalk){
+                if(tok_walks.empty() || iWalk){
                     cout << "BB\t" << i << "\t" << depth_bubble[i] << "\t" << get_parent(i) << "\t" << get_label(rs.F, rs.S) << "\t-1" << endl;
                 }else{
-                    string s1 = get_single_label(rs.F, 0), s2 = get_single_label(rs.S, 1);
+                    string s1 = get_single_label(rs.F, 0), s2 = get_single_label(rs.S, 1); // forward
+                    string r1 = get_single_label(rs.S, 0), r2 = get_single_label(rs.F, 1); // reverse
 
-                    for(pss x : hap_walk){
-                        auto p1 = x.S.find(s1), p2 = x.S.find(s2);
-                        if(p1 != string::npos && p2 != string::npos && p1 < p2){
-                            string walk_id = x.S.substr(p1, p2 + s2.length() - p1);
-                            out_walk[walk_id].pb(x.F);
-                        } 
+                    for(const tok_walk_t& w : tok_walks){
+                        for_each_traversal(w.tok, s1, s2, [&](size_t a, size_t b){
+                                //record the allele and haplotype id in <out_walk>
+                                add_hap(out_walk[join_tokens(w.tok, a, b)], w.hap_id);
+                                });
+                        for_each_traversal(w.tok, r1, r2, [&](size_t a, size_t b){
+                                //record the allele and haplotype id in <out_walk>
+                                add_hap(out_walk[join_tokens_rc(w.tok, a, b)], w.hap_id);
+                                });
                     }
-
-                    s1 = get_single_label(rs.S, 0); s2 = get_single_label(rs.F, 1);
-
-                    for(pss x : hap_walk){
-                        auto p1 = x.S.find(s1), p2 = x.S.find(s2);
-                        if(p1 != string::npos && p2 != string::npos && p1 < p2){
-                            string walk_id = x.S.substr(p1, p2 + s2.length() - p1);
-                            out_walk[complement_walk(walk_id)].pb(x.F);
-                        } 
-                    }
-
+                    
                     if(out_walk.size() < minAlleles){
                         zero_walk.pb({s1, s2});
                     }else{
@@ -1148,21 +1204,18 @@ void run_decompose(string inputpath, bool use_exact, int minAlleles, bool iWalk)
 
                 pii rs = valid_hairpins[i];
                
-                if(hap_walk.size() == 0 || iWalk){
+                if(tok_walks.empty() || iWalk){
                     cout << "HP\t" << i << "\t" << get_label(rs.F, rs.S) << "\t-1" << endl; 
                 }else{
                     string s1 = get_single_label(rs.F, 0), s2 = get_single_label(rs.S, 1);
 
-                    for(pss x : hap_walk){
-                        auto p1 = x.S.find(s1), p2 = x.S.find(s2);
-                        if(p1 != string::npos && p2 != string::npos && p1 < p2){
-                            string walk_id = x.S.substr(p1, p2 + s2.length() - p1);
-                            if(out_walk.find(complement_walk(walk_id)) == out_walk.end()){
-                                out_walk[walk_id].pb(x.F);
-                            }else{
-                                out_walk[complement_walk(walk_id)].pb(x.F);
-                            }
-                        } 
+                    for(const tok_walk_t& w : tok_walks){
+                        for_each_traversal(w.tok, s1, s2, [&](size_t a, size_t b){
+                                // ">h X <h" and its reverse complement ">h rc(X) <h" are same allele;
+                                // key on the lexicographically smaller spelling for order-independence
+                                string fwd = join_tokens(w.tok, a, b), rc = join_tokens_rc(w.tok, a, b);
+                                add_hap(out_walk[min(fwd, rc)], w.hap_id);
+                                });
                     }
 
                     if(out_walk.size() < minAlleles){
