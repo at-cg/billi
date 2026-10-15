@@ -99,13 +99,10 @@ This is the same check run on every push/PR (see [.github/workflows/test.yml](.g
 ## Limitations
 
 - The code accepts only uncompressed GFA format. Other formats (e.g., `.gbz`, `.vg`) and compressed GFA files (`.gfa.gz`) are not supported.
-
 - The algorithm assumes that every connected component of the input graph contains at least one tip vertex; otherwise, execution terminates with an error.
-
 - The default heuristic approach for finding bubbles in Billi is significantly faster than the exact algorithm, but it may produce different output in certain edge cases.
-
 - Printing alleles in every bubble can slow execution on large graphs. Use the `-w` flag to disable this feature.
-
+- Reported bubbles are not annotated with variant types (e.g., SNPs, insertions, and deletions). Additional post-processing is recommended to determine the corresponding variant types.
 - Code is currently compatible only with Linux OS.
 
 ## Citation
