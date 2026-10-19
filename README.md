@@ -108,4 +108,4 @@ This is the same check run on every push/PR (see [.github/workflows/test.yml](.g
 ## Citation
 If you use Billi, please cite:
 
-> Shreeharsha G Bhat, Daanish Mahajan, and Chirag Jain. Billi: Provably Accurate and Scalable Bubble Detection in Pangenome Graphs. *bioRxiv* (2025). https://doi.org/10.1101/2025.11.21.689636
+> Shreeharsha G Bhat, Daanish Mahajan, and Chirag Jain. Billi: Accurate and Scalable Bubble Detection in Pangenome Graphs. *bioRxiv* (2026). https://doi.org/10.1101/2025.11.21.689636
