@@ -69,12 +69,15 @@ int vtime = 0;
 // ll multiplier = 1; // for computing the hash
 int number_of_classes = 0; // for storing the number of cycle equivalence classes
 vector<int> panbubble_end, hairpin_end; // the vertex is an entrance of which rank of panbubble or hairpin resp.
+vector<int> opp_end; // for storing the opposite end of panbubble entrance vertices
 vector<int> parent_bubble, parent_hairpin; // for storing the parent id's of the canonical cycle equivalent pairs, storing the rank of the panbubble
 vector<int> depth_bubble; // for storing the depth of a bubble at the given id
 vector<int> entry_time, exit_time; // for storing the entry and exit time of vertices during dfs
 vector<int> stack_trace; // for storing the vertices in the stack during dfs traversal
+vector<int> eq_size; // for storing the sizes of equivalent classes
 vector<bool> is_bridge; // whether the edge is a bridge in G_U
 vector<pii> possible_hairpins; // for storing possible hairpin's entrance vertex
+vector<pii> valid_panbubbles; // for storing valid panbubbles
 map<pii, vector<pii>> canonical_sese; // for storing the canonical sese pairs in a given class
 // map<ll, vector<pii>> canonical_sese; // for storing the canonical sese pairs in a given class
 // map<ll, int> st; // (edge, size) -> hashed into a ll key
@@ -192,10 +195,32 @@ void sese_minbracket(int u, int parent, int& x, int& val){
 }
 
 void dfs_nesting(int u, int parent){
+    // cerr << get_single_label(u, 0) << " " << get_single_label(parent, 0) << endl;
     mark[u] = true;
 
     if(hairpin_end[u] != -1){
         stack_trace.pb(u);
+    }else if(panbubble_end[u] != -1){
+        if(entry_time[opp_end[u]] > entry_time[u]){
+            int sz = stack_trace.size();
+            if(sz > 0){
+                int w = stack_trace[sz - 1];
+                if(panbubble_end[w] != -1){
+                    if(!root_leaf_path(dual[opp_end[w]], u)){
+                        parent_bubble[panbubble_end[u]] = panbubble_end[w];
+                        panbubble_tree[panbubble_end[w]].pb(panbubble_end[u]);
+                    }else if(parent_bubble[panbubble_end[w]] != -1){
+                        if(!root_leaf_path(dual[valid_panbubbles[parent_bubble[panbubble_end[w]]].S], u)){
+                            parent_bubble[panbubble_end[u]] = parent_bubble[panbubble_end[w]];
+                            panbubble_tree[parent_bubble[panbubble_end[w]]].pb(panbubble_end[u]);
+                        }
+                    }
+                }else if(hairpin_end[w] != -1){
+                    parent_hairpin[panbubble_end[u]] = hairpin_end[w];
+                }
+            }
+            stack_trace.pb(u);
+        }
     }
     
     for(pii child : g_compacted[u]){
@@ -208,27 +233,10 @@ void dfs_nesting(int u, int parent){
     if(hairpin_end[u] != -1){
         assert(stack_trace.back() == u);
         stack_trace.rb();
-    }
-
-    if(parent == dual[u]){ // going back the cycle equivalent edge
-        if(panbubble_end[u] != -1 && hairpin_end[u] == -1){ // shouldn't be a hairpin root vertex
-            int sz = stack_trace.size();
-            if(sz > 0 && panbubble_end[stack_trace[sz - 1]] == panbubble_end[u]){
-                stack_trace.rb();
-
-                if(sz > 1){
-                    if(panbubble_end[stack_trace[sz - 2]] != -1){
-                        parent_bubble[panbubble_end[u]] = panbubble_end[stack_trace[sz - 2]];
-                        panbubble_tree[panbubble_end[stack_trace[sz - 2]]].pb(panbubble_end[u]);
-                    }
-                    else if(hairpin_end[stack_trace[sz - 2]] != -1){
-                        parent_hairpin[panbubble_end[u]] = hairpin_end[stack_trace[sz - 2]];
-                    }
-                }
-            }
-        }
-        if(panbubble_end[parent] != -1){ // can't be a hairpin end simultaneously
-            stack_trace.pb(parent);
+    }else if(panbubble_end[u] != -1){
+        if(entry_time[opp_end[u]] > entry_time[u]){
+            assert(stack_trace.back() == u);
+            stack_trace.rb();
         }
     }
 }
@@ -463,7 +471,8 @@ bool mark_nodes(int u, pii& rs, int ty){
 // ****************************************************************************************************************************************************** 
 // **** Output ****
 // ****************************************************************************************************************************************************** 
-vector<pii> valid_panbubbles, valid_hairpins; // for storing valid panbubbles and hairpins
+vector<int> cntnst; // for storing the count of panbubbles in increasing order of nesting
+vector<pii> valid_hairpins; // for storing valid hairpins
 vector<pss> zero_walk;
 
 // for storing the alleles of a bubble
@@ -889,7 +898,6 @@ void run_decompose(string inputpath, bool use_exact, int minAlleles, bool iWalk)
                 cerr << "Total canonical cycle equivalence pairs found: " << cnt_pair << endl;
             }
 
-            vector<int> eq_size;
             int maxsz = -1, eff_maxsz = 2;
             for(const auto &[key, vec] : canonical_sese){
                 int sz = vec.size(), cnt = 2;
@@ -906,6 +914,8 @@ void run_decompose(string inputpath, bool use_exact, int minAlleles, bool iWalk)
             sort(eq_size.begin(), eq_size.end());
             int eq_sz = eq_size.size();
             if(eq_sz > 0)cerr << "Size of cycle equivalence class to verify (number of edges): Min = " << eq_size[0] << ", Median = " << eq_size[(eq_sz + 1) / 2 - 1] << ", Max = " << eq_size[eq_sz - 1] << endl;
+
+            eq_size.clear();
         }
     }
     cerr << "Done finding cycle equivalence classes" << endl;
@@ -925,6 +935,7 @@ void run_decompose(string inputpath, bool use_exact, int minAlleles, bool iWalk)
             visit_order.resize(2 * n, -1);
             to_chk.resize(n, -1);
             panbubble_end.resize(2 * n, -1); 
+            opp_end.resize(2 * n, -1);
             
             for(const auto &[key, vec] : canonical_sese){
                 int sz = vec.size();
@@ -975,6 +986,7 @@ void run_decompose(string inputpath, bool use_exact, int minAlleles, bool iWalk)
 
                         if(is_valid){
                             panbubble_end[rs.F] = panbubble_end[rs.S] = valid_panbubbles.size();
+                            opp_end[rs.F] = rs.S; opp_end[rs.S] = rs.F;
                             valid_panbubbles.pb(rs);
                             bubble_size.pb(bub_sz);
                             i = j + (j == i ? 1 : 0); 
@@ -986,7 +998,7 @@ void run_decompose(string inputpath, bool use_exact, int minAlleles, bool iWalk)
             }
 
             // ** Clearing the memory **
-            considered.clear();
+            considered.clear(); opp_end.clear();
         }
     }
     cerr << "Done finding panbubbles" << endl;
@@ -1058,14 +1070,14 @@ void run_decompose(string inputpath, bool use_exact, int minAlleles, bool iWalk)
         // ************************************
         {
             for(int it = 0; it < component; it++){
-                st.clear(); 
                 dfs_nesting(Start[it], -1); // graph g is not changed
                 
                 if(tips[it].size() == 0){
-                    st.clear();
                     mark[Start[it]] = mark[dual[Start[it]]] = false;
                     dfs_nesting(dual[Start[it]], -1);
                 }
+
+                assert(stack_trace.empty());
                 // corner case
                 // if(tips[it].size() == 1){
                 //     possible_hairpins.pb({dual[tips[it][0]], dual[tips[it][0]]});
@@ -1090,7 +1102,6 @@ void run_decompose(string inputpath, bool use_exact, int minAlleles, bool iWalk)
             }
             // cerr << "Count of top-level panbubbles: " << cnt[1] << ", Count of second-level panbubbles: " << cnt[2] << ", Count of third-level panbubbles: " << cnt[3] << endl;
 
-            vector<int> cntnst;
             cntnst.resize(maxdpt + 1, 0);
             for(int it = 0; it < depth_bubble.size(); it++){
                 cntnst[depth_bubble[it]] += 1;
@@ -1102,6 +1113,8 @@ void run_decompose(string inputpath, bool use_exact, int minAlleles, bool iWalk)
                 sum += cntnst[it];
             }
             cerr << endl;
+
+            cntnst.clear();
         }
 
         // ************************************
