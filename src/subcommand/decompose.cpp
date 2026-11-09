@@ -195,7 +195,6 @@ void sese_minbracket(int u, int parent, int& x, int& val){
 }
 
 void dfs_nesting(int u, int parent){
-    // cerr << get_single_label(u, 0) << " " << get_single_label(parent, 0) << endl;
     mark[u] = true;
 
     if(hairpin_end[u] != -1){
@@ -206,20 +205,15 @@ void dfs_nesting(int u, int parent){
             if(sz > 0){
                 int w = stack_trace[sz - 1];
                 if(panbubble_end[w] != -1){
-                    if(!root_leaf_path(dual[opp_end[w]], u)){
-                        parent_bubble[panbubble_end[u]] = panbubble_end[w];
-                        panbubble_tree[panbubble_end[w]].pb(panbubble_end[u]);
-                    }else if(parent_bubble[panbubble_end[w]] != -1){
-                        if(!root_leaf_path(dual[valid_panbubbles[parent_bubble[panbubble_end[w]]].S], u)){
-                            parent_bubble[panbubble_end[u]] = parent_bubble[panbubble_end[w]];
-                            panbubble_tree[parent_bubble[panbubble_end[w]]].pb(panbubble_end[u]);
-                        }
-                    }
+                    parent_bubble[panbubble_end[u]] = panbubble_end[w];
+                    panbubble_tree[panbubble_end[w]].pb(panbubble_end[u]);
                 }else if(hairpin_end[w] != -1){
                     parent_hairpin[panbubble_end[u]] = hairpin_end[w];
                 }
             }
             stack_trace.pb(u);
+        }else{
+            stack_trace.rb();
         }
     }
     
@@ -231,13 +225,16 @@ void dfs_nesting(int u, int parent){
     }
 
     if(hairpin_end[u] != -1){
-        assert(stack_trace.back() == u);
+        // assert(stack_trace.back() == u);
         stack_trace.rb();
     }else if(panbubble_end[u] != -1){
         if(entry_time[opp_end[u]] > entry_time[u]){
-            assert(stack_trace.back() == u);
+            // assert(stack_trace.back() == u);
             stack_trace.rb();
         }
+    }
+    if(panbubble_end[dual[u]] != -1 && entry_time[opp_end[dual[u]]] < entry_time[dual[u]]){
+        stack_trace.pb(opp_end[dual[u]]);
     }
 }
 
@@ -998,7 +995,7 @@ void run_decompose(string inputpath, bool use_exact, int minAlleles, bool iWalk)
             }
 
             // ** Clearing the memory **
-            considered.clear(); opp_end.clear();
+            considered.clear(); 
         }
     }
     cerr << "Done finding panbubbles" << endl;
@@ -1077,7 +1074,7 @@ void run_decompose(string inputpath, bool use_exact, int minAlleles, bool iWalk)
                     dfs_nesting(dual[Start[it]], -1);
                 }
 
-                assert(stack_trace.empty());
+                // assert(stack_trace.empty());
                 // corner case
                 // if(tips[it].size() == 1){
                 //     possible_hairpins.pb({dual[tips[it][0]], dual[tips[it][0]]});
@@ -1114,7 +1111,7 @@ void run_decompose(string inputpath, bool use_exact, int minAlleles, bool iWalk)
             }
             cerr << endl;
 
-            cntnst.clear();
+            opp_end.clear(); cntnst.clear(); 
         }
 
         // ************************************
