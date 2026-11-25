@@ -6,14 +6,14 @@ This page explains how to reproduce the bubble comparison shown in the manuscrip
 
 ## 1. Run the tools
 
-Set the tool locations (or put them on your `PATH`):
+Set the tool locations:
 
 ```bash
-BILLI=billi
-VG=vg
-K8=k8
-PANGENE=pangene.js
-INPUT_GFA=chrY-v1.gfa
+BILLI=/path/to/billi
+VG=/path/to/vg
+K8=/path/to/k8
+PANGENE=/path/to/pangene.js
+INPUT_GFA=/path/to/chrY-v1.gfa
 ```
 
 Compact the graph to avoid any non-branching paths.
@@ -23,19 +23,19 @@ $BILLI compact -i $INPUT_GFA -o chrY-v1.compact.gfa
 $BILLI compact -i $INPUT_GFA -r -o chrY-v1.reverseincluded.compact.gfa
 ```
 
-Billi (compute panbubbles and hairpins):
+Billi (panbubbles and hairpins):
 
 ```bash
 $BILLI decompose -i chrY-v1.compact.gfa -w > billi_output
 ```
 
-Pangene (compute bibubbles). The option `-m 200` increases sensitivity; the default is 100.
+Pangene (bibubbles). The option `-m 200` increases sensitivity; the default is 100.
 
 ```bash
 $K8 $PANGENE call -m 200 chrY-v1.reverseincluded.compact.gfa > pangene_output
 ```
 
-VG (compute snarls, and then convert to JSON).
+VG (snarls, and then convert to JSON).
 
 ```bash
 $VG snarls -t 48 -n chrY-v1.compact.gfa > vg_output
