@@ -87,3 +87,11 @@ Each of the four innermost bubbles overlaps with a sibling bubble without nestin
 | `>64043` `>64046` | `<64041` `>64056` |
 | `>64030` `<64037` | `>64056` `>64085` |
 | `>64015` `<64035` | `>64085` `>164115` |
+
+## Software versions
+ 
+| Tool | Version |
+|---|---|
+| Billi | commit `75e203f` |
+| VG | v1.78.0 |
+| Pangene | commit `fc3366a` |
